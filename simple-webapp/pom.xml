@@ -1,53 +1,52 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>simple-webapp</groupId>
-  <artifactId>simple-webapp</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>simple-webapp</groupId>
+	<artifactId>simple-webapp</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
-   		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-	
-	<repositories>	
-	    <repository>
-		      <id>central</id>
-		      <name>Central Repository</name>
-		      <url>http://repo.maven.apache.org/maven2</url>
-		      <layout>default</layout>
-		      <snapshots>
-			<enabled>false</enabled>
-		      </snapshots>
-	    </repository>
-       </repositories>
+
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 
-  <dependencies>
-	    <dependency>
-		      <groupId>javax.servlet</groupId>
-		      <artifactId>javax.servlet-api</artifactId>
-		      <version>3.0.1</version>
-		      <scope>provided</scope>
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
 
-	    </dependency>
-	    <dependency>
-	   		<groupId>mysql</groupId>
-	   		<artifactId>mysql-connector-java</artifactId>
-	   		<version>5.1.6</version>
-	    </dependency>
-	<!--    <dependency>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+		<!--    <dependency>
 		      <groupId>junit</groupId>
 		      <artifactId>junit</artifactId>
 		      <version>3.8.1</version>
 		      <scope>test</scope>
 	    </dependency> -->
-  </dependencies>
-  <build>
+	</dependencies>
+	<build>
 
-<!--
+		<!--
 	<sourceDirectory>src/main/webapp/WEB-INF/classes</sourceDirectory>
 	<resources>
 		<resource>
@@ -58,21 +57,47 @@
 		</resource>
 	</resources> -->
 
-        <plugins>
-		<plugin>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.8.0</version>
-			<configuration>
-				<source>1.8</source>
-				<target>1.8</target>
-			</configuration>
-		</plugin>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 
 
-		<plugin>
+			<!--<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>8.1.4.v20120524</version>
+				<configuration>			
+					<webApp>
+						<descriptor>/WEB-INF/lib/web.xml</descriptor>
+					</webApp>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>8080</port>
+						</connector>
+					</connectors>
+				</configuration>
+			</plugin>-->
+
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<warSourceDirectory>simple-wabapp.war</warSourceDirectory>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.0.M0</version>
 				<configuration>
 					<webApp>
 						<descriptor>/WEB-INF/lib/web.xml</descriptor>
@@ -83,23 +108,7 @@
 						</connector>
 					</connectors>
 				</configuration>
-		</plugin>
-
-
-		<plugin>
-			<artifactId>maven-war-plugin</artifactId>
-			<version>3.2.1</version>
-			<configuration>
-				<warSourceDirectory>simple-wabapp.war</warSourceDirectory>
-			</configuration>
-		</plugin>
-
-
-		<plugin>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-maven-plugin</artifactId>
-			<version>9.4.0.M0</version>
-		</plugin> 
-       </plugins>
-  </build>
+			</plugin>
+		</plugins>
+	</build>
 </project>
