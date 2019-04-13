@@ -1,0 +1,31 @@
+
+installation de psql : recherche google :)
+
+puis
+
+passage en tant que l'utilisateur 'postgres' > l'utilisateur par défaut
+
+et création de l'utilisateur avec la session 
+(-s pour permission superuser)
+createuser -s xxx
+createuser -s root
+(aussi à faire pour faciliter les choses sur linux) > sur windows, c'est surement différent
+
+puis gestion database etc 
+
+createdb erasmus-project
+
+(faire bien attention au nom)
+
+puis : psql erasmus-project
+pour y accéder et pouvoir faire les commandes sql ..
+
+commande comme select, create ..
+\q .. \i script
+
+
+
+
+
+doc globale psql :
+https://www.postgresql.org/docs/9.2/index.html
