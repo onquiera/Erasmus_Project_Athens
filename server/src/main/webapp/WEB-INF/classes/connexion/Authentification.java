@@ -27,23 +27,15 @@ public class Authentification extends HttpServlet
 			String login = req.getParameter("login");
 			String password = req.getParameter("password");
 
-			//requete
-			String query = "Select * from users where email = ? AND password = ?";
-
-			PreparedStatement ps = con.prepareStatement( query );
+			UsersDAO dao = new UsersDAO();
+			Users utilisateur = dao.find(login);
 			
-			ps.setString(1, login);
-			ps.setString(2, password);
-			ResultSet rs = ps.executeQuery();
-			
-			//System.out.println("ps: " +ps);
-			
-			if(rs.next()) {
+			if(utilisateur!=null && utilisateur.getPassword().equals(password)) {
 				//creer session avez attribut souhaité
 				session.setAttribute("login", login );
 				session.setMaxInactiveInterval(10);
 			}
-			
+			//TODO diffencier les if et envoyer un parametre à statut > si utilisateur inexistant ou si password incorrect
 			res.sendRedirect("servlet-statut");
 
 		}catch(Exception e1){
