@@ -1,32 +1,27 @@
-//@flow
-import PopupInterface from '.PopupInterface';
+
+import PopupInterface from '../Popup/PopupInterface.js';
 
 export default class Login extends PopupInterface { 
 
   constructor() {
     super();
-    this.sendRequest = this.sendRequest.bind(this);
   }
 
-  open(): void {
+  open(){
     this.render();
     super.open();
-
-    const buttonRequest: HTMLElement = document.querySelector('#sendRequest');
-    buttonRequest.addEventListener('click', this.sendRequest);
-
-    const register: HTMLElement = document.querySelector('#register');
+    const register = document.querySelector('#SignUp');
     register.addEventListener('click', this.openRegister);
   }
 
-  openRegister(event:Event):void{
+  openRegister(event){
     event.preventDefault();
-    const register:Register = new Register();
+    const register = new Register();
     register.open();
   }
 
   render(){
-    const result:string =`  
+    const result =`  
     <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;">
@@ -51,7 +46,7 @@ export default class Login extends PopupInterface {
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Not a member? <a href="#">Sign Up</a></p>
+          <p>Not a member? <a id="SignUp"href="#">Sign Up</a></p>
           <p>Forgot <a href="#">Password?</a></p>
         </div>
       </div>

@@ -1,4 +1,11 @@
-"use strict";
+import Login from './Popup/Login.js';
+var linkLogin = document.querySelector('.login');
 
-console.log("hello wolrd!");
+if (linkLogin) {
+  var login = new Login();
+  linkLogin.addEventListener('click', function (event) {
+    event.preventDefault();
+    login.open();
+  });
+}
 //# sourceMappingURL=main.js.map

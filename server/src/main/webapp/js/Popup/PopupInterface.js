@@ -1,41 +1,40 @@
-// @flow
 
 export default class PopupInterface {
 
     constructor() { }
 
-    open(): void {
-        const pop: ?HTMLElement = document.querySelector('#popup');
+    open() {
+        const pop = document.querySelector('#popup');
         if (pop) {
             pop.style.display = "inline";
         }
 
-        const closeButton: HTMLElement = document.querySelector('.close');
+        const closeButton = document.querySelector('.close');
         if (closeButton) {
-            closeButton.addEventListener('click', (event: Event) => {
+            closeButton.addEventListener('click', (event) => {
                 event.preventDefault();
                 this.close();
             })
         }
     }
 
-    close(): void {
-        const pop: HTMLElement = document.querySelector('#popup');
+    close() {
+        const pop = document.querySelector('#popup');
         if (pop) {
             pop.style.display = "none";
         }
     }
 
-    render(chaine: string) {
-        const dialog: HTMLElement = document.querySelector('.modal-dialog');
+    render(chaine) {
+        const dialog = document.querySelector('.modal-dialog');
         if (!dialog) {
             return;
         }
         dialog.innerHTML = chaine;
     }
 
-    error(chaine: string) {
-        const error: HTMLElement = document.querySelector("#error");
+    error(chaine) {
+        const error = document.querySelector("#error");
         if (error) {
             error.innerHTML = chaine;
         }
