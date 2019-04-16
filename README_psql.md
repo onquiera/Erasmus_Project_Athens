@@ -24,8 +24,13 @@ commande comme select, create ..
 \q .. \i script
 
 
+gestion utilisateurs/mdp psql :
+https://stackoverflow.com/questions/15008204/how-to-check-postgres-user-and-password
 
-
+url psql : 
+https://stackoverflow.com/questions/3582552/postgresql-connection-url
+> general URL = "jdbc:postgresql://host:port/database"
+pour nous : "jdbc:postgresql://localhost:5432/erasmus-project"
 
 doc globale psql :
 https://www.postgresql.org/docs/9.2/index.html

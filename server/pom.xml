@@ -46,7 +46,7 @@
 	</dependencies>
 	<build>
 
-		<!--
+		
 	<sourceDirectory>src/main/webapp/WEB-INF/classes</sourceDirectory>
 	<resources>
 		<resource>
@@ -55,7 +55,7 @@
 				<exclude>**/*.java</exclude>
 			</excludes>
 		</resource>
-	</resources> -->
+	</resources> 
 
 		<plugins>
 			<plugin>
@@ -99,9 +99,19 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.4.0.M0</version>
 				<configuration>
+					<reload>manual</reload>
+				<!-- ligne avec scanInterval pour reload auto mais j'ai pas réussi à le configurer
++ si on l'utilise, il faut passer le reload à "automatic" et pas manual--> 
+				<!--	<scanIntervalSeconds>3</scanIntervalSeconds>-->
 					<webApp>
 						<descriptor>/WEB-INF/lib/web.xml</descriptor>
+						<contextPath>/</contextPath>
 					</webApp>
+<!--
+					<scanTargets>
+					    <scanTarget>/WEB-INF/classes</scanTarget>
+					</scanTargets>
+-->
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>8080</port>
