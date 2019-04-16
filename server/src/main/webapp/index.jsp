@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="js/main3.js" defer></script>
+    <script src="js/Popup/Login.js" defer></script>
 </head>
 
 <body>
@@ -23,10 +23,15 @@
                 <li><a href="#">Choose Your language</a></li>
                 <li><a href="#">Contact us</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="#" id=loginModal><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
+
+    <!--Login -->
+	<div class="modal" id="popup" role="dialog">
+	    <div class="modal-dialog"></div>
+	</div>
 
 <!--Second navbar, which contains the differents parts of the website -->
     <nav class="navbar" id="navigationBar">
