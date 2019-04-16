@@ -12,11 +12,14 @@
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3"
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-flow": "^7.0.0",
+    "flow-bin": "^0.97.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/babel js -d build --verbose --watch --source-maps"
+    "watch": "./node_modules/.bin/babel js -d build --verbose --watch --source-maps",
+    "flow": "./node_modules/.bin/flow"
   },
   "author": "",
   "license": "ISC"
