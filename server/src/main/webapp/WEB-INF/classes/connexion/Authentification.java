@@ -32,12 +32,11 @@ public class Authentification extends HttpServlet
 
 			PreparedStatement ps = con.prepareStatement( query );
 			
-			// out.println("query"+query);
 			ps.setString(1, login);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 			
-			System.out.println("ps: " +ps);
+			//System.out.println("ps: " +ps);
 			
 			if(rs.next()) {
 				//creer session avez attribut souhaité
