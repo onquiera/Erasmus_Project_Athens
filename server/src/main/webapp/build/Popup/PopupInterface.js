@@ -54,17 +54,12 @@ function () {
     }
   }, {
     key: "error",
-    value: function error(chaine) {
+    value: function error(string) {
       var error = document.querySelector("#error");
 
       if (error) {
-        error.innerHTML = chaine;
+        error.innerHTML = string;
       }
-    }
-  }, {
-    key: "champsVide",
-    value: function champsVide() {
-      this.error("All field is required. Please complete it.");
     }
   }]);
 

@@ -1,4 +1,3 @@
-
 export default class PopupInterface {
 
     constructor() { }
@@ -33,15 +32,10 @@ export default class PopupInterface {
         dialog.innerHTML = chaine;
     }
 
-    error(chaine) {
+    error(string) {
         const error = document.querySelector("#error");
         if (error) {
-            error.innerHTML = chaine;
+            error.innerHTML = string;
         }
     }
-
-    champsVide(){
-        this.error("All field is required. Please complete it.");
-    }
-
 }
