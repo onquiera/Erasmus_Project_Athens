@@ -25,7 +25,7 @@ public class DS {
 */
 			
 			String url = "jdbc:postgresql://localhost/erasmus-project";
-			String nom = "onquiera";
+			String nom = "postgres";
 			String mdp = "aaaa";
 				
 			con = DriverManager.getConnection(url,nom,mdp);
