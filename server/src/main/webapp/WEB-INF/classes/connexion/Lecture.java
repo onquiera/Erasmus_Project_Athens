@@ -67,7 +67,7 @@ public class Lecture extends HttpServlet
 				out.println("</table>");
 				
 
-				out.println("<br><br><a href=\"http://localhost:8080/Menu\">retour Menu</a>");
+				out.println("<br><br><a href=\"http://localhost:8080/Menu\">Back home</a>");
 
 				out.println( "</body>" );	
 

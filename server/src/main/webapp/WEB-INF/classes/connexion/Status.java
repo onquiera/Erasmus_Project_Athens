@@ -27,7 +27,7 @@ public class Status extends HttpServlet
 	    }else {
 	    	out.println("<h2>User doesn't exist !</h2>");
 
-			out.println("<br><br><a href=\"http://localhost:8080/Login.html\">return to Login</a>");
+			out.println("<br><br><a href=\"http://localhost:8080/login.html\">Back to login</a>");
 
 	    }
 		

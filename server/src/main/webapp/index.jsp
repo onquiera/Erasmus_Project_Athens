@@ -12,8 +12,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script type="module" src="build/main.js"></script>
-<script type="module" src="js/Popup/Login.js"></script>
+<!--
+	<script type="module" src="build/main.js"></script>
+	<script type="module" src="js/Popup/Login.js"></script>
+-->
 </head>
 
 <body>
@@ -46,10 +48,7 @@
 		</div>
 	</nav>
 
-	<!--Login -->
-	<div class="modal" id="popup" role="dialog">
-		<div class="modal-dialog"></div>
-	</div>
+
 
 	<!--Second navbar, which contains the differents parts of the website -->
 	<nav class="navbar" id="navigationBar">

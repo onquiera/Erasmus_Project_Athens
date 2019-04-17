@@ -1,17 +1,39 @@
-<HTML>
-<HEAD>
-<TITLE>Login</TITLE>
-</HEAD>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<BODY>
-	<h1>Connection</h1>
-	<form action="Authentification" method="post">
-		Email : <input name="login" type="text"> <br>
-		Password: <input name="password" type="password"> <br>
-		<input type="submit" value="connection	">
-	</form>
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>AirVacation</title>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./css/loginStyle.css" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-	<button onclick="window.location.href = 'sign-in.html';">or Sign in</button>
-
-</BODY>
-</HTML>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+		<div class="container login-container">
+				<div class="row">
+					<div class="col-md-6 login-form">
+						<h3>Login for Form 1</h3>
+						<form action="Authentification" method=post role="form class=form">
+							<div class="form-group">
+								<label for="usrmail"><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
+								<input type="email" class="form-control" id="usrmail" placeholder="Enter email">
+							</div>
+							<div class="form-group">
+								<label for="psw"><span class="glyphicon glyphicon-lock"></span> Password</label>
+								<input type="password" class="form-control" id="psw" placeholder="Enter password">
+							</div>
+							<div class="checkbox">
+									<label><input type="checkbox" value="" checked>Remember me</label>
+							</div>
+							<button id="sendRequest" type="submit" class="btnSubmit"><span class="glyphicon glyphicon-off"></span> Login</button>
+							<div class="form-group">
+								<a href="#sign-in.html" class="ForgetPwd">Forget Password?</a>
+							</div>
+						</form>
+					</div>
+				</div>
+		</div>
+</body>
+</html>
