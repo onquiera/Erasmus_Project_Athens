@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="connexion.UsersDAO"%>
 <html lang="en">
 
 <head>
@@ -30,7 +31,7 @@
 				<%
 					//gestion login
 					String login = (String) session.getAttribute("login");
-				
+					
 					if (login == null) {
 						out.println(
 						"<li><a href=\"sign-in.html\"><span class=\"glyphicon glyphicon-user\"></span>"

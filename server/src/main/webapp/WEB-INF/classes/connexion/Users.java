@@ -67,4 +67,20 @@ public class Users {
 	public void setRole(int role) {
 		this.role = role;
 	}
+
+	//email            |   name   |  surname   | genre |      password       | role
+	public String toString() {
+		return "email: '"+email+"', name: '"+name+"', surname: '"+surname+"', genre: '"+genre+"', password: '"+password+"', role: '"+role+"'";
+	}
+	
+	//TODO rendre ça en tableau :) ou en formulaire je sais pas
+	/*
+	
+	public String toStringHTMLTR() {
+		return "<tr>"
+				+ "<td>email: "+email+"</td>"
+				+ "name: "+name+", surname: "+surname+", genre: "+genre+", password: "+password+", role: "+role+"";
+	}
+	*/
+	
 }
