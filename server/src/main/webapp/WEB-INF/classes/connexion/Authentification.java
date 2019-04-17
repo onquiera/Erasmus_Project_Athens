@@ -36,7 +36,7 @@ public class Authentification extends HttpServlet
 				session.setMaxInactiveInterval(10);
 			}
 			//TODO diffencier les if et envoyer un parametre à statut > si utilisateur inexistant ou si password incorrect
-			res.sendRedirect("servlet-statut");
+			res.sendRedirect("servlet-status");
 
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());

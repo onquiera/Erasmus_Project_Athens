@@ -18,7 +18,7 @@ public class Menu extends HttpServlet
 	    String login = (String)session.getAttribute( "login" );
 	    
 	    if(login==null){
-		res.sendRedirect("Login.html");
+	    	res.sendRedirect("Login.html");
 	    }
 
 		res.setContentType("text/html,charset=UTF-8");

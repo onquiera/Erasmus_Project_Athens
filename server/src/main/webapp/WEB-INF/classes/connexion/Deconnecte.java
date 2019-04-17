@@ -23,7 +23,7 @@ public class Deconnecte extends HttpServlet
 
 			session.invalidate();
 			
-			res.sendRedirect("Login.html");
+			res.sendRedirect("index.jsp");
 			
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());

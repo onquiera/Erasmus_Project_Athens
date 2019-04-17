@@ -54,12 +54,21 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>servlet-statut</servlet-name>
-		<servlet-class>connexion.Statut</servlet-class>
+		<servlet-name>servlet-status</servlet-name>
+		<servlet-class>connexion.Status</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>servlet-statut</servlet-name>
-		<url-pattern>/servlet-statut</url-pattern>
+		<servlet-name>servlet-status</servlet-name>
+		<url-pattern>/servlet-status</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servlet-signin</servlet-name>
+		<servlet-class>connexion.SignIn</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-signin</servlet-name>
+		<url-pattern>/servlet-signin</url-pattern>
 	</servlet-mapping>
 
 

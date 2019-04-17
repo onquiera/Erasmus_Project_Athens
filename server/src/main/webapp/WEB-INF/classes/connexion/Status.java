@@ -6,15 +6,15 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 
 @SuppressWarnings("serial")
-@WebServlet("/servlet-statut")
-public class Statut extends HttpServlet
+@WebServlet("/servlet-status")
+public class Status extends HttpServlet
 {  
     public void doGet( HttpServletRequest req, HttpServletResponse res )
 	throws ServletException, IOException
     {
 	res.setContentType("text/html,charset=UTF-8");
 	PrintWriter out = res.getWriter();
-	out.println( "<head><title>servlet Login</title></head>" );
+	out.println( "<head><title>Connection status</title></head>" );
 	out.println( "<body>" );
 		  
 	try{
@@ -23,11 +23,11 @@ public class Statut extends HttpServlet
 	    String login = (String)session.getAttribute( "login" );
 	    if(login!=null){
 //	    	out.println("<h2>Utilisateur existe !</h2>");
-	    	res.sendRedirect("Menu");
+	    	res.sendRedirect("index.jsp");
 	    }else {
-	    	out.println("<h2>Utilisateur n'existe pas !</h2>");
+	    	out.println("<h2>User doesn't exist !</h2>");
 
-			out.println("<br><br><a href=\"http://localhost:8080/Login.html\">retour Login</a>");
+			out.println("<br><br><a href=\"http://localhost:8080/Login.html\">return to Login</a>");
 
 	    }
 		
