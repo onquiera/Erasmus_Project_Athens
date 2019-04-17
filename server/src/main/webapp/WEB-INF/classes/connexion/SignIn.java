@@ -30,13 +30,27 @@ public class SignIn extends HttpServlet
 			int role = 0;
 			Users newUsers=null;
 
+			
+			//TODO rendre le try mieux avec un boolean
+			
 			try {
+				
 				email = req.getParameter("email");
 				name = req.getParameter("name");
 				surname = req.getParameter("surname");
 				genre = Integer.parseInt(req.getParameter("genre"));
 				password = req.getParameter("password");
 
+				
+				//TODO tester les valeurs > verifier si format email correct ... (un peu annexe mais fonctionnalité cool)
+				//tester si un champ n'est pas vide et afficher erreur champ vide
+				//> peut-être le faire avec un petit code js dans balise script ?
+				//TODO rajouter champ password2 et verifier si les 2 correspondent
+				//TODO tester si email existe deja
+				
+				//renvoyer la ou les erreur(s) en session ou en parametre de la page signin 
+				// > (la transformer en jsp   ou ++ en servlet avec out.println et recuperer en post(si on veut securiser))
+				
 				newUsers = new Users(email, name, surname, genre, password, role);
 
 				UsersDAO dao = new UsersDAO();
