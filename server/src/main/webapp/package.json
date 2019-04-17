@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
-    "webpack-cli": "^3.3.0",
-    "webpack": "^4.30.0"
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="js/main3.js" defer></script>
+    <script type="module" src="build/main.js" ></script>
+    <script type="module" src="js/Popup/Login.js" ></script>
 </head>
 
 <body>
@@ -23,10 +24,17 @@
                 <li><a href="#">Choose Your language</a></li>
                 <li><a href="#">Contact us</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="#" class="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
+
+    <!--Login -->
+	<div class="modal" id="popup" role="dialog">
+	    <div class="modal-dialog">
+
+        </div>
+	</div>
 
 <!--Second navbar, which contains the differents parts of the website -->
     <nav class="navbar" id="navigationBar">
@@ -54,7 +62,7 @@
 
     <div class="container">
         <h3>Welcome on AirVacation !</h3>
-        <p>We are unfortunatly currently under maintainance.</p>
+        <p>We are unfortunatly under maintainance.</p>
     </div>
 
 </body>
