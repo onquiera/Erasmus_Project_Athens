@@ -1,7 +1,7 @@
 drop table if exists users;
-drop table if exists planes;
-drop table if exists flights;
-drop table if exists bookings;
+drop table if exists planes CASCADE;
+drop table if exists flights CASCADE;
+drop table if exists bookings CASCADE;
 
 --User table, if a user want an account on the website, but it's not an obligation to book a flight.
 --genre > 0 woman, 1 man, ++ others.
@@ -30,27 +30,26 @@ CREATE TABLE planes(
 --Flights table, where the information like datetime of departure and arrival are.
 CREATE TABLE flights(
 	flightID text PRIMARY KEY,
-	--Id of the flight, 2 letter for the country and 4 number for the id
-	--Example --> FR0076 (Unique to determine if the is a delay or something)
+	--Id of the flight, 2 letter for the country and 8 number for the id
+	--Example --> FR00764400 (Unique to determine if the is a delay or something)
 	planeID integer,
 	departureCity text,
 	arrivingCity text,
-	departureDate DATETIME,
-	arrivalDate DATETIME,
+	departureDate TIMESTAMP,
+	arrivalDate TIMESTAMP,
 	FOREIGN KEY (planeID) REFERENCES planes(planeID)
 );
-
 
 --Bookings table, where all the informations about any book is written. The user can have a partial access to this table.
 CREATE TABLE bookings(
 	reservationNumber integer PRIMARY KEY,
+	--Need to be at least 10 number, to be sure to have enough place about the future bookings.
+	flightID text,
 	seatNumber integer,
 	clientName text,
 	clientEmail text,
-	flightID integer,
 	FOREIGN KEY (flightID) REFERENCES flights(flightID)
 );
-
 
 --------First datas entered on table when the server starts--------
 
@@ -65,7 +64,36 @@ INSERT INTO users VALUES
 ('patricia.evraere@gmail.com','Patricia','Evraere', 0, '1234', 0);
 
 INSERT INTO planes VALUES
-('00000000000001','AirVacation','A320','120','30'),
-('00000000000002','AirVacation','A320','120','30'),
-('00000000000003','AirVacation','A320','120','30'),
-('00000000000004','AirVacation','A320','120','30');
+(00000000000001,'AirVacation','A320',120,30),
+(00000000000002,'AirVacation','A320',120,30),
+(00000000000003,'AirVacation','A320',120,30),
+(00000000000004,'AirVacation','A320',120,30),
+(00000000000005,'AirVacation','A380',600,200),
+(00000000000006,'AirVacation','A380',600,200),
+(00000000000007,'AirVacation','A380',600,200),
+(00000000000008,'AirVacation','ATR72',78,0);
+
+INSERT INTO flights VALUES 
+('FR00764400',00000000000001,'Paris','Marseille','2018-05-12 15:40:00','2018-05-12 17:00:00'),
+('FR00764401',00000000000001,'Marseille','Paris','2018-05-13 10:00:00','2018-05-13 11:20:00'),
+
+('BL00764400',00000000000002,'Bruxelles','Londres','2018-06-02 12:00:00','2018-06-02 13:10:00'),
+('BL00764401',00000000000002,'Londres','Bruxelles','2018-06-04 12:00:00','2018-06-04 13:10:00'),
+
+('FR00450030',00000000000008,'Lille','Madrid','2018-04-22 15:30:00','2018-04-22 17:55:00'),
+('FR00450031',00000000000008,'Madrid','Lille','2018-04-22 22:40:00','2018-04-23 00:05:00'),
+('FR00450032',00000000000008,'Lille','Madrid','2018-04-23 15:30:00','2018-04-23 17:55:00'),
+('FR00450033',00000000000008,'Madrid','Lille','2018-04-23 22:40:00','2018-04-24 00:05:00'),
+('FR00450034',00000000000008,'Lille','Madrid','2018-04-24 15:30:00','2018-04-24 17:55:00'),
+('FR00450035',00000000000008,'Madrid','Lille','2018-04-24 22:40:00','2018-04-25 00:05:00'),
+('FR00450036',00000000000008,'Lille','Madrid','2018-04-25 15:30:00','2018-04-25 17:55:00'),
+('FR00450037',00000000000008,'Madrid','Lille','2018-04-25 22:40:00','2018-04-26 00:05:00');
+
+INSERT INTO bookings VALUES
+(0000000001,'FR00764400',120,'Despelchin','bricedespelchin@gmail.com'),
+(0000000002,'FR00764400',121,'Onquiert','bricedespelchin@gmail.com'),
+(0000000003,'FR00764401',144,'Despelchin','bricedespelchin@gmail.com'),
+(0000000004,'FR00764401',002,'Onquiert','antoine.onquiert@gmail.com'),
+
+(0000000005,'FR00450036',30,'Colombe','colombe.guillemin@gmail.com'),
+(0000000006,'FR00450037',78,'Colombe','colombe.guillemin@gmail.com');
