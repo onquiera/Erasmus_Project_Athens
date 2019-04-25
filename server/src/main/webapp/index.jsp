@@ -12,6 +12,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+	<!--Header of the form-->
+	<link href="./css/flightSearchStyle.css" rel="stylesheet">
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
+		id="bootstrap-css">
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -75,7 +81,7 @@
 
 
 	<!-- Carousel, which include the simple search for flights form-->
-	<div id="myCarousel" class="carousel slide">
+	<div id="myCarousel" class="carousel slide" data-interval="5000">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -87,7 +93,7 @@
 				<img src="./resources/beach.jpg">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Beach 1</h3>
+						<h3>Beach</h3>
 						<p>Yeah it's a pretty beach</p>
 					</div>
 				</div>
@@ -111,14 +117,76 @@
 		</div>
 
 		<!-- Search form -->
-		<form class="col-sm-12" id="searchForm">
-			<div class="form-group col-sm-4 col-sm-offset-4">
-				<div class="input-group input-group-lg center-block">
-					<input type="text" class="form-control" placeholder="Search">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+		<div class="container" id="searchForm">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+					<div class="tabing">
+						<ul>
+							<li><span><i class="fa fa-plane" aria-hidden="true"></i></span>
+								Purchase a ticket
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div id="1" class="tab1 active">
+								<form>
+									<div class="triptype">
+										<label class="rndTrip active"><input type="radio" name="Round" value="RoundTrip"
+												checked> Round Trip
+										</label>
+										<!--Add the next line if we make a simple trip-->
+										<!--<label class="oneTrip"><input type="radio" name="Round" value="OneWay"> OneWay </label>-->
+									</div>
+									<div class="col-sm-12 col-xs-12 ctrl">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										<input id="depart" type="text" class="form-control" name="depart"
+											value="" placeholder="Departing from">
+									</div>
+									<div class="col-sm-12 col-xs-12 ctrl">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										<input id="arrival" type="text" class="form-control" name="arrival"
+											value="" placeholder="Arriving at">
+									</div>
+									<div class="col-sm-6 col-xs-6 ctrl">
+										<i class="fa fa-calendar" aria-hidden="true"></i>
+										<input id="departDate" type="date" class="form-control" name="departDate" value="25-04-2019" min="01-04-2019" max="01-04-2020"
+											placeholder="dd-mm-yyyy">
+									</div>
+									<div class="col-sm-6 col-xs-6 ctrl hide_one-trip">
+										<i class="fa fa-calendar" aria-hidden="true"></i>
+										<input id="arrivalDate" type="date" class="form-control" name="arrivalDate" value="25-04-2019" min="01-04-2019" max="01-04-2020"
+											placeholder="dd-mm-yyyy">
+									</div>
+									<div class="select-wrap">
+										<div class="adult-box">
+											<span>Passengers</span>
+											<select id="nbPassengers" value="" name="nbPassengers">
+												<option>1</option>
+												<option>2</option>
+												<option>2</option>
+												<option>4</option>
+												<option>5</option>
+												<option>6</option>
+											</select>
+										</div>
+										<div class="adult-box">
+											<span>Class</span>
+											<select id="class" value="" name="class">
+												<option>Business</option>
+												<option>Economy</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<input type="submit" class="srch" value="Search Flights" />
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</form>
+		</div>
+
 
 		<!-- Controls -->
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -129,6 +197,9 @@
 		</a>
 	</div>
 	<!-- /.carousel -->
+
+
+
 
 </body>
 
