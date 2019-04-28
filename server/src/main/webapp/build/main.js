@@ -1,11 +1,25 @@
-import Login from './Popup/Login.js';
-var linkLogin = document.querySelector('.login');
+//Display the homeBar
+function displayHB(html) {
+  var hbContainer = document.getElementById('homeBar');
 
-if (linkLogin) {
-  var login = new Login();
-  linkLogin.addEventListener('click', function (event) {
-    event.preventDefault();
-    login.open();
-  });
+  if (hbContainer) {
+    hbContainer.innerHTML = html;
+  }
 }
+
+fetch("../homeBar.jsp").then(function (response) {
+  return response.text();
+}).then(displayHB); //Display the navbar
+
+function displayNB(html) {
+  var nbContainer = document.getElementById('navBar');
+
+  if (nbContainer) {
+    nbContainer.innerHTML = html;
+  }
+}
+
+fetch("../navBar.jsp").then(function (response) {
+  return response.text();
+}).then(displayNB);
 //# sourceMappingURL=main.js.map

@@ -1,0 +1,15 @@
+#form-container>img {
+    position: relative;
+    width: 128rem;
+    height: 47rem;
+
+    margin-left: 4rem;
+}
+
+#searchForm {
+    position: absolute;
+    right: auto;
+    bottom: 0;
+    left: 5rem;
+    top: 28rem;
+}

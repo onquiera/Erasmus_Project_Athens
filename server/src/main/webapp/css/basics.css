@@ -1,0 +1,23 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#logo-img {
+    width: 30%;
+    height: 30%;
+    margin: 0;
+}
+
+.navbar-light .navbar-nav .active>.nav-link{
+    color: red;
+}
+
+.navbar{
+    background-color: white;
+    border-bottom-color: antiquewhite;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    margin-left:10px;
+}
