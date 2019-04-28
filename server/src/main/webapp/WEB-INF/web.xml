@@ -36,12 +36,12 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>Menu</servlet-name>
-		<servlet-class>connexion.Menu</servlet-class>
+		<servlet-name>MyBooking</servlet-name>
+		<servlet-class>flights.MyBooking</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Menu</servlet-name>
-		<url-pattern>/Menu</url-pattern>
+		<servlet-name>MyBooking</servlet-name>
+		<url-pattern>/MyBooking</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -69,6 +69,16 @@
 	<servlet-mapping>
 		<servlet-name>servlet-signin</servlet-name>
 		<url-pattern>/servlet-signin</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>servlet-SearchFlight</servlet-name>
+		<servlet-class>bookFlight.SearchFlight</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-SearchFlight</servlet-name>
+		<url-pattern>/servlet-SearchFlight</url-pattern>
 	</servlet-mapping>
 
 

@@ -1,7 +1,7 @@
 drop table if exists users;
-drop table if exists planes CASCADE;
-drop table if exists flights CASCADE;
-drop table if exists bookings CASCADE;
+drop table if exists bookings;
+drop table if exists flights;
+drop table if exists planes;
 
 --User table, if a user want an account on the website, but it's not an obligation to book a flight.
 --genre > 0 woman, 1 man, ++ others.
@@ -33,11 +33,18 @@ CREATE TABLE flights(
 	--Id of the flight, 2 letter for the country and 8 number for the id
 	--Example --> FR00764400 (Unique to determine if the is a delay or something)
 	planeID integer,
-	departureCity text,
-	arrivingCity text,
-	departureDate TIMESTAMP,
-	arrivalDate TIMESTAMP,
-	FOREIGN KEY (planeID) REFERENCES planes(planeID)
+
+	departureCityCode VARCHAR(3),
+	arrivingCityCode VARCHAR(3),
+
+	departureDate DATE,
+	departureTime TIME,
+	arrivalDate DATE,
+	arrivalTime TIME,
+	placesLeft INT,
+	FOREIGN KEY (planeID) REFERENCES planes(planeID),
+	FOREIGN KEY (departureCityCode) REFERENCES airports(code),
+	FOREIGN KEY (arrivingCityCode) REFERENCES airports(code)
 );
 
 --Bookings table, where all the informations about any book is written. The user can have a partial access to this table.
@@ -74,20 +81,21 @@ INSERT INTO planes VALUES
 (00000000000008,'AirVacation','ATR72',78,0);
 
 INSERT INTO flights VALUES 
-('FR00764400',00000000000001,'Paris','Marseille','2018-05-12 15:40:00','2018-05-12 17:00:00'),
-('FR00764401',00000000000001,'Marseille','Paris','2018-05-13 10:00:00','2018-05-13 11:20:00'),
+('FR00764400',00000000000001,'CDG','MRS','2019-05-12', '15:40:00','2019-05-12', '17:00:00','10'),
+('FR00764401',00000000000001,'MRS','CDG','2019-05-13', '10:00:00','2019-05-13', '11:20:00','10'),
 
-('BL00764400',00000000000002,'Bruxelles','Londres','2018-06-02 12:00:00','2018-06-02 13:10:00'),
-('BL00764401',00000000000002,'Londres','Bruxelles','2018-06-04 12:00:00','2018-06-04 13:10:00'),
+('BL00764400',00000000000002,'BRU','LCY','2019-06-02', '12:00:00','2019-06-02', '13:10:00','10'),
+('BL00764401',00000000000002,'LCY','BRU','2019-06-04', '12:00:00','2019-06-04', '13:10:00','10'),
 
-('FR00450030',00000000000008,'Lille','Madrid','2018-04-22 15:30:00','2018-04-22 17:55:00'),
-('FR00450031',00000000000008,'Madrid','Lille','2018-04-22 22:40:00','2018-04-23 00:05:00'),
-('FR00450032',00000000000008,'Lille','Madrid','2018-04-23 15:30:00','2018-04-23 17:55:00'),
-('FR00450033',00000000000008,'Madrid','Lille','2018-04-23 22:40:00','2018-04-24 00:05:00'),
-('FR00450034',00000000000008,'Lille','Madrid','2018-04-24 15:30:00','2018-04-24 17:55:00'),
-('FR00450035',00000000000008,'Madrid','Lille','2018-04-24 22:40:00','2018-04-25 00:05:00'),
-('FR00450036',00000000000008,'Lille','Madrid','2018-04-25 15:30:00','2018-04-25 17:55:00'),
-('FR00450037',00000000000008,'Madrid','Lille','2018-04-25 22:40:00','2018-04-26 00:05:00');
+('FR00450030',00000000000008,'LIL','MAD','2019-04-22', '15:30:00','2019-04-22', '17:55:00','10'),
+('FR00450038',00000000000008,'LIL','MAD','2019-04-22', '20:30:00','2019-04-22', '22:55:00','10'),
+('FR00450031',00000000000008,'MAD','LIL','2019-04-22', '22:40:00','2019-04-23', '00:05:00','10'),
+('FR00450032',00000000000008,'LIL','MAD','2019-04-23', '15:30:00','2019-04-23', '17:55:00','10'),
+('FR00450033',00000000000008,'MAD','LIL','2019-04-23', '22:40:00','2019-04-24', '00:05:00','10'),
+('FR00450034',00000000000008,'LIL','MAD','2019-04-24', '15:30:00','2019-04-24', '17:55:00','10'),
+('FR00450035',00000000000008,'MAD','LIL','2019-04-24', '22:40:00','2019-04-25', '00:05:00','10'),
+('FR00450036',00000000000008,'LIL','MAD','2019-04-25', '15:30:00','2019-04-25', '17:55:00','10'),
+('FR00450037',00000000000008,'MAD','LIL','2019-04-25', '22:40:00','2019-04-26', '00:05:00','10');
 
 INSERT INTO bookings VALUES
 (0000000001,'FR00764400',120,'Despelchin','bricedespelchin@gmail.com'),

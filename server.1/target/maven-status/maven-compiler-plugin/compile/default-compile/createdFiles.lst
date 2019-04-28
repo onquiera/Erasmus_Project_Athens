@@ -1,9 +1,0 @@
-connexion\Authentification.class
-connexion\Users.class
-connexion\Deconnecte.class
-connexion\Statut.class
-connexion\DS.class
-connexion\Menu.class
-connexion\UsersDAO.class
-connexion\Modification.class
-connexion\Lecture.class
