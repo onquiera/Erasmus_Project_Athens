@@ -1,5 +1,6 @@
 drop table if exists users;
 drop table if exists bookings;
+DROP TABLE IF EXISTS seat_reservation;
 drop table if exists flights;
 drop table if exists planes;
 
@@ -19,8 +20,8 @@ create table users(
 --nbPlacoEco + nbPlaceBui > = total of available places.
 CREATE TABLE planes(
 	planeID integer PRIMARY KEY,
-	--Id of the plane, 14 number.
-	--Example --> 00254788465123
+	--Id of the plane, 8 number.
+	--Example --> 88465123
 	company text,
 	planeType text,
 	nbPlaceEco integer,
@@ -71,14 +72,14 @@ INSERT INTO users VALUES
 ('patricia.evraere@gmail.com','Patricia','Evraere', 0, '1234', 0);
 
 INSERT INTO planes VALUES
-(00000000000001,'AirVacation','A320',120,30),
-(00000000000002,'AirVacation','A320',120,30),
-(00000000000003,'AirVacation','A320',120,30),
-(00000000000004,'AirVacation','A320',120,30),
-(00000000000005,'AirVacation','A380',600,200),
-(00000000000006,'AirVacation','A380',600,200),
-(00000000000007,'AirVacation','A380',600,200),
-(00000000000008,'AirVacation','ATR72',78,0);
+(00000001,'AirVacation','A320',20,8),
+(00000002,'AirVacation','A320',20,8),
+(00000003,'AirVacation','A320',20,8),
+(00000004,'AirVacation','A320',20,8),
+(00000005,'AirVacation','A380',30,8),
+(00000006,'AirVacation','A380',30,8),
+(00000007,'AirVacation','A380',30,8),
+(00000008,'AirVacation','ATR72',30,0);
 
 INSERT INTO flights VALUES 
 ('FR00764400',00000000000001,'CDG','MRS','2019-05-12', '15:40:00','2019-05-12', '17:00:00','10'),
@@ -105,3 +106,48 @@ INSERT INTO bookings VALUES
 
 (0000000005,'FR00450036',30,'Colombe','colombe.guillemin@gmail.com'),
 (0000000006,'FR00450037',78,'Colombe','colombe.guillemin@gmail.com');
+
+CREATE TABLE IF NOT EXISTS  seat_reservation  (
+   flightID text,
+   SEAT_NUMBER  varchar(4) NOT NULL,
+   CUSTOMER_NAME  varchar(80) DEFAULT NULL
+);
+
+ALTER TABLE  seat_reservation 
+ ADD PRIMARY KEY ( flightID , SEAT_NUMBER );
+
+ALTER TABLE  seat_reservation 
+ADD CONSTRAINT  seat_reservation_ibfk_1  FOREIGN KEY ( flightID ) REFERENCES  flights  ( flightID);
+
+INSERT INTO  seat_reservation  ( flightID ,  SEAT_NUMBER ,  CUSTOMER_NAME ) VALUES
+('FR00764400', '1A', 'Angela Warren'),
+('FR00764400', '1B', 'Catherine Perry'),
+('FR00764400', '2A', 'Steven Wells'),
+('FR00764400', '2B', 'Betty Cox'),
+('FR00764400', '3A', 'Samuel Murphy'),
+('FR00764400', '3B', 'Dennis Willis'),
+('FR00764400', '4A', 'Irene Fernandez'),
+('FR00764400', '4B', 'Shawn Hall'),
+('FR00764400', '4C', 'Scott Taylor'),
+('BL00764400', '1A', 'Edward Rodriguez'),
+('BL00764400', '1B', 'Ruth Holmes'),
+('BL00764400', '2A', 'Julie Peters'),
+('BL00764400', '2B', 'Roy Cunningham'),
+('BL00764400', '3A', 'Steven Schmidt'),
+('BL00764400', '3B', 'Kathryn Johnston'),
+('BL00764400', '4A', 'Betty Peterson'),
+('FR00764401', '1A', 'Kathryn Wallace'),
+('FR00764401', '1B', 'Sarah Young'),
+('FR00764401', '2A', 'Mary Bradley'),
+('FR00764401', '2B', 'Irene Grant'),
+('FR00764401', '3A', 'Theresa Bradley'),
+('FR00764401', '3B', 'Gerald Price'),
+('FR00764401', '4A', 'Henry Webb'),
+('FR00764401', '4B', 'Randy Castillo'),
+('FR00764401', '5A', 'Antonio Ferguson'),
+('FR00764401', '5B', 'Lori Perry'),
+('FR00764401', '6A', 'Kevin Mcdonald'),
+('FR00764401', '6B', 'Benjamin Jenkins'),
+('FR00764401', '7A', 'Phyllis Elliott'),
+('FR00764401', '7B', 'Paula Ford');
+

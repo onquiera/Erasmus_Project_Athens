@@ -81,6 +81,26 @@
 		<url-pattern>/servlet-SearchFlight</url-pattern>
 	</servlet-mapping>
 
+	
+	<servlet>
+		<servlet-name>servlet-BookSeats</servlet-name>
+		<servlet-class>seats.BookSeats</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-BookSeats</servlet-name>
+		<url-pattern>/servlet-BookSeats</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servlet-Confirmation</servlet-name>
+		<servlet-class>confirmation.Confirmation</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-Confirmation</servlet-name>
+		<url-pattern>/servlet-Confirmation</url-pattern>
+	</servlet-mapping>
+
+
 
 
 </web-app>
