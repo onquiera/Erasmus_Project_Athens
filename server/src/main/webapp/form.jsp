@@ -1,3 +1,7 @@
+
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
+
 <img src="./resources/santorin.png">
 		<!--Form-->
 		<div class="container" id="searchForm">
@@ -29,16 +33,24 @@
 										<input id="arrival" type="text" class="form-control" name="arrival" value=""
 											placeholder="Arriving at">
 									</div>
+
+									<% 
+									DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+									LocalDate localDate = LocalDate.now();
+									String actualDate = dtf.format(localDate); 		
+									localDate = localDate.plusDays(1);
+									String tomorrowDate = dtf.format(localDate); 													
+									%>
 									<div class="col-sm-6 col-xs-6 ctrl">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 										<input id="departDate" type="date" class="form-control" name="departDate"
-											value="2019-04-25" min="2019-04-01" max="2020-04-01"
+											value="<%=actualDate %>" min="2019-04-01" max="2020-04-01"
 											placeholder="dd-mm-yyyy">
 									</div>
 									<div class="col-sm-6 col-xs-6 ctrl hide_one-trip">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 										<input id="arrivalDate" type="date" class="form-control" name="arrivalDate"
-											value="2019-04-25" min="2019-04-01" max="2020-04-01"
+											value="<%=tomorrowDate%>" min="2019-04-01" max="2020-04-01"
 											placeholder="dd-mm-yyyy">
 									</div>
 									<div class="select-wrap">
