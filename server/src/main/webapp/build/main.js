@@ -33,5 +33,17 @@ function displayForm(html) {
 
 fetch("../form.jsp").then(function (response) {
   return response.text();
-}).then(displayForm);
+}).then(displayForm); //Display the footer
+
+function displayFooter(html) {
+  var fooContainer = document.getElementById('footer');
+
+  if (fooContainer) {
+    fooContainer.innerHTML = html;
+  }
+}
+
+fetch("../footer.jsp").then(function (response) {
+  return response.text();
+}).then(displayFooter);
 //# sourceMappingURL=main.js.map

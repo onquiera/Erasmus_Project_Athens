@@ -1,7 +1,6 @@
-/* font-family: 'Open Sans', sans-serif; font-family: 'Roboto', sans-serif; */
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     height: 100%;
     position: relativ
 }
@@ -154,7 +153,7 @@ a:hover {
 .select-wrap {
     width: 100%;
     float: left;
-    padding: 0 15px;
+    padding: 15px;
 }
 
 .select-wrap .adult-box {
@@ -204,49 +203,6 @@ a:hover {
     margin-bottom: 15px;
 }
 
-/*calender*/
-
-.ui-datepicker {
-    padding: 0px;
-    border-radius: 0px;
-}
-
-.ui-widget-header {
-    background: transparent;
-    border: none
-}
-
-.ui-datepicker td span, .ui-datepicker td a {
-    text-align: center;
-}
-
-.ui-datepicker td {
-    background: transparent;
-    border: none
-}
-
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
-    border: 0;
-    background: transparent;
-    font-weight: normal;
-    color: #2b2b2b;
-}
-
-.ui-state-default.ui-state-active {
-    background: #ff6600;
-    color: #fff
-}
-
-.ui-state-default.ui-state-highlight {
-    background: #082d45;
-    color: #fff
-}
-
-.ui-datepicker-multi .ui-datepicker-buttonpane {
-    display: none;
-}
-
-.ui-datepicker-multi-2 .ui-datepicker-group {
-    width: 50%;
-    border-right: 1px solid #ccc;
+.col-lg-12 {
+    position: static;
 }
