@@ -27,8 +27,25 @@ public class SearchFlight extends HttpServlet
 
 		res.setContentType("text/html,charset=UTF-8");
 		PrintWriter out = res.getWriter();
-		out.println( "<head><title>My Booking</title></head>" );
+		out.println( "<head><title>My Booking</title>"
+				+ ""
+				+ "<!--Bootstrap links and scripts-->" + 
+				"	<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" + 
+				"	<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>" + 
+				"	<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>" + 
+				"	<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>" + 
+				"	" + 
+				"	<link href=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css\" rel=\"stylesheet\"" + 
+				"		id=\"bootstrap-css\">" + 
+				"	<script src=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js\"></script>"
+				+ "</head>" );
 		out.println( "</head><body>" );
+
+
+
+
+
+
 
 		//TODO ajouter détails > exemple pas flight id mais détails du vol
 
@@ -72,8 +89,8 @@ public class SearchFlight extends HttpServlet
 			ResultSetMetaData rsmd = rs.getMetaData();
 
 
-			
-			
+
+
 			out.println("<h1>Available flights </h1>");
 			out.println("<h2>from :" +departure+" to "+destination+"</h2>");
 			out.println("<h2>date : "+dateForm+"</h2>");
@@ -90,23 +107,19 @@ public class SearchFlight extends HttpServlet
 
 				}
 				out.println("</h3>");
-				
 
+				//TODO modifier pour vol retour et ajout coordonnées clients
 				out.println(""
-						+ "<form action=\"/servlet-SearchFlight\" method=\"get\">"
+						+ "<form action=\"/seats.jsp\" method=\"get\">"
 						+ "<input type=\"hidden\" name=\"volAller\" value=\""+rs.getString("flightID")+"\">"
-						+ "<input type=\"submit\" value=\"choisir ce vol\">\n" + 
-						"	</form>");
+						+ "<input type=\"hidden\" name=\"flightID\" value=\""+rs.getString("flightID")+"\">"
+						+"<input class=\"btn btn-primary\" type=\"submit\" value=\"choisir ce vol !\">"
+						+"	</form>");
 
 			}
 
 
 			//RETOUR
-
-
-
-
-
 
 
 

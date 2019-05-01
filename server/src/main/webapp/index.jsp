@@ -46,7 +46,8 @@
 
 	<h1>COUCOU C'EST MISS JIRACHI</h1>
 
-
+<button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href = '/rechercheVille.jsp';"> <br>Rechercher un vol<br><br> </button>
+	
 	<!--Footer -->
 	<div id="footer">
 	</div>

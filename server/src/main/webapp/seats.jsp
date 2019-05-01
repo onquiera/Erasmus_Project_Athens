@@ -50,13 +50,17 @@
 	
 	<h2> sieges du vol <%=flightID %></h2>	
 	<p> nombres de sièges : <%=numberOfSeats %></p>
+	
+	
+	
+	<p> sieges verts : disponibles, sieges rouge : trop tard !</p>
 
 	<%
 		for (int i = 1; i <= numberOfSeats / longueurRangees; i++) {
 			out.println("<br>");
 			for (int j = 0; j < longueurRangees; j++) {
 				String seat = i + "" + convert.charAt(j);
-				if (!listSeats.contains(seat)) {
+					if (!listSeats.contains(seat)) {
 					String link = "servlet-BookSeats?seat=" + seat + "&flightID=" + flightID;
 					out.println(
 							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" onclick=\"window.location.href = '"

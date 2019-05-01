@@ -32,6 +32,8 @@
 	<p>Here your are supposed to pay, but today we are gentle so we offer you the flight</p>
 
 	<h2>You received a booking confirmation per mail</h2>
+	
+	<a href="/">Rechercher un autre vol</a>
 
 </body>
 

@@ -56,7 +56,7 @@
 	
 		
 		<br> 
-		<input type="submit" value="recherche vol">
+<input class="btn btn-primary" type="submit" value="Search flight">
 	</form>
 
 

@@ -100,9 +100,6 @@
 		<url-pattern>/servlet-Confirmation</url-pattern>
 	</servlet-mapping>
 
-
-
-
 </web-app>
 
 
