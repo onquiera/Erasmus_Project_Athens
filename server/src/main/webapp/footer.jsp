@@ -6,29 +6,29 @@
                 <h5>Quick links</h5>
                 <ul class="list-unstyled quick-links">
                     <li><a href="index.jsp"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href="about.jsp"><i class="fa fa-angle-double-right"></i>About</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                    <li><a href="about.html"><i class="fa fa-angle-double-right"></i>About</a></li>
+                    <li><a href="FAQ.html"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                    <li><a href="getStarted.html"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
                 </ul>
             </div>
 
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Online help and contacts</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Contact us</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Refund</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Claims</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Request a receipt</a></li>
+                    <li><a href="contactUs.html"><i class="fa fa-angle-double-right"></i>Contact us</a></li>
+                    <li><a href="refund.html"><i class="fa fa-angle-double-right"></i>Refund</a></li>
+                    <li><a href="claims.html"><i class="fa fa-angle-double-right"></i>Claims</a></li>
+                    <li><a href="request.html"><i class="fa fa-angle-double-right"></i>Request a receipt</a></li>
                 </ul>
             </div>
 
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Legal Rights</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Site map</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Legal notices</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Privacy policy</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Cookie information</a></li>
+                    <li><a href="map.html"><i class="fa fa-angle-double-right"></i>Site map</a></li>
+                    <li><a href="legalConditions.html"><i class="fa fa-angle-double-right"></i>Legal notices</a></li>
+                    <li><a href="privacyPolicy.html"><i class="fa fa-angle-double-right"></i>Privacy policy</a></li>
+                    <li><a href="cookiesInformations.html"><i class="fa fa-angle-double-right"></i>Cookie information</a></li>
                 </ul>
             </div>
         </div>
