@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light justify-content-end">
-  <a href="" class="navbar-brand"><img src="./resources/logo.png" alt="Insert logo here" id=logo-img></a>
+  <a href="index.jsp" class="navbar-brand"><img src="./resources/logo.png" alt="Insert logo here" id=logo-img></a>
   <button class="btn ml-auto mr-2"></button>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>

@@ -1,39 +1,76 @@
 <!DOCTYPE html>
-<html>
-    
+<html lang="en">
+
 <head>
+
+	<link rel="shortcut icon" type="image/png" href="./resources/firstlogo.png" />
 	<title>Log In</title>
 	<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./css/loginStyle.css" />
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--Bootstrap links and scripts-->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
+		id="bootstrap-css">
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+	<!--Javascript-->
+	<script src="./js/main.js" defer></script>
+
+	<!--CSS Stylesheet-->
+	<link rel="stylesheet" href="./css/basics.css" />
+	<link rel="stylesheet" href="./css/signAndLog/loginStyle.css" />
+
 </head>
+
 <body>
-		<div class="container login-container">
-				<div class="row">
-					<div class="col-md-6 login-form">
-						<h3>Login for Form 1</h3>
-						<form action="Authentification" method=post role="form class=form">
-							<div class="form-group">
-								<label for="usrmail"><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
-								<input type="email" class="form-control" id="usrmail" placeholder="Enter email">
-							</div>
-							<div class="form-group">
-								<label for="psw"><span class="glyphicon glyphicon-lock"></span> Password</label>
-								<input type="password" class="form-control" id="psw" placeholder="Enter password">
-							</div>
-							<div class="checkbox">
-									<label><input type="checkbox" value="" checked>Remember me</label>
-							</div>
-							<button id="sendRequest" type="submit" class="btnSubmit"><span class="glyphicon glyphicon-off"></span> Login</button>
-							<div class="form-group">
-								<a href="#sign-in.html" class="ForgetPwd">Forget Password?</a>
-							</div>
-						</form>
+	<!--First Navbar, which contains the logo, language, contact, sign up and login section-->
+	<nav id="homeBar">
+	</nav>
+
+	<!--Second navbar, which contains the differents parts of the website -->
+	<nav id="navBar">
+	</nav>
+
+	<img src="./resources/egypt.jpg">
+	<div class="container login-container">
+		<div class="row">
+			<div class="col-md-6 login-form">
+				<h3>Login</h3>
+				<form action="Authentification" method=post role="form class=form">
+					<div class="form-group">
+						<label for="usrmail"><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
+						<input type="email" class="form-control" id="usrmail" placeholder="Enter email">
 					</div>
-				</div>
+					<div class="form-group">
+						<label for="psw"><span class="glyphicon glyphicon-lock"></span> Password</label>
+						<input type="password" class="form-control" id="psw" placeholder="Enter password">
+					</div>
+					<div class="checkbox">
+						<label><input type="checkbox" value="" checked>Remember me</label>
+					</div>
+					<button id="sendRequest" type="submit" class="btnSubmit"><span
+							class="glyphicon glyphicon-off"></span> Login</button>
+					<div class="form-group">
+						<a href="sign-in.html" class="ForgetPwd">Not a member ?</a>
+					</div>
+				</form>
+			</div>
 		</div>
+	</div>
+
+
+	<!--Footer -->
+	<div id="footer">
+	</div>
+
+
+
 </body>
+
 </html>

@@ -5,8 +5,8 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Quick links</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href=" "><i class="fa fa-angle-double-right"></i>About</a></li>
+                    <li><a href="index.jsp"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                    <li><a href="about.jsp"><i class="fa fa-angle-double-right"></i>About</a></li>
                     <li><a href=" "><i class="fa fa-angle-double-right"></i>FAQ</a></li>
                     <li><a href=" "><i class="fa fa-angle-double-right"></i>Get Started</a></li>
                 </ul>
