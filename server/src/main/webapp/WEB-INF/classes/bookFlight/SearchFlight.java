@@ -53,6 +53,9 @@ public class SearchFlight extends HttpServlet
 			
 			out.println("<br>Please retry your search");
 			
+			//TODO redirect page error.jsp :)
+			
+			
 		}else {
 
 			
@@ -71,7 +74,18 @@ public class SearchFlight extends HttpServlet
 				String destination=req.getParameter("destination");
 				String dateForm = req.getParameter("departureDate");
 				
-				//mise en session ! 
+				
+				
+				
+				
+				//TODO    mise en session ! 
+				
+				
+				
+				//puis check sur toute les autres pages de commandes si session encore valide
+				
+				
+				
 				
 
 				SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
