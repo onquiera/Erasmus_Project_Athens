@@ -35,12 +35,12 @@
 	int numberOfPassengers;
 	
 	try{
-		numberOfPassengers = Integer.parseInt(getParameter("numberOfPassengers"));
+	
+		//TODO surement à transformer en recupération en session
 		
+		numberOfPassengers = Integer.parseInt(request.getParameter("numberOfPassengers"));
 		
-		
-		
-	}catch(invalidformatexception e ){
+	}catch(java.lang.NumberFormatException e ){
 		
 		out.println("<h1>Parameter error </h1> ");
 		out.println("<h1>page should be blocked or redirected to error.jsp </h1> ");
@@ -94,8 +94,13 @@
 		
 		
 		<h1> Contact informations</h1>	
+
+
+ 			email:<br>
+  			<input type="text" name="email">
 	
-	
+ 			phone number:<br>
+  			<input type="text" name="email">	
 	
 		<input type="submit" value="Submit">
 

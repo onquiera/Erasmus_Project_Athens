@@ -152,7 +152,6 @@ public class SearchFlight extends HttpServlet
 				//RETOUR
 
 
-
 			}catch(Exception e2){
 				out.println( "<h1>Invalid parameters </h1>"
 						+ e2.getMessage() );

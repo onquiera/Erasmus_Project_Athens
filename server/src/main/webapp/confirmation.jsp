@@ -38,6 +38,16 @@
 	// sinon pas bon erreur ..
 	// redirect erreur
 	 %>
+	 <br>
+	 <h1> Your booking informations : </h1>
+	 
+	 <h3>outward flight</h3>
+	 <h3>(return flight)</h3>
+	 <h3>Passengers : </h3>
+	 <h3>Seats : </h3>
+	 <h3>Other options: </h3>
+	 
+	 
 	
 	<button type="button" class="btn btn-success" onclick="window.location.href = 'servlet-Confirmation';"> validate </button>
 	
