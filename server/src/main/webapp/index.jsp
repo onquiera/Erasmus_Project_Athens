@@ -40,18 +40,29 @@
 
 	<!--The flight-searching form-->
 	<div id="form-container">
-
+	
 	</div>
 
-	<h1>COUCOU C'EST MISS JIRACHI</h1>
 
-<button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href = '/rechercheVille.jsp';"> <br>Rechercher un vol<br><br> </button>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h2>Some more informations about the compagny</h2>
+	<br>
+	<br>
+	<h2>the booking system informations</h2>
+	<br>
+	<br>
+	<h2>possible flights and offers </h2>
+	<br>
+	<br>
+	
+
 	
 	<!--Footer -->
 	<div id="footer">
 	</div>
-
-
 
 </body>
 
