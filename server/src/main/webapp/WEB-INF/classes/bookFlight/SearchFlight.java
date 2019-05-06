@@ -27,7 +27,7 @@ public class SearchFlight extends HttpServlet
 
 		res.setContentType("text/html,charset=UTF-8");
 		PrintWriter out = res.getWriter();
-		out.println( "<head><title>My Booking</title>"
+		out.println( "<head><title>Search Flight</title>"
 				+ ""
 				+ "<!--Bootstrap links and scripts-->" + 
 				"	<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" + 
@@ -42,98 +42,110 @@ public class SearchFlight extends HttpServlet
 		out.println( "</head><body>" );
 
 
+		String flightType = req.getParameter("flightType");
+		
+		//traduction : vol aller = outward flight
+
+		if(!(flightType.equals("outward") || flightType.equals("return")) ) {
+			//error
+			
+			out.println("<h2>Parameter Error</h2>");
+			
+			out.println("<br>Please retry your search");
+			
+		}else {
+
+			
+		
+
+
+			//TODO ajouter détails > exemple pas flight id mais détails du vol
+
+			try(Connection con = DS.getConnection()){
+
+
+				//departure    destination    flightDate    numberOfPassengers
+
+				//recuperation des parametres
+				String departure=req.getParameter("departure");
+				String destination=req.getParameter("destination");
+				String dateForm = req.getParameter("departureDate");
+				
+				//mise en session ! 
+				
+
+				SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date dateUtil = sdf1.parse(dateForm);
+				java.sql.Date date = new java.sql.Date(dateUtil.getTime()); 
+
+				//int numberOfPassengers=Integer.parseInt(req.getParameter("numberOfPassengers"));
+
+				//recherche dans database
+				String query = 
+						"Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
+								+ "FROM flights fl "
+								+ "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
+								+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code "
+								+ "WHERE a1.name = ? "
+								+ "and a2.name = ? "
+								+ "and fl.departuredate=?";
+				PreparedStatement ps = con.prepareStatement( query );
+				ps.setString(1, departure);
+				ps.setString(2, destination);
+				ps.setDate(3, date);
+
+				ResultSet rs = ps.executeQuery();
+
+				//out.println("|||| ps :"+ ps+" ||||");
+
+				ResultSetMetaData rsmd = rs.getMetaData();
 
 
 
 
+				out.println("<h1>Available <u>"+ flightType+"</u> flights </h1>");
+				out.println("<h2>from :" +departure+" to "+destination+"</h2>");
+				out.println("<h2>date : "+dateForm+"</h2>");
 
-		//TODO ajouter détails > exemple pas flight id mais détails du vol
+				while (rs.next()){
 
-		try(Connection con = DS.getConnection()){
+					//titre des colonnes
+					out.println("<h3>");
+					for(int i =1; i<=rsmd.getColumnCount();i++){
 
+						out.println(rsmd.getColumnLabel(i)+": "+rs.getString(i)+"  ");
 
-			//departure    destination    flightDate    numberofpeople
+					}
+					out.println("</h3>");
 
-			//recuperation des parametres
-			String departure=req.getParameter("departure");
-			String destination=req.getParameter("destination");
-			String dateForm = req.getParameter("departureDate");
-
-
-
-
-			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-			java.util.Date dateUtil = sdf1.parse(dateForm);
-			java.sql.Date date = new java.sql.Date(dateUtil.getTime()); 
-
-			//			int numberOfPeople=Integer.parseInt(req.getParameter("numberOfPeople"));
-
-			//recherche dans database
-			String query = 
-					"Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
-							+ "FROM flights fl "
-							+ "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
-							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code "
-							+ "WHERE a1.name = ? "
-							+ "and a2.name = ? "
-							+ "and fl.departuredate=?";
-			PreparedStatement ps = con.prepareStatement( query );
-			ps.setString(1, departure);
-			ps.setString(2, destination);
-			ps.setDate(3, date);
-
-			ResultSet rs = ps.executeQuery();
-
-			//out.println("|||| ps :"+ ps+" ||||");
-
-			ResultSetMetaData rsmd = rs.getMetaData();
-
-
-
-
-			out.println("<h1>Available flights </h1>");
-			out.println("<h2>from :" +departure+" to "+destination+"</h2>");
-			out.println("<h2>date : "+dateForm+"</h2>");
-
-			while (rs.next()){
-
-				//titre des colonnes
-				out.println("<h3>");
-				for(int i =1; i<=rsmd.getColumnCount();i++){
-
-					out.println(rsmd.getColumnLabel(i)+": "+rs.getString(i)+"  ");
-
-
-
+					//TODO linker vers servlet gestion enregistrement vol puis redirect vers option suivante après
+					//eventuel retour
+					
+					
+					
+					//si retour alors mettre 
+					//flightType = "return";
+					//sinon mettre null
+					
+					out.println(""
+							+ "<form action=\"/seats.jsp\" method=\"get\">"
+							+ "<input type=\"hidden\" name=\"flightType\" value=\""+flightType+"\">"
+							+ "<input type=\"hidden\" name=\"flightID\" value=\""+rs.getString("flightID")+"\">"
+							+"<input class=\"btn btn-primary\" type=\"submit\" value=\"choisir ce vol !\">"
+							+"	</form>");
 				}
-				out.println("</h3>");
 
-				//TODO modifier pour vol retour et ajout coordonnées clients
-				out.println(""
-						+ "<form action=\"/seats.jsp\" method=\"get\">"
-						+ "<input type=\"hidden\" name=\"volAller\" value=\""+rs.getString("flightID")+"\">"
-						+ "<input type=\"hidden\" name=\"flightID\" value=\""+rs.getString("flightID")+"\">"
-						+"<input class=\"btn btn-primary\" type=\"submit\" value=\"choisir ce vol !\">"
-						+"	</form>");
+				//RETOUR
 
+
+
+			}catch(Exception e2){
+				out.println( "<h1>Invalid parameters </h1>"
+						+ e2.getMessage() );
+
+				e2.printStackTrace();
 			}
-
-
-			//RETOUR
-
-
-
-
-
-
-
-		}catch(Exception e2){
-			out.println( "<h1>Invalid parameters </h1>"
-					+ e2.getMessage() );
-
-			e2.printStackTrace();
 		}
-
 		out.println( ""
 				+ "</body>" );
 	}

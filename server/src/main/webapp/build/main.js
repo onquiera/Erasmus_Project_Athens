@@ -21,7 +21,9 @@ function displayNB(html) {
 
 fetch("../navBar.jsp").then(function (response) {
   return response.text();
-}).then(displayNB); //Display the form
+}).then(displayNB); 
+
+//Display the form
 
 function displayForm(html) {
   var formContainer = document.getElementById('form-container');

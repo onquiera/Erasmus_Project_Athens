@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="connexion.UsersDAO"%>
 <html lang="en">
 
 <head>

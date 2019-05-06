@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<%@page import="flights.Booking"%>
 <%@page import="java.util.List"%>
 <%@page import="flights.Airport"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="flights.AirportsDAO"%>
-<%@page import="connexion.UsersDAO"%>
 <html lang="en">
 
 <head>
