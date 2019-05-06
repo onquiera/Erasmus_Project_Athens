@@ -45,7 +45,7 @@
 	 <h3>(return flight)</h3>
 	 <h3>Passengers : </h3>
 	 <h3>Seats : </h3>
-	 <h3>Other options: </h3>
+	 <h3>Other options: </h3>  
 	 
 	 
 	
