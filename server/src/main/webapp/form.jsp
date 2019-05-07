@@ -118,7 +118,7 @@
 										
 										<div class="adult-box">
 											<span>Class</span>
-											<select id="class" value="" name="class">
+											<select id="class" value="" name="travelClass">
 												<option>Business</option>
 												<option>Economy</option>
 											</select>
