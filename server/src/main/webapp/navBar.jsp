@@ -6,7 +6,7 @@
         <div class="navbar-collapse collapse" id="navbar10">
             <ul class="navbar-nav nav-fill w-100">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Purchase a ticket</a>
+                    <a class="nav-link" href="index.jsp">Purchase a ticket</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Check-in</a>

@@ -28,7 +28,7 @@
                     <li><a href="map.html"><i class="fa fa-angle-double-right"></i>Site map</a></li>
                     <li><a href="legalConditions.html"><i class="fa fa-angle-double-right"></i>Legal notices</a></li>
                     <li><a href="privacyPolicy.html"><i class="fa fa-angle-double-right"></i>Privacy policy</a></li>
-                    <li><a href="cookiesInformations.html"><i class="fa fa-angle-double-right"></i>Cookie information</a></li>
+                    <li><a href="cookiePolicy.html"><i class="fa fa-angle-double-right"></i>Cookie information</a></li>
                 </ul>
             </div>
         </div>
