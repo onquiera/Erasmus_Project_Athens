@@ -1,20 +1,33 @@
-drop table if exists users;
-drop table if exists bookings;
+DROP table if exists bookings;
+DROP table if exists users;
+DROP table if exists passenger;
 DROP TABLE IF EXISTS seat_reservation;
-drop table if exists flights;
-drop table if exists planes;
+DROP table if exists flights;
+DROP table if exists planes;
 
---User table, if a user want an account on the website, but it's not an obligation to book a flight.
---genre > 0 woman, 1 man, ++ others.
---role > 0 user, 1 maintainer, 2 admin > the bigger it is, the more permissions you have.
-create table users(
-	email text primary Key,
+--title > 0 woman, 1 man, ++ others.
+CREATE TABLE passenger(
+	pno SERIAL primary key,
 	name text,
 	surname text,
-	genre integer,
-	password text,
-	role integer
+	title integer,
+	dateOfBirth DATE,
+	phoneNumber text DEFAULT NULL, --optional > for the person to contact
+	email text Unique DEFAULT NULL --optional > for the person to contact, but necessary for users(connected to the website)
 );
+
+--User table, if a user want an account on the website, but it's not an obligation to book a flight.
+--role > 0 user, 1 maintainer, 2 admin > the bigger it is, the more permissions you have.
+CREATE TABLE users(
+	uno SERIAL primary key,
+	pno integer,
+	password text,
+	role integer,
+	FOREIGN KEY (pno) REFERENCES passenger(pno)
+);
+
+
+
 
 --Planes table, where a plane is register with all the usefull informations.*
 --nbPlacoEco + nbPlaceBui > = total of available places.
@@ -59,17 +72,45 @@ CREATE TABLE bookings(
 	FOREIGN KEY (flightID) REFERENCES flights(flightID)
 );
 
---------First datas entered on table when the server starts--------
+CREATE TABLE IF NOT EXISTS  seat_reservation  (
+   flightID text,
+   SEAT_NUMBER  varchar(4) NOT NULL,
+   CUSTOMER_NAME  varchar(80) DEFAULT NULL,
+   FOREIGN KEY(flightID) REFERENCES  flights(flightID)
+);
 
-INSERT INTO users VALUES  
-('nico.cous@gmail.com','Nicolas','Coussement', 1, '0000', 0),
-('antoine@root.com','antoine','root', 1, 'root', 2),
-('brice@root.com','brice','root', 1, 'root', 2),
-('fa.brice@gmail.com','Brice','fab', 1, '0000', 0),
-('philipe.mathieu@gmail.com','Philipe','Mathieu', 1, 'olive', 1),
-('patrick.lebegue@gmail.com','Patrick','Lebegue', 1, '4321', 0),
-('test@gmail.com','test','test',1,'test',0),
-('patricia.evraere@gmail.com','Patricia','Evraere', 0, '1234', 0);
+ALTER TABLE  seat_reservation 
+ ADD PRIMARY KEY (flightID , SEAT_NUMBER);
+
+--------First data entered on table when the server starts--------
+
+INSERT INTO passenger(name, surname, title, dateOfBirth, phoneNumber, email) VALUES  
+('Nicolas','Coussement', 1, '1999-01-01', '+33-0606060606', 'nico.cous@gmail.com'),
+('antoine','root', 1, '1999-09-05', '0606060606', 'antoine@root.com'),
+('Brice','root', 1, '1999-09-05', '0606060606', 'brice@root.com'),
+('Fa','Brice', 1, '1999-09-05', '0606060606', 'fa.brice@gmail.com'),
+('Philipe','Mathieu', 1, '1979-01-01', '0606060606', 'philipe.mathieu@gmail.com'),
+('Patrick','Lebegue', 1, '1969-01-01', '0606060606', 'patrick.lebegue@gmail.com'),
+('Patricia','Evraere', 0, '1989-01-01', '0606060606', 'patricia.evraere@gmail.com');
+
+
+INSERT INTO passenger(name, surname, title, dateOfBirth) VALUES  
+('Pierre','Martelle', 1, '1999-01-01'),
+('Elric','FineEau', 1, '1999-01-01'),
+('Alexandre','Desremords', 1, '1999-01-01'),
+('Manon','Baudruche', 0, '1905-01-01');
+
+INSERT INTO passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email) VALUES 
+(12, 'Kostas','Koukouletsos', 1, '1979-01-01', '+33-0606060606', 'ccostas@uniwa.gr'); 
+
+INSERT INTO users(pno, password, role) VALUES  
+(1, '0000', 0),
+(2, 'root', 2),
+(3, 'root', 2),
+(4, '00000000000', 0),
+(5, 'olives', 1),
+(6, '43210-1-2-3-4', 0),
+(7, '12345678910', 0);
 
 INSERT INTO planes VALUES
 (00000001,'AirVacation','A320',20,8),
@@ -106,18 +147,6 @@ INSERT INTO bookings VALUES
 
 (0000000005,'FR00450036',30,'Colombe','colombe.guillemin@gmail.com'),
 (0000000006,'FR00450037',78,'Colombe','colombe.guillemin@gmail.com');
-
-CREATE TABLE IF NOT EXISTS  seat_reservation  (
-   flightID text,
-   SEAT_NUMBER  varchar(4) NOT NULL,
-   CUSTOMER_NAME  varchar(80) DEFAULT NULL
-);
-
-ALTER TABLE  seat_reservation 
- ADD PRIMARY KEY ( flightID , SEAT_NUMBER );
-
-ALTER TABLE  seat_reservation 
-ADD CONSTRAINT  seat_reservation_ibfk_1  FOREIGN KEY ( flightID ) REFERENCES  flights  ( flightID);
 
 INSERT INTO  seat_reservation  ( flightID ,  SEAT_NUMBER ,  CUSTOMER_NAME ) VALUES
 ('FR00764400', '1A', 'Angela Warren'),
