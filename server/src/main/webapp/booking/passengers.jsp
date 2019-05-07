@@ -56,11 +56,8 @@
 	<!-- TODO  Login for autocomplete -->
 	
 	
-	<form action="servlet-passenger" action=post>
-	
-		<h2>1st PASSENGER - Adult : </h2>
-		
-		
+	<form action="servlet-passengers" action=post>
+			
 		<%
 		
 		if(numberOfPassengers==-1){
@@ -68,38 +65,52 @@
 			response.sendRedirect("/error/parameterError.html");
 		}
 		
-		/* 
-			for(int i = 1; i < numberOfPassengers ; i++){
+		 
+			for(int i = 1; i <= numberOfPassengers ; i++){
 				
-				out.println("<h1>Next passenger(number "+ i + ") :");
-				
+				out.println("<h3>Passenger "+ i + " : </h3>");
+				out.println("Title:<br>");
+				//TODO change to select box 
+ 				out.println("<input type=\"text\" name=\"title\"><br>");
+				out.println("Date of Birth:<br>");
+ 				out.println("<input type=\"text\" name=\"dateOfBirth\"><br>");
 				out.println("First name:<br>");
  				out.println("<input type=\"text\" name=\"firstname\"><br>");
  				out.println("Last name:<br>");
   				out.println("<input type=\"text\" name=\"lastname\">");
 				
-				
-				
-				
-			} */
+			} 
 		
 		 %>
 		
 		
 		
 		
-		<h1> Contact informations</h1>	
+		<h2> Contact informations</h2>	
 
+ 			phone number:<br>
+  			<input type="text" name="email"><br>
 
  			email:<br>
-  			<input type="text" name="email">
+  			<input type="text" name="email"><br>
+  			<!-- TODO check if they are the same (JS code) -->
+  			confirm email :<br>
+  			<input type="text" name="email"><br>
+			
 	
- 			phone number:<br>
-  			<input type="text" name="email">	
+
+		<h2>Insurance(recommanded)</h2>	
+		<h3>to come</h3>
 	
-		<input type="submit" value="Submit">
-
-
+	
+		<p>checkbox - I have read the <a href="/informations/legalConditions.html">Legal notice</a>. I accept the full conditions of sale and the fare rules.</p>
+	
+		
+		<button type="submit" class="btn btn-primary">Submit</button>
+		
+		
+		<br>
+		<br>
 	</form>
 	
 

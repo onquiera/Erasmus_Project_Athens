@@ -6,9 +6,9 @@
                 <h5>Quick links</h5>
                 <ul class="list-unstyled quick-links">
                     <li><a href="index.jsp"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href="about.html"><i class="fa fa-angle-double-right"></i>About</a></li>
-                    <li><a href="FAQ.html"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                    <li><a href="getStarted.html"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                    <li><a href="informations/about.html"><i class="fa fa-angle-double-right"></i>About</a></li>
+                    <li><a href="informations/FAQ.html"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                    <li><a href="informations/getStarted.html"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
                 </ul>
             </div>
 
@@ -25,10 +25,10 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Legal Rights</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href="map.html"><i class="fa fa-angle-double-right"></i>Site map</a></li>
-                    <li><a href="legalConditions.html"><i class="fa fa-angle-double-right"></i>Legal notices</a></li>
-                    <li><a href="privacyPolicy.html"><i class="fa fa-angle-double-right"></i>Privacy policy</a></li>
-                    <li><a href="cookiePolicy.html"><i class="fa fa-angle-double-right"></i>Cookie information</a></li>
+                    <li><a href="informations/map.html"><i class="fa fa-angle-double-right"></i>Site map</a></li>
+                    <li><a href="informations/legalConditions.html"><i class="fa fa-angle-double-right"></i>Legal notices</a></li>
+                    <li><a href="informations/privacyPolicy.html"><i class="fa fa-angle-double-right"></i>Privacy policy</a></li>
+                    <li><a href="informations/cookiePolicy.html"><i class="fa fa-angle-double-right"></i>Cookie information</a></li>
                 </ul>
             </div>
         </div>
