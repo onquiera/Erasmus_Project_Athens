@@ -6,7 +6,7 @@
 <title>AirVacation</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./css/homeStyle.css" />
+<link rel="stylesheet" href="/css/homeStyle.css" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -25,7 +25,7 @@
 		<div class="container-fluid">
 			<div class="navbar-header ">
 				<a href="" class="navbar-left"><img
-					src="./resources/firstlogo.png" alt="logo" id=logo-img></a>
+					src="/resources/firstlogo.png" alt="logo" id=logo-img></a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">language</a></li>
