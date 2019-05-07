@@ -18,13 +18,13 @@
           
           if (login == null) {
             out.println(
-            "<li class=\"nav-item active\"><a class=\"nav-link\" href=\"sign-in.html\"  color=\"red;\"><span class=\"glyphicon glyphicon-user\"></span>"
+            "<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/connection/sign-in.html\"  color=\"red;\"><span class=\"glyphicon glyphicon-user\"></span>"
             +"Sign in</a></li>"
-            +"<li class=\"nav-item active\"><a class=\"nav-link\" href=\"login.html\"><span"
+            +"<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/connection/login.html\"><span"
             +"class=\"glyphicon glyphicon-user\"></span> Login</a></li>");
           }else{
             out.println("<li><p><b>connected</b></p></li>");
-            out.println("<li class=\"nav-item active\"><a class=\"nav-link\" href=\"servlet-Deconnecte\">Disconnect</a></li>");
+            out.println("<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/servlet-Deconnecte\">Disconnect</a></li>");
           }
         %>
     </ul>

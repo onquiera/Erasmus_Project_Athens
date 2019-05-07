@@ -6,7 +6,7 @@ function displayHB(html) {
     hbContainer.innerHTML = html;
   }
 }
-fetch("../structure/homeBar.jsp")
+fetch("/structure/homeBar.jsp")
   .then((response) => response.text())
   .then(displayHB);
 
@@ -20,7 +20,7 @@ function displayNB(html) {
   }
 }
 
-fetch("../structure/navBar.jsp")
+fetch("/structure/navBar.jsp")
   .then((response) => response.text())
   .then(displayNB);
 
@@ -33,7 +33,7 @@ function displayForm(html) {
     formContainer.innerHTML = html;
   }
 }
-fetch("../form.jsp")
+fetch("/form.jsp")
   .then((response) => response.text())
   .then(displayForm);
 
@@ -46,6 +46,6 @@ function displayFooter(html) {
     fooContainer.innerHTML = html;
   }
 }
-fetch("../structure/footer.jsp")
+fetch("/structure/footer.jsp")
   .then((response) => response.text())
   .then(displayFooter);

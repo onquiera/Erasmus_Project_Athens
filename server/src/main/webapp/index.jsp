@@ -3,7 +3,7 @@
 
 <head>
 
-	<link rel="shortcut icon" type="image/png" href="./resources/firstlogo.png" />
+	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
 	<title>AirVacation</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,23 +20,21 @@
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 	<!--Javascript-->
-	<script src="./js/main.js" defer></script>
+	<script src="/js/main.js" defer></script>
 
 	<!--CSS Stylesheet-->
-	<link rel="stylesheet" href="./css/basics.css" />
-	<link rel="stylesheet" href="./css/HomePage/homeStyle.css" />
-	<link rel="stylesheet" href="./css/HomePage/flightSearchStyle.css">
+	<link rel="stylesheet" href="/css/basics.css" />
+	<link rel="stylesheet" href="/css/HomePage/homeStyle.css" />
+	<link rel="stylesheet" href="/css/HomePage/flightSearchStyle.css">
 	
 </head>
 
 <body>
 	<!--First Navbar, which contains the logo, language, contact, sign up and login section-->
-	<nav id="homeBar">
-	</nav>
+	<nav id="homeBar"></nav>
 
 	<!--Second navbar, which contains the differents parts of the website -->
-	<nav id="navBar">
-	</nav>
+	<nav id="navBar"></nav>
 
 	<!--The flight-searching form-->
 	<div id="form-container">
@@ -54,8 +52,7 @@
 
 	
 	<!--Footer -->
-	<div id="footer">
-	</div>
+	<div id="footer"></div>
 
 </body>
 

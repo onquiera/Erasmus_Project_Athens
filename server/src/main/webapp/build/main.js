@@ -7,7 +7,7 @@ function displayHB(html) {
   }
 }
 
-fetch("../homeBar.jsp").then(function (response) {
+fetch("../structure/homeBar.jsp").then(function (response) {
   return response.text();
 }).then(displayHB); //Display the navbar
 
@@ -19,7 +19,7 @@ function displayNB(html) {
   }
 }
 
-fetch("../navBar.jsp").then(function (response) {
+fetch("/structure/navBar.jsp").then(function (response) {
   return response.text();
 }).then(displayNB); //Display the form
 
@@ -31,7 +31,7 @@ function displayForm(html) {
   }
 }
 
-fetch("../form.jsp").then(function (response) {
+fetch("/form.jsp").then(function (response) {
   return response.text();
 }).then(displayForm); //Display the footer
 
@@ -43,7 +43,7 @@ function displayFooter(html) {
   }
 }
 
-fetch("../footer.jsp").then(function (response) {
+fetch("/structure/footer.jsp").then(function (response) {
   return response.text();
 }).then(displayFooter);
 //# sourceMappingURL=main.js.map

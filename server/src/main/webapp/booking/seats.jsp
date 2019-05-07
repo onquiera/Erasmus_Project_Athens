@@ -12,7 +12,7 @@
 <title>AirVacation</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./css/homeStyle.css" />
+<link rel="stylesheet" href="/css/homeStyle.css" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -30,12 +30,12 @@
 	
 	<%
 	
-	//TODO plus tard > adapter type d'avion avec rangée de 3 4 etc > + gerer multiples de 4 ..
-	//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionné et list en session ..
+	//TODO plus tard > adapter type d'avion avec rangï¿½e de 3 4 etc > + gerer multiples de 4 ..
+	//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionnï¿½ et list en session ..
 	// bouton boostrap > https://getbootstrap.com/docs/4.0/components/buttons/
 	
 	//> ou si plusieurs sieges, le gerer avec un formulaire unique et une validation ?
-	//> mais difficile de gerer le prix dans ce cas là, si prix change
+	//> mais difficile de gerer le prix dans ce cas lï¿½, si prix change
 	
 	
 		SeatsDAO seatsDAO = new SeatsDAO();
@@ -49,7 +49,7 @@
 	
 	
 	<h2> sieges du vol <%=flightID %></h2>	
-	<p> nombres de sièges : <%=numberOfSeats %></p>
+	<p> nombres de siï¿½ges : <%=numberOfSeats %></p>
 	
 	
 	
@@ -61,7 +61,7 @@
 			for (int j = 0; j < longueurRangees; j++) {
 				String seat = i + "" + convert.charAt(j);
 					if (!listSeats.contains(seat)) {
-					String link = "../servlet-BookSeats?seat=" + seat + "&flightID=" + flightID;
+					String link = "/servlet-BookSeats?seat=" + seat + "&flightID=" + flightID;
 					out.println(
 							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" onclick=\"window.location.href = '"
 									+ link + "';\"    >" + seat + "</button>");

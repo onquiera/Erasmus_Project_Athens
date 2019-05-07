@@ -3,8 +3,8 @@
 
 <head>
 
-	<link rel="shortcut icon" type="image/png" href="./resources/firstlogo.png" />
-	<title>Log In</title>
+	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
+	<title>Sign In</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,11 +20,11 @@
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 	<!--Javascript-->
-	<script src="./js/main.js" defer></script>
+	<script src="/js/main.js" defer></script>
 
 	<!--CSS Stylesheet-->
-	<link rel="stylesheet" href="./css/basics.css" />
-	<link rel="stylesheet" href="./css/signAndLog/loginStyle.css" />
+	<link rel="stylesheet" href="/css/basics.css" />
+	<link rel="stylesheet" href="/css/signAndLog/signInStyle.css" />
 
 </head>
 
@@ -37,27 +37,47 @@
 	<nav id="navBar">
 	</nav>
 
-	<img src="../resources/egypt.jpg">
 	<div class="container login-container">
 		<div class="row">
 			<div class="col-md-6 login-form">
-				<h3>Login</h3>
-				<form action="Authentification" method=post role="form class=form">
+				<h3>Sign-in</h3>
+				<form action="servlet-signin" method="post" role="form class=form">
+					
+					<div class="form-group">
+						<label for="usrtitle"><span class="glyphicon glyphicon-envelope"></span> Title</label>
+						<select required name="title">
+							<option selected value="0">Mr</option>
+							<option value="1">Mrs/Miss</option>
+						</select> 
+					</div>
+
+					<div class="form-group">
+						<label for="usrFName"><span class="glyphicon glyphicon-user"></span> First Name</label>
+						<input required type="text" class="form-control" id="usrFName" placeholder="Enter First Name">
+					</div>
+					
+					<div class="form-group">
+						<label for="usrLName"><span class="glyphicon glyphicon-user"></span> Last Name</label>
+						<input required type="text" class="form-control" id="usrLName" placeholder="Enter Last Name">
+					</div>
+					
 					<div class="form-group">
 						<label for="usrmail"><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
-						<input type="email" class="form-control" id="usrmail" placeholder="Enter email">
+						<input required type="email" class="form-control" id="usrmail" placeholder="Enter email">
 					</div>
+					
 					<div class="form-group">
 						<label for="psw"><span class="glyphicon glyphicon-lock"></span> Password</label>
-						<input type="password" class="form-control" id="psw" placeholder="Enter password">
+						<input required type="password" class="form-control" id="psw" placeholder="Enter password">
 					</div>
+					
 					<div class="checkbox">
-						<label><input type="checkbox" value="" checked>Remember me</label>
+						<label><input required type="checkbox" value="" checked>I accept the legal conditions of <a href="legalConditions.html">Air Vacation</a></label>
 					</div>
 					<button id="sendRequest" type="submit" class="btnSubmit"><span
-							class="glyphicon glyphicon-off"></span> Login</button>
+							class="glyphicon glyphicon-off"></span> Sign In</button>
 					<div class="form-group">
-						<a href="sign-in.html" class="ForgetPwd">Not a member ?</a>
+						<a href="login.html" class="ForgetPwd">Already a member ?</a>
 					</div>
 				</form>
 			</div>
