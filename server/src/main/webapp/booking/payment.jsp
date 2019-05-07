@@ -5,7 +5,7 @@
 <%@page import="flights.Airport"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="flights.AirportsDAO"%>
-<%@page import="connexion.UsersDAO"%>
+<%@page import="users.UsersDAO"%>
 <html lang="en">
 
 <head>
