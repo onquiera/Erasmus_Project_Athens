@@ -18,7 +18,7 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet("/servlet-SearchFlight")
 public class SearchFlight extends HttpServlet
 {
-	public void doGet( HttpServletRequest req, HttpServletResponse res )
+	public void doGet(HttpServletRequest req, HttpServletResponse res )
 			throws ServletException, IOException
 	{
 
@@ -74,15 +74,19 @@ public class SearchFlight extends HttpServlet
 				
 				//TODO check on other pages if session still valid
 				
+				
 				HttpSession httpSession = req.getSession(false);
+
 				//session reset if user starts or restarts a research
 				if (httpSession != null) {
 					httpSession.invalidate();
-				}else {
-					httpSession = req.getSession();
 				}
+				httpSession = req.getSession(true);
 				httpSession.setMaxInactiveInterval(20*60); //session de 20 minutes d'inactivité
 				
+				
+			//	out.println("inactive session time : "+ httpSession.getMaxInactiveInterval());
+				//TODO faire compteur et afficher ça à l'utilisateur pour plus tard :) > un détail
 				
 				httpSession.setAttribute("departure", departure);
 				httpSession.setAttribute("destination", destination); 
@@ -146,13 +150,13 @@ public class SearchFlight extends HttpServlet
 					//eventuel retour
 					
 					
-					
 					//si retour alors mettre 
 					//flightType = "return";
 					//sinon mettre null
 					
 					out.println(""
-							+ "<form action=\"/booking/seats.jsp\" method=\"get\">"
+//							+ "<form action=\"/booking/seats.jsp\" method=\"get\">"
+							+ "<form action=\"/booking/passengers.jsp\" method=\"get\">"
 							+ "<input type=\"hidden\" name=\"flightType\" value=\""+flightType+"\">"
 							+ "<input type=\"hidden\" name=\"flightID\" value=\""+rs.getString("flightID")+"\">"
 							+"<input class=\"btn btn-primary\" type=\"submit\" value=\"choisir ce vol !\">"

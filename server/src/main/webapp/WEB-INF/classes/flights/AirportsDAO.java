@@ -22,7 +22,7 @@ public class AirportsDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setString(1, code);
 			ResultSet rs = ps.executeQuery();
-			System.out.println(ps);
+			//System.out.println(ps);
 			
 			//System.out.println("ps: " +ps);
 			if(rs.next()) {

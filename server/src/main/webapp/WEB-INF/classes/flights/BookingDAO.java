@@ -18,7 +18,7 @@ public class BookingDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setInt(1, reservationnumber);
 			ResultSet rs = ps.executeQuery();
-			System.out.println(ps);
+			//System.out.println(ps);
 			
 			//System.out.println("ps: " +ps);
 			

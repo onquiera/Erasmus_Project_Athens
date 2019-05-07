@@ -60,7 +60,7 @@ public class BookSeats extends HttpServlet
 //			seats.add(seat);
 //			session.setAttribute("seats", seats);
 
-			res.sendRedirect("booking/confirmation.jsp");
+			res.sendRedirect("booking/passengers.jsp");
 
 		}catch(Exception e2){
 			out.println( "<h1>Invalid parameters </h1>"
