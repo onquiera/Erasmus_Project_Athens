@@ -1,11 +1,12 @@
 //Display the homeBar
+
 function displayHB(html) {
   const hbContainer = document.getElementById('homeBar');
   if (hbContainer) {
     hbContainer.innerHTML = html;
   }
 }
-fetch("../homeBar.jsp")
+fetch("../structure/homeBar.jsp")
   .then((response) => response.text())
   .then(displayHB);
 
@@ -19,7 +20,7 @@ function displayNB(html) {
   }
 }
 
-fetch("../navBar.jsp")
+fetch("../structure/navBar.jsp")
   .then((response) => response.text())
   .then(displayNB);
 
@@ -45,6 +46,6 @@ function displayFooter(html) {
     fooContainer.innerHTML = html;
   }
 }
-fetch("../footer.jsp")
+fetch("../structure/footer.jsp")
   .then((response) => response.text())
   .then(displayFooter);
