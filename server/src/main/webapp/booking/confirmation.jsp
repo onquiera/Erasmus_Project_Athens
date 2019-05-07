@@ -49,7 +49,7 @@
 	 
 	 
 	
-	<button type="button" class="btn btn-success" onclick="window.location.href = 'servlet-Confirmation';"> validate </button>
+	<button type="button" class="btn btn-success" onclick="window.location.href = '../servlet-Confirmation';"> validate </button>
 	
 	
 

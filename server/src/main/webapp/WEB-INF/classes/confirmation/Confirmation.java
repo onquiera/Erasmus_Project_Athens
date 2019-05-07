@@ -50,7 +50,7 @@ public class Confirmation extends HttpServlet
 
 			session.invalidate();
 
-			RequestDispatcher dispatcher = req.getRequestDispatcher("payment.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("booking/payment.jsp");
 			dispatcher.forward(req, res);
 			
 

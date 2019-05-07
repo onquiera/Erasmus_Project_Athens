@@ -61,7 +61,7 @@
 			for (int j = 0; j < longueurRangees; j++) {
 				String seat = i + "" + convert.charAt(j);
 					if (!listSeats.contains(seat)) {
-					String link = "servlet-BookSeats?seat=" + seat + "&flightID=" + flightID;
+					String link = "../servlet-BookSeats?seat=" + seat + "&flightID=" + flightID;
 					out.println(
 							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" onclick=\"window.location.href = '"
 									+ link + "';\"    >" + seat + "</button>");
