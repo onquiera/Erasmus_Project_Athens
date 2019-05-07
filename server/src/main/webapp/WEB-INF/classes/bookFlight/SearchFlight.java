@@ -58,53 +58,43 @@ public class SearchFlight extends HttpServlet
 			
 		}else {
 
+			
+		
+
+
 			//TODO ajouter détails > exemple pas flight id mais détails du vol
 
 			try(Connection con = DS.getConnection()){
 
-				
-				//PARAMETERS management
+
+				//departure    destination    flightDate    numberOfPassengers
+
+				//recuperation des parametres
 				String departure=req.getParameter("departure");
 				String destination=req.getParameter("destination");
-				String departureDate = req.getParameter("departureDate");
-				String returnDate = req.getParameter("returnDate");
-				int numberOfPassengers = Integer.parseInt(req.getParameter("numberOfPassengers"));
-				String travelClass = req.getParameter("travelClass");
-				
-				
-				//TODO check on other pages if session still valid
-				
-				HttpSession httpSession = req.getSession(false);
-				//session reset if user starts or restarts a research
-				if (httpSession != null) {
-					httpSession.invalidate();
-				}else {
-					httpSession = req.getSession();
-				}
-				httpSession.setMaxInactiveInterval(20*60); //session de 20 minutes d'inactivité
-				
-				
-				httpSession.setAttribute("departure", departure);
-				httpSession.setAttribute("destination", destination); 
-				httpSession.setAttribute("departureDate", departureDate); 
-				httpSession.setAttribute("returnDate", returnDate); 
-				httpSession.setAttribute("numberOfPassengers", numberOfPassengers); 
-				httpSession.setAttribute("travelClass", travelClass); 
+				String dateForm = req.getParameter("departureDate");
 				
 				
 				
-				//departure date from string to sql
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				java.util.Date departureDateUtil = dateFormat.parse(departureDate);
-				java.sql.Date departureDateSQL = new java.sql.Date(departureDateUtil.getTime()); 
+				
+				
+				//TODO    mise en session ! 
+				
+				
+				
+				//puis check sur toute les autres pages de commandes si session encore valide
+				
+				
+				
+				
 
+				SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date dateUtil = sdf1.parse(dateForm);
+				java.sql.Date date = new java.sql.Date(dateUtil.getTime()); 
 
-				
-				
-				
-				//-----------------------------------------------------------------------------------
-				//research in database
-				
+				//int numberOfPassengers=Integer.parseInt(req.getParameter("numberOfPassengers"));
+
+				//recherche dans database
 				String query = 
 						"Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
 								+ "FROM flights fl "
@@ -116,7 +106,7 @@ public class SearchFlight extends HttpServlet
 				PreparedStatement ps = con.prepareStatement( query );
 				ps.setString(1, departure);
 				ps.setString(2, destination);
-				ps.setDate(3, departureDateSQL);
+				ps.setDate(3, date);
 
 				ResultSet rs = ps.executeQuery();
 
@@ -129,7 +119,7 @@ public class SearchFlight extends HttpServlet
 
 				out.println("<h1>Available <u>"+ flightType+"</u> flights </h1>");
 				out.println("<h2>from :" +departure+" to "+destination+"</h2>");
-				out.println("<h2>date : "+departureDate+"</h2>");
+				out.println("<h2>date : "+dateForm+"</h2>");
 
 				while (rs.next()){
 
@@ -163,9 +153,9 @@ public class SearchFlight extends HttpServlet
 
 
 			}catch(Exception e2){
-				
-				out.println("Error : "+ e2.getMessage());
-				
+				out.println( "<h1>Invalid parameters </h1>"
+						+ e2.getMessage() );
+
 				e2.printStackTrace();
 			}
 		}
