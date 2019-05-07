@@ -5,6 +5,13 @@ html, body {
     overflow-x: hidden;
 }
 
+#textArea{
+    text-align: left;
+    margin: 15rem;
+    margin-top: 2rem;
+    margin-bottom:2rem;
+}
+
 #logo-img {
     width: 30%;
     height: 30%;

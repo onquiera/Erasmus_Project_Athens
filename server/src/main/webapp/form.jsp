@@ -10,8 +10,8 @@
 			<%
 			AirportsDAO dao = new AirportsDAO();
 			List<Airport> listeAirports = dao.findAll();
-			
-			for (Airport airport : listeAirports) {
+
+			for(Airport airport : listeAirports) {
 				out.println("<option value=\""+ airport.getName()+"\">");
 			}	
 			
@@ -33,27 +33,27 @@
 						<div class="tab-content">
 							<div id="1" class="tab1 active">
 								<form action="/servlet-SearchFlight" method="get">
-									"<input type="hidden" name="flightType" value="outward">"
+									<input type="hidden" name="flightType" value="outward">
 								
 									<div class="triptype">
 										<label class="rndTrip active"><input type="radio" name="Round" value="RoundTrip"
 												checked> Round Trip
 										</label>
 										<!--TODO Add the next line if we make a simple trip-->
-										<!--<label class="oneTrip"><input type="radio" name="Round" value="OneWay"> OneWay </label>-->
+										<label class="oneTrip"><input type="radio" name="Round" value="OneWay"> OneWay </label>
 									</div>
 									
 									
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										<input list="airports" class="form-control" name="departure" 
+										<input required list="airports" class="form-control" name="departure" 
 										value ="Lille Airport" placeholder="Departing from">	
 									</div>
 									
 									
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										<input list="airports" class="form-control" name="destination" 
+										<input required list="airports" class="form-control" name="destination" 
 										value ="Madrid Barajas" placeholder="Arriving at">	
 									</div>
 
@@ -73,12 +73,12 @@
 										TODO
 										uncomment when site finished > uses today's date
 										
-										<input id="departDate" type="date" class="form-control" name="departureDate"
+										<input required id="departDate" type="date" class="form-control" name="departureDate"
 											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 										-->
 										
-										<input id="departDate" type="date" class="form-control" name="departureDate"
+										<input required id="departDate" type="date" class="form-control" name="departureDate"
 											value="2019-04-22" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 										
@@ -90,12 +90,12 @@
 										<!--
 										TODO
 										uncomment when site finished > uses today's date
-										<input id="arrivalDate" type="date" class="form-control" name="returnDate"
+										<input required id="arrivalDate" type="date" class="form-control" name="returnDate"
 											value="<%=tomorrowDate%>" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 										-->
 										
-										<input id="arrivalDate" type="date" class="form-control" name="returnDate"
+										<input required id="arrivalDate" type="date" class="form-control" name="returnDate"
 											value="2019-06-15" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">	
 											
