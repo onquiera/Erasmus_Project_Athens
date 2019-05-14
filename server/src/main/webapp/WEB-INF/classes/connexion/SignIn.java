@@ -70,7 +70,12 @@ public class SignIn extends HttpServlet
 				//à voir ce qui est le plus beau
 
 				res.sendRedirect("/index.jsp");
-
+				
+				
+				
+				
+				
+				
 			}catch(java.lang.NumberFormatException e) { //TODO remplacer ça par les exceptions possible(notament invalid format exception)
 				e.printStackTrace();
 

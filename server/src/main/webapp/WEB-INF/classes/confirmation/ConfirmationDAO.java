@@ -3,7 +3,6 @@ package confirmation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 import connexion.DS;

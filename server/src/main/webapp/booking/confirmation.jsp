@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+<%@page import="users.Passenger"%>
 <%@page import="seats.SeatsDAO"%>
 <%@page import="flights.Booking"%>
 <%@page import="java.util.List"%>
 <%@page import="flights.Airport"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="flights.AirportsDAO"%>
-<%@page import="connexion.UsersDAO"%>
 <html lang="en">
 
 <head>
@@ -30,20 +30,67 @@
 	
 	<h1>Booking confirmation</h1>
 	
-	
 	<%
-	//if tout valide > confirmation
+	ArrayList<Passenger> listOfPassengers=null;
+	
+		try{
+			HttpSession httpSession = request.getSession(false);
+			//check if session is valid
+			if(httpSession==null || !request.isRequestedSessionIdValid() ){
+				System.out.println("\n\n\n session is invalid \n\n\n");
+				response.sendRedirect("/error/sessionError.html");
+			}
+
+			//PARAMETERS management
+			listOfPassengers = (ArrayList<Passenger>)httpSession.getAttribute("listOfPassengers");
+			
+			
+
+		}catch(java.lang.NumberFormatException e ){
+			e.printStackTrace();
+			response.sendRedirect("/error/parameterError.html");
+		}catch(NullPointerException e ){
+			e.printStackTrace();
+			response.sendRedirect("/error/parameterError.html");
+		}catch(Exception e2 ){
+			e2.printStackTrace();
+			response.sendRedirect("/error/error.html");
+		}
+		
+	%>	
+		
+	<% for (int i = 0; i < listOfPassengers.size(); i++) {
+	
+		Passenger passenger = listOfPassengers.get(i);
+	%>
+		<h2>Passengers : </h2>	
+		
+		<h3>Passenger <%=i+1 %>: </h3>
+			<p>Firstname : <%=passenger.getName() %></p>
+			<p>Surname : <%=passenger.getSurname() %></p>
+			<p>Title : <%=passenger.getTitle() %></p>
+			<p>Date of Birth : <%=passenger.getDateOfBirth() %></p>
+				
+			
+	<%	}%>
 	
 	
-	// sinon pas bon erreur ..
-	// redirect erreur
-	 %>
+	
+		
+		
+		
 	 <br>
 	 <h1> Your booking informations : </h1>
 	 
 	 <h3>outward flight</h3>
 	 <h3>(return flight)</h3>
 	 <h3>Passengers : </h3>
+	 
+	 <%
+	 
+	  %>
+	 
+	 
 	 <h3>Seats : </h3>
 	 <h3>Other options: </h3>  
 	 

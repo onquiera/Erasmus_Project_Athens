@@ -153,7 +153,7 @@ public class SearchFlight extends HttpServlet
 					
 					out.println(""
 //							+ "<form action=\"/booking/seats.jsp\" method=\"get\">"
-							+ "<form action=\"/booking/passengers.jsp\" method=\"get\">"
+							+ "<form action=\"/booking/personnal-informations.jsp\" method=\"get\">"
 							+ "<input type=\"hidden\" name=\"flightType\" value=\""+flightType+"\">"
 							+ "<input type=\"hidden\" name=\"flightID\" value=\""+rs.getString("flightID")+"\">"
 							+"<input class=\"btn btn-primary\" type=\"submit\" value=\"choisir ce vol !\">"

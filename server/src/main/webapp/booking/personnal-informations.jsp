@@ -5,11 +5,10 @@
 <%@page import="flights.Airport"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="flights.AirportsDAO"%>
-<%@page import="connexion.UsersDAO"%>
 <html lang="en">
 
 <head>
-<title>AirVacation</title>
+<title>AirVacation - Personnal informations</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/css/homeStyle.css" />
@@ -50,69 +49,101 @@
 		response.sendRedirect("/error/error.html");
 	}
 	%>
-	
-		<h1>Passengers : </h1>
-	
+
+
 	<!-- TODO  Login for autocomplete -->
+
+	<div class="container">
+	<div class="row">
+	<div class="col-md-6 login-form">
 	
 	
-	<form action="servlet-passengers" action=post>
+	
+		<form action="/servlet-PersonnalInformations" method="get" role="form class=form">
+	
+			<%
 			
-		<%
-		
-		if(numberOfPassengers==-1){
-			System.out.println("\n\nsession number of passengers error\n");
-			response.sendRedirect("/error/parameterError.html");
-		}
-		
-		 
-			for(int i = 1; i <= numberOfPassengers ; i++){
-				
-				out.println("<h3>Passenger "+ i + " : </h3>");
-				out.println("Title:<br>");
-				//TODO change to select box 
- 				out.println("<input type=\"text\" name=\"title\"><br>");
-				out.println("Date of Birth:<br>");
- 				out.println("<input type=\"text\" name=\"dateOfBirth\"><br>");
-				out.println("First name:<br>");
- 				out.println("<input type=\"text\" name=\"firstname\"><br>");
- 				out.println("Last name:<br>");
-  				out.println("<input type=\"text\" name=\"lastname\">");
-				
-			} 
-		
-		 %>
-		
-		
-		
-		
-		<h2> Contact informations</h2>	
-
- 			phone number:<br>
-  			<input type="text" name="email"><br>
-
- 			email:<br>
-  			<input type="text" name="email"><br>
-  			<!-- TODO check if they are the same (JS code) -->
-  			confirm email :<br>
-  			<input type="text" name="email"><br>
+			if(numberOfPassengers==-1){
+				System.out.println("\n\nsession number of passengers error\n");
+				response.sendRedirect("/error/parameterError.html");
+			}
+			%>
 			
-	
+			<h1>Personnal Informations</h1>
+			
+			<h2>Passengers informations(<%=numberOfPassengers %> passengers) :</h2>
+			
+			<% for(int i = 1; i < numberOfPassengers+1; i++) { %>
+			
+			<%
+				if(i==1){
+					out.println("<h3>Passenger 1(person who is booking) : </h3>");
+				}else{	
+					out.println("<h3>Passenger "+i+" : </h3>");
+				}	
+			 %>
+        			<div class="form-group">
+						<label><span class="glyphicon glyphicon-envelope"></span> Title</label>
+						<select required name="passenger-<%=i%>-title">
+							<option selected value="0">Mrs/Miss</option>
+							<option value="1">Mr</option>
+						</select> 
+					</div>
 
-		<h2>Insurance(recommanded)</h2>	
-		<h3>to come</h3>
+					<div class="form-group">
+						<label><span class="glyphicon glyphicon-user"></span> First Name</label>
+						<input required type="text" class="form-control" name="passenger-<%=i%>-name" placeholder="Enter First Name">
+					</div>
+					
+					<div class="form-group">
+						<label><span class="glyphicon glyphicon-user"></span> Last Name</label>
+						<input required type="text" class="form-control" name="passenger-<%=i%>-surname" placeholder="Enter Last Name">
+					</div>
+					
+					<div class="form-group">
+						<label><span class="glyphicon glyphicon-calendar"></span> Date of birth</label>
+					<input required type="date" class="form-control" name="passenger-<%=i%>-dateOfBirth"
+											value="" max="2010-01-01"
+											placeholder="dd-mm-yyyy">
+					</div>
+  			<% } %>
+			
+			
+			<br><br>
 	
+			<h2>Contact informations</h2>
 	
-		<p>checkbox - I have read the <a href="/informations/legalConditions.html">Legal notice</a>. I accept the full conditions of sale and the fare rules.</p>
+				<div class="form-group">
+					<label><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
+					<input required type="email" class="form-control" name="email" placeholder="Enter email">
+				</div>
+				
+				<div class="form-group">
+					<label><span class="glyphicon glyphicon-phone"></span> Phone number(optional)</label>
+					<input type="tel" class="form-control" name="phoneNumber" placeholder="Enter phone number">
+				</div>
+	
+			<br><br>
+	
+			<h2><span class="glyphicon glyphicon-heart"></span> Insurance(recommanded)</h2>
+			<p>to come</p>
 	
 		
-		<button type="submit" class="btn btn-primary">Submit</button>
-		
-		
-		<br>
-		<br>
-	</form>
+			<br>
+			<h3>
+				<div class="checkbox">
+					<label><input required type="checkbox" value="">I accept the legal conditions of <a href="legalConditions.html">Air Vacation</a></label>
+				</div>
+			</h3>	
 	
+			<button type="submit" class="btn btn-primary">Pay</button>
+	
+	
+			<br> <br>
+		</form>
+	</div>
+	</div>
+	</div>
 
 
 </body>
