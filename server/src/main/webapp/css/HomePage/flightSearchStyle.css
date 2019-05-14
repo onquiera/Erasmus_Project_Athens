@@ -12,6 +12,10 @@ body {
 a:hover {
     text-decoration: none
 }
+#form-container a:visited{
+    color:white;
+    text-decoration: none;
+}
 
 .wraper {
     width: 100%;

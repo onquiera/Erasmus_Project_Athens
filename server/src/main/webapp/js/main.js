@@ -25,17 +25,19 @@ fetch("/structure/navBar.jsp")
   .then(displayNB);
 
 
+//Permit the change of the form
+$(document).ready(function() {
+  $('.tabing a').click(function (e) {
+  e.stopPropagation();
+  e.preventDefault();
+  var tabcont = $(this).attr('href');
+  $('.tabing a').removeClass('active');
+  $(this).addClass('active');
+  $('.tab1').fadeOut(0);
+  $(tabcont).fadeIn(200); 
+  });
+});
 
-//Display the form
-function displayForm(html) {
-  const formContainer = document.getElementById('form-container');
-  if (formContainer) {
-    formContainer.innerHTML = html;
-  }
-}
-fetch("/form.jsp")
-  .then((response) => response.text())
-  .then(displayForm);
 
 
 

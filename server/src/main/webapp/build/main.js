@@ -7,7 +7,7 @@ function displayHB(html) {
   }
 }
 
-fetch("../structure/homeBar.jsp").then(function (response) {
+fetch("/structure/homeBar.jsp").then(function (response) {
   return response.text();
 }).then(displayHB); //Display the navbar
 
@@ -21,19 +21,19 @@ function displayNB(html) {
 
 fetch("/structure/navBar.jsp").then(function (response) {
   return response.text();
-}).then(displayNB); //Display the form
+}).then(displayNB); //Permit the change of the form
 
-function displayForm(html) {
-  var formContainer = document.getElementById('form-container');
-
-  if (formContainer) {
-    formContainer.innerHTML = html;
-  }
-}
-
-fetch("/form.jsp").then(function (response) {
-  return response.text();
-}).then(displayForm); //Display the footer
+$(document).ready(function () {
+  $('.tabing a').click(function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var tabcont = $(this).attr('href');
+    $('.tabing a').removeClass('active');
+    $(this).addClass('active');
+    $('.tab1').fadeOut(0);
+    $(tabcont).fadeIn(200);
+  });
+}); //Display the footer
 
 function displayFooter(html) {
   var fooContainer = document.getElementById('footer');
