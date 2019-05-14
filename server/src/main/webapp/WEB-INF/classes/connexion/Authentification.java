@@ -2,16 +2,14 @@ package connexion;
 
 import java.io.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.servlet.annotation.WebServlet;
+
+import users.Users;
+import users.UsersDAO;
 
 @SuppressWarnings("serial")
-@WebServlet("/Authentification")
 public class Authentification extends HttpServlet
 {
 	public void doPost( HttpServletRequest req, HttpServletResponse res )

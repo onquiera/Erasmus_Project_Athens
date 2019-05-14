@@ -2,14 +2,11 @@ package connexion;
 
 import java.io.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.servlet.annotation.WebServlet;
 
 @SuppressWarnings("serial")
-@WebServlet("/servlet-Deconnecte")
 public class Deconnecte extends HttpServlet
 {
 	public void service( HttpServletRequest req, HttpServletResponse res )

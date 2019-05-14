@@ -9,10 +9,8 @@ import java.sql.ResultSetMetaData;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.servlet.annotation.WebServlet;
 
 @SuppressWarnings("serial")
-@WebServlet("/servlet-Modification")
 public class Modification extends HttpServlet
 {
 	public void doGet( HttpServletRequest req, HttpServletResponse res )

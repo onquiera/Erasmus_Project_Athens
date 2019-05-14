@@ -5,9 +5,9 @@ DROP TABLE IF EXISTS seat_reservation;
 DROP table if exists flights;
 DROP table if exists planes;
 
---title > 0 woman, 1 man, ++ others.
+--title > 0 woman, 1 man
 CREATE TABLE passenger(
-	pno SERIAL primary key,
+	pno int primary key,
 	name text,
 	surname text,
 	title integer,
@@ -84,21 +84,21 @@ ALTER TABLE  seat_reservation
 
 --------First data entered on table when the server starts--------
 
-INSERT INTO passenger(name, surname, title, dateOfBirth, phoneNumber, email) VALUES  
-('Nicolas','Coussement', 1, '1999-01-01', '+33-0606060606', 'nico.cous@gmail.com'),
-('antoine','root', 1, '1999-09-05', '0606060606', 'antoine@root.com'),
-('Brice','root', 1, '1999-09-05', '0606060606', 'brice@root.com'),
-('Fa','Brice', 1, '1999-09-05', '0606060606', 'fa.brice@gmail.com'),
-('Philipe','Mathieu', 1, '1979-01-01', '0606060606', 'philipe.mathieu@gmail.com'),
-('Patrick','Lebegue', 1, '1969-01-01', '0606060606', 'patrick.lebegue@gmail.com'),
-('Patricia','Evraere', 0, '1989-01-01', '0606060606', 'patricia.evraere@gmail.com');
+INSERT INTO passenger VALUES  
+(1,'Nicolas','Coussement', 1, '1999-01-01', '+33-0606060606', 'nico.cous@gmail.com'),
+(2,'antoine','root', 1, '1999-09-05', '0606060606', 'antoine@root.com'),
+(3,'Brice','root', 1, '1999-09-05', '0606060606', 'brice@root.com'),
+(4,'Fa','Brice', 1, '1999-09-05', '0606060606', 'fa.brice@gmail.com'),
+(5,'Philipe','Mathieu', 1, '1979-01-01', '0606060606', 'philipe.mathieu@gmail.com'),
+(6,'Patrick','Lebegue', 1, '1969-01-01', '0606060606', 'patrick.lebegue@gmail.com'),
+(7,'Patricia','Evraere', 0, '1989-01-01', '0606060606', 'patricia.evraere@gmail.com');
 
 
-INSERT INTO passenger(name, surname, title, dateOfBirth) VALUES  
-('Pierre','Martelle', 1, '1999-01-01'),
-('Elric','FineEau', 1, '1999-01-01'),
-('Alexandre','Desremords', 1, '1999-01-01'),
-('Manon','Baudruche', 0, '1905-01-01');
+INSERT INTO passenger(pno, name, surname, title, dateOfBirth) VALUES  
+(8,'Pierre','Martelle', 1, '1999-01-01'),
+(9,'Elric','FineEau', 1, '1999-01-01'),
+(10,'Alexandre','Desremords', 1, '1999-01-01'),
+(11,'Manon','Baudruche', 0, '1905-01-01');
 
 INSERT INTO passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email) VALUES 
 (12, 'Kostas','Koukouletsos', 1, '1979-01-01', '+33-0606060606', 'ccostas@uniwa.gr'); 

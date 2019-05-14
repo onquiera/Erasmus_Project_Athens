@@ -1,86 +1,59 @@
-package connexion;
+package users;
 
 public class Users {
-	
-	private String email;
-	private String name;
-	private String surname;
-	private int genre;
+
+	private int uno;
+	private int pno;
 	private String password;
 	private int role;
 	
-	//email            |   name   |  surname   | genre |      password       | role
-	public Users(String email, String name, String surname, int genre, String password, int role) {
-		this.email=email;
-		this.name=name;
-		this.surname=surname;
-		this.genre=genre;
-		this.password=password;
-		this.role=role;
-		
-	}
+	/*
+	passenger(
+			pno SERIAL,
+			name text,
+			surname text,
+			title integer,
+			dateOfBirth DATE,
+			phoneNumber text,0
+			email text);
 
-	public String getEmail() {
-		return email;
+	users(
+			uno SERIAL,
+			pno integer (references to passenger(pno)
+			password text,
+			role integer
+		);
+	*/
+	
+	public Users(int uno, int pno, String password, int role) {
+		super();
+		this.uno = uno;
+		this.pno = pno;
+		this.password = password;
+		this.role = role;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public int getUno() {
+		return uno;
 	}
-
-	public String getName() {
-		return name;
+	public void setUno(int uno) {
+		this.uno = uno;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public int getPno() {
+		return pno;
 	}
-
-	public String getSurname() {
-		return surname;
+	public void setPno(int pno) {
+		this.pno = pno;
 	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	public int getGenre() {
-		return genre;
-	}
-
-	public void setGenre(int genre) {
-		this.genre = genre;
-	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public int getRole() {
 		return role;
 	}
-
 	public void setRole(int role) {
 		this.role = role;
 	}
-
-	//email            |   name   |  surname   | genre |      password       | role
-	public String toString() {
-		return "email: '"+email+"', name: '"+name+"', surname: '"+surname+"', genre: '"+genre+"', password: '"+password+"', role: '"+role+"'";
-	}
-	
-	//TODO rendre ça en tableau :) ou en formulaire je sais pas
-	/*
-	
-	public String toStringHTMLTR() {
-		return "<tr>"
-				+ "<td>email: "+email+"</td>"
-				+ "name: "+name+", surname: "+surname+", genre: "+genre+", password: "+password+", role: "+role+"";
-	}
-	*/
-	
 }

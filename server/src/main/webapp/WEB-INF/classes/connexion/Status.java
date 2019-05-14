@@ -3,10 +3,8 @@ package connexion;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.servlet.annotation.WebServlet;
 
 @SuppressWarnings("serial")
-@WebServlet("/servlet-status")
 public class Status extends HttpServlet
 {  
     public void doGet( HttpServletRequest req, HttpServletResponse res )

@@ -12,10 +12,7 @@ import javax.servlet.http.*;
 
 import connexion.DS;
 
-import javax.servlet.annotation.WebServlet;
-
 @SuppressWarnings("serial")
-@WebServlet("/servlet-SearchFlight")
 public class SearchFlight extends HttpServlet
 {
 	public void doGet(HttpServletRequest req, HttpServletResponse res )

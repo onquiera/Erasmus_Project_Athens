@@ -2,16 +2,18 @@ package connexion;
 
 import java.io.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.servlet.annotation.WebServlet;
+
+import users.Passenger;
+import users.PassengerDAO;
+import users.Users;
+import users.UsersDAO;
 
 @SuppressWarnings("serial")
-@WebServlet("/servlet-signin")
 public class SignIn extends HttpServlet
 {
 	public void doPost( HttpServletRequest req, HttpServletResponse res )
@@ -22,37 +24,41 @@ public class SignIn extends HttpServlet
 			HttpSession session = req.getSession( true );
 			session.setAttribute("login", null );
 
-			String email;
+			int title;
 			String name;
 			String surname;
-			int genre;
+			Date dateOfBirth;
+			String email;
 			String password;
+			String phoneNumber;//(optional)
 			int role = 0;
-			Users newUsers=null;
-
 			
 			//TODO rendre le try mieux avec un boolean
 			
 			try {
-				
-				email = req.getParameter("email");
+				title = Integer.parseInt(req.getParameter("title"));
 				name = req.getParameter("name");
 				surname = req.getParameter("surname");
-				genre = Integer.parseInt(req.getParameter("genre"));
+				//birth date from string to sql
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date dateOfBirthUtil = dateFormat.parse(req.getParameter("dateOfBirth"));
+				dateOfBirth = new java.sql.Date(dateOfBirthUtil.getTime()); 
+				email = req.getParameter("email");
 				password = req.getParameter("password");
+				phoneNumber = req.getParameter("phoneNumber");
+				
+				 
+				//TODO tester les differentes valeurs en js
+				
+				//apres requete jee > tester si email exise pas deja ?
 
+				PassengerDAO passengerDAO = new PassengerDAO();
+				int pno=passengerDAO.maxPNO()+1;
+				Passenger newPassenger= new Passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email);
 				
-				//TODO tester les valeurs > verifier si format email correct ... (un peu annexe mais fonctionnalité cool)
-				//tester si un champ n'est pas vide et afficher erreur champ vide
-				//> peut-être le faire avec un petit code js dans balise script ?
-				//TODO rajouter champ password2 et verifier si les 2 correspondent
-				//TODO tester si email existe deja
+				passengerDAO.create(newPassenger);
 				
-				//renvoyer la ou les erreur(s) en session ou en parametre de la page signin 
-				// > (la transformer en jsp   ou ++ en servlet avec out.println et recuperer en post(si on veut securiser))
-				
-				newUsers = new Users(email, name, surname, genre, password, role);
-
+				Users newUsers = new Users(-1, pno, password, role);
 				UsersDAO dao = new UsersDAO();
 				dao.create(newUsers);
 
@@ -63,14 +69,14 @@ public class SignIn extends HttpServlet
 				//TODO ranger en attribut d'autre element, genre prenom et nom ? > pour les affiché à coté du connécté
 				//à voir ce qui est le plus beau
 
-				res.sendRedirect("index.jsp");
+				res.sendRedirect("/index.jsp");
 
 			}catch(java.lang.NumberFormatException e) { //TODO remplacer ça par les exceptions possible(notament invalid format exception)
 				e.printStackTrace();
 
 				//TODO message pour dire que inscription incorrecte
 				//TODO stocker les valeurs pour pas que l'utilisateur ai à tout retaper.
-				res.sendRedirect("sign-in.html");
+				res.sendRedirect("/sign-in.html");
 			}
 
 		}catch(Exception e1){

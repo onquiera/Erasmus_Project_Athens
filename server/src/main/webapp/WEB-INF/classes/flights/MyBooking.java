@@ -1,20 +1,13 @@
 package flights;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import connexion.DS;
 
-import javax.servlet.annotation.WebServlet;
 
 @SuppressWarnings("serial")
-@WebServlet("/MyBooking")
 public class MyBooking extends HttpServlet
 {
 	public void doPost( HttpServletRequest req, HttpServletResponse res )

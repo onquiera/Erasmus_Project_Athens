@@ -25,16 +25,6 @@
 		<url-pattern>/servlet-Deconnecte</url-pattern>
 	</servlet-mapping>
 
-
-	<servlet>
-		<servlet-name>servlet-Lecture</servlet-name>
-		<servlet-class>connexion.Lecture</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>servlet-Lecture</servlet-name>
-		<url-pattern>/servlet-Lecture</url-pattern>
-	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>MyBooking</servlet-name>
 		<servlet-class>flights.MyBooking</servlet-class>
@@ -100,6 +90,14 @@
 		<url-pattern>/servlet-Confirmation</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>servlet-SignIn</servlet-name>
+		<servlet-class>connexion.SignIn</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-SignIn</servlet-name>
+		<url-pattern>/connexion/servlet-SignIn</url-pattern>
+	</servlet-mapping>
 </web-app>
 
 
