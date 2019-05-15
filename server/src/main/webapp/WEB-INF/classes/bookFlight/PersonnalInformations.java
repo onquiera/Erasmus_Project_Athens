@@ -1,17 +1,12 @@
 package bookFlight;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import connexion.DS;
 import users.Passenger;
 import users.PassengerDAO;
 
@@ -60,7 +55,6 @@ public class PersonnalInformations extends HttpServlet
 			
 			res.sendRedirect("/booking/confirmation.jsp");
 			
-
 		}catch(java.lang.NumberFormatException e ){
 			e.printStackTrace();
 			res.sendRedirect("/error/parameterError.html?");

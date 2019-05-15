@@ -56,10 +56,20 @@
 			
 			 %>
 	</datalist>
+	
+	
+									<% 
+									DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+									LocalDate localDate = LocalDate.now();
+									String actualDate = dtf.format(localDate); 		
+									localDate = localDate.plusDays(1);
+									String tomorrowDate = dtf.format(localDate); 													
+									%>
+	
+	
 
 	<div id="form-container">
 		<img src="./resources/santorin.png">
-		<!--Form-->
 		<div class="container" id="searchForm">
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
@@ -96,13 +106,6 @@
 
 
 
-									<% 
-									DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-									LocalDate localDate = LocalDate.now();
-									String actualDate = dtf.format(localDate); 		
-									localDate = localDate.plusDays(1);
-									String tomorrowDate = dtf.format(localDate); 													
-									%>
 									<div class="col-sm-6 col-xs-6 ctrl">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
@@ -110,12 +113,12 @@
 										TODO
 										uncomment when site finished > uses today's date
 										
-										<input required id="departDate" type="date" class="form-control" name="departureDate"
+										<input required type="date" class="form-control" name="departureDate"
 											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 										-->
 
-										<input required id="departDate" type="date" class="form-control"
+										<input required type="date" class="form-control"
 											name="departureDate" value="2019-04-22" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
@@ -127,12 +130,12 @@
 										<!--
 										TODO
 										uncomment when site finished > uses today's date
-										<input required id="arrivalDate" type="date" class="form-control" name="returnDate"
+										<input required type="date" class="form-control" name="returnDate"
 											value="<%=tomorrowDate%>" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 										-->
 
-										<input required id="arrivalDate" type="date" class="form-control"
+										<input required type="date" class="form-control"
 											name="returnDate" value="2019-06-15" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
@@ -142,7 +145,7 @@
 									<div class="select-wrap">
 										<div class="adult-box">
 											<span>Passengers</span>
-											<select id="nbPassengers" value="" name="numberOfPassengers">
+											<select value="" name="numberOfPassengers">
 												<option>1</option>
 												<option>2</option>
 												<option>3</option>
@@ -155,7 +158,7 @@
 
 										<div class="adult-box">
 											<span>Class</span>
-											<select id="class" value="" name="travelClass">
+											<select value="" name="travelClass">
 												<option>Business</option>
 												<option>Economy</option>
 											</select>
@@ -170,10 +173,13 @@
 
 							<div id="2" class="tab1">
 								<!--OneWay Form-->
-								<form>
+								<form action="/servlet-SearchFlight" method="get">
+									<input type="hidden" name="flightType" value="outward">
+
 									<div class="triptype">
-										
 									</div>
+
+
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
@@ -187,20 +193,19 @@
 											value="Madrid Barajas" placeholder="Arriving at">
 									</div>
 
-
 									<div class="col-sm-6 col-xs-6 ctrl">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
 										<!--
-												TODO
-												uncomment when site finished > uses today's date
-												
-												<input required id="departDate" type="date" class="form-control" name="departureDate"
-													value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
-													placeholder="dd-mm-yyyy">
-												-->
+										TODO
+										uncomment when site finished > uses today's date
+										
+										<input required type="date" class="form-control" name="departureDate"
+											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
+											placeholder="dd-mm-yyyy">
+										-->
 
-										<input required id="departDate" type="date" class="form-control"
+										<input required type="date" class="form-control"
 											name="departureDate" value="2019-04-22" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
@@ -208,42 +213,37 @@
 
 									<div class="select-wrap">
 										<div class="adult-box">
-											<span>Adult</span>
-											<select>
+											<span>Passengers</span>
+											<select value="" name="numberOfPassengers">
 												<option>1</option>
 												<option>2</option>
-												<option>2</option>
+												<option>3</option>
 												<option>4</option>
 												<option>5</option>
 												<option>6</option>
 											</select>
 										</div>
 
+
 										<div class="adult-box">
 											<span>Class</span>
-											<select>
+											<select value="" name="travelClass">
 												<option>Business</option>
 												<option>Economy</option>
 											</select>
 										</div>
 									</div>
-
 									<div class="col-lg-12">
-										<input type="submit" class="srch" value="Search" />
+										<input type="submit" class="srch" value="Search Flights" />
 									</div>
 								</form>
 							</div>
-							<!---->
-
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--/.Form-->
-
 
 	<!--
 		TODO

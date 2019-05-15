@@ -12,7 +12,7 @@
                     <a class="nav-link" href="#">Check-in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My bookings</a>
+                    <a class="nav-link" href="/booking/searchBooking.jsp">My bookings</a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">

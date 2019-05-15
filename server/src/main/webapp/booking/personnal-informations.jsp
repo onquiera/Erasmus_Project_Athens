@@ -92,18 +92,18 @@
 
 					<div class="form-group">
 						<label><span class="glyphicon glyphicon-user"></span> First Name</label>
-						<input required type="text" class="form-control" name="passenger-<%=i%>-name" placeholder="Enter First Name">
+						<input value ="a" required type="text" class="form-control" name="passenger-<%=i%>-name" placeholder="Enter First Name">
 					</div>
 					
 					<div class="form-group">
 						<label><span class="glyphicon glyphicon-user"></span> Last Name</label>
-						<input required type="text" class="form-control" name="passenger-<%=i%>-surname" placeholder="Enter Last Name">
+						<input value ="a" required type="text" class="form-control" name="passenger-<%=i%>-surname" placeholder="Enter Last Name">
 					</div>
 					
 					<div class="form-group">
 						<label><span class="glyphicon glyphicon-calendar"></span> Date of birth</label>
-					<input required type="date" class="form-control" name="passenger-<%=i%>-dateOfBirth"
-											value="" max="2010-01-01"
+					<input  required type="date" class="form-control" name="passenger-<%=i%>-dateOfBirth"
+											 value ="0005-05-05" max="2010-01-01"
 											placeholder="dd-mm-yyyy">
 					</div>
   			<% } %>
@@ -115,7 +115,7 @@
 	
 				<div class="form-group">
 					<label><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
-					<input required type="email" class="form-control" name="email" placeholder="Enter email">
+					<input value ="a@g" required type="email" class="form-control" name="email" placeholder="Enter email">
 				</div>
 				
 				<div class="form-group">
