@@ -34,7 +34,7 @@
 </head>
 
 <body>
-	<nav id="progBar">*
+	<nav id="progBar">
 
 	</nav>
 	<%
