@@ -37,7 +37,6 @@ fetch("/structure/progressionBar.jsp").then(function (response) {
 $(document).ready(function () {
   $("#next").click(function (e) {
     e.stopPropagation();
-    e.preventDefault();
     $(".nav-item.active label").css({
       "color": "#ff6600"
     });

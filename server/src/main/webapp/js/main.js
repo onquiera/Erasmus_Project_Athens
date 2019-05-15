@@ -40,7 +40,7 @@ fetch("/structure/progressionBar.jsp")
 $(document).ready(function () {
   $("#next").click(function (e) {
     e.stopPropagation();
-    e.preventDefault();
+   
     $(".nav-item.active label").css({"color": "#ff6600"});
     $(".nav-item label").next().css({"color": "red"});
     //TODO Dire à la bare de passer l'état du label "active" en "passive", et passer le suivant en "active"
