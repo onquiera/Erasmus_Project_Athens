@@ -41,8 +41,6 @@
 	<!--Second navbar, which contains the differents parts of the website -->
 	<nav id="navBar"></nav>
 
-	<!--The flight-searching form-->
-
 
 	<!-- airport list for formular -->
 	<datalist id="airports">
@@ -68,6 +66,7 @@
 	
 	
 
+	<!--The flight-searching form-->
 	<div id="form-container">
 		<img src="./resources/santorin.png">
 		<div class="container" id="searchForm">

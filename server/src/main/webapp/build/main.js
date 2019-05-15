@@ -21,7 +21,31 @@ function displayHB(html) {
 
 fetch("/structure/homeBar.jsp").then(function (response) {
   return response.text();
-}).then(displayHB); //Permit the change of the form
+}).then(displayHB); //Display the progressionBar
+
+function displayPB(html) {
+  var pbContainer = document.getElementById('progBar');
+
+  if (pbContainer) {
+    pbContainer.innerHTML = html;
+  }
+}
+
+fetch("/structure/progressionBar.jsp").then(function (response) {
+  return response.text();
+}).then(displayPB);
+$(document).ready(function () {
+  $("#next").click(function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $(".nav-item.active label").css({
+      "color": "#ff6600"
+    });
+    $(".nav-item label").next().css({
+      "color": "red"
+    }); //TODO Dire à la bare de passer l'état du label "active" en "passive", et passer le suivant en "active"
+  });
+}); //Permit the change of the form
 
 $(document).ready(function () {
   $('.tabing a').click(function (e) {

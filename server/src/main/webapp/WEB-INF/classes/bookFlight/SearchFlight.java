@@ -22,7 +22,7 @@ public class SearchFlight extends HttpServlet {
 		PrintWriter out = res.getWriter();
 		out.println(""
 		+"<link rel=\"shortcut icon\" type=\"image/png\" href=\"/resources/firstlogo.png\" />"
-		+"<title>AirVacation</title>"
+		+"<title>Flights</title>"
 		+"<meta charset=\"utf-8\">"
 		+"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
 	
@@ -37,12 +37,11 @@ public class SearchFlight extends HttpServlet {
 	
 	
 		+"<script src=\"/js/main.js\" defer></script>"
-	
 		
 		+"<link rel=\"stylesheet\" href=\"/css/basics.css\" />"
 		);
 
-		out.println("</head><body><nav id=\"homeBar\"></nav><nav id=\"navBar\"></nav>");
+		out.println("</head><body><nav id=\"progBar\"></nav>");
 
 		String flightType = req.getParameter("flightType");
 
@@ -145,7 +144,7 @@ public class SearchFlight extends HttpServlet {
 							+ "<form action=\"/booking/personnal-informations.jsp\" method=\"get\">"
 							+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flightType + "\">"
 							+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
-							+ "<input class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
+							+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
 							+ "	</form>");
 				}
 
