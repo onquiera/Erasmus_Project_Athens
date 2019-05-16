@@ -33,18 +33,7 @@ function displayPB(html) {
 
 fetch("/structure/progressionBar.jsp").then(function (response) {
   return response.text();
-}).then(displayPB);
-$(document).ready(function () {
-  $("#next").click(function (e) {
-    e.stopPropagation();
-    $(".nav-item.active label").css({
-      "color": "#ff6600"
-    });
-    $(".nav-item label").next().css({
-      "color": "red"
-    }); //TODO Dire à la bare de passer l'état du label "active" en "passive", et passer le suivant en "active"
-  });
-}); //Permit the change of the form
+}).then(displayPB); //Permit the change of the form
 
 $(document).ready(function () {
   $('.tabing a').click(function (e) {

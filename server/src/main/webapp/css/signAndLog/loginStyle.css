@@ -1,7 +1,7 @@
 body>img {
     position: relative;
     width: 128rem;
-    height: 47rem;
+    height: 52rem;
     margin-left: 4rem;
     margin-bottom: 2rem;
 }
@@ -11,7 +11,7 @@ body>img {
     right: auto;
     bottom: 0;
     left: 5rem;
-    top: 22rem;
+    top: 18rem;
 }
 
 .login-form {

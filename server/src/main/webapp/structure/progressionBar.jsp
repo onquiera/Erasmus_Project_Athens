@@ -27,6 +27,10 @@
                     <label>Extra Options</label>
                 </li>
 
+                <li class="nav-item ">
+                    <label>Confirmation</label>
+                </li>
+
                 <li class="nav-item">
                     <label>Payment</label>
                 </li>
