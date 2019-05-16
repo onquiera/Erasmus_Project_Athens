@@ -15,8 +15,8 @@ public class SendMail {
 
     public static void main(String[] args) {
 
-        final String username = "erasmusprojectathens@gmail.com";
-        final String password = "erasmusAthens";
+        final String username = "erasmusathensproject@gmail.com";
+        final String password = "ErasmusAthens";
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
