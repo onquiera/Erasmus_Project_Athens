@@ -56,13 +56,13 @@
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										<input name="surname" class="form-control" value="" placeholder="Surname">
+										<input required name="surname" class="form-control" value="" placeholder="Surname">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										<input class="form-control" name="reservationID" value=""
+										<input required class="form-control" name="reservationID" value=""
 											placeholder="Reservation ID">
 									</div>
 

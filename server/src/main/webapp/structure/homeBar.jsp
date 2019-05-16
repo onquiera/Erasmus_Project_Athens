@@ -10,7 +10,7 @@
         <a class="nav-link" href="#">Choose your language</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="#">Contact us</a>
+        <a class="nav-link" href="/informations/contactUs.html">Contact us</a>
       </li>
       <%
           //gestion login

@@ -35,14 +35,6 @@ html, body {
     color: red;
 }
 
-.nav-item.passive label{
-    color:#ff6600;
-}
-
-.nav-item.active label{
-    color:red;
-    font: bold;
-}
 
 .navbar {
     background-color: white;
@@ -51,22 +43,12 @@ html, body {
     padding: .2rem 1rem;
 }
 
-#progressBar{
-    border-top: 1px solid antiquewhite;
-}
 
 .navbar-light .navbar-nav .nav-link {
     margin-left: 10px;
 }
 
-label{
-    color: rgba(0, 0, 0, .5);
-    padding-right: .5rem;
-    padding-left: .5rem;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-weight: inherit;
-}
+
 
 /* Footer */
 

@@ -1,0 +1,21 @@
+label{
+    color: rgba(0, 0, 0, .5);
+    padding-right: .5rem;
+    padding-left: .5rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: inherit;
+}
+
+#progressBar{
+    border-top: 1px solid antiquewhite;
+}
+
+.nav-item.passive label{
+    color:#ff6600;
+}
+
+.nav-item.active label{
+    color:red;
+    font: bold;
+}

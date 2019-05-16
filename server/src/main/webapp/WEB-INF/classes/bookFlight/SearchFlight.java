@@ -36,7 +36,7 @@ public class SearchFlight extends HttpServlet {
 				+ "<script src=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js\"></script>"
 
 				+ "<script src=\"/js/main.js\" defer></script>"
-
+				+"<link rel=\"stylesheet\" href=\"/css/progress/progressBarStyle.css\" />"
 				+ "<link rel=\"stylesheet\" href=\"/css/basics.css\" />");
 
 		// Content

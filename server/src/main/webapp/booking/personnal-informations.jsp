@@ -30,6 +30,7 @@
 
 	<!--CSS Stylesheet-->
 	<link rel="stylesheet" href="/css/basics.css" />
+	<link rel="stylesheet" href="/css/progress/progressBarStyle.css" />
 
 </head>
 
