@@ -10,7 +10,7 @@
 <head>
 
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
-	<title>P.infos</title>
+	<title>Infos</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
