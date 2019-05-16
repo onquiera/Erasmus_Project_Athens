@@ -20,28 +20,64 @@ public class SearchFlight extends HttpServlet {
 
 		res.setContentType("text/html,charset=UTF-8");
 		PrintWriter out = res.getWriter();
-		out.println(""
-				+"<link rel=\"shortcut icon\" type=\"image/png\" href=\"/resources/firstlogo.png\" />"
-				+"<title>Flights</title>"
-				+"<meta charset=\"utf-8\">"
-				+"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
 
+		
+		// Header
+		out.println("" + "<link rel=\"shortcut icon\" type=\"image/png\" href=\"/resources/firstlogo.png\" />"
+				+ "<title>Flights</title>" + "<meta charset=\"utf-8\">"
+				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
 
-		+"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">"
-		+"<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>"
-		+"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>"
-		+"<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>"
+				+ "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">"
+				+ "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>"
+				+ "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>"
+				+ "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>"
 
-		+"<link href=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">"
-		+"<script src=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js\"></script>"
+				+ "<link href=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">"
+				+ "<script src=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js\"></script>"
 
+				+ "<script src=\"/js/main.js\" defer></script>"
 
-		+"<script src=\"/js/main.js\" defer></script>"
+				+ "<link rel=\"stylesheet\" href=\"/css/basics.css\" />");
 
-		+"<link rel=\"stylesheet\" href=\"/css/basics.css\" />"
-				);
+		// Content
+		out.println("</head><body>"
 
-		out.println("</head><body><nav id=\"progBar\"></nav>");
+				+ "<div id=\"logo\">"
+				+ "<a href=\"/\"><img src=\"/resources/logo.png\" alt=\"Insert logo here\" id=\"home\"></a>" + "</div>"
+
+				+ "<nav id=\"progressBar\" class=\"navbar navbar-expand-lg navbar-light\">"
+				+ "    <div class=\"container\">"
+				+ "        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar10\">"
+				+ "            <span class=\"navbar-toggler-icon\"></span>" + "         </button>"
+				+ "         <div class=\"navbar-collapse collapse\" id=\"navbar10\">"
+				+ "             <ul class=\"navbar-nav nav-fill w-100\">"
+				+ "                 <li class=\"nav-item passive\">" 
+				+ "                     <label>Search</label>"
+				+ "                 </li>" 
+				+ "                 <li class=\"nav-item active\">"
+				+ "                     <label>Departing Flight</label>" 
+				+ "                 </li>"
+				+ "                 <li class=\"nav-item\">" 
+				+ "                     <label>Return Flight</label>"
+				+ "                 </li>"
+
+				+ "                 <li class=\"nav-item\">" 
+				+ "                     <label>Passengers</label>"
+				+ "                 </li>"
+
+				+ "                 <li class=\"nav-item\">" 
+				+ "                     <label>Extra Options</label>"
+				+ "                 </li>"
+
+				+ "                 <li class=\"nav-item\">" 
+				+ "                     <label>Confirmation</label>"
+				+ "                 </li>"
+
+				+ "                 <li class=\"nav-item\">" 
+				+ "                     <label>Payment</label>"
+				+ "                 </li>"
+
+				+ "             </ul>" + "         </div>" + "     </div>" + " </nav>	");
 
 		String flightType = req.getParameter("flightType");
 
