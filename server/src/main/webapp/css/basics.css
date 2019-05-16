@@ -5,6 +5,12 @@ html, body {
     overflow-x: hidden;
 }
 
+#searching{
+    margin-left: 9rem;
+    color:antiquewhite;
+    position: inherit
+}
+
 #textArea {
     text-align: left;
     margin: 15rem;
