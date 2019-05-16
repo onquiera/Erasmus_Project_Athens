@@ -20,6 +20,8 @@ public class SearchFlight extends HttpServlet {
 
 		res.setContentType("text/html,charset=UTF-8");
 		PrintWriter out = res.getWriter();
+
+		
 		// Header
 		out.println("" + "<link rel=\"shortcut icon\" type=\"image/png\" href=\"/resources/firstlogo.png\" />"
 				+ "<title>Flights</title>" + "<meta charset=\"utf-8\">"
@@ -84,12 +86,9 @@ public class SearchFlight extends HttpServlet {
 		if (!(flightType.equals("outward") || flightType.equals("return"))) {
 			// error
 
-			out.println("<h2>Parameter Error</h2>");
-
-			out.println("<br>Please retry your search");
-
-			// TODO redirect page error.jsp :)
-
+			res.sendRedirect("/error/parameterError.html");
+			//TODO gerer lien retour depuis la page parameterError ?
+			
 		} else {
 
 			// TODO ajouter détails > exemple pas flight id mais détails du vol
@@ -127,22 +126,49 @@ public class SearchFlight extends HttpServlet {
 				httpSession.setAttribute("numberOfPassengers", numberOfPassengers);
 				httpSession.setAttribute("travelClass", travelClass);
 
-				// departure date from string to sql
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				java.util.Date departureDateUtil = dateFormat.parse(departureDate);
-				java.sql.Date departureDateSQL = new java.sql.Date(departureDateUtil.getTime());
+				
+				
+				//requete de recherche
+				
+				PreparedStatement ps=null;
+				java.sql.Date flightDate=null;
+				if(flightType.equals("outward")) {
 
-				// -----------------------------------------------------------------------------------
-				// research in database
+					// departure date from string to sql
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					java.util.Date departureDateUtil = dateFormat.parse(departureDate);
+					flightDate = new java.sql.Date(departureDateUtil.getTime());
 
-				String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
-						+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
-						+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
-						+ "and a2.name = ? " + "and fl.departuredate=?";
-				PreparedStatement ps = con.prepareStatement(query);
-				ps.setString(1, departure);
-				ps.setString(2, destination);
-				ps.setDate(3, departureDateSQL);
+					// -----------------------------------------------------------------------------------
+					// research in database
+
+					String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
+							+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
+							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
+							+ "and a2.name = ? " + "and fl.departuredate=?";
+					ps = con.prepareStatement(query);
+					ps.setString(1, departure);
+					ps.setString(2, destination);
+					ps.setDate(3, flightDate);
+
+				}else {
+					// return date from string to sql
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					java.util.Date returnDateUtil = dateFormat.parse(returnDate);
+					flightDate = new java.sql.Date(returnDateUtil.getTime());
+
+					// -----------------------------------------------------------------------------------
+					// research in database
+
+					String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
+							+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
+							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
+							+ "and a2.name = ? " + "and fl.departuredate=?";
+					ps = con.prepareStatement(query);
+					ps.setString(1, destination);
+					ps.setString(2, departure);
+					ps.setDate(3, flightDate);
+				}
 
 				ResultSet rs = ps.executeQuery();
 
@@ -152,8 +178,11 @@ public class SearchFlight extends HttpServlet {
 
 				out.println("<h1>Available <u>" + flightType + "</u> flights </h1>");
 				out.println("<h2>from :" + departure + " to " + destination + "</h2>");
-				out.println("<h2>date : " + departureDate + "</h2>");
+				out.println("<h2>on date : " + flightDate + "</h2>");
 
+				
+				//TODO ici rendre ça beau
+				
 				while (rs.next()) {
 
 					// titre des colonnes
@@ -165,17 +194,14 @@ public class SearchFlight extends HttpServlet {
 					}
 					out.println("</h3>");
 
-					// TODO linker vers servlet gestion enregistrement vol puis redirect vers option
-					// suivante après
-					// eventuel retour
-
-					// si retour alors mettre
-					// flightType = "return";
-					// sinon mettre null
-
+					//bouton de validation
+					//gestion si vol retour ou non
 					out.println(""
 							// + "<form action=\"/booking/seats.jsp\" method=\"get\">"
-							+ "<form action=\"/booking/personnal-informations.jsp\" method=\"get\">"
+							+ "<form action=\"/booking/personnal-informations.jsp\" method=\"get\">");
+							
+					//reste des options du bouton
+					out.println(""
 							+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flightType + "\">"
 							+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
 							+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
@@ -184,11 +210,15 @@ public class SearchFlight extends HttpServlet {
 
 				// RETOUR
 
-			} catch (Exception e2) {
-
-				out.println("Error : " + e2.getMessage());
-
+			}catch(java.lang.NumberFormatException e ){
+				e.printStackTrace();
+				res.sendRedirect("/error/parameterError.html");
+			}catch(NullPointerException e ){
+				e.printStackTrace();
+				res.sendRedirect("/error/parameterError.html");
+			}catch(Exception e2 ){
 				e2.printStackTrace();
+				res.sendRedirect("/error/error.html");
 			}
 		}
 		out.println("<div id=\"footer\"></div></body>");
