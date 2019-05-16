@@ -48,8 +48,8 @@
 	%>
 	
 	
-	<h2> sieges du vol <%=flightID %></h2>	
-	<p> nombres de si�ges : <%=numberOfSeats %></p>
+	<h2> flight <%=flightID %></h2>	
+	<p> number of seats : <%=numberOfSeats %></p>
 	
 	
 	
