@@ -54,17 +54,17 @@
 			
 			 %>
 	</datalist>
-	
-	
-									<% 
+
+
+	<% 
 									DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 									LocalDate localDate = LocalDate.now();
 									String actualDate = dtf.format(localDate); 		
 									localDate = localDate.plusDays(1);
 									String tomorrowDate = dtf.format(localDate); 													
 									%>
-	
-	
+
+
 
 	<!--The flight-searching form-->
 	<div id="form-container">
@@ -117,8 +117,8 @@
 											placeholder="dd-mm-yyyy">
 										-->
 
-										<input required type="date" class="form-control"
-											name="departureDate" value="2019-04-22" min="2019-04-01" max="2025-04-01"
+										<input required type="date" class="form-control" name="departureDate"
+											value="2019-05-22" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
@@ -134,8 +134,8 @@
 											placeholder="dd-mm-yyyy">
 										-->
 
-										<input required type="date" class="form-control"
-											name="returnDate" value="2019-06-15" min="2019-04-01" max="2025-04-01"
+										<input required type="date" class="form-control" name="returnDate"
+											value="2019-06-15" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
@@ -204,8 +204,8 @@
 											placeholder="dd-mm-yyyy">
 										-->
 
-										<input required type="date" class="form-control"
-											name="departureDate" value="2019-04-22" min="2019-04-01" max="2025-04-01"
+										<input required type="date" class="form-control" name="departureDate"
+											value="2019-04-22" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
