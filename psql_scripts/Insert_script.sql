@@ -140,7 +140,7 @@ INSERT INTO flights VALUES
 ('GR00450036',00000000000009,'ATH','LCY','2019-05-25', '15:30:00','2019-05-25', '21:30:00','10'),
 ('GR00450037',00000000000009,'LCY','ATH','2019-05-25', '22:40:00','2019-05-26', '03:40:00','10');
 
-
+--ID unique, soit l'id à utiliser pour trouver sa réservation--
 INSERT INTO bookings VALUES
 (0000000001,'FR00764400',120,'Despelchin','bricedespelchin@gmail.com'),
 (0000000002,'FR00764400',121,'Onquiert','bricedespelchin@gmail.com'),
