@@ -84,7 +84,7 @@
 
 								<!--RoundTrip Form-->
 								<form action="/servlet-SearchFlight" method="get">
-									<input type="hidden" name="flightType" value="outward">
+									<input type="hidden" name="flightType" value="research">
 
 									<div class="triptype">
 									</div>
@@ -135,7 +135,7 @@
 										-->
 
 										<input required type="date" class="form-control" name="returnDate"
-											value="2019-06-15" min="2019-04-01" max="2025-04-01"
+											value="2019-05-24" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
@@ -173,7 +173,7 @@
 							<div id="2" class="tab1">
 								<!--OneWay Form-->
 								<form action="/servlet-SearchFlight" method="get">
-									<input type="hidden" name="flightType" value="outward">
+									<input type="hidden" name="flightType" value="research">
 
 									<div class="triptype">
 									</div>

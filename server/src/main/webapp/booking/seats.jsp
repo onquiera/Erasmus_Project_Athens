@@ -5,7 +5,6 @@
 <%@page import="flights.Airport"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="flights.AirportsDAO"%>
-<%@page import="connexion.UsersDAO"%>
 <html lang="en">
 
 <head>
@@ -30,16 +29,35 @@
 	
 	<%
 	
-	//TODO plus tard > adapter type d'avion avec rang�e de 3 4 etc > + gerer multiples de 4 ..
-	//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionn� et list en session ..
+	//TODO plus tard > adapter type d'avion avec rangee de 3 4 etc > + gerer multiples de 4 ..
+	//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionne et list en session ..
 	// bouton boostrap > https://getbootstrap.com/docs/4.0/components/buttons/
 	
 	//> ou si plusieurs sieges, le gerer avec un formulaire unique et une validation ?
 	//> mais difficile de gerer le prix dans ce cas l�, si prix change
 	
 	
+		HttpSession httpSession = request.getSession(false);
+		//check if session is valid
+		if(httpSession==null || !request.isRequestedSessionIdValid() ){
+			System.out.println("\n\n\n session is invalid \n\n\n");
+			response.sendRedirect("/error/sessionError.html");
+		}
+		
+		String flightType = request.getParameter("flightType");
+		
+		
+		String flightID = null;
+		if(flightType.equals("outward")){
+			flightID = (String)httpSession.getAttribute("outwardFlightID");
+		}else if(flightType.equals("return")){
+			flightID = (String)httpSession.getAttribute("returnFlightID");
+		}else{
+			response.sendRedirect("/error/parameterError.html?error=flightType+incorrect+on+seats_jsp");
+		}
+	
+	
 		SeatsDAO seatsDAO = new SeatsDAO();
-		String flightID = request.getParameter("flightID");
 
 		int numberOfSeats = seatsDAO.numberOfSeats(flightID);
 		ArrayList<String> listSeats = seatsDAO.bookedSeats(flightID);
@@ -48,7 +66,7 @@
 	%>
 	
 	
-	<h2> flight <%=flightID %></h2>	
+	<h2><%=flightType %> flight</h2>	
 	<p> number of seats : <%=numberOfSeats %></p>
 	
 	
@@ -61,7 +79,7 @@
 			for (int j = 0; j < longueurRangees; j++) {
 				String seat = i + "" + convert.charAt(j);
 					if (!listSeats.contains(seat)) {
-					String link = "/servlet-BookSeats?seat=" + seat + "&flightID=" + flightID;
+					String link = "/servlet-BookSeats?seat=" + seat +"&flightType=" + flightType;
 					out.println(
 							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" onclick=\"window.location.href = '"
 									+ link + "';\"    >" + seat + "</button>");

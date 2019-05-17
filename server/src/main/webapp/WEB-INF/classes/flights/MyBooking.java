@@ -5,8 +5,6 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-
-
 @SuppressWarnings("serial")
 public class MyBooking extends HttpServlet
 {

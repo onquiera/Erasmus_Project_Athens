@@ -99,6 +99,7 @@
 		<url-pattern>/servlet-PersonnalInformations</url-pattern>
 	</servlet-mapping>
 
+
 	<servlet>
 		<servlet-name>servlet-Contact</servlet-name>
 		<servlet-class>mailing.Contact</servlet-class>
@@ -110,10 +111,7 @@
 
 </web-app>
 
-
-
 <!-- 
 lien explicatif sur web.xml/servlet : 
 https://openclassrooms.com/fr/courses/626954-creez-votre-application-web-avec-java-ee/619584-la-servlet
-
 -->

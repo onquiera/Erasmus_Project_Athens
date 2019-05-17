@@ -23,52 +23,58 @@ public class BookSeats extends HttpServlet
 
 
 		res.setContentType("text/html,charset=UTF-8");
-		PrintWriter out = res.getWriter();
-		out.println( "<head><title>My Booking</title></head>" );
-		out.println( "</head><body>" );
-
-		//TODO ajouter détails > exemple pas flight id mais détails du vol
 
 		try(Connection con = DS.getConnection()){
-
+			
+			HttpSession httpSession = req.getSession(false);
+			//check if session is valid
+			if(httpSession==null || !req.isRequestedSessionIdValid() ){
+				System.out.println("\n\n\n session is invalid \n\n\n");
+				res.sendRedirect("/error/sessionError.html");
+			}
 
 			//departure    destination    flightDate    numberofpeople
 
 			//recuperation des parametres
-			String flightID=req.getParameter("flightID");
+			String flightType = req.getParameter("flightType");
 			String seat=req.getParameter("seat");
-			//TODO > soit siege en parametre soit en session si plusieurs 
 			
+			System.out.println("flightType: " + flightType +" - seat :"+seat);
 			
-			System.out.println("flightID :"+flightID);
-			System.out.println("seat :"+seat);
-			
-			
-			//> mise en session commande et passage etape suivante
-
-			HttpSession session = req.getSession();
-			session.setAttribute("confirmed-flightID", flightID);
-			session.setAttribute("confirmed-seat", seat);
-			
-			//or 
+			//TODO multiples sieges  
 //			ArrayList<String> seats =(ArrayList<String>)= session.getAttribute("seats");
 //			if(seats==null) {
 //				seats = new ArrayList<>();
 //			}
 //			seats.add(seat);
 //			session.setAttribute("seats", seats);
-
-			res.sendRedirect("booking/passengers.jsp");
+			//pour gestion de plusieurs sieges (rajouter un bouton valider et sieges: liens récursifs vers la jsp) 
+			
+			
+			if(flightType.equals("outward")) {
+				
+				httpSession.setAttribute("outward-seat", seat);
+				
+				String returnDate = (String)httpSession.getAttribute("returnDate");
+				if(returnDate==null) {
+					res.sendRedirect("/booking/personnal-informations.jsp");
+				}else {
+					res.sendRedirect("/booking/seats.jsp?flightType=return");
+				}
+				
+				
+			}else if(flightType.equals("return")) {
+				httpSession.setAttribute("return-seat", seat);
+				res.sendRedirect("/booking/personnal-informations.jsp");
+			}else {
+				res.sendRedirect("/error/parameterError.html?error=parameter+flightType+error");
+			}
 
 		}catch(Exception e2){
-			out.println( "<h1>Invalid parameters </h1>"
-					+ e2.getMessage() );
-
 			e2.printStackTrace();
+			res.sendRedirect("/error/error.html");
 		}
 
-		out.println( ""
-				+ "</body>" );
 	}
 }
 

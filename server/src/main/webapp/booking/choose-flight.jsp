@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<%@page import="java.beans.DesignMode"%>
+<%@page import="connexion.DS"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.ResultSetMetaData"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.PreparedStatement"%>
+<html lang="en">
+
+<head>
+
+	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
+	<title>Booking</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--Bootstrap links and scripts-->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
+		id="bootstrap-css">
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+	<!--Javascript-->
+	<script src="/js/main.js" defer></script>
+
+	<!--CSS Stylesheet-->
+	<link rel="stylesheet" href="/css/basics.css" />
+	<link rel="stylesheet" href="/css/HomePage/flightSearchStyle.css">
+	<link rel="stylesheet" href="/css/HomePage/homeStyle.css">
+</head>
+
+
+<body>
+
+	<!--First Navbar, which contains the logo, language, contact, sign up and login section-->
+	<nav id="homeBar"></nav>
+
+	<!--Second navbar, which contains the differents parts of the website -->
+	<nav id="navBar"></nav>
+
+	<%
+			try (Connection con = DS.getConnection()) {
+			
+				HttpSession httpSession = request.getSession(false);
+				//check if session is valid
+				if(httpSession==null || !request.isRequestedSessionIdValid() ){
+					System.out.println("\n\n\n session is invalid \n\n\n");
+					response.sendRedirect("/error/sessionError.html");
+				}
+	
+				String departure = (String)httpSession.getAttribute("departure");
+				String destination = (String)httpSession.getAttribute("destination");
+				String departureDate = (String)httpSession.getAttribute("departureDate");
+				String returnDate = (String)httpSession.getAttribute("returnDate");
+	
+				String flight = request.getParameter("flight");
+				
+				//requete de recherche
+				
+				PreparedStatement ps=null;
+				java.sql.Date flightDate=null;
+				if(flight.equals("outward")) {
+
+					// departure date from string to sql
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					java.util.Date departureDateUtil = dateFormat.parse(departureDate);
+					flightDate = new java.sql.Date(departureDateUtil.getTime());
+
+					// -----------------------------------------------------------------------------------
+					// research in database
+
+					String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
+							+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
+							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
+							+ "and a2.name = ? " + "and fl.departuredate=?";
+					ps = con.prepareStatement(query);
+					ps.setString(1, departure);
+					ps.setString(2, destination);
+					ps.setDate(3, flightDate);
+
+				out.println("<h1>Available <u>" + flight + "</u> flights </h1>");
+				out.println("<h2>from : " + departure + " to " + destination + "</h2>");
+				}else { //RETURN FLIGHT
+					// return date from string to sql
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					java.util.Date returnDateUtil = dateFormat.parse(returnDate);
+					flightDate = new java.sql.Date(returnDateUtil.getTime());
+
+					// -----------------------------------------------------------------------------------
+					// research in database
+
+					String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
+							+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
+							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
+							+ "and a2.name = ? " + "and fl.departuredate=?";
+					ps = con.prepareStatement(query);
+					ps.setString(1, destination);
+					ps.setString(2, departure);
+					ps.setDate(3, flightDate);
+					
+				out.println("<h1>Available <u>" + flight + "</u> flights </h1>");
+				out.println("<h2>from : " + destination + " to " + departure + "</h2>");
+				}
+
+				ResultSet rs = ps.executeQuery();
+
+				// out.println("|||| ps :"+ ps+" ||||");
+
+				ResultSetMetaData rsmd = rs.getMetaData();
+
+				out.println("<h2>on date : " + flightDate + "</h2>");
+
+				
+				while (rs.next()) {
+
+					// titre des colonnes
+					out.println("<h3>");
+					for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+
+						out.println(rsmd.getColumnLabel(i) + ": " + rs.getString(i) + "  ");
+
+					}
+					out.println("</h3>");
+
+					//bouton de validation
+					//gestion si vol retour ou non
+					out.println(""
+							+ "<form action=\"/servlet-SearchFlight\" method=\"get\">");
+					//reste des options du bouton
+					out.println(""
+							+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flight + "\">"
+							+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
+							+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
+							+ "	</form>");
+				}
+
+
+			}catch(java.lang.NumberFormatException e ){
+				e.printStackTrace();
+				response.sendRedirect("/error/parameterError.html");
+			}catch(NullPointerException e ){
+				e.printStackTrace();
+				response.sendRedirect("/error/parameterError.html");
+			}catch(Exception e2 ){
+				e2.printStackTrace();
+				response.sendRedirect("/error/error.html");
+			}
+	
+	 %>
+
+
+	<!--Footer -->
+	<div id="footer"></div>
+</body>
+
+</html>

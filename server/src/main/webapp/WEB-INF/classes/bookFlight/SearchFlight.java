@@ -2,10 +2,6 @@ package bookFlight;
 
 import java.io.*;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,83 +12,15 @@ import connexion.DS;
 public class SearchFlight extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		// req.getRequestDispatcher("/rechercheVille.jsp").forward(req, res);
-
 		res.setContentType("text/html,charset=UTF-8");
-		PrintWriter out = res.getWriter();
 
-		
-		// Header
-		out.println("" + "<link rel=\"shortcut icon\" type=\"image/png\" href=\"/resources/firstlogo.png\" />"
-				+ "<title>Flights</title>" + "<meta charset=\"utf-8\">"
-				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
-
-				+ "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">"
-				+ "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>"
-				+ "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>"
-				+ "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>"
-
-				+ "<link href=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">"
-				+ "<script src=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js\"></script>"
-
-				+ "<script src=\"/js/main.js\" defer></script>"
-				+"<link rel=\"stylesheet\" href=\"/css/progress/progressBarStyle.css\" />"
-				+ "<link rel=\"stylesheet\" href=\"/css/basics.css\" />");
-
-		// Content
-		out.println("</head><body>"
-
-				+ "<div id=\"logo\">"
-				+ "<a href=\"/\"><img src=\"/resources/logo.png\" alt=\"Insert logo here\" id=\"home\"></a>" + "</div>"
-
-				+ "<nav id=\"progressBar\" class=\"navbar navbar-expand-lg navbar-light\">"
-				+ "    <div class=\"container\">"
-				+ "        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar10\">"
-				+ "            <span class=\"navbar-toggler-icon\"></span>" + "         </button>"
-				+ "         <div class=\"navbar-collapse collapse\" id=\"navbar10\">"
-				+ "             <ul class=\"navbar-nav nav-fill w-100\">"
-				+ "                 <li class=\"nav-item passive\">" 
-				+ "                     <label>Search</label>"
-				+ "                 </li>" 
-				+ "                 <li class=\"nav-item active\">"
-				+ "                     <label>Departing Flight</label>" 
-				+ "                 </li>"
-				+ "                 <li class=\"nav-item\">" 
-				+ "                     <label>Return Flight</label>"
-				+ "                 </li>"
-
-				+ "                 <li class=\"nav-item\">" 
-				+ "                     <label>Passengers</label>"
-				+ "                 </li>"
-
-				+ "                 <li class=\"nav-item\">" 
-				+ "                     <label>Extra Options</label>"
-				+ "                 </li>"
-
-				+ "                 <li class=\"nav-item\">" 
-				+ "                     <label>Confirmation</label>"
-				+ "                 </li>"
-
-				+ "                 <li class=\"nav-item\">" 
-				+ "                     <label>Payment</label>"
-				+ "                 </li>"
-
-				+ "             </ul>" + "         </div>" + "     </div>" + " </nav>	");
 
 		String flightType = req.getParameter("flightType");
 
 		// traduction : vol aller = outward flight
 
-		if (!(flightType.equals("outward") || flightType.equals("return"))) {
-			// error
-
-			res.sendRedirect("/error/parameterError.html");
-			//TODO gerer lien retour depuis la page parameterError ?
+		if (flightType.equals("research")) {
 			
-		} else {
-
-			// TODO ajouter détails > exemple pas flight id mais détails du vol
-
 			try (Connection con = DS.getConnection()) {
 
 				// PARAMETERS management
@@ -125,90 +53,8 @@ public class SearchFlight extends HttpServlet {
 				httpSession.setAttribute("returnDate", returnDate);
 				httpSession.setAttribute("numberOfPassengers", numberOfPassengers);
 				httpSession.setAttribute("travelClass", travelClass);
-
 				
-				
-				//requete de recherche
-				
-				PreparedStatement ps=null;
-				java.sql.Date flightDate=null;
-				if(flightType.equals("outward")) {
-
-					// departure date from string to sql
-					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-					java.util.Date departureDateUtil = dateFormat.parse(departureDate);
-					flightDate = new java.sql.Date(departureDateUtil.getTime());
-
-					// -----------------------------------------------------------------------------------
-					// research in database
-
-					String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
-							+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
-							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
-							+ "and a2.name = ? " + "and fl.departuredate=?";
-					ps = con.prepareStatement(query);
-					ps.setString(1, departure);
-					ps.setString(2, destination);
-					ps.setDate(3, flightDate);
-
-				}else {
-					// return date from string to sql
-					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-					java.util.Date returnDateUtil = dateFormat.parse(returnDate);
-					flightDate = new java.sql.Date(returnDateUtil.getTime());
-
-					// -----------------------------------------------------------------------------------
-					// research in database
-
-					String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
-							+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
-							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
-							+ "and a2.name = ? " + "and fl.departuredate=?";
-					ps = con.prepareStatement(query);
-					ps.setString(1, destination);
-					ps.setString(2, departure);
-					ps.setDate(3, flightDate);
-				}
-
-				ResultSet rs = ps.executeQuery();
-
-				// out.println("|||| ps :"+ ps+" ||||");
-
-				ResultSetMetaData rsmd = rs.getMetaData();
-
-				out.println("<h1>Available <u>" + flightType + "</u> flights </h1>");
-				out.println("<h2>from :" + departure + " to " + destination + "</h2>");
-				out.println("<h2>on date : " + flightDate + "</h2>");
-
-				
-				//TODO ici rendre ça beau
-				
-				while (rs.next()) {
-
-					// titre des colonnes
-					out.println("<h3>");
-					for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-
-						out.println(rsmd.getColumnLabel(i) + ": " + rs.getString(i) + "  ");
-
-					}
-					out.println("</h3>");
-
-					//bouton de validation
-					//gestion si vol retour ou non
-					out.println(""
-							// + "<form action=\"/booking/seats.jsp\" method=\"get\">"
-							+ "<form action=\"/booking/personnal-informations.jsp\" method=\"get\">");
-							
-					//reste des options du bouton
-					out.println(""
-							+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flightType + "\">"
-							+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
-							+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
-							+ "	</form>");
-				}
-
-				// RETOUR
+				res.sendRedirect("/booking/choose-flight.jsp?flight=outward");
 
 			}catch(java.lang.NumberFormatException e ){
 				e.printStackTrace();
@@ -220,7 +66,53 @@ public class SearchFlight extends HttpServlet {
 				e2.printStackTrace();
 				res.sendRedirect("/error/error.html");
 			}
+			
+		} else if(flightType.equals("outward")) {
+
+			HttpSession httpSession = req.getSession(false);
+			//check if session is valid
+			if(httpSession==null || !req.isRequestedSessionIdValid() ){
+				System.out.println("\n\n\n session is invalid \n\n\n");
+				res.sendRedirect("/error/sessionError.html");
+			}
+			
+			String flightID = req.getParameter("flightID");
+			if(flightID==null) {
+				res.sendRedirect("/error/parameterError.html?error=flightID+not+found");
+			}
+			
+			httpSession.setAttribute("outwardFlightID", flightID);
+			
+			
+			String returnDate = (String)httpSession.getAttribute("returnDate");
+			if(returnDate==null) {
+				res.sendRedirect("/booking/seats.jsp");
+			}else {
+				res.sendRedirect("/booking/choose-flight.jsp?flight=return");
+			}
+			
+			
+		}else if(flightType.equals("return")) {
+			
+			HttpSession httpSession = req.getSession(false);
+			//check if session is valid
+			if(httpSession==null || !req.isRequestedSessionIdValid() ){
+				System.out.println("\n\n\n session is invalid \n\n\n");
+				res.sendRedirect("/error/sessionError.html");
+			}
+			
+			String flightID = req.getParameter("flightID");
+			if(flightID==null) {
+				res.sendRedirect("/error/parameterError.html?error=flightID+not+found");
+			}
+			
+			httpSession.setAttribute("returnFlightID", flightID);
+			
+			res.sendRedirect("/booking/seats.jsp?flightType=outward");
+			
+			
+		}else {
+			res.sendRedirect("/error/parameterError.html?error=parameter+flightType+error");
 		}
-		out.println("<div id=\"footer\"></div></body>");
 	}
 }
