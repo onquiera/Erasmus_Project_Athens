@@ -11,12 +11,15 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 
-public class SendMail {
+public class MailService {
 	final String username;
 	final String password;
 	Properties props;
 	
-	public SendMail() {
+	public static final String AIR_VACATIONS_EMAIL = "erasmusprojectathens@gmail.com";
+	
+	
+	public MailService() {
 		username = "erasmusathensproject@gmail.com";
 		password = "ErasmusAthens";
 		props = new Properties();
@@ -36,7 +39,7 @@ public class SendMail {
 
 		try {
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("erasmusprojectathens@gmail.com"));
+			message.setFrom(new InternetAddress(AIR_VACATIONS_EMAIL));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(email));
 			message.setSubject(subject);
@@ -54,7 +57,7 @@ public class SendMail {
 
 	public static void main(String[] args) {
 		
-		SendMail send = new SendMail();
+		MailService send = new MailService();
 		send.sendTo("antoine.onquiert@gmail.com", "Testing object SendMail", "Dear Mail Crawler,"
 				+ "\n\n this is a test!");
 

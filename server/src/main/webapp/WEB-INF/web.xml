@@ -99,6 +99,15 @@
 		<url-pattern>/servlet-PersonnalInformations</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>servlet-Contact</servlet-name>
+		<servlet-class>mailing.Contact</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-Contact</servlet-name>
+		<url-pattern>/servlet-Contact</url-pattern>
+	</servlet-mapping>
+
 </web-app>
 
 
