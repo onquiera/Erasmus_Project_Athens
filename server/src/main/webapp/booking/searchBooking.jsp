@@ -47,7 +47,7 @@
 							<div id="1" class="tab1 active">
 									<h3 id="searching">Search my Reservation</h3>
 								<!--RoundTrip Form-->
-								<form action="MyBooking" method=post role="form class=form">
+								<form action="/MyBooking" method=post role="form class=form">
 									<input type="hidden" name="flightType" value="outward">
 
 									<div class="triptype">

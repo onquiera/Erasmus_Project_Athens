@@ -205,7 +205,7 @@
 										-->
 
 										<input required type="date" class="form-control" name="departureDate"
-											value="2019-04-22" min="2019-04-01" max="2025-04-01"
+											value="2019-05-22" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>

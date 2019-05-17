@@ -32,6 +32,7 @@
 	<!--CSS Stylesheet-->
 	<link rel="stylesheet" href="/css/basics.css" />
 	<link rel="stylesheet" href="/css/progress/progressBarStyle.css" />
+	<link rel="stylesheet" href="/css/progress/personnalInfosStyle.css" />
 
 </head>
 
@@ -39,7 +40,7 @@
 	<div id="logo">
 		<a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
 	</div>
-	
+
 	<nav id="progressBar" class="navbar navbar-expand-lg navbar-light">
 		<div class="container">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
@@ -47,7 +48,7 @@
 			</button>
 			<div class="navbar-collapse collapse" id="navbar10">
 				<ul class="navbar-nav nav-fill w-100">
-					<li id="number1" class="nav-item passive">
+					<li class="nav-item passive">
 						<label>Search</label>
 					</li>
 					<li class="nav-item passive">
@@ -56,11 +57,11 @@
 					<li class="nav-item passive">
 						<label>Return Flight</label>
 					</li>
-	
+
 					<li class="nav-item passive">
 						<label>Passengers</label>
 					</li>
-	
+
 					<li class="nav-item passive">
 						<label>Extra Options</label>
 					</li>
@@ -68,18 +69,20 @@
 					<li class="nav-item active">
 						<label>Confirmation</label>
 					</li>
-	
+
 					<li class="nav-item">
 						<label>Payment</label>
 					</li>
-	
-	
+
+
 				</ul>
 			</div>
 		</div>
 	</nav>
-
-	<h1>Booking confirmation</h1>
+	<div id="textArea2">
+		<h1>Booking confirmation</h1>
+		<br>
+	</div>
 
 	<%
 	ArrayList<Passenger> listOfPassengers=null;
@@ -110,50 +113,63 @@
 		}
 		
 	%>
+	<div class="container" id="pInfoForm">
+		<h2>Booking informations:</h2>
 
-	<h1> Your booking informations : </h1>
+		<h3>Outward flight:</h3>
+		<h4> >Departure : <%=departure %> </h4>
+		<h4> >Destination : <%=destination %> </h4>
+		<br>
 
-	<h3>outward flight</h3>
-	<h4>departure : <%=departure %> </h4>
-	<h4>destination : <%=destination %> </h4>
-	<h3>(return flight)</h3>
+		<h3>Return flight:</h3>
+		<h4>>None</h4>
+		<br>
+
+		<h3>Seats:</h3>
+		<h4>>None yet</h4>
+		<br>
+	</div>
 
 	<% for (int i = 0; i < listOfPassengers.size(); i++) {
 		Passenger passenger = listOfPassengers.get(i);
 	%>
-	<h2>Personnal informations : </h2>
 
-	<% if(i+1==1){
-			out.println("<h3>Passenger 1(person who is booking) : </h3>");
+	<div class="container" id="pInfoForm">
+		<h2>Personnal informations:</h2>
+
+		<% if(i+1==1){
+			out.println("<h3>Passenger 1(person who is booking): </h3>");
 		}else{	
-			out.println("<h3>Passenger "+(i+1)+" : </h3>");
+			out.println("<h3>Passenger "+(i+1)+": </h3>");
 		}	%>
 
-	<p><label><span class="glyphicon glyphicon-user"></span> Firstname : <%=passenger.getName() %></p>
-	<p><label><span class="glyphicon glyphicon-user"></span> Surname : <%=passenger.getSurname() %></p>
-	<p><span class="glyphicon glyphicon-envelope"></span> Title : <%=passenger.getTitle() %></p>
-	<p><span class="glyphicon glyphicon-calendar"></span> Date of Birth : <%=passenger.getDateOfBirth() %></p>
+		<h4><span class="glyphicon glyphicon-user"></span> Firstname: <%=passenger.getName() %></h4>
+		<h4><span class="glyphicon glyphicon-user"></span> Surname: <%=passenger.getSurname() %></h4>
+		<h4><span class="glyphicon glyphicon-envelope"></span> Title: <%=passenger.getTitle() %></h4>
+		<h4><span class="glyphicon glyphicon-calendar"></span> Date of Birth: <%=passenger.getDateOfBirth() %></h4>
 
+	</div>
 
 	<%	}%>
 
-	<h2>Contact informations</h2>
+	<div class="container" id="pInfoForm">
+		<h2>Others:</h2>
 
-	<p><label><span class="glyphicon glyphicon-envelope"></span></label> E-mail :
-		<%=listOfPassengers.get(0).getEmail()%> </p>
-	<p><label><span class="glyphicon glyphicon-phone"></span></label> Phone number(optional):
-		<%=listOfPassengers.get(0).getPhoneNumber() %> </p>
+		<h3>Contact informations:</h3>
 
+		<h4><span class="glyphicon glyphicon-envelope"></span> E-mail :
+			<%=listOfPassengers.get(0).getEmail()%> </h4>
+		<h4><span class="glyphicon glyphicon-phone"></span> Phone number:
+			<%=listOfPassengers.get(0).getPhoneNumber() %> </h4>
+		<br>
 
-	<br><br>
-	<h3>Seats : </h3>
-	<br>
-	<h3>Other options: </h3>
+		<h3>Options:</h3>
 
-	<button type="button" class="btn btn-success" onclick="window.location.href = '../servlet-Confirmation';"> validate
-	</button>
-
-
+		<h4>None</h4>
+		<br>
+		
+		<input type="submit" value="Process to paiement" onclick="window.location.href = '/booking/payment.jsp';">
+	</div>
 	<!--Footer -->
 	<div id="footer"></div>
 </body>

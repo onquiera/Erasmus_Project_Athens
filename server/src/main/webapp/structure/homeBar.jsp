@@ -23,7 +23,6 @@
             +"<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/connexion/login.html\"><span"
             +"class=\"glyphicon glyphicon-user\"></span> Login</a></li>");
           }else{
-            out.println("<li><p><b>connected</b></p></li>");
             out.println("<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/servlet-Deconnecte\">Disconnect</a></li>");
           }
         %>

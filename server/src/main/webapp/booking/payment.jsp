@@ -33,6 +33,7 @@
 	<!--CSS Stylesheet-->
 	<link rel="stylesheet" href="/css/basics.css" />
 	<link rel="stylesheet" href="/css/progress/progressBarStyle.css" />
+	<link rel="stylesheet" href="/css/progress/personnalInfosStyle.css" />
 
 </head>
 
@@ -40,7 +41,7 @@
 	<div id="logo">
 		<a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
 	</div>
-	
+
 	<nav id="progressBar" class="navbar navbar-expand-lg navbar-light">
 		<div class="container">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
@@ -57,11 +58,11 @@
 					<li class="nav-item passive">
 						<label>Return Flight</label>
 					</li>
-	
+
 					<li class="nav-item passive">
 						<label>Passengers</label>
 					</li>
-	
+
 					<li class="nav-item passive">
 						<label>Extra Options</label>
 					</li>
@@ -69,28 +70,32 @@
 					<li class="nav-item passive">
 						<label>Confirmation</label>
 					</li>
-	
+
 					<li class="nav-item active">
 						<label>Payment</label>
 					</li>
-	
-	
+
+
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-		<h1>Payment</h1>
-		<br>
-		<br>
-		<p>Here your are supposed to pay, but today we are gentle so we offer you the flight</p>
+	<div id="textArea2">
+		<div class="container" id="pInfoForm">
+			<h1>Payment</h1>
+			<br>
 
-		<h2>You received a booking confirmation per mail</h2>
+			<p>Here your are supposed to pay, but today we are gentle so we offer you the flight !</p>
 
-		<a href="/">Look for another flight</a>
-
-		<!--Footer -->
-		<div id="footer"></div>
+			<h3>You received a booking confirmation per mail.</h3>
+			<br>
+			Not enough ? <a href="/">Look for another flight.</a>
+			
+		</div>
+	</div>
+	<!--Footer -->
+	<div id="footer"></div>
 </body>
 
 </html>
