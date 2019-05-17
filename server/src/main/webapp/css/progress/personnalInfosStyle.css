@@ -30,15 +30,18 @@ input[type=submit]:hover {
 
 /* Add a background color and some padding around the form */
 
-#contactForm {
+#pInfoForm {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
     margin-bottom: 2rem;
 }
+
+#pInfoForm h3 {
+    color: #ff6600;
+}
+
 /*End of the form style*/
-
-
 #textArea2 {
     text-align: left;
     margin: 10rem;

@@ -47,7 +47,7 @@
 			</button>
 			<div class="navbar-collapse collapse" id="navbar10">
 				<ul class="navbar-nav nav-fill w-100">
-					<li id="number1" class="nav-item passive">
+					<li  class="nav-item passive">
 						<label>Search</label>
 					</li>
 					<li class="nav-item passive">
