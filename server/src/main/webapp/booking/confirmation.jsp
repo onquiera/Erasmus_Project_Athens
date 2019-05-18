@@ -59,6 +59,10 @@
 					</li>
 
 					<li class="nav-item passive">
+						<label>Seats</label>
+					</li>
+
+					<li class="nav-item passive">
 						<label>Passengers</label>
 					</li>
 
@@ -167,7 +171,7 @@
 
 		<h4>None</h4>
 		<br>
-		
+
 		<input type="submit" value="Process to paiement" onclick="window.location.href = '/booking/payment.jsp';">
 	</div>
 	<!--Footer -->

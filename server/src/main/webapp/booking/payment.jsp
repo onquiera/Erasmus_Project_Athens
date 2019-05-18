@@ -60,6 +60,10 @@
 					</li>
 
 					<li class="nav-item passive">
+						<label>Seats</label>
+					</li>
+
+					<li class="nav-item passive">
 						<label>Passengers</label>
 					</li>
 
@@ -91,7 +95,7 @@
 			<h3>You received a booking confirmation per mail.</h3>
 			<br>
 			Not enough ? <a href="/">Look for another flight.</a>
-			
+
 		</div>
 	</div>
 	<!--Footer -->
