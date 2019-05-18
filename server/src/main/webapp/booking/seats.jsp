@@ -124,9 +124,12 @@
 	%>
 
 
-	<h2><%=flightType %> flight</h2>
-	<p> number of seats : <%=numberOfSeats %></p>
+	<h2><u><b><%=flightType %></b></u> flight</h2>
+	<p> number of seats for this flight: <%=numberOfSeats %></p>
 
+
+	<h3> passenger 1's seat : </h3> <br>
+	(only one seat selectable for now) <br>
 
 	<%
 		for (int i = 1; i <= numberOfSeats / longueurRangees; i++) {

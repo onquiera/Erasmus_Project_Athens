@@ -77,8 +77,6 @@
 					<li class="nav-item">
 						<label>Payment</label>
 					</li>
-
-
 				</ul>
 			</div>
 		</div>
@@ -89,49 +87,66 @@
 	</div>
 
 	<%
-	ArrayList<Passenger> listOfPassengers=null;
-	String departure=null;
-	String destination=null;
-		try{
+		ArrayList<Passenger> listOfPassengers = null;
+		String departure = null;
+		String destination = null;
+		String outwardFlightID = null;
+		String returnFlightID = null;
+		String outwardSeat=null;
+		String returnSeat=null;
+		
+		
+		try {
 			HttpSession httpSession = request.getSession(false);
 			//check if session is valid
-			if(httpSession==null || !request.isRequestedSessionIdValid() ){
+			if (httpSession == null || !request.isRequestedSessionIdValid()) {
 				System.out.println("\n\n\n session is invalid \n\n\n");
 				response.sendRedirect("/error/sessionError.html");
 			}
 
 			//PARAMETERS management
-			listOfPassengers = (ArrayList<Passenger>)httpSession.getAttribute("listOfPassengers");
-			 departure = (String)httpSession.getAttribute("departure");
-			 destination = (String) httpSession.getAttribute("destination");
+			listOfPassengers = (ArrayList<Passenger>) httpSession.getAttribute("listOfPassengers");
+			departure = (String) httpSession.getAttribute("departure");
+			destination = (String) httpSession.getAttribute("destination");
+			outwardFlightID=(String) httpSession.getAttribute("outwardFlightID");
+			returnFlightID=(String) httpSession.getAttribute("returnFlightID");
 			
-		}catch(java.lang.NumberFormatException e ){
+			
+			outwardSeat=(String)httpSession.getAttribute("outward-seat");
+			returnSeat=(String)httpSession.getAttribute("return-seat");
+
+		} catch (java.lang.NumberFormatException e) {
 			e.printStackTrace();
 			response.sendRedirect("/error/parameterError.html");
-		}catch(NullPointerException e ){
+		} catch (NullPointerException e) {
 			e.printStackTrace();
 			response.sendRedirect("/error/parameterError.html");
-		}catch(Exception e2 ){
+		} catch (Exception e2) {
 			e2.printStackTrace();
 			response.sendRedirect("/error/error.html");
 		}
-		
 	%>
 	<div class="container" id="pInfoForm">
 		<h2>Booking informations:</h2>
-
-		<h3>Outward flight:</h3>
-		<h4> >Departure : <%=departure %> </h4>
-		<h4> >Destination : <%=destination %> </h4>
+	<br>	
+		<h4> Departure : <%=departure %> </h4>
+		<h4> Destination : <%=destination %> </h4>
 		<br>
-
+		<h3>Outward flight:</h3>
+		<h4>flight id : <%=outwardFlightID %></h4>
+		
+		<br>
 		<h3>Return flight:</h3>
-		<h4>>None</h4>
+		<h4>flight id : <%=returnFlightID %></h4>
+		
 		<br>
 
 		<h3>Seats:</h3>
-		<h4>>None yet</h4>
+		(only one for now)<br>
+		<h4>outward seat : <%=outwardSeat %></h4>
+		<h4>return seat : <%=returnSeat %></h4>
 		<br>
+		
 	</div>
 
 	<% for (int i = 0; i < listOfPassengers.size(); i++) {
