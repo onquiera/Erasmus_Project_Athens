@@ -54,7 +54,7 @@
 					<li class="nav-item passive">
 						<label>Departing Flight</label>
 					</li>
-					
+
 					<li class="nav-item passive">
 						<label>Return Flight</label>
 					</li>
@@ -112,7 +112,7 @@
 
 	<!-- TODO  Login for autocomplete, and go back to this page with the field written with the login infos-->
 	<div id="textArea2">
-		<p>Want to win some time ? <a href="/connexion/login.html">Login here</a></p>
+		Want to win some time ? <a href="/connexion/login.html">Login here</a>
 	</div>
 
 
@@ -133,7 +133,7 @@
 			}
 			%>
 
-					<h1>Personnal Informations</h1><br>
+					<h1>Personnal Informations</h1>
 
 					<h2>Passengers informations(<%=numberOfPassengers %> passengers) :</h2><br>
 

@@ -53,3 +53,29 @@ label{
     color:grey;
     font-style: normal;
 }
+
+/*Usefull for the flight informations*/
+
+#flightsInfos{
+    height: 50px;
+    position: relative;
+}
+
+#traitInfo{
+    height: 50px;
+    position: relative;
+}
+
+.dot {
+    border-width: 2px;
+    border-style: solid;
+    position: absolute;
+    top: 6px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    z-index: 10;
+    box-sizing: content-box;
+    color: #ff6600;
+}

@@ -53,7 +53,7 @@ String flight = request.getParameter("flight");%>
 					<li class="nav-item passive">
 						<label>Search</label>
 					</li>
-					
+
 					<li class="nav-item <%
 
 					if(flight.equals("outward")) {
@@ -135,7 +135,7 @@ String flight = request.getParameter("flight");%>
 					ps.setString(2, destination);
 					ps.setDate(3, flightDate);
 
-				out.println("<h1>Available <u>" + flight + "</u> flights </h1>");
+				out.println("<div id=\"textArea2\"><h1>Available <u>" + flight + "</u> flights </h1>");
 				out.println("<h2>from : " + departure + " to " + destination + "</h2>");
 				}else { //RETURN FLIGHT
 					// return date from string to sql
@@ -154,8 +154,10 @@ String flight = request.getParameter("flight");%>
 					ps.setString(1, destination);
 					ps.setString(2, departure);
 					ps.setDate(3, flightDate);
-					
-				out.println("<h1>Available <u>" + flight + "</u> flights </h1>");
+									
+
+
+				out.println("<div id=\"textArea2\"><h1>Available <u>" + flight + "</u> flights </h1>");
 				out.println("<h2>from : " + destination + " to " + departure + "</h2>");
 				}
 
@@ -165,19 +167,33 @@ String flight = request.getParameter("flight");%>
 
 				ResultSetMetaData rsmd = rs.getMetaData();
 
-				out.println("<h2>on date : " + flightDate + "</h2>");
+				out.println("<h2>on date : " + flightDate + "</h2></div>");
 
 				
 				while (rs.next()) {
 
+				
+
 					// titre des colonnes
-					out.println("<h3>");
-					for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+					out.println("<div class=\"container\" id=\"pInfoForm\"><h4>");
 
-						out.println(rsmd.getColumnLabel(i) + ": " + rs.getString(i) + "  ");
 
-					}
-					out.println("</h3>");
+				
+					//for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+
+					//		out.println(rsmd.getColumnLabel(i) + ": " + rs.getString(i) + "  ");
+
+					//}
+					
+					out.println("<div  class=\"container\" id=\"flightsInfos\">  ");
+					//Affichage des données du vol
+					
+					out.println(rs.getString("departureTime")+" - " + rs.getString("arrivalTime")+"<br>");
+					out.println("Departure: " + rs.getString("departure")+"<br>");
+					out.println("Arrival: " + rs.getString("arrival")+"<br>");
+					out.println("</div>  ");
+					//	out.println("Places left: " + rs.getString("placesLeft")+"<br>");
+					out.println("</h4>");
 
 					//bouton de validation
 					//gestion si vol retour ou non
@@ -188,7 +204,7 @@ String flight = request.getParameter("flight");%>
 							+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flight + "\">"
 							+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
 							+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
-							+ "	</form>");
+							+ "	</form> </div>");
 				}
 
 
