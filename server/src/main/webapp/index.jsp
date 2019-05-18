@@ -80,8 +80,11 @@
 											aria-hidden="true"></i></span>OneWay</a></li>
 						</ul>
 						<div class="tab-content">
+						
+						
+<!-- roundtrip form--------------------------- -->					
+						
 							<div id="1" class="tab1 active">
-
 								<!--RoundTrip Form-->
 								<form action="/servlet-SearchFlight" method="get">
 									<input type="hidden" name="flightType" value="research">
@@ -102,8 +105,6 @@
 										<input required list="airports" class="form-control" name="destination"
 											value="Madrid Barajas" placeholder="Arriving at">
 									</div>
-
-
 
 									<div class="col-sm-6 col-xs-6 ctrl">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
@@ -137,9 +138,7 @@
 										<input required type="date" class="form-control" name="returnDate"
 											value="2019-05-24" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
-
 									</div>
-
 
 									<div class="select-wrap">
 										<div class="adult-box">
@@ -169,7 +168,7 @@
 								</form>
 							</div>
 
-
+<!-- one way form--------------------------- -->			
 							<div id="2" class="tab1">
 								<!--OneWay Form-->
 								<form action="/servlet-SearchFlight" method="get">
@@ -223,7 +222,6 @@
 											</select>
 										</div>
 
-
 										<div class="adult-box">
 											<span>Class</span>
 											<select value="" name="travelClass">
@@ -237,6 +235,7 @@
 									</div>
 								</form>
 							</div>
+<!-- end of one way form--------------------------- -->			
 						</div>
 					</div>
 				</div>

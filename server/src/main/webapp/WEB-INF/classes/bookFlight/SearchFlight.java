@@ -86,7 +86,7 @@ public class SearchFlight extends HttpServlet {
 			
 			String returnDate = (String)httpSession.getAttribute("returnDate");
 			if(returnDate==null) {
-				res.sendRedirect("/booking/seats.jsp");
+				res.sendRedirect("/booking/seats.jsp?flightType=outward");
 			}else {
 				res.sendRedirect("/booking/choose-flight.jsp?flight=return");
 			}
