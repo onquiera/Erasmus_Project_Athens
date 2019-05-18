@@ -31,18 +31,71 @@
 
 	<!--CSS Stylesheet-->
 	<link rel="stylesheet" href="/css/basics.css" />
-	<link rel="stylesheet" href="/css/HomePage/flightSearchStyle.css">
-	<link rel="stylesheet" href="/css/HomePage/homeStyle.css">
+	<link rel="stylesheet" href="/css/progress/progressBarStyle.css" />
+	<link rel="stylesheet" href="/css/progress/personnalInfosStyle.css" />
 </head>
 
+<%
+String flight = request.getParameter("flight");%>
 
 <body>
+	<div id="logo">
+		<a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
+	</div>
 
-	<!--First Navbar, which contains the logo, language, contact, sign up and login section-->
-	<nav id="homeBar"></nav>
+	<nav id="progressBar" class="navbar navbar-expand-lg navbar-light">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse" id="navbar10">
+				<ul class="navbar-nav nav-fill w-100">
+					<li class="nav-item passive">
+						<label>Search</label>
+					</li>
+					
+					<li class="nav-item <%
 
-	<!--Second navbar, which contains the differents parts of the website -->
-	<nav id="navBar"></nav>
+					if(flight.equals("outward")) {
+						out.println("active");
+					}else{
+						out.println("passive");
+					}%>">
+						<label>Departing Flight</label>
+					</li>
+					<li class="nav-item <%
+
+					if(!flight.equals("outward")) {
+						out.println("active");
+					}%>">
+						<label>Return Flight</label>
+					</li>
+
+					<li class="nav-item">
+						<label>Seats</label>
+					</li>
+
+					<li class="nav-item">
+						<label>Passengers</label>
+					</li>
+
+					<li class="nav-item">
+						<label>Extra Options</label>
+					</li>
+
+					<li class="nav-item">
+						<label>Confirmation</label>
+					</li>
+
+					<li class="nav-item">
+						<label>Payment</label>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 	<%
 			try (Connection con = DS.getConnection()) {
@@ -58,8 +111,6 @@
 				String destination = (String)httpSession.getAttribute("destination");
 				String departureDate = (String)httpSession.getAttribute("departureDate");
 				String returnDate = (String)httpSession.getAttribute("returnDate");
-	
-				String flight = request.getParameter("flight");
 				
 				//requete de recherche
 				

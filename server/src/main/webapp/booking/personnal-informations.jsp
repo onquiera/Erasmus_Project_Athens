@@ -54,8 +54,13 @@
 					<li class="nav-item passive">
 						<label>Departing Flight</label>
 					</li>
+					
 					<li class="nav-item passive">
 						<label>Return Flight</label>
+					</li>
+
+					<li class="nav-item passive">
+						<label>Seats</label>
 					</li>
 
 					<li class="nav-item active">

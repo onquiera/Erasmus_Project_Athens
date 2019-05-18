@@ -158,8 +158,8 @@
 										<div class="adult-box">
 											<span>Class</span>
 											<select value="" name="travelClass">
-												<option>Business</option>
 												<option>Economy</option>
+												<option>Business</option>
 											</select>
 										</div>
 									</div>
@@ -227,8 +227,8 @@
 										<div class="adult-box">
 											<span>Class</span>
 											<select value="" name="travelClass">
-												<option>Business</option>
 												<option>Economy</option>
+												<option>Business</option>
 											</select>
 										</div>
 									</div>

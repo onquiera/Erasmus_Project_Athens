@@ -8,9 +8,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Purchase a ticket</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Check-in</a>
-                </li>
+           
                 <li class="nav-item">
                     <a class="nav-link" href="/booking/searchBooking.jsp">My bookings</a>
                 </li>
