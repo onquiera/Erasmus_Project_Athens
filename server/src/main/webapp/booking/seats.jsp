@@ -69,9 +69,6 @@
 	<h2><%=flightType %> flight</h2>	
 	<p> number of seats : <%=numberOfSeats %></p>
 	
-	
-	
-	<p> sieges verts : disponibles, sieges rouge : trop tard !</p>
 
 	<%
 		for (int i = 1; i <= numberOfSeats / longueurRangees; i++) {
