@@ -12,7 +12,7 @@
 <head>
 
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
-	<title>Payment</title>
+	<title>Extra</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -67,15 +67,15 @@
 						<label>Passengers</label>
 					</li>
 
-					<li class="nav-item passive">
+					<li class="nav-item active">
 						<label>Extra Options</label>
 					</li>
 
-					<li class="nav-item passive">
+					<li class="nav-item">
 						<label>Confirmation</label>
 					</li>
 
-					<li class="nav-item active">
+					<li class="nav-item">
 						<label>Payment</label>
 					</li>
 
@@ -87,14 +87,7 @@
 
 	<div id="textArea2">
 		<div class="container" id="pInfoForm">
-			<h1>Payment</h1>
-			<br>
-
-			<p>Here your are supposed to pay, but today we are gentle so we offer you the flight !</p>
-
-			<h3>You received a booking confirmation per mail.</h3>
-			<br>
-			Not enough ? <a href="/">Look for another flight.</a>
+		
 
 		</div>
 	</div>
