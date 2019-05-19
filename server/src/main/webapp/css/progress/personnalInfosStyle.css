@@ -59,7 +59,7 @@ label{
 .flightsInfos{
     height: 50px;
     position: relative;
-    margin-right: 70%;
+    margin-right: 45%;
     float: left;
 }
 
@@ -72,5 +72,18 @@ label{
 
 .h4ChooseFlight{
     margin-top:0;
+    margin-bottom:0;
+}
+
+.price{
+    margin-top: 1rem;
+    margin-right: 04%;
+    float:left;
+    height: 50px;
+    position: relative;
+}
+
+.h4PriceFlight{
+    margin-top:13px;
     margin-bottom:0;
 }

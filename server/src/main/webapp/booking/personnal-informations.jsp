@@ -196,10 +196,6 @@
 
 						<br>
 
-						<h2><span class="glyphicon glyphicon-heart"></span> Insurance(recommanded)</h2>
-						<p>We work on it !</p>
-						<br>
-
 					</div>
 
 					<div class="container" id="pInfoForm">

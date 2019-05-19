@@ -196,7 +196,7 @@ String flight = request.getParameter("flight");%>
 					String dateA = rs.getString("arrivalTime");
 					dateA = dateA.substring(0,5);
 
-					//-----------------------------------------------------------------------------------
+					//----------------------------
 
 					out.println(dateD+" - " + dateA +"<br>");
 					out.println("From: " + rs.getString("departure")+"<br>");
@@ -205,6 +205,11 @@ String flight = request.getParameter("flight");%>
 					//	out.println("Places left: " + rs.getString("placesLeft")+"<br>");
 					out.println("</h4>");
 
+					out.println("<div  class=\"price\"><h4 class=\"h4PriceFlight\">  ");
+					
+						out.println("Price: Free");
+				
+					out.println("</h4></div>  ");
 					//bouton de validation
 					//gestion si vol retour ou non
 					out.println("<div  class=\"confirmButton\">  ");

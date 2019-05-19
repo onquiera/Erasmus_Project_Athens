@@ -17,5 +17,5 @@ li label{
 
 .nav-item.active label{
     color:red;
-    font: bold;
+    font-weight: bold;
 }
