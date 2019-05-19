@@ -136,7 +136,7 @@ String flight = request.getParameter("flight");%>
 					ps.setDate(3, flightDate);
 
 				out.println("<div id=\"textArea2\"><h1>Available <u>" + flight + "</u> flights </h1>");
-				out.println("<h2>from : " + departure + " to " + destination + "</h2>");
+				
 				}else { //RETURN FLIGHT
 					// return date from string to sql
 					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -158,7 +158,7 @@ String flight = request.getParameter("flight");%>
 
 
 				out.println("<div id=\"textArea2\"><h1>Available <u>" + flight + "</u> flights </h1>");
-				out.println("<h2>from : " + destination + " to " + departure + "</h2>");
+	
 				}
 
 				ResultSet rs = ps.executeQuery();
@@ -167,7 +167,7 @@ String flight = request.getParameter("flight");%>
 
 				ResultSetMetaData rsmd = rs.getMetaData();
 
-				out.println("<h2>on date : " + flightDate + "</h2></div>");
+				out.println("<h2>On date: " + flightDate + "</h2></div>");
 
 				
 				while (rs.next()) {
@@ -175,7 +175,7 @@ String flight = request.getParameter("flight");%>
 				
 
 					// titre des colonnes
-					out.println("<div class=\"container\" id=\"pInfoForm\"><h4>");
+					out.println("<div class=\"container\" id=\"pInfoForm\">");
 
 
 				
@@ -185,18 +185,29 @@ String flight = request.getParameter("flight");%>
 
 					//}
 					
-					out.println("<div  class=\"container\" id=\"flightsInfos\">  ");
+					out.println("<div  class=\"flightsInfos\"><h4 class=\"h4ChooseFlight\"> ");
 					//Affichage des données du vol
 					
-					out.println(rs.getString("departureTime")+" - " + rs.getString("arrivalTime")+"<br>");
-					out.println("Departure: " + rs.getString("departure")+"<br>");
-					out.println("Arrival: " + rs.getString("arrival")+"<br>");
+					//Enlever les secondes-----
+					
+					String dateD = rs.getString("departureTime");
+					dateD = dateD.substring(0,5);
+					
+					String dateA = rs.getString("arrivalTime");
+					dateA = dateA.substring(0,5);
+
+					//-----------------------------------------------------------------------------------
+
+					out.println(dateD+" - " + dateA +"<br>");
+					out.println("From: " + rs.getString("departure")+"<br>");
+					out.println("To: " + rs.getString("arrival")+"<br>");
 					out.println("</div>  ");
 					//	out.println("Places left: " + rs.getString("placesLeft")+"<br>");
 					out.println("</h4>");
 
 					//bouton de validation
 					//gestion si vol retour ou non
+					out.println("<div  class=\"confirmButton\">  ");
 					out.println(""
 							+ "<form action=\"/servlet-SearchFlight\" method=\"get\">");
 					//reste des options du bouton
@@ -204,7 +215,7 @@ String flight = request.getParameter("flight");%>
 							+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flight + "\">"
 							+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
 							+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
-							+ "	</form> </div>");
+							+ "	</form> </div> </div>");
 				}
 
 
