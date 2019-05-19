@@ -85,6 +85,14 @@
         </div>
     </nav>
 
+
+
+
+
+
+		<form action="/ExtraOptions" method="get" role="form class=form">
+		
+
     <div id="textArea2">
 
         <!--More Luggage side-->
@@ -107,6 +115,15 @@
 
         </div>
     </div>
+    	
+    	<div class="col-lg-12">
+				<input type="submit" class="srch" value="Submit" />
+		</div>
+    
+		</form>
+		
+		
+		
     <!--Footer -->
     <div id="footer"></div>
 </body>

@@ -53,7 +53,7 @@ public class PersonnalInformations extends HttpServlet
 			
 			httpSession.setAttribute("listOfPassengers", listOfPassengers);
 			
-			res.sendRedirect("/booking/confirmation.jsp");
+			res.sendRedirect("/booking/extraOptions.jsp");
 			
 		}catch(java.lang.NumberFormatException e ){
 			e.printStackTrace();

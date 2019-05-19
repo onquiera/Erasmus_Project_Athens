@@ -79,7 +79,6 @@
 						<label>Payment</label>
 					</li>
 
-
 				</ul>
 			</div>
 		</div>
