@@ -165,11 +165,11 @@
 		//gestion du siege choisi
 		String seatSelected = request.getParameter("seatSelected");
 		
-		if(seatSelected!=null && seatSelected.length()>0 && seatsLeftToChoose>0){
+		if(seatSelected!=null && seatSelected.length()>0){
 			if(selectedSeats.contains(seatSelected)){
 				selectedSeats.remove(seatSelected);
 				seatsLeftToChoose++;
-			}else{
+			}else if(seatsLeftToChoose>0){
 				selectedSeats.add(seatSelected);
 				seatsLeftToChoose--;
 			}
