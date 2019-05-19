@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="seats.PrintSeats"%>
 <%@page import="users.Passenger"%>
 <%@page import="seats.SeatsDAO"%>
 <%@page import="flights.Booking"%>
@@ -92,9 +93,8 @@
 		String destination = null;
 		String outwardFlightID = null;
 		String returnFlightID = null;
-		String outwardSeat=null;
-		String returnSeat=null;
-		
+		ArrayList<String> outwardSeats=null;
+		ArrayList<String> returnSeats=null;
 		
 		try {
 			HttpSession httpSession = request.getSession(false);
@@ -112,9 +112,9 @@
 			returnFlightID=(String) httpSession.getAttribute("returnFlightID");
 			
 			
-			outwardSeat=(String)httpSession.getAttribute("outward-seat");
-			returnSeat=(String)httpSession.getAttribute("return-seat");
-
+			outwardSeats = (ArrayList<String>)httpSession.getAttribute("outward-seats");
+			returnSeats = (ArrayList<String>)httpSession.getAttribute("return-seats");
+			
 		} catch (java.lang.NumberFormatException e) {
 			e.printStackTrace();
 			response.sendRedirect("/error/parameterError.html");
@@ -143,9 +143,16 @@
 
 		<h3>Seats:</h3>
 		(only one for now)<br>
-		<h4>outward seat : <%=outwardSeat %></h4>
-		<h4>return seat : <%=returnSeat %></h4>
-		<br>
+		<h4>outward seats : </h4>
+		
+		<%
+			PrintSeats.printSeatsSelected(out, outwardFlightID, outwardSeats);
+		%>
+		
+		<h4>return seats :</h4>
+		<%
+			PrintSeats.printSeatsSelected(out, outwardFlightID, outwardSeats);
+		%>
 		
 	</div>
 

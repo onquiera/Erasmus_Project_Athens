@@ -2,6 +2,7 @@ package seats;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,23 +37,22 @@ public class BookSeats extends HttpServlet
 
 			//recuperation des parametres
 			String flightType = req.getParameter("flightType");
-			String seat=req.getParameter("seat");
 			
-			System.out.println("flightType: " + flightType +" - seat :"+seat);
 			
-			//TODO multiples sieges  
-//			ArrayList<String> seats =(ArrayList<String>)= session.getAttribute("seats");
-//			if(seats==null) {
-//				seats = new ArrayList<>();
-//			}
-//			seats.add(seat);
-//			session.setAttribute("seats", seats);
-			//pour gestion de plusieurs sieges (rajouter un bouton valider et sieges: liens récursifs vers la jsp) 
+			ArrayList<String> selectedSeats = (ArrayList<String>)httpSession.getAttribute("selectedSeats");
+			if(selectedSeats==null) {
+				res.sendRedirect("/error/sessionError.html");
+			}
+			
 			
 			
 			if(flightType.equals("outward")) {
+				ArrayList<String> outwardSelectedSeats = new ArrayList<String>();
+				outwardSelectedSeats.addAll(selectedSeats);
+				//we clear it because there is a potential return where seats will be selected
+				selectedSeats.clear();
 				
-				httpSession.setAttribute("outward-seat", seat);
+				httpSession.setAttribute("outward-seats", outwardSelectedSeats);
 				
 				String returnDate = (String)httpSession.getAttribute("returnDate");
 				if(returnDate==null) {
@@ -63,7 +63,7 @@ public class BookSeats extends HttpServlet
 				
 				
 			}else if(flightType.equals("return")) {
-				httpSession.setAttribute("return-seat", seat);
+				httpSession.setAttribute("return-seats", selectedSeats);
 				res.sendRedirect("/booking/personnal-informations.jsp");
 			}else {
 				res.sendRedirect("/error/parameterError.html?error=parameter+flightType+error");

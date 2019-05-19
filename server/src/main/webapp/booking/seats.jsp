@@ -116,40 +116,138 @@
 	
 	
 		SeatsDAO seatsDAO = new SeatsDAO();
-
-		int numberOfSeats = seatsDAO.numberOfSeats(flightID);
-		ArrayList<String> listSeats = seatsDAO.bookedSeats(flightID);
-		int longueurRangees = 4;
+		int flightsNumberOfSeats = seatsDAO.numberOfSeats(flightID);
+		ArrayList<String> alreadyBookedSeats = seatsDAO.bookedSeats(flightID);
+		int rowSize = 4;
 		String convert = "ABCDEFGHIJKL";
+		
+		
+		
+		int numberOfPassengers = (Integer)httpSession.getAttribute("numberOfPassengers");
+		
+		
+		
+		
+		
+		//TODO gerer siege en parametre si il y en a un
+		/*
+		si siege deja selectionné> le virer de la liste
+		
+		> si siege libre > le choisir
+		
+		> si siege deja reservé ou incorrect > ne rien faire
+		
+		
+		
+		
+		
+		
+		*/
+		
+		
+		//inactive > seat already booked
+		
+		//green > seats not booked
+		//red but disablable > seats choosed but which can be canceled
+		
+		
+		ArrayList<String> selectedSeats = (ArrayList<String>)session.getAttribute("selectedSeats");
+		if(selectedSeats==null) {
+			selectedSeats = new ArrayList<>();
+		}
+		int seatsLeftToChoose = numberOfPassengers-selectedSeats.size();
+		
+		
+		
+		
+		
+		
+		//gestion du siege choisi
+		String seatSelected = request.getParameter("seatSelected");
+		
+		if(seatSelected!=null && seatSelected.length()>0 && seatsLeftToChoose>0){
+			if(selectedSeats.contains(seatSelected)){
+				selectedSeats.remove(seatSelected);
+				seatsLeftToChoose++;
+			}else{
+				selectedSeats.add(seatSelected);
+				seatsLeftToChoose--;
+			}
+		}
+		
+		
+		
 	%>
 
-
 	<h2><u><b><%=flightType %></b></u> flight</h2>
-	<p> number of seats for this flight: <%=numberOfSeats %></p>
+	
+	
+	
+	<h3>Number of seats left to choose : <%=seatsLeftToChoose%></h3>
+	
 
+<!-- validation button : -->
+		
+			<% String validateLink = "/servlet-BookSeats?flightType=" + flightType;%>
+			
+			<span style = "margin-left : 100px;"> </span>  <button type="button" class="btn btn-success" 
+			onclick="window.location.href = '<%=validateLink %>';" 
+			<%if(seatsLeftToChoose>0){out.println("disabled");}%>> validate </button>
+			<br>
 
-	<h3> passenger 1's seat : </h3> <br>
-	(only one seat selectable for now) <br>
 
 	<%
-		for (int i = 1; i <= numberOfSeats / longueurRangees; i++) {
+		//seats :
+		for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {
 			out.println("<br>");
-			for (int j = 0; j < longueurRangees; j++) {
+			for (int j = 0; j < rowSize; j++) {
 				String seat = i + "" + convert.charAt(j);
-					if (!listSeats.contains(seat)) {
-					String link = "/servlet-BookSeats?seat=" + seat +"&flightType=" + flightType;
-					out.println(
-							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" onclick=\"window.location.href = '"
-									+ link + "';\"    >" + seat + "</button>");
-				} else {
+				
+				String linkToseatsjsp= "/booking/seats.jsp?seatSelected=" + seat +"&flightType=" + flightType;
+				if (alreadyBookedSeats.contains(seat)) {
+					//seat already booked so blocked
 					out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-danger\" disabled>" + seat
 							+ "</button>");
+					
+				} else if(selectedSeats.contains(seat)){
+					//seat selected by customer
+					out.println(
+							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href = '"
+									+ linkToseatsjsp + "';\"    >" + seat + "</button>");
+				}else {
+					//seat not selected
+					 
+					if(seatsLeftToChoose==0){
+						//if customer has chosen all his seats > he can't add one more
+						out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" disabled>" + seat
+							+ "</button>");
+					}else{
+						out.println(
+							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" onclick=\"window.location.href = '"
+									+ linkToseatsjsp + "';\"    >" + seat + "</button>");
+					}
 				}
 			}
 		}
 		out.println("<br>");
+		
+		session.setAttribute("selectedSeats", selectedSeats);
+		
 	%>
+	
+	<br><br>
+	<div id = seatLegend>
+	<h4>Legend : </h4>
+	
+	&nbsp; <button type="button" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : already booked
 
+	&nbsp; <button type="button" class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : selected(click to unselect)
+
+	&nbsp; <button type="button" class="btn btn-success"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : disponible(click to select)
+
+	</div>
+	
+	<br><br>
 
 
 </body>

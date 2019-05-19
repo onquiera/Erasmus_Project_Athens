@@ -185,4 +185,14 @@ INSERT INTO  seat_reservation  ( flightID ,  SEAT_NUMBER ,  CUSTOMER_NAME ) VALU
 ('FR00450030', '6D', 'Kevin Mcdonald'),
 ('FR00450030', '6B', 'Benjamin Jenkins'),
 ('FR00450030', '7A', 'Phyllis Elliott'),
-('FR00450030', '7B', 'Paula Ford');
+('FR00450030', '7B', 'Paula Ford'),
+('GR50450030', '6D', 'Kevin Mcdonald'),
+('GR50450030', '6B', 'Benjamin Jenkins'),
+('GR50450030', '7A', 'Phyllis Elliott'),
+('GR50450030', '7B', 'Paula Ford');
+
+
+
+-----
+
+
