@@ -90,8 +90,3 @@ label {
 input[type="radio"] {
     margin-left: -16px;
 }
-
-.col-xl-4 input[type="radio"] {
-    margin-left: 0px;
-    margin-top: -10px;
-}
