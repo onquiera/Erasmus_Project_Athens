@@ -141,7 +141,7 @@
 		<br><br>
 		
 		
-		<div style = "border-style: solid; padding:20px;">
+		<div style = "border-style: solid; padding:20px ;margin-bottom:1px;">
 			<h3>Outward flight:</h3>
 			
 			<h4>Departure : <%=outwardFlight.getDeparture() %></h4>
