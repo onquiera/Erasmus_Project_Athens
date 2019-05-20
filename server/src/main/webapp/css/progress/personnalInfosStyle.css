@@ -1,8 +1,7 @@
 /* Style inputs with type="text", select elements and textareas */
 
-input[type=text],input[type=email], select, textarea {
+input[type=text], input[type=email], select, textarea {
     width: 100%;
-    
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -23,7 +22,6 @@ input[type=submit] {
     cursor: pointer;
 }
 
-
 input[type=submit]:hover {
     background-color: #ff6601;
 }
@@ -42,6 +40,7 @@ input[type=submit]:hover {
 }
 
 /*End of the form style*/
+
 #textArea2 {
     text-align: left;
     margin: 10rem;
@@ -49,41 +48,50 @@ input[type=submit]:hover {
     margin-bottom: 1px;
 }
 
-label{
-    color:grey;
+label {
+    color: grey;
     font-style: normal;
 }
 
 /*Usefull for the flight informations*/
 
-.flightsInfos{
+.flightsInfos {
     height: 50px;
     position: relative;
     margin-right: 45%;
     float: left;
 }
 
-.confirmButton{
+.confirmButton {
     margin-top: 1rem;
-    float:left;
+    float: left;
     height: 50px;
     position: relative;
 }
 
-.h4ChooseFlight{
-    margin-top:0;
-    margin-bottom:0;
+.h4ChooseFlight {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.price{
+.price {
     margin-top: 1rem;
     margin-right: 04%;
-    float:left;
+    float: left;
     height: 50px;
     position: relative;
 }
 
-.h4PriceFlight{
-    margin-top:13px;
-    margin-bottom:0;
+.h4PriceFlight {
+    margin-top: 13px;
+    margin-bottom: 0;
+}
+
+input[type="radio"] {
+    margin-left: -16px;
+}
+
+.col-xl-4 input[type="radio"] {
+    margin-left: 0px;
+    margin-top: -10px;
 }
