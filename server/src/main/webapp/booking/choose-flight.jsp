@@ -103,7 +103,6 @@ String flight = request.getParameter("flight");%>
 			HttpSession httpSession = request.getSession(false);
 			//check if session is valid
 			if(httpSession==null || !request.isRequestedSessionIdValid() ){
-				System.out.println("\n\n\n session is invalid \n\n\n");
 				response.sendRedirect("/error/sessionError.html");
 			}
 	

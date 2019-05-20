@@ -1,7 +1,6 @@
 package booking;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.*;
@@ -34,8 +33,7 @@ public class RegisterBooking extends HttpServlet
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if (httpSession == null || !req.isRequestedSessionIdValid()) {
-				System.out.println("\n\n\n session is invalid \n\n\n");
-				res.sendRedirect("/error/sessionError.html");
+					res.sendRedirect("/error/sessionError.html");
 			}
 
 			//PARAMETERS management
@@ -63,12 +61,8 @@ public class RegisterBooking extends HttpServlet
 			Booking outwardBooking = new Booking(bookingDAO.maxBookingID()+1, outwardFlightID, 0, 0, listOfPassengers.get(0).getPno());
 			bookingDAO.create(outwardBooking);
 			
-			
-			
 			Booking returnBooking = new Booking(bookingDAO.maxBookingID()+1, returnFlightID, 0, 0, listOfPassengers.get(0).getPno());
 			bookingDAO.create(returnBooking);
-			
-			
 			
 			
 			for (int i = 1; i < listOfPassengers.size(); i++) {

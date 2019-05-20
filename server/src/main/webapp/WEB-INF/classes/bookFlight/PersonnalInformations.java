@@ -21,8 +21,7 @@ public class PersonnalInformations extends HttpServlet
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if(httpSession==null || !req.isRequestedSessionIdValid() ){
-				System.out.println("\n\n\n session is invalid \n\n\n");
-				res.sendRedirect("/error/sessionError.html");
+					res.sendRedirect("/error/sessionError.html");
 			}
 
 			//PARAMETERS management

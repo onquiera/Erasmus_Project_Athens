@@ -38,6 +38,26 @@
 
 </head>
 
+<%
+	//check if session is still valid
+	try{
+		HttpSession httpSession = request.getSession(false);
+		if(httpSession==null || !request.isRequestedSessionIdValid() ){
+			response.sendRedirect("/error/sessionError.html");
+		}
+	}catch(java.lang.NumberFormatException e ){
+		e.printStackTrace();
+		response.sendRedirect("/error/parameterError.html");
+	}catch(NullPointerException e ){
+		e.printStackTrace();
+		response.sendRedirect("/error/parameterError.html");
+	}catch(Exception e2 ){
+		e2.printStackTrace();
+		response.sendRedirect("/error/error.html");
+	}
+%>
+
+
 <body>
     <div id="logo">
         <a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
@@ -79,18 +99,12 @@
                     <li class="nav-item">
                         <label>Payment</label>
                     </li>
-
-
                 </ul>
             </div>
         </div>
     </nav>
 
-
-
-
     <form action="/servlet-ExtraOptions" method="get" role="form class=form">
-
 
         <div id="textArea2">
 
@@ -98,16 +112,9 @@
 
             <div class="container" id="pInfoForm">
 
-                <h2> You need more luggages ?</h2>
-                <p>We work on it !</p>
-
-
-
+                <h2> Flight option</h2>
 
                 <!------------------------------------------------------------------------------>
-
-
-
 
 
                 <section class="pricing-area" id="pricing">
@@ -117,7 +124,7 @@
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="classesOption" checked>
+                                    <input type="radio" class="form-check-input" name="flightOption" checked>
                                     <div class="price-title">
                                         <h4>Eco</h4>
                                     </div>
@@ -139,7 +146,7 @@
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="classesOption">
+                                    <input type="radio" class="form-check-input" name="flightOption">
                                     <div class="price-title">
 
                                         <h4>ECO FLEX</h4>
@@ -162,7 +169,7 @@
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="classesOption">
+                                    <input type="radio" class="form-check-input" name="flightOption">
                                     <div class="price-title">
                                         <h4>business</h4>
                                     </div>
@@ -184,17 +191,9 @@
                         </div>
                     </div>
                 </section>
-
-
-
             </div>
 
-
-
-
                 <!------------------------------------------------------------------------------>
-
-
 
                 <!--Insurance side-->
                 <div class="container" id="pInfoForm">
@@ -239,8 +238,6 @@
                         <input type="submit" class="srch" value="Submit" />
                     </div>
                 </div>
-
-           
     </form>
 
 

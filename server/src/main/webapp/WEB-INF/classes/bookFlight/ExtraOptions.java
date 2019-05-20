@@ -21,17 +21,18 @@ public class ExtraOptions extends HttpServlet
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if(httpSession==null || !req.isRequestedSessionIdValid() ){
-				System.out.println("\n\n\n session is invalid \n\n\n");
-				res.sendRedirect("/error/sessionError.html");
+					res.sendRedirect("/error/sessionError.html");
 			}
 
 			//PARAMETERS management
-			String selectedOption = req.getParameter("selectedOption");
+			String flightOption = req.getParameter("flightOption");
+			String insurance = req.getParameter("insurance");
 			
-			String insuranceChoosed = req.getParameter("insuranceChoosed");
+			//TODO voir radio button input > mettre value ?
+			//+ stocker en session
 			
-
-			httpSession.setAttribute("insuranceChoosed", insuranceChoosed);
+			httpSession.setAttribute("flightOption", flightOption);
+			httpSession.setAttribute("insurance", insurance);
 				
 			res.sendRedirect("/booking/confirmation.jsp");
 			

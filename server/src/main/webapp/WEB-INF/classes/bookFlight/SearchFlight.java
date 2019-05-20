@@ -72,8 +72,7 @@ public class SearchFlight extends HttpServlet {
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if(httpSession==null || !req.isRequestedSessionIdValid() ){
-				System.out.println("\n\n\n session is invalid \n\n\n");
-				res.sendRedirect("/error/sessionError.html");
+					res.sendRedirect("/error/sessionError.html");
 			}
 			
 			String flightID = req.getParameter("flightID");
@@ -97,8 +96,7 @@ public class SearchFlight extends HttpServlet {
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if(httpSession==null || !req.isRequestedSessionIdValid() ){
-				System.out.println("\n\n\n session is invalid \n\n\n");
-				res.sendRedirect("/error/sessionError.html");
+					res.sendRedirect("/error/sessionError.html");
 			}
 			
 			String flightID = req.getParameter("flightID");

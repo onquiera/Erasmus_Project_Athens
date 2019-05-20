@@ -37,6 +37,27 @@
 
 </head>
 
+<%
+	//check if session is still valid
+	try{
+		HttpSession httpSession = request.getSession(false);
+		if(httpSession==null || !request.isRequestedSessionIdValid() ){
+			response.sendRedirect("/error/sessionError.html");
+		}
+	}catch(java.lang.NumberFormatException e ){
+		e.printStackTrace();
+		response.sendRedirect("/error/parameterError.html");
+	}catch(NullPointerException e ){
+		e.printStackTrace();
+		response.sendRedirect("/error/parameterError.html");
+	}catch(Exception e2 ){
+		e2.printStackTrace();
+		response.sendRedirect("/error/error.html");
+	}
+%>
+
+
+
 <body>
 	<div id="logo">
 		<a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>

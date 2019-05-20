@@ -106,8 +106,7 @@
 			HttpSession httpSession = request.getSession(false);
 			//check if session is valid
 			if (httpSession == null || !request.isRequestedSessionIdValid()) {
-				System.out.println("\n\n\n session is invalid \n\n\n");
-				response.sendRedirect("/error/sessionError.html");
+					response.sendRedirect("/error/sessionError.html");
 			}
 
 			//PARAMETERS management
@@ -184,8 +183,6 @@
 		
 	</div>
 
-	<% System.out.println("\n-\n-\n-\n-\n-\n-\nsize :"+listOfPassengers.size());
-%>
 	<% for (int i = 0; i < listOfPassengers.size(); i++) {
 		Passenger passenger = listOfPassengers.get(i);
 	%>
