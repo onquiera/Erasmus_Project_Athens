@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="flights.FlightsDAO"%>
+<%@page import="flights.FlightWithDetails"%>
 <%@page import="seats.PrintSeats"%>
 <%@page import="users.Passenger"%>
 <%@page import="seats.SeatsDAO"%>
@@ -95,6 +97,10 @@
 		String returnFlightID = null;
 		ArrayList<String> outwardSeats=null;
 		ArrayList<String> returnSeats=null;
+		FlightWithDetails outwardFlight=null;
+		FlightWithDetails returnFlight=null;
+		
+		FlightsDAO flightDAO = new FlightsDAO();
 		
 		try {
 			HttpSession httpSession = request.getSession(false);
@@ -109,8 +115,10 @@
 			departure = (String) httpSession.getAttribute("departure");
 			destination = (String) httpSession.getAttribute("destination");
 			outwardFlightID=(String) httpSession.getAttribute("outwardFlightID");
-			returnFlightID=(String) httpSession.getAttribute("returnFlightID");
+			outwardFlight = flightDAO.findFlight(outwardFlightID);
 			
+			returnFlightID=(String) httpSession.getAttribute("returnFlightID");
+			returnFlight = flightDAO.findFlight(returnFlightID);
 			
 			outwardSeats = (ArrayList<String>)httpSession.getAttribute("outward-seats");
 			returnSeats = (ArrayList<String>)httpSession.getAttribute("return-seats");
@@ -128,34 +136,56 @@
 	%>
 	<div class="container" id="pInfoForm">
 		<h2>Booking informations:</h2>
-	<br>	
-		<h4> Departure : <%=departure %> </h4>
-		<h4> Destination : <%=destination %> </h4>
-		<br>
-		<h3>Outward flight:</h3>
-		<h4>flight id : <%=outwardFlightID %></h4>
 		
-		<br>
-		<h3>Return flight:</h3>
-		<h4>flight id : <%=returnFlightID %></h4>
+		<b> Before processing to payment, please check that everything is correct, especially your contact informations. </b>
+		<br><br>
 		
-		<br>
-
-		<h3>Seats:</h3>
-		(only one for now)<br>
-		<h4>outward seats : </h4>
 		
-		<%
-			PrintSeats.printSeatsSelected(out, outwardFlightID, outwardSeats);
-		%>
+		<div style = "border-style: solid; padding:20px;">
+			<h3>Outward flight:</h3>
+			
+			<h4>Departure : <%=outwardFlight.getDeparture() %></h4>
+			<h4>Arrival : <%=outwardFlight.getArrival() %></h4>
+			<h4>SepartureDate : <%=outwardFlight.getDepartureDate() %></h4>
+			<h4>SepartureTime : <%=outwardFlight.getDepartureTime() %></h4>
+			<h4>ArrivalDate : <%=outwardFlight.getArrivalDate() %></h4>
+			<h4>ArrivalTime : <%=outwardFlight.getArrivalTime() %></h4>
+			<h4>price : <%=outwardFlight.getPrice() %> €</h4>
 		
-		<h4>return seats :</h4>
-		<%
-			PrintSeats.printSeatsSelected(out, outwardFlightID, outwardSeats);
-		%>
+			<br>
+			
+			<h4>outward seats : </h4>
+			
+			<%
+				PrintSeats.printSeatsSelected(out, outwardFlightID, outwardSeats);
+			%>
+			<br>
+		</div>
+		
+		<%if(returnFlight!=null){ %>
+			<div style = "border-style: solid; padding:20px;">
+				<h3>Return flight:</h3>
+				
+				<h4>Departure : <%=returnFlight.getDeparture() %></h4>
+				<h4>Arrival : <%=returnFlight.getArrival() %></h4>
+				<h4>SepartureDate : <%=returnFlight.getDepartureDate() %></h4>
+				<h4>SepartureTime : <%=returnFlight.getDepartureTime() %></h4>
+				<h4>ArrivalDate : <%=returnFlight.getArrivalDate() %></h4>
+				<h4>ArrivalTime : <%=returnFlight.getArrivalTime() %></h4>
+				<h4>price : <%=returnFlight.getPrice() %> €</h4>
+				<br>
+			
+				<h4>return seats :</h4>
+				<%
+					PrintSeats.printSeatsSelected(out, returnFlightID, outwardSeats);
+				%>
+			</div>
+		<%} %>
 		
 	</div>
 
+	<% System.out.println("\n-\n-\n-\n-\n-\n-\nsize :"+listOfPassengers.size());
+%>
 	<% for (int i = 0; i < listOfPassengers.size(); i++) {
 		Passenger passenger = listOfPassengers.get(i);
 	%>
@@ -193,8 +223,11 @@
 
 		<h4>None</h4>
 		<br>
-
+	
+		<%//TODO : change to button > là c'est dégeu, c'est un input de formulaire %>
 		<input type="submit" value="Process to paiement" onclick="window.location.href = '/booking/payment.jsp';">
+		
+		
 	</div>
 	<!--Footer -->
 	<div id="footer"></div>

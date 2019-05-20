@@ -99,7 +99,6 @@
 		<url-pattern>/servlet-PersonnalInformations</url-pattern>
 	</servlet-mapping>
 
-
 	<servlet>
 		<servlet-name>servlet-Contact</servlet-name>
 		<servlet-class>mailing.Contact</servlet-class>
@@ -107,6 +106,15 @@
 	<servlet-mapping>
 		<servlet-name>servlet-Contact</servlet-name>
 		<url-pattern>/servlet-Contact</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servlet-ExtraOptions</servlet-name>
+		<servlet-class>bookFlight.ExtraOptions</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-ExtraOptions</servlet-name>
+		<url-pattern>/servlet-ExtraOptions</url-pattern>
 	</servlet-mapping>
 
 </web-app>

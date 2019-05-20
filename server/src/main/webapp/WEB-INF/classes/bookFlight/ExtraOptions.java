@@ -32,7 +32,6 @@ public class ExtraOptions extends HttpServlet
 			
 
 			httpSession.setAttribute("insuranceChoosed", insuranceChoosed);
-			httpSession.setAttribute("listOfPassengers", selectedOption);
 				
 			res.sendRedirect("/booking/confirmation.jsp");
 			

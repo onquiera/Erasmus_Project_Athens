@@ -1,8 +1,10 @@
 package flights;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,17 +21,49 @@ public class FlightsDAO {
 			ps.setInt(1, reservationnumber);
 			ResultSet rs = ps.executeQuery();
 			System.out.println(ps);
-			
+
 			//System.out.println("ps: " +ps);
-			
+
 			if(rs.next()) {
 				int emailTable = rs.getInt("reservationnumber");
 				String flightid = rs.getString("flightid");
 				int seatnumber = rs.getInt("seatnumber");
 				String clientname = rs.getString("clientname");
 				String clientemail = rs.getString("clientemail");
-				
+
 				return new Booking(emailTable,flightid, seatnumber, clientname,clientemail);
+			}
+		}catch(Exception e1){
+			System.out.println(e1.getMessage());
+		}
+		return null;
+	}
+
+	public FlightWithDetails findFlight(String flightID) {
+		try(Connection con = DS.getConnection()){
+
+			String query = "Select flightID, price, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
+					+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
+					+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + 
+					"WHERE flightID = ? ";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, flightID);
+			ResultSet rs = ps.executeQuery();
+			System.out.println(ps);
+
+			//System.out.println("ps: " +ps);
+
+			if(rs.next()) {
+				String departure=rs.getString("departure");
+				String arrival=rs.getString("arrival");
+				Date departureDate = rs.getDate("departureDate");
+				Time departureTime = rs.getTime("departureTime");
+				Date arrivalDate = rs.getDate("arrivalDate");
+				Time arrivalTime = rs.getTime("arrivalTime");
+				int price=rs.getInt("price");
+				int placesLeft=rs.getInt("placesLeft");
+
+				return new FlightWithDetails(flightID, departure, arrival, departureDate, departureTime, arrivalDate, arrivalTime, price, placesLeft);
 			}
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
@@ -54,7 +88,7 @@ public class FlightsDAO {
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
 		}
-	return false;
+		return false;
 	}
 
 	public List<Booking> findAll() {
@@ -106,7 +140,7 @@ public class FlightsDAO {
 	public boolean update(Booking TODDDOO) {
 		/*
 		try(Connection con = DS.getConnection()){
-			
+
 			String query = "UPDATE users SET name = ?, surname = ?, genre = ?, password = ?, role = ? WHERE reservationnumber=?;";
 			PreparedStatement ps = con.prepareStatement( query );
 
@@ -116,16 +150,16 @@ public class FlightsDAO {
 			ps.setString(4, user.getPassword());
 			ps.setInt(5, user.getRole());
 			ps.setString(6, user.getReservationnumber());
-			
+
 			System.out.println(ps);
 			ps.executeUpdate();
-			
+
 			return true;
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
 		}
-		*/
+		 */
 		return false;
 	}
-	
+
 }

@@ -37,13 +37,12 @@ CREATE TABLE planes(
 	--Example --> 88465123
 	company text,
 	planeType text,
-	nbPlaceEco integer,
-	nbPlaceBui integer
+	nbPlace integer
 );
 
 --Flights table, where the information like datetime of departure and arrival are.
 CREATE TABLE flights(
-	flightID text PRIMARY KEY,
+		flightID text PRIMARY KEY,
 	--Id of the flight, 2 letter for the country and 8 number for the id
 	--Example --> FR00764400 (Unique to determine if the is a delay or something)
 	planeID integer,
@@ -62,10 +61,20 @@ CREATE TABLE flights(
 	FOREIGN KEY (arrivingCityCode) REFERENCES airports(code)
 );
 
---Bookings table, where all the informations about any book is written. The user can have a partial access to this table.
+CREATE TABLE IF NOT EXISTS  seat_reservation  (
+   flightID text,
+   SEAT_NUMBER  varchar(4) NOT NULL,
+   bookingID integer,
+   FOREIGN KEY(flightID) REFERENCES  flights(flightID),
+   FOREIGN KEY(bookingID) REFERENCES  bookings(bookingID)
+);
+
+ALTER TABLE  seat_reservation 
+ ADD PRIMARY KEY (flightID , SEAT_NUMBER);
+
+
 CREATE TABLE bookings(
-	reservationNumber integer PRIMARY KEY,
-	--Need to be at least 10 number, to be sure to have enough place about the future bookings.
+	bookingID integer PRIMARY KEY,
 	flightID text,
 	seatNumber integer,
 	clientName text,
@@ -73,14 +82,5 @@ CREATE TABLE bookings(
 	FOREIGN KEY (flightID) REFERENCES flights(flightID)
 );
 
-CREATE TABLE IF NOT EXISTS  seat_reservation  (
-   flightID text,
-   SEAT_NUMBER  varchar(4) NOT NULL,
-   CUSTOMER_NAME  varchar(80) DEFAULT NULL,
-   FOREIGN KEY(flightID) REFERENCES  flights(flightID)
-);
-
-ALTER TABLE  seat_reservation 
- ADD PRIMARY KEY (flightID , SEAT_NUMBER);
 
 

@@ -88,7 +88,7 @@
 
 
 
-		<form action="/ExtraOptions" method="get" role="form class=form">
+		<form action="/servlet-ExtraOptions" method="get" role="form class=form">
 		
 
     <div id="textArea2">

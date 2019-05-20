@@ -85,8 +85,21 @@
 
 	<div id="textArea2">
 		<div class="container" id="pInfoForm">
-		
-			<input type="submit" value="Pay" onclick="window.location.href = '/booking/bookingDone.jsp';">
+			<h1>Booking done</h1>
+			<br>
+
+			<h4>Your booking had been succesfully made !
+<br><br>	
+			<h4>We sent you the booking confirmation and your bill per mail.
+			<br><br>
+			Please follow the informations given to get your boarding tickets.
+			
+			
+			<br><br><br><br>
+			We thank you to travel the world with our flights and hope you will enjoy your journey ! 
+			</h4>
+			<br>
+			Want more ? <a href="/">Look for another flight.</a>
 
 		</div>
 	</div>

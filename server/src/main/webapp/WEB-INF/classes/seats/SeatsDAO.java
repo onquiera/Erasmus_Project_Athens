@@ -13,7 +13,7 @@ public class SeatsDAO {
 		try(Connection con = DS.getConnection()){
 			ArrayList<String> liste =new ArrayList<>();
 			String query = 
-					"Select nbPlaceEco"
+					"Select nbPlace"
 							+ " FROM flights fl "
 							+ " LEFT JOIN planes pl ON fl.planeID = pl.planeID "
 							+ " WHERE flightID = ? ";

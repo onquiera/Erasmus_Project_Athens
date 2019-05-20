@@ -39,15 +39,15 @@ INSERT INTO users(pno, password, role) VALUES
 (7, '12345678910', 0);
 
 INSERT INTO planes VALUES
-(00000001,'AirVacation','A320',20,8),
-(00000002,'AirVacation','A320',20,8),
-(00000003,'AirVacation','A320',20,8),
-(00000004,'AirVacation','A320',20,8),
-(00000005,'AirVacation','A380',30,8),
-(00000006,'AirVacation','A380',30,8),
-(00000007,'AirVacation','A380',30,8),
-(00000008,'AirVacation','ATR72',30,0),
-(00000009,'AirVacation','A380',30,8);
+(00000001,'AirVacation','A320',20),
+(00000002,'AirVacation','A320',20),
+(00000003,'AirVacation','A320',20),
+(00000004,'AirVacation','A320',20),
+(00000005,'AirVacation','A380',30),
+(00000006,'AirVacation','A380',30),
+(00000007,'AirVacation','A380',30),
+(00000008,'AirVacation','ATR72',30),
+(00000009,'AirVacation','A380',30);
 
 
 --FlightID, PlaneID, departureCityCode, ArrivingCityCode, DepartureDate, DepartureTime, ArrivalDate, ArrivalTime, PlacesLeft
