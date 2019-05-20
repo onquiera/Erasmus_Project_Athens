@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@page import="seats.SeatsDAO"%>
-<%@page import="flights.Booking"%>
+<%@page import="booking.Booking"%>
 <%@page import="java.util.List"%>
 <%@page import="flights.Airport"%>
 <%@page import="java.util.ArrayList"%>
@@ -86,97 +86,93 @@
 
 
 	<%
-	
-	//TODO plus tard > adapter type d'avion avec rangee de 3 4 etc > + gerer multiples de 4 ..
-	//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionne et list en session ..
-	// bouton boostrap > https://getbootstrap.com/docs/4.0/components/buttons/
-	
-	//> ou si plusieurs sieges, le gerer avec un formulaire unique et une validation ?
-	//> mais difficile de gerer le prix dans ce cas la, si prix change
-	
-	
-		HttpSession httpSession = request.getSession(false);
-		//check if session is valid
-		if(httpSession==null || !request.isRequestedSessionIdValid() ){
-			System.out.println("\n\n\n session is invalid \n\n\n");
-			response.sendRedirect("/error/sessionError.html");
-		}
+		//TODO plus tard > adapter type d'avion avec rangee de 3 4 etc > + gerer multiples de 4 ..
+		//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionne et list en session ..
+		// bouton boostrap > https://getbootstrap.com/docs/4.0/components/buttons/
 		
-		String flightType = request.getParameter("flightType");
+		//> ou si plusieurs sieges, le gerer avec un formulaire unique et une validation ?
+		//> mais difficile de gerer le prix dans ce cas la, si prix change
 		
 		
-		String flightID = null;
-		if(flightType.equals("outward")){
-			flightID = (String)httpSession.getAttribute("outwardFlightID");
-		}else if(flightType.equals("return")){
-			flightID = (String)httpSession.getAttribute("returnFlightID");
-		}else{
-			response.sendRedirect("/error/parameterError.html?error=flightType+incorrect+on+seats_jsp");
-		}
-	
-	
-		SeatsDAO seatsDAO = new SeatsDAO();
-		int flightsNumberOfSeats = seatsDAO.numberOfSeats(flightID);
-		ArrayList<String> alreadyBookedSeats = seatsDAO.bookedSeats(flightID);
-		int rowSize = 4;
-		String convert = "ABCDEFGHIJKL";
-		
-		
-		
-		int numberOfPassengers = (Integer)httpSession.getAttribute("numberOfPassengers");
-		
-		
-		
-		
-		
-		//TODO gerer siege en parametre si il y en a un
-		/*
-		si siege deja selectionn�> le virer de la liste
-		
-		> si siege libre > le choisir
-		
-		> si siege deja reserv� ou incorrect > ne rien faire
-		
-		
-		
-		
-		
-		
-		*/
-		
-		
-		//inactive > seat already booked
-		
-		//green > seats not booked
-		//red but disablable > seats choosed but which can be canceled
-		
-		
-		ArrayList<String> selectedSeats = (ArrayList<String>)session.getAttribute("selectedSeats");
-		if(selectedSeats==null) {
-			selectedSeats = new ArrayList<>();
-		}
-		int seatsLeftToChoose = numberOfPassengers-selectedSeats.size();
-		
-		
-		
-		
-		
-		
-		//gestion du siege choisi
-		String seatSelected = request.getParameter("seatSelected");
-		
-		if(seatSelected!=null && seatSelected.length()>0){
-			if(selectedSeats.contains(seatSelected)){
-				selectedSeats.remove(seatSelected);
-				seatsLeftToChoose++;
-			}else if(seatsLeftToChoose>0){
-				selectedSeats.add(seatSelected);
-				seatsLeftToChoose--;
+			HttpSession httpSession = request.getSession(false);
+			//check if session is valid
+			if(httpSession==null || !request.isRequestedSessionIdValid() ){
+		System.out.println("\n\n\n session is invalid \n\n\n");
+		response.sendRedirect("/error/sessionError.html");
 			}
+			
+			String flightType = request.getParameter("flightType");
+			
+			
+			String flightID = null;
+			if(flightType.equals("outward")){
+		flightID = (String)httpSession.getAttribute("outwardFlightID");
+			}else if(flightType.equals("return")){
+		flightID = (String)httpSession.getAttribute("returnFlightID");
+			}else{
+		response.sendRedirect("/error/parameterError.html?error=flightType+incorrect+on+seats_jsp");
+			}
+		
+		
+			SeatsDAO seatsDAO = new SeatsDAO();
+			int flightsNumberOfSeats = seatsDAO.numberOfSeats(flightID);
+			ArrayList<String> alreadyBookedSeats = seatsDAO.findBookedSeats(flightID);
+			int rowSize = 4;
+			String convert = "ABCDEFGHIJKL";
+			
+			
+			
+			int numberOfPassengers = (Integer)httpSession.getAttribute("numberOfPassengers");
+			
+			
+			
+			
+			
+			//TODO gerer siege en parametre si il y en a un
+			/*
+			si siege deja selectionn�> le virer de la liste
+			
+			> si siege libre > le choisir
+			
+			> si siege deja reserv� ou incorrect > ne rien faire
+			
+			
+			
+			
+			
+			
+			*/
+			
+			
+			//inactive > seat already booked
+			
+			//green > seats not booked
+			//red but disablable > seats choosed but which can be canceled
+			
+			
+			ArrayList<String> selectedSeats = (ArrayList<String>)session.getAttribute("selectedSeats");
+			if(selectedSeats==null) {
+		selectedSeats = new ArrayList<>();
+			}
+			int seatsLeftToChoose = numberOfPassengers-selectedSeats.size();
+			
+			
+			
+			
+			
+			
+			//gestion du siege choisi
+			String seatSelected = request.getParameter("seatSelected");
+			
+			if(seatSelected!=null && seatSelected.length()>0){
+		if(selectedSeats.contains(seatSelected)){
+			selectedSeats.remove(seatSelected);
+			seatsLeftToChoose++;
+		}else if(seatsLeftToChoose>0){
+			selectedSeats.add(seatSelected);
+			seatsLeftToChoose--;
 		}
-		
-		
-		
+			}
 	%>
 
 	<h2><u><b><%=flightType %></b></u> flight</h2>

@@ -27,7 +27,7 @@
 
 	<servlet>
 		<servlet-name>MyBooking</servlet-name>
-		<servlet-class>flights.MyBooking</servlet-class>
+		<servlet-class>booking.MyBooking</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MyBooking</servlet-name>
@@ -115,6 +115,15 @@
 	<servlet-mapping>
 		<servlet-name>servlet-ExtraOptions</servlet-name>
 		<url-pattern>/servlet-ExtraOptions</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servlet-RegisterBooking</servlet-name>
+		<servlet-class>booking.RegisterBooking</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-RegisterBooking</servlet-name>
+		<url-pattern>/servlet-RegisterBooking</url-pattern>
 	</servlet-mapping>
 
 </web-app>

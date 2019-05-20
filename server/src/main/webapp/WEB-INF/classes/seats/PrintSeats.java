@@ -24,7 +24,7 @@ public class PrintSeats {
 			
 			SeatsDAO seatsDAO = new SeatsDAO();
 			int flightsNumberOfSeats = seatsDAO.numberOfSeats(flightID);
-			ArrayList<String> alreadyBookedSeats = seatsDAO.bookedSeats(flightID);
+			ArrayList<String> alreadyBookedSeats = seatsDAO.findBookedSeats(flightID);
 
 			for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {
 				out.println("<br>");

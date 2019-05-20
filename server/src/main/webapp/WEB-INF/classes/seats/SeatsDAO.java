@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import booking.Booking;
 import connexion.DS;
 
 public class SeatsDAO {
@@ -34,7 +35,7 @@ public class SeatsDAO {
 		return -1;
 	}
 
-	public ArrayList<String> bookedSeats(String flightID) {
+	public ArrayList<String> findBookedSeats(String flightID) {
 		try(Connection con = DS.getConnection()){
 			ArrayList<String> liste =new ArrayList<>();
 			String query = "select seat_number from seat_reservation where flightID=?";
@@ -55,6 +56,23 @@ public class SeatsDAO {
 			System.out.println(e1.getMessage());
 		}
 		return null;
+	}
+	
+	public boolean bookSeat(String flightID, String seat, int bookingID) {
+		try(Connection con = DS.getConnection()){
+
+			String query = "Insert into seat_reservation values(?,?,?)";
+			PreparedStatement ps = con.prepareStatement( query );
+			ps.setString(1, flightID);
+			ps.setString(2, seat);
+			ps.setInt(3, bookingID);
+			System.out.println(ps);
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e1){
+			System.out.println(e1.getMessage());
+		}
+		return false;
 	}
 	
 }

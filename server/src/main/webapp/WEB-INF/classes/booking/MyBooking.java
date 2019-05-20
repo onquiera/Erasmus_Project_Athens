@@ -1,9 +1,11 @@
-package flights;
+package booking;
 
 import java.io.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import users.*;
 
 @SuppressWarnings("serial")
 public class MyBooking extends HttpServlet {
@@ -37,38 +39,36 @@ public class MyBooking extends HttpServlet {
 		// TODO ajouter détails > exemple pas flight id mais détails du vol
 
 		try {
-
 			// reservationnumber | flightid | seatnumber | clientname | clientemail
 
-			int reservationnumber = -1;
-			String clientname = "";
+			int bookingID = -1;
+			String email = "";
 
-			reservationnumber = Integer.parseInt(req.getParameter("reservationID"));
-			clientname = req.getParameter("surname");
+			bookingID = Integer.parseInt(req.getParameter("bookingID"));
+			email = req.getParameter("email");
 
-			BookingDAO dao = new BookingDAO();
-			Booking booking = dao.find(reservationnumber);
+			BookingDAO bookingDAO = new BookingDAO();
+			Booking booking = bookingDAO.find(bookingID);
 
+			PassengerDAO passengerDAO = new PassengerDAO();
+			Passenger passenger = passengerDAO.find(email);
+			
 			if (booking == null) {
 				out.println("<h1>Booking not found </h1>");
-			} else if (!booking.getClientname().equals(clientname)) {
-				out.println("<h1>Client name doesn't match booking id</h1>");
+			} else if (booking.getMainPassengerNO()!=(passenger.getPno())) {
+				out.println("<h1>Email name doesn't match booking id</h1>");
 			} else {
 				out.println("<h1> Your reservation : </h1>");
-				out.println("<h3> client : " + booking.getClientname() + "</h3>");
-				out.println("<h3> reservation number : " + booking.getReservationnumber() + "</h3>");
-				out.println("<h3> seat number : " + booking.getSeatnumber() + "</h3>");
+				out.println("<h3> client : "+passenger.getName() +" " + passenger.getName() + "</h3>");
+				out.println("<h3> Booking ID : " + booking.getBookingID() + "</h3>");
 				out.println("<h3> flight id : " + booking.getFlightid() + "</h3>");
-
 			}
 
 		} catch (java.lang.NumberFormatException e1) {
 			out.println("<h1>Invalid parameters </h1>");
 		} catch (Exception e2) {
 			e2.printStackTrace();
-
 		}
-
 		out.println("" + "<a href=\"/booking/searchBooking.jsp\">Back to booking search</a>"
 				+ "<nav id=\"footer\"></nav></body>");
 	}

@@ -5,9 +5,11 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import javax.mail.SendFailedException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import mailing.MailService;
 import users.Passenger;
 import users.PassengerDAO;
 import users.Users;
@@ -65,16 +67,11 @@ public class SignIn extends HttpServlet
 				//	l'inscription est faite > on range ça en session
 
 				session.setAttribute("login", email );
-
-				//TODO ranger en attribut d'autre element, genre prenom et nom ? > pour les affiché à coté du connécté
-				//à voir ce qui est le plus beau
+				
+				MailService mailService = new MailService();
+				mailService.sendTo(email, "succesfully registered", "Welcome on air vacation !\n\n You have succesfully been registered. ");
 
 				res.sendRedirect("/index.jsp");
-				
-				
-				
-				
-				
 				
 			}catch(java.lang.NumberFormatException e) { //TODO remplacer ça par les exceptions possible(notament invalid format exception)
 				e.printStackTrace();

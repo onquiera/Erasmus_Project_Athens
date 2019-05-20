@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@page import="seats.SeatsDAO"%>
-<%@page import="flights.Booking"%>
+<%@page import="booking.Booking"%>
 <%@page import="java.util.List"%>
 <%@page import="flights.Airport"%>
 <%@page import="java.util.ArrayList"%>
@@ -86,7 +86,7 @@
 	<div id="textArea2">
 		<div class="container" id="pInfoForm">
 		
-			<input type="submit" value="Pay" onclick="window.location.href = '/booking/bookingDone.jsp';">
+			<input type="submit" value="Pay" onclick="window.location.href = '/servlet-RegisterBooking';">
 
 		</div>
 	</div>

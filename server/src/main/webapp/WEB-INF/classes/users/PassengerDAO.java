@@ -4,25 +4,10 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
-
-import com.mysql.jdbc.jdbc2.optional.SuspendableXAConnection;
 
 import connexion.DS;
 
 public class PassengerDAO {
-	/*
-	//passenger structure : 
-
-	passenger(
-			pno SERIAL,
-			name text,
-			surname text,
-			title integer,
-			dateOfBirth DATE,
-			phoneNumber text,0
-			email text);
-	 */
 
 	public Passenger find(int pno) {
 		try(Connection con = DS.getConnection()){
@@ -51,32 +36,29 @@ public class PassengerDAO {
 	}
 
 	public Passenger find(String email) {
-		//TODO
-		//		try(Connection con = DS.getConnection()){
-		//
-		//			String query = "Select * from users where email=?";
-		//			PreparedStatement ps = con.prepareStatement( query );
-		//			ps.setString(1, email);
-		//			ResultSet rs = ps.executeQuery();
-		//			System.out.println(ps);
-		//			
-		//			//System.out.println("ps: " +ps);
-		//			
-		//			if(rs.next()) {
-		//				String emailTable = rs.getString("email");
-		//				String name = rs.getString("name");
-		//				String surname = rs.getString("surname");
-		//				int genre = rs.getInt("genre");
-		//				String password = rs.getString("password");
-		//				int role = rs.getInt("role");
-		//				
-		//				return new Passenger(emailTable,name, surname, genre,password, role);
-		//			}
-		//		}catch(Exception e1){
-		//			System.out.println(e1.getMessage());
-		//		}
-		return null;
-	}
+			try(Connection con = DS.getConnection()){
+
+				String query = "Select * from passengers where email=?";
+				PreparedStatement ps = con.prepareStatement( query );
+				ps.setString(1, email);
+				ResultSet rs = ps.executeQuery();
+				//System.out.println("ps: " +ps);
+
+				if(rs.next()) {
+					int pno = rs.getInt("pno");
+					String name = rs.getString("name");
+					String surname = rs.getString("surname");
+					int title = rs.getInt("title");
+					Date dateOfBirth = rs.getDate("dateOfBirth");
+					String phoneNumber = rs.getString("phoneNumber");
+
+					return new Passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email);
+				}
+			}catch(Exception e1){
+				System.out.println(e1.getMessage());
+			}
+			return null;
+		}
 
 	public boolean create(Passenger passenger) {
 		try(Connection con = DS.getConnection()){
@@ -97,7 +79,7 @@ public class PassengerDAO {
 		}
 		return false;
 	}
-
+/*
 	public List<Passenger> findAll() {
 		//TODO
 		//		try(Connection con = DS.getConnection()){
@@ -168,7 +150,7 @@ public class PassengerDAO {
 		//		}
 		return false;
 	}
-	
+	*/
 	public int maxPNO() {
 		try(Connection con = DS.getConnection()){
 			String query = "Select MAX(pno) as maxpno from passenger";

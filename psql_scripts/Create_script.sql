@@ -1,7 +1,8 @@
+DROP TABLE IF EXISTS seat_reservation;
+DROP TABLE IF EXISTS passengerBelongsToBooking;
 DROP table if exists bookings;
 DROP table if exists users;
 DROP table if exists passenger;
-DROP TABLE IF EXISTS seat_reservation;
 DROP table if exists flights;
 DROP table if exists planes;
 
@@ -61,24 +62,38 @@ CREATE TABLE flights(
 	FOREIGN KEY (arrivingCityCode) REFERENCES airports(code)
 );
 
---Bookings table, where all the informations about any book is written. The user can have a partial access to this table.
 CREATE TABLE bookings(
-	reservationNumber integer PRIMARY KEY,
+	bookingID int PRIMARY KEY,
 	flightID text,
-	seatNumber integer,
-	clientName text,
-	clientEmail text,
-	FOREIGN KEY (flightID) REFERENCES flights(flightID)
+	category int,
+	insurance int, --0 insurance taken, 1 insurance not taken
+	mainPassengerNO int, 
+	FOREIGN KEY (flightID) REFERENCES flights(flightID),
+	FOREIGN KEY (mainPassengerNO) REFERENCES passenger(pno)
+);
+
+--association > when multiple passengers on one booking
+CREATE TABLE passengerBelongsToBooking(
+	passengerNO integer,
+	bookingID integer,
+	FOREIGN KEY (bookingID) REFERENCES bookings(bookingID),
+	FOREIGN KEY (passengerNO) REFERENCES passenger(pno)
 );
 
 CREATE TABLE IF NOT EXISTS  seat_reservation  (
    flightID text,
    SEAT_NUMBER  varchar(4) NOT NULL,
-   CUSTOMER_NAME  varchar(80) DEFAULT NULL,
-   FOREIGN KEY(flightID) REFERENCES  flights(flightID)
+   bookingID integer,
+   FOREIGN KEY(flightID) REFERENCES  flights(flightID),
+   FOREIGN KEY(bookingID) REFERENCES  bookings(bookingID)
 );
 
 ALTER TABLE  seat_reservation 
  ADD PRIMARY KEY (flightID , SEAT_NUMBER);
+
+
+
+
+
 
 

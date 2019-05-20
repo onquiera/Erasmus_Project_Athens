@@ -1,11 +1,12 @@
 --- reset tables befores inserts
 
 DELETE FROM seat_reservation;
+DELETE FROM passengerBelongsToBooking;
 DELETE FROM bookings;
-DELETE FROM flights;
-DELETE FROM planes;
 DELETE FROM users;
 DELETE FROM passenger;
+DELETE FROM flights;
+DELETE FROM planes;
 
 
 --------First data entered on table when the server starts--------
@@ -138,59 +139,54 @@ INSERT INTO flights VALUES
 ('GR00450036',00000000000009,'ATH','LCY','2019-05-25', '15:30:00','2019-05-25', '21:30:00','50', '10'),
 ('GR00450037',00000000000009,'LCY','ATH','2019-05-25', '22:40:00','2019-05-26', '03:40:00','50', '10');
 
---ID unique, soit l'id à utiliser pour trouver sa réservation--
+
 INSERT INTO bookings VALUES
-(0000000001,'FR00764400',120,'Despelchin','bricedespelchin@gmail.com'),
-(0000000002,'FR00764400',121,'Onquiert','bricedespelchin@gmail.com'),
-(0000000003,'FR00764401',144,'Despelchin','bricedespelchin@gmail.com'),
-(0000000004,'FR00764401',002,'Onquiert','antoine.onquiert@gmail.com'),
-
-(0000000005,'FR00450036',30,'Colombe','colombe.guillemin@gmail.com'),
-(0000000008,'FR00450037',78,'Colombe','colombe.guillemin@gmail.com');
-
-INSERT INTO  seat_reservation  ( flightID ,  SEAT_NUMBER ,  CUSTOMER_NAME ) VALUES
-('FR00764400', '1A', 'Angela Warren'),
-('FR00764400', '1B', 'Catherine Perry'),
-('FR00764400', '2D', 'Steven Wells'),
-('FR00764400', '2B', 'Betty Cox'),
-('FR00764400', '3A', 'Samuel Murphy'),
-('FR00764400', '4C', 'Shawn Hall'),
-('FR00764400', '4A', 'Scott Taylor'),
-('BL00764400', '1D', 'Edward Rodriguez'),
-('BL00764400', '1B', 'Ruth Holmes'),
-('BL00764400', '2A', 'Julie Peters'),
-('BL00764400', '2C', 'Roy Cunningham'),
-('BL00764400', '3B', 'Kathryn Johnston'),
-('BL00764400', '4D', 'Betty Peterson'),
-('FR00764401', '1A', 'Kathryn Wallace'),
-('FR00764401', '1B', 'Sarah Young'),
-('FR00764401', '2A', 'Mary Bradley'),
-('FR00764401', '2B', 'Irene Grant'),
-('FR00764401', '3D', 'Theresa Bradley'),
-('FR00764401', '4B', 'Randy Castillo'),
-('FR00764401', '5D', 'Antonio Ferguson'),
-('FR00764401', '5C', 'Lori Perry'),
-('FR00764401', '6A', 'Kevin Mcdonald'),
-('FR00764401', '7A', 'Phyllis Elliott'),
-('FR00764401', '7B', 'Paula Ford'),
-('FR00450030', '1D', 'Kathryn Wallace'),
-('FR00450030', '1C', 'Sarah Young'),
-('FR00450030', '3A', 'Theresa Bradley'),
-('FR00450030', '3B', 'Gerald Price'),
-('FR00450030', '4D', 'Henry Webb'),
-('FR00450030', '4B', 'Randy Castillo'),
-('FR00450030', '5A', 'Antonio Ferguson'),
-('FR00450030', '6D', 'Kevin Mcdonald'),
-('FR00450030', '6B', 'Benjamin Jenkins'),
-('FR00450030', '7A', 'Phyllis Elliott'),
-('FR00450030', '7B', 'Paula Ford'),
-('GR50450030', '6D', 'Kevin Mcdonald'),
-('GR50450030', '6B', 'Benjamin Jenkins'),
-('GR50450030', '7A', 'Phyllis Elliott'),
-('GR50450030', '7B', 'Paula Ford');
+(0,'FR00764400', 0, 0, 1),
+(1,'FR00764400', 2, 0, 1),
+(2,'FR00764400', 1, 0, 1);
 
 
+INSERT INTO passengerBelongsToBooking VALUES
+(1,0),
+(1,0);
 
------
-
+INSERT INTO  seat_reservation VALUES
+('FR00764400', '1A', '0'),
+('FR00764400', '1B', '0'),
+('FR00764400', '2D', '0'),
+('FR00764400', '2B', '0'),
+('FR00764400', '3A', '0'),
+('FR00764400', '4C', '0'),
+('FR00764400', '4A', '0'),
+('BL00764400', '1D', '0'),
+('BL00764400', '1B', '0'),
+('BL00764400', '2A', '0'),
+('BL00764400', '2C', '0'),
+('BL00764400', '3B', '0'),
+('BL00764400', '4D', '0'),
+('FR00764401', '1A', '0'),
+('FR00764401', '1B', '0'),
+('FR00764401', '2A', '0'),
+('FR00764401', '2B', '0'),
+('FR00764401', '3D', '0'),
+('FR00764401', '4B', '0'),
+('FR00764401', '5D', '0'),
+('FR00764401', '5C', '0'),
+('FR00764401', '6A', '0'),
+('FR00764401', '7A', '0'),
+('FR00764401', '7B', '0'),
+('FR00450030', '1D', '0'),
+('FR00450030', '1C', '0'),
+('FR00450030', '3B', '0'),
+('FR00450030', '4D', '0'),
+('FR00450030', '4B', '0'),
+('FR00450030', '5A', '0'),
+('FR00450030', '6D', '0'),
+('FR00450030', '6B', '0'),
+('FR00450030', '7A', '0'),
+('FR00450030', '7B', '0'),
+('GR50450030', '6D', '0'),
+('GR50450030', '6B', '0'),
+('GR50450030', '7A', '0'),
+('GR50450030', '7B', '0');
 

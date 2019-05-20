@@ -1,4 +1,4 @@
-package flights;
+package booking;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,25 +11,24 @@ import connexion.DS;
 public class BookingDAO {
 
 	//reservationnumber |  flightid  | seatnumber | clientname |         clientemail   
-	public Booking find(int reservationnumber) {
+	public Booking find(int bookingID) {
 		try(Connection con = DS.getConnection()){
 
 			String query = "Select * from bookings where reservationnumber=?";
 			PreparedStatement ps = con.prepareStatement( query );
-			ps.setInt(1, reservationnumber);
+			ps.setInt(1, bookingID);
 			ResultSet rs = ps.executeQuery();
 			//System.out.println(ps);
 			
 			//System.out.println("ps: " +ps);
 			
 			if(rs.next()) {
-				int emailTable = rs.getInt("reservationnumber");
 				String flightid = rs.getString("flightid");
-				int seatnumber = rs.getInt("seatnumber");
-				String clientname = rs.getString("clientname");
-				String clientemail = rs.getString("clientemail");
+				int category = rs.getInt("category");
+				int insurance = rs.getInt("insurance");
+				int mainPassengerNO = rs.getInt("mainPassengerNO");
 				
-				return new Booking(emailTable,flightid, seatnumber, clientname,clientemail);
+				return new Booking(bookingID,flightid, category, insurance, mainPassengerNO);
 			}
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
@@ -42,11 +41,11 @@ public class BookingDAO {
 
 			String query = "Insert into bookings values(?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement( query );
-			ps.setInt(1, booking.getReservationnumber());
+			ps.setInt(1, booking.getBookingID());
 			ps.setString(2, booking.getFlightid());
-			ps.setInt(3, booking.getSeatnumber());
-			ps.setString(4, booking.getClientname());
-			ps.setString(5, booking.getClientemail());
+			ps.setInt(3, booking.getCategory());
+			ps.setInt(4, booking.getInsurance());
+			ps.setInt(5, booking.getMainPassengerNO());
 
 			ps.executeUpdate();
 			System.out.println(ps);
@@ -54,7 +53,7 @@ public class BookingDAO {
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
 		}
-	return false;
+		return false;
 	}
 
 	public List<Booking> findAll() {
@@ -73,8 +72,8 @@ public class BookingDAO {
 						rs.getInt(1),
 						rs.getString(2),
 						rs.getInt(3),
-						rs.getString(4),
-						rs.getString(5)
+						rs.getInt(4),
+						rs.getInt(5)
 						);
 				liste.add(tmp);
 			}
@@ -126,6 +125,43 @@ public class BookingDAO {
 		}
 		*/
 		return false;
+	}
+	
+	public int maxBookingID() {
+		try(Connection con = DS.getConnection()){
+			String query = "Select MAX(bookingID) as maxBookingID from bookings";
+			PreparedStatement ps = con.prepareStatement( query );
+			ResultSet rs = ps.executeQuery();
+			//System.out.println("ps: " +ps);
+			if(rs.next()) {
+				int maxBookingID =  rs.getInt("maxBookingID");
+				return maxBookingID;
+			}else {
+				return 0 ;
+			}
+		}catch(Exception e1){
+			System.out.println(e1.getMessage());
+			return -1;
+		}
+	}
+	
+	
+	public boolean associatePassengerToBooking(int pno, int bookingID) {
+			try(Connection con = DS.getConnection()){
+
+				String query = "Insert into passengerBelongsToBooking values(?,?)";
+				PreparedStatement ps = con.prepareStatement( query );
+				ps.setInt(1, pno);
+				ps.setInt(2, bookingID);
+
+				ps.executeUpdate();
+				System.out.println(ps);
+				return true;
+			}catch(Exception e1){
+				System.out.println(e1.getMessage());
+			}
+		return false;
+	
 	}
 	
 }

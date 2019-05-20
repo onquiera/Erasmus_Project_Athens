@@ -4,7 +4,7 @@
 <%@page import="seats.PrintSeats"%>
 <%@page import="users.Passenger"%>
 <%@page import="seats.SeatsDAO"%>
-<%@page import="flights.Booking"%>
+<%@page import="booking.Booking"%>
 <%@page import="java.util.List"%>
 <%@page import="flights.Airport"%>
 <%@page import="java.util.ArrayList"%>
