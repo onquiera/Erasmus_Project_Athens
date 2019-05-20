@@ -55,7 +55,8 @@ CREATE TABLE flights(
 	departureTime TIME,
 	arrivalDate DATE,
 	arrivalTime TIME,
-	placesLeft INT,
+	price INT,
+	placesLeft INT,	
 	FOREIGN KEY (planeID) REFERENCES planes(planeID),
 	FOREIGN KEY (departureCityCode) REFERENCES airports(code),
 	FOREIGN KEY (arrivingCityCode) REFERENCES airports(code)

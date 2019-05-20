@@ -11,7 +11,7 @@
 
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
 	<title>Seats</title>
-	<meta charset="utf-8">
+	<%@ page contentType="text/html; charset=UTF-8" %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--Bootstrap links and scripts-->
@@ -131,11 +131,11 @@
 		
 		//TODO gerer siege en parametre si il y en a un
 		/*
-		si siege deja selectionné> le virer de la liste
+		si siege deja selectionnï¿½> le virer de la liste
 		
 		> si siege libre > le choisir
 		
-		> si siege deja reservé ou incorrect > ne rien faire
+		> si siege deja reservï¿½ ou incorrect > ne rien faire
 		
 		
 		

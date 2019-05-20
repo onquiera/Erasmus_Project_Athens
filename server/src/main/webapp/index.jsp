@@ -10,7 +10,7 @@
 
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
 	<title>AirVacation</title>
-	<meta charset="utf-8">
+	<%@ page contentType="text/html; charset=UTF-8" %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--Bootstrap links and scripts-->
@@ -153,14 +153,6 @@
 											</select>
 										</div>
 
-
-										<div class="adult-box">
-											<span>Class</span>
-											<select value="" name="travelClass">
-												<option>Economy</option>
-												<option>Business</option>
-											</select>
-										</div>
 									</div>
 									<div class="col-lg-12">
 										<input type="submit" class="srch" value="Search Flights" />
@@ -222,13 +214,6 @@
 											</select>
 										</div>
 
-										<div class="adult-box">
-											<span>Class</span>
-											<select value="" name="travelClass">
-												<option>Economy</option>
-												<option>Business</option>
-											</select>
-										</div>
 									</div>
 									<div class="col-lg-12">
 										<input type="submit" class="srch" value="Search Flights" />

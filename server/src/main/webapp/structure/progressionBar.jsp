@@ -1,5 +1,3 @@
-<div id="logo">
-    <a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
 </div>
 
 <nav id="progressBar" class="navbar navbar-expand-lg navbar-light">

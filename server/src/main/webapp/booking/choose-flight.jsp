@@ -12,7 +12,7 @@
 
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
 	<title>Booking</title>
-	<meta charset="utf-8">
+	<%@ page contentType="text/html; charset=UTF-8" %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--Bootstrap links and scripts-->
@@ -114,7 +114,6 @@ String flight = request.getParameter("flight");%>
 				
 				//requete de recherche
 				
-				PreparedStatement ps=null;
 				java.sql.Date flightDate=null;
 				if(flight.equals("outward")) {
 
@@ -123,107 +122,87 @@ String flight = request.getParameter("flight");%>
 					java.util.Date departureDateUtil = dateFormat.parse(departureDate);
 					flightDate = new java.sql.Date(departureDateUtil.getTime());
 
-					// -----------------------------------------------------------------------------------
-					// research in database
-
-					String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
-							+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
-							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
-							+ "and a2.name = ? " + "and fl.departuredate=?";
-					ps = con.prepareStatement(query);
-					ps.setString(1, departure);
-					ps.setString(2, destination);
-					ps.setDate(3, flightDate);
-
-				out.println("<div id=\"textArea2\"><h1>Available <u>" + flight + "</u> flights </h1>");
-				
 				}else { //RETURN FLIGHT
 					// return date from string to sql
 					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 					java.util.Date returnDateUtil = dateFormat.parse(returnDate);
 					flightDate = new java.sql.Date(returnDateUtil.getTime());
-
-					// -----------------------------------------------------------------------------------
+					
+					String tmp = destination;
+					destination=departure;
+					departure=destination;
+				}
+				
+				// -----------------------------------------------------------------------------------
 					// research in database
 
-					String query = "Select flightID, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
-							+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
-							+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
-							+ "and a2.name = ? " + "and fl.departuredate=?";
-					ps = con.prepareStatement(query);
-					ps.setString(1, destination);
-					ps.setString(2, departure);
-					ps.setDate(3, flightDate);
-									
-
-
-				out.println("<div id=\"textArea2\"><h1>Available <u>" + flight + "</u> flights </h1>");
-	
-				}
+				String query = "Select flightID, price, a1.name as departure, a2.name as arrival,departureDate, departureTime, arrivalDate, arrivalTime, placesLeft "
+						+ "FROM flights fl " + "LEFT JOIN airports a1 ON fl.departurecitycode = a1.code "
+						+ "LEFT JOIN airports a2 ON fl.arrivingcitycode = a2.code " + "WHERE a1.name = ? "
+						+ "and a2.name = ? " + "and fl.departuredate=?";
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, departure);
+				ps.setString(2, destination);
+				ps.setDate(3, flightDate);
 
 				ResultSet rs = ps.executeQuery();
-
 				// out.println("|||| ps :"+ ps+" ||||");
 
-				ResultSetMetaData rsmd = rs.getMetaData();
 
+
+				//affichage
+				
+				out.println("<div id=\"textArea2\"><h1><u>" + flight + "</u> flights : </h1>");
 				out.println("<h2>On date: " + flightDate + "</h2></div>");
 
-				
-				while (rs.next()) {
-
-				
-
-					// titre des colonnes
-					out.println("<div class=\"container\" id=\"pInfoForm\">");
-
-
-				
-					//for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-
-					//		out.println(rsmd.getColumnLabel(i) + ": " + rs.getString(i) + "  ");
-
-					//}
+				ResultSetMetaData rsmd = rs.getMetaData();
+				if(rs.next()){
+			
+					do{
+						// titre des colonnes
+						out.println("<div class=\"container\" id=\"pInfoForm\">");
+						out.println("<div  class=\"flightsInfos\"><h4 class=\"h4ChooseFlight\"> ");
+						
+						//Enlever les secondes
+						String dateD = rs.getString("departureTime");
+						dateD = dateD.substring(0,5);
+						
+						String dateA = rs.getString("arrivalTime");
+						dateA = dateA.substring(0,5);
+	
+						//----------------------------
+	
+						out.println(dateD+" - " + dateA +"<br>");
+						out.println("From: " + rs.getString("departure")+"<br>");
+						out.println("To: " + rs.getString("arrival")+"<br>");
+						out.println("</div>  ");
+						//	out.println("Places left: " + rs.getString("placesLeft")+"<br>");
+						out.println("</h4>");
+	
+						out.println("<div  class=\"price\"><h4 class=\"h4PriceFlight\">  ");
+						
+						
+						
+						out.println("Price: "+rs.getInt("price")+ " €");
 					
-					out.println("<div  class=\"flightsInfos\"><h4 class=\"h4ChooseFlight\"> ");
-					//Affichage des données du vol
-					
-					//Enlever les secondes-----
-					
-					String dateD = rs.getString("departureTime");
-					dateD = dateD.substring(0,5);
-					
-					String dateA = rs.getString("arrivalTime");
-					dateA = dateA.substring(0,5);
-
-					//----------------------------
-
-					out.println(dateD+" - " + dateA +"<br>");
-					out.println("From: " + rs.getString("departure")+"<br>");
-					out.println("To: " + rs.getString("arrival")+"<br>");
-					out.println("</div>  ");
-					//	out.println("Places left: " + rs.getString("placesLeft")+"<br>");
-					out.println("</h4>");
-
-					out.println("<div  class=\"price\"><h4 class=\"h4PriceFlight\">  ");
-					
-						out.println("Price: Free");
-				
-					out.println("</h4></div>  ");
-					//bouton de validation
-					//gestion si vol retour ou non
-					out.println("<div  class=\"confirmButton\">  ");
-					out.println(""
-							+ "<form action=\"/servlet-SearchFlight\" method=\"get\">");
-					//reste des options du bouton
-					out.println(""
-							+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flight + "\">"
-							+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
-							+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
-							+ "	</form> </div> </div>");
+						out.println("</h4></div>  ");
+						//bouton de validation
+						//gestion si vol retour ou non
+						out.println("<div  class=\"confirmButton\">  ");
+						out.println(""
+								+ "<form action=\"/servlet-SearchFlight\" method=\"get\">");
+						//reste des options du bouton
+						out.println(""
+								+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flight + "\">"
+								+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
+								+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
+								+ "	</form> </div> </div>");
+							
+					}while(rs.next());
+				}else{
+					out.println("<br><h2>No available flights on this date, <a href=\"/\">please retry your research</a>. </h2>");
 				}
-
-
+				
 			}catch(java.lang.NumberFormatException e ){
 				e.printStackTrace();
 				response.sendRedirect("/error/parameterError.html");
@@ -236,7 +215,6 @@ String flight = request.getParameter("flight");%>
 			}
 	
 	 %>
-
 
 	<!--Footer -->
 	<div id="footer"></div>

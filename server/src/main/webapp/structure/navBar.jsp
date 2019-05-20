@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <nav class="navbar navbar-expand-lg navbar-light" >
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
