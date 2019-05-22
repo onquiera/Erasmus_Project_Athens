@@ -84,8 +84,9 @@
 		</div>
 	</nav>
 
-
-	<%
+	<div id="textArea2">
+		
+			<%
 		//TODO plus tard > adapter type d'avion avec rangee de 3 4 etc > + gerer multiples de 4 ..
 		//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionne et list en session ..
 		// bouton boostrap > https://getbootstrap.com/docs/4.0/components/buttons/
@@ -174,24 +175,16 @@
 			}
 	%>
 
-	<h2><u><b><%=flightType %></b></u> flight</h2>
-	
-	
-	
-	<h3>Number of seats left to choose : <%=seatsLeftToChoose%></h3>
-	
-
-<!-- validation button : -->
-		
-			<% String validateLink = "/servlet-BookSeats?flightType=" + flightType;%>
-			
-			<span style = "margin-left : 100px;"> </span>  <button type="button" class="btn btn-success" 
-			onclick="window.location.href = '<%=validateLink %>';" 
-			<%if(seatsLeftToChoose>0){out.println("disabled");}%>> validate </button>
-			<br>
+			<h2><u><b><%=flightType %></b></u> flight</h2>
 
 
-	<%
+
+			<h3>Number of seats left to choose : <%=seatsLeftToChoose%></h3>
+			<div class="container" id="pInfoForm">
+
+
+					<div id="seatChoice">
+				<%
 		//seats :
 		for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {
 			out.println("<br>");
@@ -224,25 +217,44 @@
 				}
 			}
 		}
-		out.println("<br>");
+		
+
 		
 		session.setAttribute("selectedSeats", selectedSeats);
-		
+	
 	%>
-	
-	<br><br>
-	<div id = seatLegend>
-	<h4>Legend : </h4>
-	
-	&nbsp; <button type="button" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : already booked
+				<!-- validation button : -->
 
-	&nbsp; <button type="button" class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : selected(click to unselect)
+				<% String validateLink = "/servlet-BookSeats?flightType=" + flightType;%>
+				<br>
+				<span style="margin-left : 82px;"> </span> <button type="button" class="btn btn-success"
+					style="margin-top : 2rem;" onclick="window.location.href = '<%=validateLink %>';"
+					<%if(seatsLeftToChoose>0){out.println("disabled");}%>>
+					validate </button>
+				<br>
 
-	&nbsp; <button type="button" class="btn btn-success"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : disponible(click to select)
+			</div>
+		</div>
 
+		<div id=seatLegend>
+			<div class="container" id="pInfoForm">
+				<h4>Legend : </h4>
+
+				&nbsp; <button type="button" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : already
+				booked
+
+				&nbsp; <button type="button" class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> :
+				selected(click to unselect)
+
+				&nbsp; <button type="button" class="btn btn-success"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> :
+				disponible(click to select)
+			</div>
+		</div>
 	</div>
-	
-	<br><br>
+
+	<!--Footer -->
+	<div id="footer"></div>
+
 
 
 </body>

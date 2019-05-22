@@ -39,6 +39,12 @@ input[type=submit]:hover {
     color: #ff6600;
 }
 
+#seatChoice{
+    margin-left: auto;
+    margin-right: auto;
+    width: 25rem;
+}
+
 /*End of the form style*/
 
 #textArea2 {
