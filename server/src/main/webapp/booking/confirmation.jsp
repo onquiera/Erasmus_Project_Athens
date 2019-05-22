@@ -1,4 +1,5 @@
-q<!DOCTYPE html>
+q
+<!DOCTYPE html>
 <%@page import="flights.FlightsDAO"%>
 <%@page import="flights.FlightWithDetails"%>
 <%@page import="seats.PrintSeats"%>
@@ -143,14 +144,15 @@ q<!DOCTYPE html>
 	%>
 	<div class="container" id="pInfoForm">
 		<h2>Booking informations:</h2>
-		
-		<b> Before processing to payment, please check that everything is correct, especially your contact informations. </b>
+
+		<b> Before processing to payment, please check that everything is correct, especially your contact informations.
+		</b>
 		<br><br>
-		
-		
-		<div style = "border-style: solid; padding:20px ;margin-bottom:1px;">
+
+
+		<div style="border-style: solid; padding:20px ;margin-bottom:1px;">
 			<h3>Outward flight:</h3>
-			
+
 			<h4>Departure : <%=outwardFlight.getDeparture() %></h4>
 			<h4>Arrival : <%=outwardFlight.getArrival() %></h4>
 			<h4>SepartureDate : <%=outwardFlight.getDepartureDate() %></h4>
@@ -158,37 +160,37 @@ q<!DOCTYPE html>
 			<h4>ArrivalDate : <%=outwardFlight.getArrivalDate() %></h4>
 			<h4>ArrivalTime : <%=outwardFlight.getArrivalTime() %></h4>
 			<h4>price : <%=outwardFlight.getPrice() %> €</h4>
-		
+
 			<br>
-			
+
 			<h4>outward seats : </h4>
-			
+
 			<%
 				PrintSeats.printSeatsSelected(out, outwardFlightID, outwardSeats);
 			%>
 			<br>
 		</div>
-		
+
 		<%if(returnFlight!=null){ %>
-			<div style = "border-style: solid; padding:20px;">
-				<h3>Return flight:</h3>
-				
-				<h4>Departure : <%=returnFlight.getDeparture() %></h4>
-				<h4>Arrival : <%=returnFlight.getArrival() %></h4>
-				<h4>SepartureDate : <%=returnFlight.getDepartureDate() %></h4>
-				<h4>SepartureTime : <%=returnFlight.getDepartureTime() %></h4>
-				<h4>ArrivalDate : <%=returnFlight.getArrivalDate() %></h4>
-				<h4>ArrivalTime : <%=returnFlight.getArrivalTime() %></h4>
-				<h4>price : <%=returnFlight.getPrice() %> €</h4>
-				<br>
-			
-				<h4>return seats :</h4>
-				<%
+		<div style="border-style: solid; padding:20px;">
+			<h3>Return flight:</h3>
+
+			<h4>Departure : <%=returnFlight.getDeparture() %></h4>
+			<h4>Arrival : <%=returnFlight.getArrival() %></h4>
+			<h4>SepartureDate : <%=returnFlight.getDepartureDate() %></h4>
+			<h4>SepartureTime : <%=returnFlight.getDepartureTime() %></h4>
+			<h4>ArrivalDate : <%=returnFlight.getArrivalDate() %></h4>
+			<h4>ArrivalTime : <%=returnFlight.getArrivalTime() %></h4>
+			<h4>price : <%=returnFlight.getPrice() %> €</h4>
+			<br>
+
+			<h4>return seats :</h4>
+			<%
 					PrintSeats.printSeatsSelected(out, returnFlightID, outwardSeats);
 				%>
-			</div>
+		</div>
 		<%} %>
-		
+
 	</div>
 
 	<% for (int i = 0; i < listOfPassengers.size(); i++) {
@@ -230,12 +232,14 @@ q<!DOCTYPE html>
 		<h3>Insurance:</h3>
 		<h4><%=insurance %></h4>
 		<br>
-			
-	
+
+		<h3>Total: </h3><!--TODO mettre le total-->
+		<br>
+		
 		<%//TODO : change to button > là c'est dégeu, c'est un input de formulaire %>
 		<input type="submit" value="Process to paiement" onclick="window.location.href = '/booking/payment.jsp';">
-		
-		
+
+
 	</div>
 	<!--Footer -->
 	<div id="footer"></div>

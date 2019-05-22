@@ -39,9 +39,14 @@
 String flight = request.getParameter("flight");%>
 
 <body>
+
+
 	<div id="logo">
 		<a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
+
 	</div>
+
+
 
 	<nav id="progressBar" class="navbar navbar-expand-lg navbar-light">
 		<div class="container">
@@ -97,6 +102,9 @@ String flight = request.getParameter("flight");%>
 		</div>
 	</nav>
 
+	<div id="priceArea">
+		<h4>Total: Free !</h4>
+	</div>
 	<%
 		try (Connection con = DS.getConnection()) {
 		
@@ -214,6 +222,8 @@ String flight = request.getParameter("flight");%>
 		}
 	
 	 %>
+
+
 
 	<!--Footer -->
 	<div id="footer"></div>

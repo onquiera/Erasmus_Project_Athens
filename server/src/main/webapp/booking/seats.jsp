@@ -84,9 +84,13 @@
 		</div>
 	</nav>
 
+	<div id="priceArea">
+		<h4>Total: Free !</h4>
+	</div>
+
 	<div id="textArea2">
-		
-			<%
+
+		<%
 		//TODO plus tard > adapter type d'avion avec rangee de 3 4 etc > + gerer multiples de 4 ..
 		//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionne et list en session ..
 		// bouton boostrap > https://getbootstrap.com/docs/4.0/components/buttons/
@@ -175,15 +179,16 @@
 			}
 	%>
 
-			<h2><u><b><%=flightType %></b></u> flight</h2>
+
+		<h2><u><b><%=flightType %></b></u> flight</h2>
 
 
 
-			<h3>Number of seats left to choose : <%=seatsLeftToChoose%></h3>
-			<div class="container" id="pInfoForm">
+		<h3>Number of seats left to choose : <%=seatsLeftToChoose%></h3>
+		<div class="container" id="pInfoForm">
 
 
-					<div id="seatChoice">
+			<div id="seatChoice">
 				<%
 		//seats :
 		for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {

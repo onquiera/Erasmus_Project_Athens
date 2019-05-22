@@ -83,6 +83,9 @@
 			</div>
 		</div>
 	</nav>
+	<div id="priceArea">
+		<h4>Total: Free !</h4>
+	</div>
 	<%
 	int numberOfPassengers=-1;
 	

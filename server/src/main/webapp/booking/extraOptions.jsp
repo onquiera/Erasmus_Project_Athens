@@ -104,6 +104,11 @@
         </div>
     </nav>
 
+
+    <div id="priceArea">
+        <h4>Total: Free !</h4>
+    </div>
+
     <form action="/servlet-ExtraOptions" method="get" role="form class=form">
 
         <div id="textArea2">
@@ -113,7 +118,7 @@
 
             <div class="container" id="pInfoForm">
 
-                
+
 
                 <!------------------------------------------------------------------------------>
 
@@ -125,7 +130,8 @@
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="flightOption" value = "Eco" checked>
+                                    <input type="radio" class="form-check-input" name="flightOption" value="Eco"
+                                        checked>
                                     <div class="price-title">
                                         <h4>Eco</h4>
                                     </div>
@@ -147,7 +153,7 @@
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="flightOption" value = "EcoFlex">
+                                    <input type="radio" class="form-check-input" name="flightOption" value="EcoFlex">
                                     <div class="price-title">
 
                                         <h4>ECO FLEX</h4>
@@ -170,7 +176,7 @@
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="flightOption" value = "business">
+                                    <input type="radio" class="form-check-input" name="flightOption" value="business">
                                     <div class="price-title">
                                         <h4>business</h4>
                                     </div>
@@ -200,50 +206,50 @@
 
             <!------------------------------------------------------------------------------>
 
-                <!--Insurance side-->
-                <div class="container" id="pInfoForm">
-                    <h2><span class="glyphicon glyphicon-heart"></span> Insurance(recommanded)</h2>
+            <!--Insurance side-->
+            <div class="container" id="pInfoForm">
+                <h2><span class="glyphicon glyphicon-heart"></span> Insurance(recommanded)</h2>
 
-                    <div class="form-check">
-                        <span class="form-check-label">
-                            <input type="radio" class="form-check-input" name="insurance" value ="yes"> <span
-                                style="color: #ff6600; font-weight: bold;">Comprehensive travel Insurance</span>
-                            (16€ per person)
-                            <br>
-                            <span>
-                                Covers:
-                                <ul>
-                                    <li>
-                                        Medical and hospitalization expenses up to 150.000 Euros
-                                    </li>
-                                    <li>
-                                        Damage/loss or theft of luggage up to 1.000 Euros
-                                    </li>
-                                    <li>
-                                        Departure cancellation due to sickness or accident up to 500 Euros
-                                    </li>
-                                    <li>
-                                        24 hour assistance abroad
-                                    </li>
-                                </ul>
-                            </span>
+                <div class="form-check">
+                    <span class="form-check-label">
+                        <input type="radio" class="form-check-input" name="insurance" value="yes"> <span
+                            style="color: #ff6600; font-weight: bold;">Comprehensive travel Insurance</span>
+                        (16€ per person)
+                        <br>
+                        <span>
+                            Covers:
+                            <ul>
+                                <li>
+                                    Medical and hospitalization expenses up to 150.000 Euros
+                                </li>
+                                <li>
+                                    Damage/loss or theft of luggage up to 1.000 Euros
+                                </li>
+                                <li>
+                                    Departure cancellation due to sickness or accident up to 500 Euros
+                                </li>
+                                <li>
+                                    24 hour assistance abroad
+                                </li>
+                            </ul>
                         </span>
-                    </div>
-
-                    <div class="form-check">
-                        <span class="form-check-label">
-                            <input type="radio" class="form-check-input" name="insurance" value = "no" checked> <span
-                                style="color: #ff6600; font-weight: bold;">I do no wish to be insured</span>
-                        </span>
-                    </div>
+                    </span>
                 </div>
 
-                <div class="container" id="pInfoForm">
-                    <div class="col-lg-12">
-                        <input type="submit" class="srch" value="Submit" />
-                    </div>
+                <div class="form-check">
+                    <span class="form-check-label">
+                        <input type="radio" class="form-check-input" name="insurance" value="no" checked> <span
+                            style="color: #ff6600; font-weight: bold;">I do no wish to be insured</span>
+                    </span>
                 </div>
+            </div>
+
+            <div class="container" id="pInfoForm">
+                <div class="col-lg-12">
+                    <input type="submit" class="srch" value="Submit" />
                 </div>
+            </div>
+        </div>
     </form>
 
 
