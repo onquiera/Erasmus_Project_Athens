@@ -106,7 +106,8 @@
 
 	<div id="textArea2">
 		<div class="container" id="pInfoForm">
-		
+			
+
 			<input type="submit" value="Pay" onclick="window.location.href = '/servlet-RegisterBooking';">
 
 		</div>

@@ -108,11 +108,12 @@
 
         <div id="textArea2">
 
+            <h2> Flight option</h2>
             <!--More Luggage side-->
 
             <div class="container" id="pInfoForm">
 
-                <h2> Flight option</h2>
+                
 
                 <!------------------------------------------------------------------------------>
 
@@ -133,11 +134,11 @@
                                     </div>
                                     <div class="price-item">
                                         <ul>
-                                            <li>100GB Monthly Bandwidth</li>
-                                            <li>100 Google AdWords</li>
-                                            <li>100 Domain Hosting</li>
-                                            <li>SSL Shopping Cart</li>
-                                            <li>24/7 Live Support</li>
+                                            <li>1 hand baggage (12kg)</li>
+                                            <li>Seat choice</li>
+                                            <li>Meals</li>
+                                            <li>Rebooking not possible</li>
+                                            <li>No refund if you missed the flight</li>
                                         </ul>
                                     </div>
 
@@ -156,11 +157,12 @@
                                     </div>
                                     <div class="price-item">
                                         <ul>
-                                            <li>100GB Monthly Bandwidth</li>
-                                            <li>100 Google AdWords</li>
-                                            <li>100 Domain Hosting</li>
-                                            <li>SSL Shopping Cart</li>
-                                            <li>24/7 Live Support</li>
+                                            <li>1 hand baggage (12kg)</li>
+                                            <li>1 check-in baggage (20kg)</li>
+                                            <li>Seat choice</li>
+                                            <li>Meals</li>
+                                            <li>Change fee</li>
+                                            <li>No refund if you missed the flight</li>
                                         </ul>
                                     </div>
 
@@ -178,11 +180,15 @@
                                     </div>
                                     <div class="price-item">
                                         <ul>
-                                            <li>100GB Monthly Bandwidth</li>
-                                            <li>100 Google AdWords</li>
-                                            <li>100 Domain Hosting</li>
-                                            <li>SSL Shopping Cart</li>
-                                            <li>24/7 Live Support</li>
+                                            <li>2 hand baggage (12kg)</li>
+                                            <li>1 check-in baggage (20kg)</li>
+                                            <li>Seat choice</li>
+                                            <li>Meals</li>
+                                            <li>Change free</li>
+                                            <li>Refund if you missed the flight</li>
+                                            <li>Priority Check-In</li>
+                                            <li>Priority Security</li>
+                                            <li>Priority Boarding</li>
                                         </ul>
                                     </div>
 
@@ -237,6 +243,7 @@
                     <div class="col-lg-12">
                         <input type="submit" class="srch" value="Submit" />
                     </div>
+                </div>
                 </div>
     </form>
 
