@@ -51,11 +51,13 @@ public class MyBooking extends HttpServlet {
 			Booking booking = bookingDAO.find(bookingID);
 
 			PassengerDAO passengerDAO = new PassengerDAO();
-			Passenger passenger = passengerDAO.find(email);
+			Passenger passenger = passengerDAO.find(booking.getMainPassengerNO());
+			
+			
 			
 			if (booking == null) {
 				out.println("<h1>Booking not found </h1>");
-			} else if (booking.getMainPassengerNO()!=(passenger.getPno())) {
+			} else if (!email.equals(passenger.getEmail())) {
 				out.println("<h1>Email name doesn't match booking id</h1>");
 			} else {
 				out.println("<h1> Your reservation : </h1>");

@@ -27,9 +27,11 @@ public class Contact extends HttpServlet
 			mailService.sendTo(MailService.AIR_VACATIONS_EMAIL, subject, problem);
 			
 			//message good received email
-			mailService.sendTo(email, "Message Received: " + subject + "", "We received your message and are working on it !"
-					+ "\nYou will receive an email from our customers service soon."
-					+ "\n Have a nice day, AirVacation.");
+			mailService.sendTo(email, "Request Received: " + subject + "", 
+					"<h1> Request received </h1><br>"
+					+ "<h3>We received your request and are working on it !"
+					+ "\n You will receive an email from our customers service soon."
+					+ "\n Have a nice day, AirVacation. </h3>");
 			
 			res.sendRedirect("/informations/messageReceived.html");
 			

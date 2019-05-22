@@ -125,7 +125,7 @@
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="flightOption" checked>
+                                    <input type="radio" class="form-check-input" name="flightOption" value = "Eco" checked>
                                     <div class="price-title">
                                         <h4>Eco</h4>
                                     </div>
@@ -147,7 +147,7 @@
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="flightOption">
+                                    <input type="radio" class="form-check-input" name="flightOption" value = "EcoFlex">
                                     <div class="price-title">
 
                                         <h4>ECO FLEX</h4>
@@ -165,13 +165,12 @@
                                             <li>No refund if you missed the flight</li>
                                         </ul>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="col-xl-4">
 
                                 <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="flightOption">
+                                    <input type="radio" class="form-check-input" name="flightOption" value = "business">
                                     <div class="price-title">
                                         <h4>business</h4>
                                     </div>
@@ -199,7 +198,7 @@
                 </section>
             </div>
 
-                <!------------------------------------------------------------------------------>
+            <!------------------------------------------------------------------------------>
 
                 <!--Insurance side-->
                 <div class="container" id="pInfoForm">
@@ -207,7 +206,7 @@
 
                     <div class="form-check">
                         <span class="form-check-label">
-                            <input type="radio" class="form-check-input" name="insurance"> <span
+                            <input type="radio" class="form-check-input" name="insurance" value ="yes"> <span
                                 style="color: #ff6600; font-weight: bold;">Comprehensive travel Insurance</span>
                             (16€ per person)
                             <br>
@@ -233,7 +232,7 @@
 
                     <div class="form-check">
                         <span class="form-check-label">
-                            <input type="radio" class="form-check-input" name="insurance" checked> <span
+                            <input type="radio" class="form-check-input" name="insurance" value = "no" checked> <span
                                 style="color: #ff6600; font-weight: bold;">I do no wish to be insured</span>
                         </span>
                     </div>

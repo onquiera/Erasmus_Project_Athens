@@ -25,40 +25,15 @@ public class PassengerDAO {
 				int title = rs.getInt("title");
 				Date dateOfBirth = rs.getDate("dateOfBirth");
 				String phoneNumber = rs.getString("phoneNumber");
-				String email = rs.getString("email");
+				String contactEmail = rs.getString("contactEmail");
 
-				return new Passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email);
+				return new Passenger(pno, name, surname, title, dateOfBirth, phoneNumber, contactEmail);
 			}
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
 		}
 		return null;
 	}
-
-	public Passenger find(String email) {
-			try(Connection con = DS.getConnection()){
-
-				String query = "Select * from passengers where email=?";
-				PreparedStatement ps = con.prepareStatement( query );
-				ps.setString(1, email);
-				ResultSet rs = ps.executeQuery();
-				//System.out.println("ps: " +ps);
-
-				if(rs.next()) {
-					int pno = rs.getInt("pno");
-					String name = rs.getString("name");
-					String surname = rs.getString("surname");
-					int title = rs.getInt("title");
-					Date dateOfBirth = rs.getDate("dateOfBirth");
-					String phoneNumber = rs.getString("phoneNumber");
-
-					return new Passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email);
-				}
-			}catch(Exception e1){
-				System.out.println(e1.getMessage());
-			}
-			return null;
-		}
 
 	public boolean create(Passenger passenger) {
 		try(Connection con = DS.getConnection()){
@@ -94,7 +69,7 @@ public class PassengerDAO {
 		//			//contenu des colonnes
 		//			while (rs.next()){
 		//				Passenger tmp = new Passenger(
-		//						rs.getString("email"),
+		//						rs.getString("contactEmail"),
 		//						rs.getString("name"),
 		//						rs.getString("surname"),
 		//						rs.getInt("genre"),
@@ -110,28 +85,10 @@ public class PassengerDAO {
 		return null;
 	}
 
-	public Passenger delete(String email) {
-		//		TODO
-		//		try(Connection con = DS.getConnection()){
-		//			Passenger tmp = find(email);
-		//			String query = "delete from passengers where email = ?";
-		//
-		//			PreparedStatement ps = con.prepareStatement( query );
-		//			ps.setString(1, email);
-		//
-		//			System.out.println(ps);
-		//			ps.executeUpdate();
-		//			return tmp;
-		//		}catch(Exception e1){
-		//			System.out.println(e1.getMessage());
-		//		}
-		return null;
-	}
-
 	public boolean update(Passenger user) {
 		//TODO
 		//		try(Connection con = DS.getConnection()){
-		//			String query = "UPDATE passengers SET name = ?, surname = ?, genre = ?, password = ?, role = ? WHERE email=?;";
+		//			String query = "UPDATE passengers SET name = ?, surname = ?, genre = ?, password = ?, role = ? WHERE contactEmail=?;";
 		//			PreparedStatement ps = con.prepareStatement( query );
 		//
 		//			ps.setString(1, user.getName());

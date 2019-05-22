@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+q<!DOCTYPE html>
 <%@page import="flights.FlightsDAO"%>
 <%@page import="flights.FlightWithDetails"%>
 <%@page import="seats.PrintSeats"%>
@@ -100,6 +100,10 @@
 		FlightWithDetails outwardFlight=null;
 		FlightWithDetails returnFlight=null;
 		
+		String flightOption=null;
+		String insurance=null;
+		
+		
 		FlightsDAO flightDAO = new FlightsDAO();
 		
 		try {
@@ -121,6 +125,10 @@
 			
 			outwardSeats = (ArrayList<String>)httpSession.getAttribute("outward-seats");
 			returnSeats = (ArrayList<String>)httpSession.getAttribute("return-seats");
+			
+			
+			flightOption = (String) httpSession.getAttribute("flightOption");
+			insurance = (String) httpSession.getAttribute("insurance");
 			
 		} catch (java.lang.NumberFormatException e) {
 			e.printStackTrace();
@@ -216,10 +224,13 @@
 			<%=listOfPassengers.get(0).getPhoneNumber() %> </h4>
 		<br>
 
-		<h3>Options:</h3>
-
-		<h4>None</h4>
+		<h3>Flight option:</h3>
+		<h4><%=flightOption %></h4>
+		<br><br>
+		<h3>Insurance:</h3>
+		<h4><%=insurance %></h4>
 		<br>
+			
 	
 		<%//TODO : change to button > là c'est dégeu, c'est un input de formulaire %>
 		<input type="submit" value="Process to paiement" onclick="window.location.href = '/booking/payment.jsp';">

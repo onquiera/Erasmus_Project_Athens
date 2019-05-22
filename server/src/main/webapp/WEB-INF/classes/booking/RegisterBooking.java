@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 
 import flights.FlightWithDetails;
 import flights.FlightsDAO;
+import mailing.MailService;
 import seats.SeatsDAO;
 import users.Passenger;
 import users.PassengerDAO;
@@ -53,10 +54,11 @@ public class RegisterBooking extends HttpServlet
 			
 			PassengerDAO passengerDAO = new PassengerDAO();
 			
-			//TODO when user connexion works : 
-			//if( not connected){   }  (passenger 1 already exists if user is connected)
+			//TODO when user connexion works :
+			//if(connected){   }  (passenger 1 already exists if user is connected) 
+			//else{
 			passengerDAO.create(listOfPassengers.get(0));
-			
+				
 			BookingDAO bookingDAO = new BookingDAO();
 			Booking outwardBooking = new Booking(bookingDAO.maxBookingID()+1, outwardFlightID, 0, 0, listOfPassengers.get(0).getPno());
 			bookingDAO.create(outwardBooking);
@@ -79,6 +81,31 @@ public class RegisterBooking extends HttpServlet
 			for (String seat : returnSeats) {
 				seatsDAO.bookSeat(returnFlightID, seat, returnBooking.getBookingID());
 			}
+			
+			String message = 
+					" <h2>Thank you for your purchase on air vacation</h2>"
+					+ ""
+					+ "<h3>Here are your booking details :</h3> "
+					+ "<br>"
+					+ "<div style = \"border-style: solid;\">"
+					+ "<h4>Booking ID : " + outwardBooking.getBookingID() +"<br>"
+					+ "<br>"
+					+ "Flight from : "+ outwardFlight.getDeparture() + "<br>"
+					+ "to : " + outwardFlight.getArrival() + "<br>"
+					+ "<br>"
+					+ outwardFlight.getDepartureDate()+ " at "+ outwardFlight.getDepartureTime();
+			
+			if(returnFlight!=null) {
+				message+=
+						  "Flight from : "+ returnFlight.getDeparture() + "<br>"
+						+ "to : " + returnFlight.getArrival() + "<br>"
+						+ "<br>"
+						+ returnFlight.getDepartureDate()+ " at "+ returnFlight.getDepartureTime();
+			}
+			message+="</h4></div>";
+			
+			MailService mailService = new MailService();
+			mailService.sendTo(listOfPassengers.get(0).getEmail(), "Booking done" , message);
 			
 			res.sendRedirect("/booking/bookingDone.jsp");
 			

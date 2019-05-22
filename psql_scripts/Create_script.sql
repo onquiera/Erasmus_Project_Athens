@@ -13,14 +13,14 @@ CREATE TABLE passenger(
 	surname text,
 	title integer,
 	dateOfBirth DATE,
-	phoneNumber text DEFAULT NULL, --optional > for the person to contact
-	email text Unique DEFAULT NULL --optional > for the person to contact, but necessary for users(connected to the website)
+	phoneNumber text DEFAULT NULL, --only for the booking customer > the person to contact
+	contactEmail text DEFAULT NULL --only for the booking customer > for the person to contact
 );
 
---User table, if a user want an account on the website, but it's not an obligation to book a flight.
+--User table, if a user wants an account on the website, but it's not an obligation to book a flight.
 --role > 0 user, 1 maintainer, 2 admin > the bigger it is, the more permissions you have.
 CREATE TABLE users(
-	uno SERIAL primary key,
+	loginEmail text primary key,
 	pno integer,
 	password text,
 	role integer,

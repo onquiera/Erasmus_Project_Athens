@@ -29,7 +29,7 @@ public class MailService {
 		props.put("mail.smtp.port", "587");
 	}
 	
-	public void sendTo(String email, String subject, String textMessage) {
+	public void sendTo(String email, String subject, String messageInHTML) {
 		Session session = Session.getInstance(props,
 				new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
@@ -43,7 +43,7 @@ public class MailService {
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(email));
 			message.setSubject(subject);
-			message.setText(textMessage);
+			message.setContent(messageInHTML, "text/html");
 
 			Transport.send(message);
 			

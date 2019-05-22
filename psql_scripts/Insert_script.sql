@@ -27,17 +27,13 @@ INSERT INTO passenger(pno, name, surname, title, dateOfBirth) VALUES
 (10,'Alexandre','Desremords', 1, '1999-01-01'),
 (11,'Manon','Baudruche', 0, '1905-01-01');
 
-INSERT INTO passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email) VALUES 
+INSERT INTO passenger(pno, name, surname, title, dateOfBirth, phoneNumber, contactEmail) VALUES 
 (12, 'Kostas','Koukouletsos', 1, '1979-01-01', '+33-0606060606', 'ccostas@uniwa.gr'); 
 
-INSERT INTO users(pno, password, role) VALUES  
-(1, '0000', 0),
-(2, 'root', 2),
-(3, 'root', 2),
-(4, '00000000000', 0),
-(5, 'olives', 1),
-(6, '43210-1-2-3-4', 0),
-(7, '12345678910', 0);
+INSERT INTO users VALUES  
+('nico.cous@gmail.com', 1, '0000', 0),
+('antoine@root.com', 2, 'root', 2),
+('brice@root.com', 3, 'root', 2);
 
 INSERT INTO planes VALUES
 (00000001,'AirVacation','A320',20),

@@ -56,8 +56,6 @@
 	}
 %>
 
-
-
 <body>
 	<div id="logo">
 		<a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
@@ -107,7 +105,6 @@
 	<div id="textArea2">
 		<div class="container" id="pInfoForm">
 			
-
 			<input type="submit" value="Pay" onclick="window.location.href = '/servlet-RegisterBooking';">
 
 		</div>
