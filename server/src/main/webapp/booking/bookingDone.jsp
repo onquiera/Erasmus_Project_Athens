@@ -89,17 +89,17 @@
 			<br>
 
 			<h4>Your booking had been succesfully made !
-<br><br>	
-			<h4>We sent you the booking confirmation and your bill per mail.
-			<br><br>
-			Please follow the informations given to get your boarding tickets.
-			
-			
-			<br><br><br><br>
-			We thank you to travel the world with our flights and hope you will enjoy your journey ! 
-			</h4>
-			<br>
-			Want more ? <a href="/">Look for another flight.</a>
+				<br><br>
+				<h4>We sent you the booking confirmation and your bill per mail.
+					<br><br>
+					Please follow the informations given to get your boarding tickets.
+
+
+					<br><br><br><br>
+					We thank you to travel the world with our flights and hope you will enjoy your journey !
+				</h4>
+				<br>
+				Want more ? <a href="/">Look for another flight.</a>
 
 		</div>
 	</div>

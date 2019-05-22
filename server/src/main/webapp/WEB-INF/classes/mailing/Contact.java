@@ -29,7 +29,7 @@ public class Contact extends HttpServlet
 			//message good received email
 			mailService.sendTo(email, "Message Received", "We received your message and are working on it !"
 					+ "\nYou will receive an email from our customers service soon."
-					+ "\n AirVacation");
+					+ "\n Have a nice day, AirVacation.");
 			
 			res.sendRedirect("/informations/messageReceived.html");
 			
