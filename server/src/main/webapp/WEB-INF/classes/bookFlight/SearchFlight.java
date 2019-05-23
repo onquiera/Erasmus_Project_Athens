@@ -7,6 +7,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import connexion.DS;
+import flights.FlightWithDetails;
+import flights.FlightsDAO;
 
 @SuppressWarnings("serial")
 public class SearchFlight extends HttpServlet {
@@ -14,13 +16,11 @@ public class SearchFlight extends HttpServlet {
 
 		res.setContentType("text/html,charset=UTF-8");
 
-
 		String flightType = req.getParameter("flightType");
 
-		// traduction : vol aller = outward flight
+		//traduction : vol aller = outward flight
 
 		if (flightType.equals("research")) {
-			
 			try (Connection con = DS.getConnection()) {
 
 				// PARAMETERS management
@@ -30,8 +30,6 @@ public class SearchFlight extends HttpServlet {
 				String returnDate = req.getParameter("returnDate");
 				int numberOfPassengers = Integer.parseInt(req.getParameter("numberOfPassengers"));
 				String travelClass = req.getParameter("travelClass");
-
-				// TODO check on other pages if session still valid
 
 				HttpSession httpSession = req.getSession(false);
 
@@ -53,6 +51,7 @@ public class SearchFlight extends HttpServlet {
 				httpSession.setAttribute("returnDate", returnDate);
 				httpSession.setAttribute("numberOfPassengers", numberOfPassengers);
 				httpSession.setAttribute("travelClass", travelClass);
+				httpSession.setAttribute("price", 0);
 				
 				res.sendRedirect("/booking/choose-flight.jsp?flight=outward");
 
@@ -82,6 +81,10 @@ public class SearchFlight extends HttpServlet {
 			
 			httpSession.setAttribute("outwardFlightID", flightID);
 			
+			FlightsDAO dao = new FlightsDAO();
+			FlightWithDetails outwardFlight = dao.findFlight(flightID);
+			httpSession.setAttribute("price", outwardFlight.getPrice());
+			
 			
 			String returnDate = (String)httpSession.getAttribute("returnDate");
 			if(returnDate==null) {
@@ -89,7 +92,6 @@ public class SearchFlight extends HttpServlet {
 			}else {
 				res.sendRedirect("/booking/choose-flight.jsp?flight=return");
 			}
-			
 			
 		}else if(flightType.equals("return")) {
 			
@@ -103,11 +105,14 @@ public class SearchFlight extends HttpServlet {
 			if(flightID==null) {
 				res.sendRedirect("/error/parameterError.html?error=flightID+not+found");
 			}
-			
 			httpSession.setAttribute("returnFlightID", flightID);
 			
-			res.sendRedirect("/booking/seats.jsp?flightType=outward");
+			FlightsDAO dao = new FlightsDAO();
+			FlightWithDetails returnFlight = dao.findFlight(flightID);
+			int price = (Integer)httpSession.getAttribute("price");
+			httpSession.setAttribute("price", price + returnFlight.getPrice());
 			
+			res.sendRedirect("/booking/seats.jsp?flightType=outward");
 			
 		}else {
 			res.sendRedirect("/error/parameterError.html?error=parameter+flightType+error");

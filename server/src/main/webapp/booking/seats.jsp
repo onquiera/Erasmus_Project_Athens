@@ -33,7 +33,6 @@
 	<link rel="stylesheet" href="/css/progress/progressBarStyle.css" />
 	<link rel="stylesheet" href="/css/progress/personnalInfosStyle.css" />
 
-
 </head>
 
 <body>
@@ -84,37 +83,27 @@
 		</div>
 	</nav>
 
-	<div id="priceArea">
-		<h4>Total: Free !</h4>
-	</div>
-
 	<div id="textArea2">
 
 		<%
-		//TODO plus tard > adapter type d'avion avec rangee de 3 4 etc > + gerer multiples de 4 ..
-		//TODO gerer plusieurs sieges selectionnables > en rappelant la meme jsp avec un parametre selectionne et list en session ..
-		// bouton boostrap > https://getbootstrap.com/docs/4.0/components/buttons/
-		
-		//> ou si plusieurs sieges, le gerer avec un formulaire unique et une validation ?
-		//> mais difficile de gerer le prix dans ce cas la, si prix change
-		
-		
 			HttpSession httpSession = request.getSession(false);
 			//check if session is valid
 			if(httpSession==null || !request.isRequestedSessionIdValid() ){
 				response.sendRedirect("/error/sessionError.html");
 			}
+			int numberOfPassengers = (Integer)httpSession.getAttribute("numberOfPassengers");
+			int price = (Integer)httpSession.getAttribute("price");
 			
 			String flightType = request.getParameter("flightType");
 			
 			
 			String flightID = null;
 			if(flightType.equals("outward")){
-		flightID = (String)httpSession.getAttribute("outwardFlightID");
+				flightID = (String)httpSession.getAttribute("outwardFlightID");
 			}else if(flightType.equals("return")){
-		flightID = (String)httpSession.getAttribute("returnFlightID");
+				flightID = (String)httpSession.getAttribute("returnFlightID");
 			}else{
-		response.sendRedirect("/error/parameterError.html?error=flightType+incorrect+on+seats_jsp");
+				response.sendRedirect("/error/parameterError.html?error=flightType+incorrect+on+seats_jsp");
 			}
 		
 		
@@ -124,72 +113,36 @@
 			int rowSize = 4;
 			String convert = "ABCDEFGHIJKL";
 			
-			
-			
-			int numberOfPassengers = (Integer)httpSession.getAttribute("numberOfPassengers");
-			
-			
-			
-			
-			
-			//TODO gerer siege en parametre si il y en a un
-			/*
-			si siege deja selectionn�> le virer de la liste
-			
-			> si siege libre > le choisir
-			
-			> si siege deja reserv� ou incorrect > ne rien faire
-			
-			
-			
-			
-			
-			
-			*/
-			
-			
-			//inactive > seat already booked
-			
-			//green > seats not booked
-			//red but disablable > seats choosed but which can be canceled
-			
-			
 			ArrayList<String> selectedSeats = (ArrayList<String>)session.getAttribute("selectedSeats");
 			if(selectedSeats==null) {
-		selectedSeats = new ArrayList<>();
+				selectedSeats = new ArrayList<>();
 			}
 			int seatsLeftToChoose = numberOfPassengers-selectedSeats.size();
 			
-			
-			
-			
-			
-			
-			//gestion du siege choisi
+			//seat selected management
 			String seatSelected = request.getParameter("seatSelected");
 			
 			if(seatSelected!=null && seatSelected.length()>0){
-		if(selectedSeats.contains(seatSelected)){
-			selectedSeats.remove(seatSelected);
-			seatsLeftToChoose++;
-		}else if(seatsLeftToChoose>0){
-			selectedSeats.add(seatSelected);
-			seatsLeftToChoose--;
-		}
+				if(selectedSeats.contains(seatSelected)){
+					selectedSeats.remove(seatSelected);
+					seatsLeftToChoose++;
+				}else if(seatsLeftToChoose>0){
+					selectedSeats.add(seatSelected);
+					seatsLeftToChoose--;
+				}
 			}
 	%>
-
-
+	
+	<div id="priceArea">
+		<h4>Total: <%=price %> €</h4>
+	</div>
 		<h2><u><b><%=flightType %></b></u> flight</h2>
-
-
 
 		<h3>Number of seats left to choose : <%=seatsLeftToChoose%></h3>
 		<div class="container" id="pInfoForm">
 
-
 			<div id="seatChoice">
-				<%
+			<%
 		//seats :
 		for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {
 			out.println("<br>");
@@ -222,8 +175,6 @@
 				}
 			}
 		}
-		
-
 		
 		session.setAttribute("selectedSeats", selectedSeats);
 	

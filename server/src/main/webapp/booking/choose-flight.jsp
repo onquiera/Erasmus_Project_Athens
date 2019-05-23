@@ -102,9 +102,8 @@ String flight = request.getParameter("flight");%>
 		</div>
 	</nav>
 
-	<div id="priceArea">
-		<h4>Total: Free !</h4>
-	</div>
+	
+	
 	<%
 		try (Connection con = DS.getConnection()) {
 		
@@ -114,16 +113,15 @@ String flight = request.getParameter("flight");%>
 				response.sendRedirect("/error/sessionError.html");
 			}
 	
+			int price = (Integer)httpSession.getAttribute("price");
 			String departure = (String)httpSession.getAttribute("departure");
 			String destination = (String)httpSession.getAttribute("destination");
 			String departureDate = (String)httpSession.getAttribute("departureDate");
 			String returnDate = (String)httpSession.getAttribute("returnDate");
 			
 			//requete de recherche
-			
 			java.sql.Date flightDate=null;
 			if(flight.equals("outward")) {
-	
 				// departure date from string to sql
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				java.util.Date departureDateUtil = dateFormat.parse(departureDate);
@@ -139,7 +137,16 @@ String flight = request.getParameter("flight");%>
 				destination=departure;
 				departure=tmp;
 			}
+			%>
 			
+			<%if(flight.equals("return")){ %>
+				<div id="priceArea">
+					<h4>Total: <%=price %> €</h4>
+				</div>
+			<%} %>
+			
+			
+			<%
 			// -----------------------------------------------------------------------------------
 			// research in database
 	
@@ -154,8 +161,6 @@ String flight = request.getParameter("flight");%>
 	
 			ResultSet rs = ps.executeQuery();
 			// out.println("|||| ps :"+ ps+" ||||");
-	
-	
 	
 			//affichage
 			

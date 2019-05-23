@@ -1,4 +1,3 @@
-q
 <!DOCTYPE html>
 <%@page import="flights.FlightsDAO"%>
 <%@page import="flights.FlightWithDetails"%>
