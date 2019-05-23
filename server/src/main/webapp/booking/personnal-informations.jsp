@@ -83,9 +83,6 @@
 			</div>
 		</div>
 	</nav>
-	<div id="priceArea">
-		<h4>Total: Free !</h4>
-	</div>
 	<%
 	int numberOfPassengers=-1;
 	
@@ -157,20 +154,20 @@
 
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-user"></span> First Name</label>
-							<input value="a" required type="text" class="form-control" name="passenger-<%=i%>-name"
+							<input value="" required type="text" class="form-control" name="passenger-<%=i%>-name"
 								placeholder="Enter First Name">
 						</div>
 
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-user"></span> Last Name</label>
-							<input value="a" required type="text" class="form-control" name="passenger-<%=i%>-surname"
+							<input value="" required type="text" class="form-control" name="passenger-<%=i%>-surname"
 								placeholder="Enter Last Name">
 						</div>
 
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-calendar"></span> Date of birth</label>
 							<input required type="date" class="form-control" name="passenger-<%=i%>-dateOfBirth"
-								value="0005-05-05" max="2010-01-01" placeholder="dd-mm-yyyy">
+								 max="2010-01-01" placeholder="dd-mm-yyyy">
 						</div>
 
 					</div>
@@ -185,7 +182,7 @@
 
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
-							<input value="a@g" required type="email" class="form-control" name="email"
+							<input required type="email" class="form-control" name="email"
 								placeholder="Enter email">
 						</div>
 

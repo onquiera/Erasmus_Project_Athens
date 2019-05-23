@@ -90,14 +90,17 @@ public class RegisterBooking extends HttpServlet
 					+ "<div style = \"border-style: solid;\">"
 					+ "<h4>Booking ID : " + outwardBooking.getBookingID() +"<br>"
 					+ "<br>"
+					+ "Outward flight : <br>"
 					+ "Flight from : "+ outwardFlight.getDeparture() + "<br>"
 					+ "to : " + outwardFlight.getArrival() + "<br>"
 					+ "<br>"
-					+ outwardFlight.getDepartureDate()+ " at "+ outwardFlight.getDepartureTime();
+					+ outwardFlight.getDepartureDate()+ " at "+ outwardFlight.getDepartureTime()+"<br>";
 			
 			if(returnFlight!=null) {
 				message+=
-						  "Flight from : "+ returnFlight.getDeparture() + "<br>"
+						  ""
+						  + "Return flight : <br><br>"
+						  + "Flight from : "+ returnFlight.getDeparture() + "<br>"
 						+ "to : " + returnFlight.getArrival() + "<br>"
 						+ "<br>"
 						+ returnFlight.getDepartureDate()+ " at "+ returnFlight.getDepartureTime();

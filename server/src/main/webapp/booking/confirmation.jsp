@@ -103,6 +103,8 @@
 		String flightOption=null;
 		String insurance=null;
 		
+		int totalPrice = -1;
+		
 		
 		FlightsDAO flightDAO = new FlightsDAO();
 		
@@ -129,6 +131,8 @@
 			
 			flightOption = (String) httpSession.getAttribute("flightOption");
 			insurance = (String) httpSession.getAttribute("insurance");
+			
+			totalPrice = (Integer)httpSession.getAttribute("price");
 			
 		} catch (java.lang.NumberFormatException e) {
 			e.printStackTrace();
@@ -232,7 +236,7 @@
 		<h4><%=insurance %></h4>
 		<br>
 
-		<h3>Total: </h3><!--TODO mettre le total-->
+		<h3>Total: <%=totalPrice %> €</h3>
 		<br>
 		
 		<%//TODO : change to button > là c'est dégeu, c'est un input de formulaire %>

@@ -40,11 +40,13 @@
 
 <%
 	//check if session is still valid
+	int price = -1;
 	try{
 		HttpSession httpSession = request.getSession(false);
 		if(httpSession==null || !request.isRequestedSessionIdValid() ){
 			response.sendRedirect("/error/sessionError.html");
 		}
+		price = (Integer)httpSession.getAttribute("price");
 	}catch(java.lang.NumberFormatException e ){
 		e.printStackTrace();
 		response.sendRedirect("/error/parameterError.html");
@@ -106,8 +108,8 @@
 
 
     <div id="priceArea">
-        <h4>Total: Free !</h4>
-    </div>
+		<h4>Total: <%=price %> €</h4>
+	</div>
 
     <form action="/servlet-ExtraOptions" method="get" role="form class=form">
 
@@ -196,7 +198,6 @@
                                             <li>Priority Boarding</li>
                                         </ul>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

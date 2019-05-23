@@ -28,11 +28,23 @@ public class ExtraOptions extends HttpServlet
 			String flightOption = req.getParameter("flightOption");
 			String insurance = req.getParameter("insurance");
 			
-			//TODO voir radio button input > mettre value ?
-			//+ stocker en session
+			ArrayList<Passenger> listOfPassengers = (ArrayList<Passenger>) httpSession.getAttribute("listOfPassengers");
+			
+			int price = (Integer)httpSession.getAttribute("price");
+			
+			if(flightOption.equals("business")) {
+				price +=50;
+			}else if(flightOption.equals("EcoFlex")) {
+				price +=25;
+			}
+			
+			if(insurance.equals("yes")){
+				price+=16*listOfPassengers.size();
+			}
 			
 			httpSession.setAttribute("flightOption", flightOption);
 			httpSession.setAttribute("insurance", insurance);
+			httpSession.setAttribute("price", price);
 				
 			res.sendRedirect("/booking/confirmation.jsp");
 			

@@ -56,13 +56,11 @@
   font-weight: 600;
 }
 .price-tag {
-  margin: 30px 0;
-}
-.price-tag {
 	margin: 30px 0;
-  background-color: darkseagreen;
+    background-color: darkseagreen;
 	color: #000;
 	padding: 10px 0;
+  border-radius: 10px;
 }
 
 .price-tag h2 {

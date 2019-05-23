@@ -100,9 +100,10 @@ input[type="radio"] {
 #priceArea{
     text-align: center;
     background-color: #ff6600;
-    margin-left: 90%;
+    margin-left: 85%;
     margin-right: 1%;
     padding: 1rem;
     border-radius: 10px;
     color: white;
+    width:20%;
 }
