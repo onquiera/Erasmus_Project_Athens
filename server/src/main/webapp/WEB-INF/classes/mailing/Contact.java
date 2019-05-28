@@ -24,7 +24,7 @@ public class Contact extends HttpServlet
 			MailService mailService = new MailService();
 			
 			//message to customer service
-			mailService.sendTo(MailService.AIR_ AsmusS_EMAIL, subject, problem);
+			mailService.sendTo(MailService.AIR_ASMUS_EMAIL, subject, problem);
 			
 			//message good received email
 			mailService.sendTo(email, "Request Received: " + subject + "", 
