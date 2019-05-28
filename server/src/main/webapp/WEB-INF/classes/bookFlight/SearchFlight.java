@@ -81,9 +81,11 @@ public class SearchFlight extends HttpServlet {
 			
 			httpSession.setAttribute("outwardFlightID", flightID);
 			
+			int numberOfPassengers = (Integer)httpSession.getAttribute("numberOfPassengers");
+			
 			FlightsDAO dao = new FlightsDAO();
 			FlightWithDetails outwardFlight = dao.findFlight(flightID);
-			httpSession.setAttribute("price", outwardFlight.getPrice());
+			httpSession.setAttribute("price", outwardFlight.getPrice()*numberOfPassengers);
 			
 			
 			String returnDate = (String)httpSession.getAttribute("returnDate");
