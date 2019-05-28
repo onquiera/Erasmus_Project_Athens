@@ -36,6 +36,20 @@
 
 	<!--Second navbar, which contains the differents parts of the website -->
 	<nav id="navBar"></nav>
+	
+	
+	<%
+	//parameters
+	
+	String surname = request.getParameter("surname");
+	if(surname==null){
+		surname="";
+	}
+	String bookingID = request.getParameter("bookingID");
+	if(bookingID==null){
+		bookingID="";
+	}
+	 %>
 
 	<div id="form-container">
 		<img src="/resources/peru.jpg">
@@ -51,13 +65,13 @@
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										<input required name="surname" class="form-control" value="" placeholder="Surname">
+										<input required name="surname" class="form-control" value="<%=surname %>" placeholder="Surname">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										<input required class="form-control" name="bookingID" value=""
+										<input required class="form-control" name="bookingID" value="<%=bookingID %>"
 											placeholder="Booking ID">
 									</div>
 

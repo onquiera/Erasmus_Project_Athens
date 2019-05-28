@@ -160,10 +160,14 @@ public class RegisterBooking extends HttpServlet
 			if(phoneNumber!=null && phoneNumber.length()>0) {
 				message+= "phone number : " + phoneNumber+"<br>";
 			}
+			
+			String customersSurname = listOfPassengers.get(0).getSurname();
 
 			message+="<br>"
 					+ "Please take note that the name assiocated to this booking is : " +listOfPassengers.get(0).getSurname()+"<br>"
-					+ "This can be usefull on the <a href=\"http://localhost:8080/booking/searchBooking.jsp\">My booking</a> page.<br>"
+					+ "This can be usefull on the "
+					+ "<a href=\"http://localhost:8080/booking/searchBooking.jsp?surname="+customersSurname+"&bookingID="+outwardBooking.getBookingID()+ "\">My booking</a>"
+					+ " page.<br>"
 					+ "<br>"
 					+ "<br>"
 					+ "You will receive an email with the checkin informations a few days before your flight.<br>"
