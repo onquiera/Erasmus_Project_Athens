@@ -36,6 +36,7 @@
 	<link rel="stylesheet" href="/css/basics.css" />
 	<link rel="stylesheet" href="/css/progress/progressBarStyle.css" />
 	<link rel="stylesheet" href="/css/progress/personnalInfosStyle.css" />
+    <link rel="stylesheet" href="/css/progress/classesOption.css" />
 
 </head>
 
@@ -222,18 +223,117 @@
 		<h2>Others:</h2>
 
 		<h3>Contact informations:</h3>
-
-		<h4><span class="glyphicon glyphicon-envelope"></span> E-mail :
-			<%=listOfPassengers.get(0).getEmail()%> </h4>
-		<h4><span class="glyphicon glyphicon-phone"></span> Phone number:
-			<%=listOfPassengers.get(0).getPhoneNumber() %> </h4>
-		<br>
+		<div style="border-style:solid;">
+			<h4><span class="glyphicon glyphicon-envelope"></span> E-mail :
+				<%=listOfPassengers.get(0).getEmail()%> </h4>
+			<h4><span class="glyphicon glyphicon-phone"></span> Phone number:
+				<%=listOfPassengers.get(0).getPhoneNumber() %> </h4>
+			<br>
+		</div>
 
 		<h3>Flight option:</h3>
-		<h4><%=flightOption %></h4>
+		
+		<%if(flightOption.equals("flightOption")){ %>
+			<div class="col-xl-4">
+	              <div class="single-price">
+	                  <div class="price-title">
+	                      <h4>Eco</h4>
+	                  </div>
+	                  <div class="price-tag">
+	                      <h2>Basic option</h2>
+	                  </div>
+	                  <div class="price-item">
+	                      <ul>
+	                          <li>1 hand baggage (12kg)</li>
+	                          <li>Seat choice</li>
+	                          <li>Meals</li>
+	                          <li>Rebooking not possible</li>
+	                          <li>No refund if you missed the flight</li>
+	                      </ul>
+	                  </div>
+	              </div>
+	          </div>
+	       <%}else if(flightOption.equals("EcoFlex")){ %>   
+                            <div class="col-xl-4">
+                                <div class="single-price">
+                                    <div class="price-title">
+                                        <h4>ECO FLEX</h4>
+                                    </div>
+                                    <div class="price-tag">
+                                        <h2>25€</h2>
+                                    </div>
+                                    <div class="price-item">
+                                        <ul>
+                                            <li>1 hand baggage (12kg)</li>
+                                            <li>1 check-in baggage (20kg)</li>
+                                            <li>Seat choice</li>
+                                            <li>Meals</li>
+                                            <li>Change fee</li>
+                                            <li>No refund if you missed the flight</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+    	<%}else{ %>                        
+                <div class="col-xl-4">
+                    <div class="single-price">
+                        <div class="price-title">
+                            <h4>business</h4>
+                        </div>
+                        <div class="price-tag">
+                            <h2>50€</h2>
+                        </div>
+                        <div class="price-item">
+                            <ul>
+                                <li>2 hand baggage (12kg)</li>
+                                <li>1 check-in baggage (20kg)</li>
+                                <li>Seat choice</li>
+                                <li>Meals</li>
+                                <li>Change free</li>
+                                <li>Refund if you missed the flight</li>
+                                <li>Priority Check-In</li>
+                                <li>Priority Security</li>
+                                <li>Priority Boarding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+		<%} %>
+		
+		
 		<br><br>
 		<h3>Insurance:</h3>
-		<h4><%=insurance %></h4>
+		
+		<%if(insurance.equals("yes")){ %>
+			<div class="form-check" style = "border-style:dotted; width:50%;">
+	             <span class="form-check-label">
+	                 <span style="color: #ff6600; font-weight: bold;">Comprehensive travel Insurance</span>
+	                 (16€ per person)
+	                 <br>
+	                 <span>
+	                     Covers:
+	                     <ul>
+	                         <li>
+	                             Medical and hospitalization expenses up to 150.000 Euros
+	                         </li>
+	                         <li>
+	                             Damage/loss or theft of luggage up to 1.000 Euros
+	                         </li>
+	                         <li>
+	                             Departure cancellation due to sickness or accident up to 500 Euros
+	                         </li>
+	                         <li>
+	                             24 hour assistance abroad
+	                         </li>
+	                     </ul>
+	                 </span>
+	             </span>
+	         </div>
+		<%}else{ %>
+		
+			<h4>Not taken</h4>
+		
+		<%} %>
 		<br>
 
 		<h3>Total: <%=totalPrice %> €</h3>
