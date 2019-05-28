@@ -42,26 +42,33 @@ public class MyBooking extends HttpServlet {
 			// reservationnumber | flightid | seatnumber | clientname | clientemail
 
 			int bookingID = -1;
-			String email = "";
+			String surname = "";
 
 			bookingID = Integer.parseInt(req.getParameter("bookingID"));
-			email = req.getParameter("email");
+			surname = req.getParameter("surname");
 
 			BookingDAO bookingDAO = new BookingDAO();
 			Booking booking = bookingDAO.find(bookingID);
+			
+			
+			
+			
 
 			PassengerDAO passengerDAO = new PassengerDAO();
 			Passenger passenger = passengerDAO.find(booking.getMainPassengerNO());
 			
 			
 			
+			
+			
+			
 			if (booking == null) {
 				out.println("<h1>Booking not found </h1>");
-			} else if (!email.equals(passenger.getEmail())) {
-				out.println("<h1>Email name doesn't match booking id</h1>");
+			} else if (!surname.equals(passenger.getSurname())) {
+				out.println("<h1>Surname doesn't match booking id</h1>");
 			} else {
 				out.println("<h1> Your reservation : </h1>");
-				out.println("<h3> client : "+passenger.getName() +" " + passenger.getName() + "</h3>");
+				out.println("<h3> client : "+passenger.getFirstName() +" " + passenger.getFirstName() + "</h3>");
 				out.println("<h3> Booking ID : " + booking.getBookingID() + "</h3>");
 				out.println("<h3> flight id : " + booking.getFlightid() + "</h3>");
 			}

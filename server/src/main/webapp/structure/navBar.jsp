@@ -11,7 +11,7 @@
                 </li>
            
                 <li class="nav-item">
-                    <a class="nav-link" href="/booking/searchBooking.jsp">My bookings</a>
+                    <a class="nav-link" href="/booking/searchBooking.jsp">My booking</a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">

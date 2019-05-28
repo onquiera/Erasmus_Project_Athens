@@ -48,11 +48,6 @@
 									<h3 id="searching">Search my Reservation</h3>
 								<!--RoundTrip Form-->
 								<form action="/MyBooking" method=post role="form class=form">
-									<input type="hidden" name="flightType" value="outward">
-
-									<div class="triptype">
-									</div>
-
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
