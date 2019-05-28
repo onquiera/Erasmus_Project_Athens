@@ -39,11 +39,14 @@
 
 <%
 	//check if session is still valid
+	int price = -1;
 	try{
 		HttpSession httpSession = request.getSession(false);
 		if(httpSession==null || !request.isRequestedSessionIdValid() ){
 			response.sendRedirect("/error/sessionError.html");
 		}
+		
+		price = (Integer)httpSession.getAttribute("price");
 	}catch(java.lang.NumberFormatException e ){
 		e.printStackTrace();
 		response.sendRedirect("/error/parameterError.html");
@@ -102,9 +105,12 @@
 		</div>
 	</nav>
 
+	
+
 	<div id="textArea2">
+		
 		<div class="container" id="pInfoForm">
-			
+			<h2>Price : <%=price %></h2><br>
 			<input type="submit" value="Pay" onclick="window.location.href = '/servlet-RegisterBooking';">
 
 		</div>

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import connexion.DS;
+import users.Passenger;
+import users.PassengerDAO;
 
 public class BookingDAO {
 
@@ -145,20 +147,42 @@ public class BookingDAO {
 	
 	public boolean associatePassengerToBooking(int pno, int bookingID) {
 			try(Connection con = DS.getConnection()){
-
 				String query = "Insert into passengerBelongsToBooking values(?,?)";
 				PreparedStatement ps = con.prepareStatement( query );
 				ps.setInt(1, pno);
 				ps.setInt(2, bookingID);
 
 				ps.executeUpdate();
-				System.out.println(ps);
+				System.out.println("\nps passengers-booking:  " +ps+"\n\n");
 				return true;
 			}catch(Exception e1){
 				System.out.println(e1.getMessage());
 			}
 		return false;
+	}
 	
+	public ArrayList<Passenger> findAllPassengersOnBooking(int bookingID) {
+		try(Connection con = DS.getConnection()){
+			String query = "select passengerno from passengerBelongsToBooking where bookingid = ?";
+
+			PreparedStatement ps = con.prepareStatement( query );
+			ps.setInt(1, bookingID);
+			ps.executeQuery();
+			System.out.println("ps : " +ps);
+			ResultSet rs = ps.executeQuery();
+
+			PassengerDAO passengerDAO = new PassengerDAO();
+			ArrayList<Passenger> liste =new ArrayList<>();
+			
+			//contenu des colonnes
+			while (rs.next()){
+				liste.add(passengerDAO.find(rs.getInt(1)));
+			}
+			return liste;
+		}catch(Exception e1){
+			System.out.println(e1.getMessage());
+		}
+		return null;
 	}
 	
 }

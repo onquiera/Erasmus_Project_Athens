@@ -1,4 +1,4 @@
---- reset tables befores inserts
+	--- reset tables befores inserts
 
 DELETE FROM seat_reservation;
 DELETE FROM passengerBelongsToBooking;
@@ -144,7 +144,7 @@ INSERT INTO bookings VALUES
 
 INSERT INTO passengerBelongsToBooking VALUES
 (1,0),
-(1,0);
+(2,0);
 
 INSERT INTO  seat_reservation VALUES
 ('FR00764400', '1A', '0'),

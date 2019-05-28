@@ -13,13 +13,13 @@ import users.*;
 @SuppressWarnings("serial")
 public class MyBooking extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-		res.setContentType("text/html,charset=UTF-8");
+		req.setCharacterEncoding("UTF-8");
+		res.setContentType("text/html,charset=\"UTF-8\"");
 		PrintWriter out = res.getWriter();
 
 		// Header
 		out.println("" + "<link rel=\"shortcut icon\" type=\"image/png\" href=\"/resources/firstlogo.png\" />"
-				+ "<title>Flights</title>" + "<meta charset=\"utf-8\">"
+				+ "<title>Flights</title>" + "<meta charset=\"UTF-8\">"
 				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
 
 				+ "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">"
@@ -37,14 +37,15 @@ public class MyBooking extends HttpServlet {
 		out.println("</head><body>" + "<div id=\"logo\">"
 				+ "<a href=\"/\"><img src=\"/resources/logo.png\" alt=\"Insert logo here\" id=\"home\"></a>" + "</div>"
 
-				+ "<nav id=\"navBar\"></nav>");
+				+ "<nav id=\"navBar\"></nav>"
+				+ "<center>");
 
 		try {
 
 			int bookingID = -1;
 			String surname = "";
 
-			
+
 			try {
 				bookingID = Integer.parseInt(req.getParameter("bookingID"));
 			}catch(java.lang.NumberFormatException e ){
@@ -61,27 +62,53 @@ public class MyBooking extends HttpServlet {
 				out.println("<h1>Booking not found </h1>");
 
 				out.println("<br><br><br>");
-				
-				
+
+
 			} else {
 
 				PassengerDAO passengerDAO = new PassengerDAO();
-				Passenger passenger = passengerDAO.find(booking.getMainPassengerNO());
+				Passenger customer = passengerDAO.find(booking.getMainPassengerNO());
 
-				if (!surname.equals(passenger.getSurname())) {
+				if (!surname.equals(customer.getSurname())) {
 					out.println("<h1>Surname doesn't match booking id</h1>");
-					
+
 				}else {
 					SeatsDAO seatsDAO = new SeatsDAO();
 					ArrayList<String> seatsSelected = seatsDAO.findBookedSeatsOnBooking(booking.getBookingID());
 
-					out.println("<h1> Your reservation : </h1>");
-					out.println("<h3> client : "+passenger.getFirstName() +" " + passenger.getFirstName() + "<br>");
+					out.println("<h1><b> Your booking informations : </b></h1>");
 					out.println("Booking ID : " + booking.getBookingID() + "<br>");
 					out.println("flight id : " + booking.getFlightid() + "<br>");
 
 					out.println("Seats selected(blue): <br>");
 					PrintSeats.printSeatsSelected(out, booking.getFlightid(), seatsSelected);
+
+
+
+					ArrayList<Passenger> listOfPassengers = bookingDAO.findAllPassengersOnBooking(bookingID);
+					int cpt =1;
+
+					out.println("<br><h2>Passengers :</h2>");
+					for (Passenger passenger : listOfPassengers) {
+						out.println("passenger no "+cpt+": <br>");
+						if(passenger.getTitle()==0) {
+							out.println("Mrs ");
+						}else {
+							out.println("Mr ");
+						}
+						out.println(passenger.getFirstName()+" "+passenger.getSurname()+""
+								+ "<br>date of birth : " +passenger.getDateOfBirth() +"<br><br>");
+						cpt++;
+					}
+
+					out.println("<br>"
+							+ "<u>Contact informations</u> assiociated to your booking :<br> "
+							+ "email : " + listOfPassengers.get(0).getEmail()+"<br>");
+
+					String phoneNumber = listOfPassengers.get(0).getPhoneNumber();
+					if(phoneNumber!=null && phoneNumber.length()>0) {
+						out.println("phone number : " + phoneNumber+"<br>");
+					}
 
 					out.println("</h3>");
 
@@ -91,9 +118,10 @@ public class MyBooking extends HttpServlet {
 
 			out.println("<br><h3>" + "<a href=\"/booking/searchBooking.jsp\">Back to booking research</a>"
 					+ "<nav id=\"footer\"></nav></body></h3>");
-			out.println("<br><br> ");
-			
-			
+			out.println("<br><br> "
+					+ "</center>");
+
+
 		}catch(java.lang.NumberFormatException e ){
 			e.printStackTrace();
 			res.sendRedirect("/error/parameterError.html");
@@ -104,8 +132,5 @@ public class MyBooking extends HttpServlet {
 			e2.printStackTrace();
 			res.sendRedirect("/error/error.html");
 		}
-
-
-
 	}
 }
