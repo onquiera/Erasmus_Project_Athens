@@ -201,7 +201,7 @@
 						<h4>
 							<div class="checkbox">
 								<label><input required type="checkbox" value="">I accept the legal conditions of <a
-										href="legalConditions.html">Air Asmus</a></label>
+										href="legalConditions.html">Air  Asmus</a></label>
 							</div>
 						</h4>
 

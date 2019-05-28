@@ -3738,15 +3738,15 @@ INSERT INTO users VALUES
 ('brice@root.com', 3, 'root', 2);
 
 INSERT INTO planes VALUES
-(00000001,'AirAsmus','A320',80),
-(00000002,'AirAsmus','A320',80),
-(00000003,'AirAsmus','A320',80),
-(00000004,'AirAsmus','A320',80),
-(00000005,'AirAsmus','A380',80),
-(00000006,'AirAsmus','A380',80),
-(00000007,'AirAsmus','A380',80),
-(00000008,'AirAsmus','ATR72',80),
-(00000009,'AirAsmus','A380',80);
+(00000001,'Air Asmus','A320',80),
+(00000002,'Air Asmus','A320',80),
+(00000003,'Air Asmus','A320',80),
+(00000004,'Air Asmus','A320',80),
+(00000005,'Air Asmus','A380',80),
+(00000006,'Air Asmus','A380',80),
+(00000007,'Air Asmus','A380',80),
+(00000008,'Air Asmus','ATR72',80),
+(00000009,'Air Asmus','A380',80);
 
 
 --FlightID, PlaneID, departureCityCode, ArrivingCityCode, DepartureDate, DepartureTime, ArrivalDate, ArrivalTime, PlacesLeft

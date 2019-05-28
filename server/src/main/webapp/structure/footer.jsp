@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
 
-                <p class="h5">&copy AirAsmus, all rights Reserved.</p>
+                <p class="h5">&copy Air Asmus, all rights Reserved.</p>
             </div>
             </hr>
         </div>

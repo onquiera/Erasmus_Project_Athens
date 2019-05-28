@@ -24,14 +24,14 @@ public class Contact extends HttpServlet
 			MailService mailService = new MailService();
 			
 			//message to customer service
-			mailService.sendTo(MailService.AIR_AsmusS_EMAIL, subject, problem);
+			mailService.sendTo(MailService.AIR_ AsmusS_EMAIL, subject, problem);
 			
 			//message good received email
 			mailService.sendTo(email, "Request Received: " + subject + "", 
 					"<h1> Request received </h1><br>"
 					+ "<h3>We received your request and are working on it !"
 					+ "\n You will receive an email from our customers service soon."
-					+ "\n Have a nice day, AirAsmus. </h3>");
+					+ "\n Have a nice day, Air Asmus. </h3>");
 			
 			res.sendRedirect("/informations/messageReceived.html");
 			

@@ -5,7 +5,7 @@
 
 <web-app>
 	
-  <display-name>erasmus-project</display-name>
+  <display-name>er Asmus-project</display-name>
 
 	<servlet>
 		<servlet-name>Authentification</servlet-name>

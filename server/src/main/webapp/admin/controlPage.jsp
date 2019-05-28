@@ -8,7 +8,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <BODY>
 	<h1>Admin informations :</h1>
-	<h2>Users signed in to Air Asmus : </h2>
+	<h2>Users signed in to Air  Asmus : </h2>
 	<h4>precision on genre : 0 = woman, 1 = man, 2 = other</h4>
 	<%
 	UsersDAO dao = new UsersDAO();

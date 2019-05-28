@@ -13,11 +13,11 @@ createuser -s root
 
 puis gestion database etc 
 
-createdb erasmus-project
+createdb er Asmus-project
 
 (faire bien attention au nom)
 
-puis : psql erasmus-project
+puis : psql er Asmus-project
 pour y accéder et pouvoir faire les commandes sql ..
 
 commande comme select, create ..
@@ -30,7 +30,7 @@ https://stackoverflow.com/questions/15008204/how-to-check-postgres-user-and-pass
 url psql : 
 https://stackoverflow.com/questions/3582552/postgresql-connection-url
 > general URL = "jdbc:postgresql://host:port/database"
-pour nous : "jdbc:postgresql://localhost:5432/erasmus-project"
+pour nous : "jdbc:postgresql://localhost:5432/er Asmus-project"
 
 doc globale psql :
 https://www.postgresql.org/docs/9.2/index.html
