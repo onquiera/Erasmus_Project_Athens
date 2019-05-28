@@ -27,6 +27,7 @@ public class RegisterBooking extends HttpServlet
 		ArrayList<String> returnSeats=null;
 		FlightWithDetails outwardFlight=null;
 		FlightWithDetails returnFlight=null;
+		Booking returnBooking=null;
 
 		FlightsDAO flightDAO = new FlightsDAO();
 
@@ -43,10 +44,12 @@ public class RegisterBooking extends HttpServlet
 			outwardFlight = flightDAO.findFlight(outwardFlightID);
 
 			returnFlightID=(String) httpSession.getAttribute("returnFlightID");
-			returnFlight = flightDAO.findFlight(returnFlightID);
+			if(returnFlightID!=null) {
+				returnFlight = flightDAO.findFlight(returnFlightID);
+				returnSeats = (ArrayList<String>)httpSession.getAttribute("return-seats");
+			}
 
 			outwardSeats = (ArrayList<String>)httpSession.getAttribute("outward-seats");
-			returnSeats = (ArrayList<String>)httpSession.getAttribute("return-seats");
 
 			//registration in tables
 
@@ -58,19 +61,29 @@ public class RegisterBooking extends HttpServlet
 			//if(connected){   }  (passenger 1 already exists if user is connected) 
 			//else{
 			passengerDAO.create(listOfPassengers.get(0));
-
+		
 			BookingDAO bookingDAO = new BookingDAO();
 			Booking outwardBooking = new Booking(bookingDAO.maxBookingID()+1, outwardFlightID, 0, 0, listOfPassengers.get(0).getPno());
 			bookingDAO.create(outwardBooking);
 
-			Booking returnBooking = new Booking(bookingDAO.maxBookingID()+1, returnFlightID, 0, 0, listOfPassengers.get(0).getPno());
-			bookingDAO.create(returnBooking);
-
+			if(returnFlightID!=null) {
+				returnBooking = new Booking(bookingDAO.maxBookingID()+1, returnFlightID, 0, 0, listOfPassengers.get(0).getPno());
+				bookingDAO.create(returnBooking);
+			}
+			
+			bookingDAO.associatePassengerToBooking(listOfPassengers.get(0).getPno(), outwardBooking.getBookingID());
+			if(returnFlightID!=null) {
+				bookingDAO.associatePassengerToBooking(listOfPassengers.get(0).getPno(), returnBooking.getBookingID());
+			}
+			
 
 			for (int i = 1; i < listOfPassengers.size(); i++) {
 				passengerDAO.create(listOfPassengers.get(i));
 				bookingDAO.associatePassengerToBooking(listOfPassengers.get(i).getPno(), outwardBooking.getBookingID());
-				bookingDAO.associatePassengerToBooking(listOfPassengers.get(i).getPno(), returnBooking.getBookingID());
+				
+				if(returnFlightID!=null) {
+					bookingDAO.associatePassengerToBooking(listOfPassengers.get(i).getPno(), returnBooking.getBookingID());
+				}
 			}
 
 			SeatsDAO seatsDAO = new SeatsDAO();
@@ -78,8 +91,10 @@ public class RegisterBooking extends HttpServlet
 			for (String seat : outwardSeats) {
 				seatsDAO.bookSeat(outwardFlightID, seat, outwardBooking.getBookingID());
 			}
-			for (String seat : returnSeats) {
-				seatsDAO.bookSeat(returnFlightID, seat, returnBooking.getBookingID());
+			if(returnFlightID!=null) {
+				for (String seat : returnSeats) {
+					seatsDAO.bookSeat(returnFlightID, seat, returnBooking.getBookingID());
+				}
 			}
 			
 
@@ -122,9 +137,11 @@ public class RegisterBooking extends HttpServlet
 			
 			message+="<br>";
 			
-			cpt=1;
 			message += "Passengers :<br>";
+
+			cpt=1;
 			for (Passenger passenger : listOfPassengers) {
+				message+= "passenger n°"+cpt+": <br>";
 				if(passenger.getTitle()==0) {
 					message+="Mrs ";
 				}else {
@@ -137,8 +154,12 @@ public class RegisterBooking extends HttpServlet
 			
 			message+="<br>"
 					+ "<u>Contact informations</u> assiociated to your purchase :<br> "
-					+ "email : " + listOfPassengers.get(0).getEmail()+"<br>"
-					+ "phone number : " + listOfPassengers.get(0).getPhoneNumber()+"<br>";
+					+ "email : " + listOfPassengers.get(0).getEmail()+"<br>";
+			
+			String phoneNumber = listOfPassengers.get(0).getPhoneNumber();
+			if(phoneNumber!=null && phoneNumber.length()>0) {
+				message+= "phone number : " + phoneNumber+"<br>";
+			}
 
 			message+="<br>"
 					+ "Please take note that the name assiocated to this booking is : " +listOfPassengers.get(0).getSurname()+"<br>"
