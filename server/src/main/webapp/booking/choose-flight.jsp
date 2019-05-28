@@ -171,11 +171,11 @@ String flight = request.getParameter("flight");%>
 				if(rs.next()){
 			
 					do{
-						// titre des colonnes
+						//Column title
 						out.println("<div class=\"container\" id=\"pInfoForm\">");
 						out.println("<div  class=\"flightsInfos\"><h4 class=\"h4ChooseFlight\"> ");
 						
-						//Enlever les secondes
+						//Don't take the seconds
 						String dateD = rs.getString("departureTime");
 						dateD = dateD.substring(0,5);
 						
@@ -208,7 +208,7 @@ String flight = request.getParameter("flight");%>
 								+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flight + "\">"
 								+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
 								+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
-								+ "	</form> </div> ");
+								+ "	</form> </div></div> ");
 							
 					}while(rs.next());
 				}else{

@@ -163,7 +163,7 @@
 			<h4>SepartureTime : <%=outwardFlight.getDepartureTime() %></h4>
 			<h4>ArrivalDate : <%=outwardFlight.getArrivalDate() %></h4>
 			<h4>ArrivalTime : <%=outwardFlight.getArrivalTime() %></h4>
-			<h4>price : <%=outwardFlight.getPrice() %> €</h4>
+			<h4>price : <%=outwardFlight.getPrice() %> € per person</h4>
 
 			<br>
 
@@ -185,7 +185,7 @@
 			<h4>SepartureTime : <%=returnFlight.getDepartureTime() %></h4>
 			<h4>ArrivalDate : <%=returnFlight.getArrivalDate() %></h4>
 			<h4>ArrivalTime : <%=returnFlight.getArrivalTime() %></h4>
-			<h4>price : <%=returnFlight.getPrice() %> €</h4>
+			<h4>price : <%=returnFlight.getPrice() %> € per person </h4>
 			<br>
 
 			<h4>return seats :</h4>
@@ -223,7 +223,7 @@
 		<h2>Others:</h2>
 
 		<h3>Contact informations:</h3>
-		<div style="border-style:solid;">
+		<div style="border:solid ;padding-left: 5px;">
 			<h4><span class="glyphicon glyphicon-envelope"></span> E-mail :
 				<%=listOfPassengers.get(0).getEmail()%> </h4>
 			<h4><span class="glyphicon glyphicon-phone"></span> Phone number:
@@ -305,7 +305,7 @@
 		<h3>Insurance:</h3>
 		
 		<%if(insurance.equals("yes")){ %>
-			<div class="form-check" style = "border-style:dotted; width:50%;">
+			<div class="form-check" style = "border-style:solid; width:50%;">
 	             <span class="form-check-label">
 	                 <span style="color: #ff6600; font-weight: bold;">Comprehensive travel Insurance</span>
 	                 (16€ per person)

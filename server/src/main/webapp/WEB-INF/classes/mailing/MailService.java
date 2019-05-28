@@ -16,7 +16,7 @@ public class MailService {
 	final String password;
 	Properties props;
 	
-	public static final String AIR_VACATIONS_EMAIL = "erasmusprojectathens@gmail.com";
+	public static final String AIR_AsmusS_EMAIL = "erasmusprojectathens@gmail.com";
 	
 	
 	public MailService() {
@@ -39,7 +39,7 @@ public class MailService {
 
 		try {
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(AIR_VACATIONS_EMAIL));
+			message.setFrom(new InternetAddress(AIR_AsmusS_EMAIL));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(email));
 			message.setSubject(subject);

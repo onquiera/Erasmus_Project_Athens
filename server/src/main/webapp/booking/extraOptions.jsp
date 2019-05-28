@@ -107,14 +107,16 @@
     </nav>
 
 
-    <div id="priceArea">
-		<h4>Total: <%=price %> €</h4>
-	</div>
+   
 
     <form action="/servlet-ExtraOptions" method="get" role="form class=form">
 
         <div id="textArea2">
 
+            <div id="priceArea">
+                <h4>Total: <%=price %> €</h4>
+            </div>
+            
             <h2> Flight option</h2>
             <!--More Luggage side-->
 
