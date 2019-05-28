@@ -143,7 +143,7 @@
 
 			<div id="seatChoice">
 			
-			<table style = "border-style:solid;">
+			<table style = "border: solid darkgray;">
 				<%
 				//seats :
 				

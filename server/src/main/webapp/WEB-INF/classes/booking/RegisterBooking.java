@@ -99,7 +99,7 @@ public class RegisterBooking extends HttpServlet
 			
 
 			String message = 
-					" <h2>Thank you for your purchase on air vacation</h2>"
+					" <h2>Thank you for your purchase on air Asmus</h2>"
 							+ ""
 							+ "<h3>Here are your booking details :</h3> "
 							+ "<br>"
@@ -141,7 +141,7 @@ public class RegisterBooking extends HttpServlet
 
 			cpt=1;
 			for (Passenger passenger : listOfPassengers) {
-				message+= "passenger n°"+cpt+": <br>";
+				message+= "passenger no "+cpt+": <br>";
 				if(passenger.getTitle()==0) {
 					message+="Mrs ";
 				}else {
@@ -163,7 +163,7 @@ public class RegisterBooking extends HttpServlet
 
 			message+="<br>"
 					+ "Please take note that the name assiocated to this booking is : " +listOfPassengers.get(0).getSurname()+"<br>"
-					+ "This can be usefull on the <a href=\"http://localhost:8080/booking/searchBooking.jsp>\">My booking</a> page.<br>"
+					+ "This can be usefull on the <a href=\"http://localhost:8080/booking/searchBooking.jsp\">My booking</a> page.<br>"
 					+ "<br>"
 					+ "<br>"
 					+ "You will receive an email with the checkin informations a few days before your flight.<br>"
