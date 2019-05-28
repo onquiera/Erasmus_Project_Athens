@@ -31,38 +31,36 @@ public class MyBooking extends HttpServlet {
 				+ "<script src=\"https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js\"></script>"
 
 				+ "<script src=\"/js/main.js\" defer></script>"
+				+ "<link rel=\"stylesheet\" href=\"/css/progress/personnalInfosStyle.css\"/>"
 				+ "<link rel=\"stylesheet\" href=\"/css/basics.css\" />");
 
 		// Content
 		out.println("</head><body>" + "<div id=\"logo\">"
 				+ "<a href=\"/\"><img src=\"/resources/logo.png\" alt=\"Insert logo here\" id=\"home\"></a>" + "</div>"
-		
-				+ "<nav id=\"navBar\"></nav>"
-				+ "<center>");
+
+				+ "<nav id=\"navBar\"></nav>" + "<div id=\"textArea2\">"
+				+ " <div class=\"container\" id=\"pInfoForm\">");
 
 		try {
 
 			int bookingID = -1;
 			String surname = "";
 
-
 			try {
 				bookingID = Integer.parseInt(req.getParameter("bookingID"));
-			}catch(java.lang.NumberFormatException e ){
+			} catch (java.lang.NumberFormatException e) {
 				out.println("Wrong format for bookingID(should be a number)");
-				bookingID=-1;
+				bookingID = -1;
 			}
 			surname = req.getParameter("surname");
 
 			BookingDAO bookingDAO = new BookingDAO();
 			Booking booking = bookingDAO.find(bookingID);
 
-
 			if (booking == null) {
 				out.println("<h1>Booking not found </h1>");
 
 				out.println("<br><br><br>");
-
 
 			} else {
 
@@ -72,63 +70,58 @@ public class MyBooking extends HttpServlet {
 				if (!surname.equals(customer.getSurname())) {
 					out.println("<h1>Surname doesn't match booking id</h1>");
 
-				}else {
+				} else {
 					SeatsDAO seatsDAO = new SeatsDAO();
 					ArrayList<String> seatsSelected = seatsDAO.findBookedSeatsOnBooking(booking.getBookingID());
 
-					out.println("<h1><b> Your booking informations : </b></h1>");
-					out.println("Booking ID : " + booking.getBookingID() + "<br>");
-					out.println("flight id : " + booking.getFlightid() + "<br>");
+					out.println("<h3><b> Your booking informations : </b></h3>");
+					out.println("Booking ID: " + booking.getBookingID() + "<br>");
+					out.println("Flight ID: " + booking.getFlightid() + "<br>");
 
-					out.println("Seats selected(blue): <br>");
+					out.println("Selected seats (in blue): <br>");
 					PrintSeats.printSeatsSelected(out, booking.getFlightid(), seatsSelected);
 
-
-
+					
 					ArrayList<Passenger> listOfPassengers = bookingDAO.findAllPassengersOnBooking(bookingID);
-					int cpt =1;
+					int cpt = 1;
 
-					out.println("<br><h2>Passengers :</h2>");
+					out.println("<br><h3>Passengers :</h3>");
 					for (Passenger passenger : listOfPassengers) {
-						out.println("passenger no "+cpt+": <br>");
-						if(passenger.getTitle()==0) {
+						out.println("Passenger No " + cpt + ": <br>");
+						if (passenger.getTitle() == 1) {
 							out.println("Mrs ");
-						}else {
+						} else {
 							out.println("Mr ");
 						}
-						out.println(passenger.getFirstName()+" "+passenger.getSurname()+""
-								+ "<br>date of birth : " +passenger.getDateOfBirth() +"<br><br>");
+						out.println(passenger.getFirstName() + " " + passenger.getSurname() + ""
+								+ "<br>Date of birth: " + passenger.getDateOfBirth() + "<br><br>");
 						cpt++;
 					}
 
-					out.println("<br>"
-							+ "<u>Contact informations</u> assiociated to your booking :<br> "
-							+ "email : " + listOfPassengers.get(0).getEmail()+"<br>");
+					out.println("<u>Contact informations</u> assiociated to your booking:<br> " + "Email: "
+							+ listOfPassengers.get(0).getEmail() + "<br>");
 
 					String phoneNumber = listOfPassengers.get(0).getPhoneNumber();
-					if(phoneNumber!=null && phoneNumber.length()>0) {
-						out.println("phone number : " + phoneNumber+"<br>");
+					if (phoneNumber != null && phoneNumber.length() > 0) {
+						out.println("Phone number : " + phoneNumber + "<br>");
 					}
 
 					out.println("</h3>");
 
-
 				}
 			}
 
-			out.println("<br><h3>" + "<a href=\"/booking/searchBooking.jsp\">Back to booking research</a>"
-					+ "<nav id=\"footer\"></nav></body></h3>");
-			out.println("<br><br> "
-					+ "</center>");
+			out.println("<br><h3>" + "<a href=\"/booking/searchBooking.jsp\">Back to booking research</a></h3>"
+					+ "</div></div>");
+			out.println("<nav id=\"footer\"></nav></body>");
 
-
-		}catch(java.lang.NumberFormatException e ){
+		} catch (java.lang.NumberFormatException e) {
 			e.printStackTrace();
 			res.sendRedirect("/error/parameterError.html");
-		}catch(NullPointerException e ){
+		} catch (NullPointerException e) {
 			e.printStackTrace();
 			res.sendRedirect("/error/parameterError.html");
-		}catch(Exception e2 ){
+		} catch (Exception e2) {
 			e2.printStackTrace();
 			res.sendRedirect("/error/error.html");
 		}
