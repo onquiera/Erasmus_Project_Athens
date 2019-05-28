@@ -57,8 +57,8 @@
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										<input required class="form-control" name="reservationID" value=""
-											placeholder="Reservation ID">
+										<input required class="form-control" name="bookingID" value=""
+											placeholder="Booking ID">
 									</div>
 
 									<div class="col-lg-12">

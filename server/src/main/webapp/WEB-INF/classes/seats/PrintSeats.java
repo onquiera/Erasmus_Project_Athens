@@ -17,14 +17,14 @@ public class PrintSeats {
 
 	}
 
-	//for confirmation.jps page 
+	//for JSPs
 	public static void printSeatsSelected(JspWriter out, String flightID, ArrayList<String> selectedSeats) {
 		try {
 			int rowSize = 4; //to change and add as parameter if we use different airplane types
 			
 			SeatsDAO seatsDAO = new SeatsDAO();
 			int flightsNumberOfSeats = seatsDAO.numberOfSeats(flightID);
-			ArrayList<String> alreadyBookedSeats = seatsDAO.findBookedSeats(flightID);
+			ArrayList<String> alreadyBookedSeats = seatsDAO.findBookedSeatsInFlight(flightID);
 
 			for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {
 				out.println("<br>");
@@ -49,6 +49,34 @@ public class PrintSeats {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	//for servlets
+	public static void printSeatsSelected(PrintWriter out, String flightID, ArrayList<String> selectedSeats) {
+			int rowSize = 4; //to change and add as parameter if we use different airplane types
+			
+			SeatsDAO seatsDAO = new SeatsDAO();
+			int flightsNumberOfSeats = seatsDAO.numberOfSeats(flightID);
+			ArrayList<String> alreadyBookedSeats = seatsDAO.findBookedSeatsInFlight(flightID);
+
+			for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {
+				out.println("<br>");
+				for (int j = 0; j < rowSize; j++) {
+					String seat = i + "" + convert.charAt(j);
+					if(selectedSeats.contains(seat)){
+						//seat selected by customer
+						out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-primary\">" + seat
+								+ "</button>");
+					}else if (alreadyBookedSeats.contains(seat)) {
+						//seat already booked so blocked
+						out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-danger\" disabled>" + seat
+								+ "</button>");
+					}else {
+						out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" disabled>" + seat
+								+ "</button>");
+					}
+				}
+			}
 	}
 
 }

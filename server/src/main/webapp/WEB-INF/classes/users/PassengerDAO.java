@@ -12,12 +12,12 @@ public class PassengerDAO {
 	public Passenger find(int pno) {
 		try(Connection con = DS.getConnection()){
 
-			String query = "Select * from passengers where pno=?";
+			String query = "Select * from passenger where pno=?";
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setInt(1, pno);
 			ResultSet rs = ps.executeQuery();
-			//System.out.println("ps: " +ps);
-
+			//System.out.println("\nps: " +ps);
+			
 			if(rs.next()) {
 
 				String name = rs.getString("name");
@@ -59,7 +59,7 @@ public class PassengerDAO {
 		//TODO
 		//		try(Connection con = DS.getConnection()){
 		//			ArrayList<Passenger> liste =new ArrayList<>();
-		//			String query = "select * from passengers";
+		//			String query = "select * from passenger";
 		//
 		//			PreparedStatement ps = con.prepareStatement( query );
 		//			ps.executeQuery();
@@ -88,7 +88,7 @@ public class PassengerDAO {
 	public boolean update(Passenger user) {
 		//TODO
 		//		try(Connection con = DS.getConnection()){
-		//			String query = "UPDATE passengers SET name = ?, surname = ?, genre = ?, password = ?, role = ? WHERE contactEmail=?;";
+		//			String query = "UPDATE passenger SET name = ?, surname = ?, genre = ?, password = ?, role = ? WHERE contactEmail=?;";
 		//			PreparedStatement ps = con.prepareStatement( query );
 		//
 		//			ps.setString(1, user.getName());

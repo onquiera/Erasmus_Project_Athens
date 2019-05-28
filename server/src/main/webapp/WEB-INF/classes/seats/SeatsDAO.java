@@ -35,13 +35,36 @@ public class SeatsDAO {
 		return -1;
 	}
 
-	public ArrayList<String> findBookedSeats(String flightID) {
+	public ArrayList<String> findBookedSeatsInFlight(String flightID) {
 		try(Connection con = DS.getConnection()){
 			ArrayList<String> liste =new ArrayList<>();
 			String query = "select seat_number from seat_reservation where flightID=?";
 
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setString(1, flightID);
+			ps.executeQuery();
+			System.out.println(ps);
+			ResultSet rs = ps.executeQuery();
+
+			//contenu des colonnes
+			while (rs.next()){
+				liste.add(rs.getString(1));
+			}
+
+			return liste;
+		}catch(Exception e1){
+			System.out.println(e1.getMessage());
+		}
+		return null;
+	}
+	
+	public ArrayList<String> findBookedSeatsOnBooking(int bookingID) {
+		try(Connection con = DS.getConnection()){
+			ArrayList<String> liste =new ArrayList<>();
+			String query = "select seat_number from seat_reservation where bookingid=?";
+
+			PreparedStatement ps = con.prepareStatement( query );
+			ps.setInt(1, bookingID);
 			ps.executeQuery();
 			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();

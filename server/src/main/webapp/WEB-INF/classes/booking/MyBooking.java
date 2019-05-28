@@ -1,10 +1,13 @@
 package booking;
 
 import java.io.*;
+import java.util.ArrayList;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import seats.PrintSeats;
+import seats.SeatsDAO;
 import users.*;
 
 @SuppressWarnings("serial")
@@ -36,49 +39,73 @@ public class MyBooking extends HttpServlet {
 
 				+ "<nav id=\"navBar\"></nav>");
 
-		// TODO ajouter détails > exemple pas flight id mais détails du vol
-
 		try {
-			// reservationnumber | flightid | seatnumber | clientname | clientemail
 
 			int bookingID = -1;
 			String surname = "";
 
-			bookingID = Integer.parseInt(req.getParameter("bookingID"));
+			
+			try {
+				bookingID = Integer.parseInt(req.getParameter("bookingID"));
+			}catch(java.lang.NumberFormatException e ){
+				out.println("Wrong format for bookingID(should be a number)");
+				bookingID=-1;
+			}
 			surname = req.getParameter("surname");
 
 			BookingDAO bookingDAO = new BookingDAO();
 			Booking booking = bookingDAO.find(bookingID);
-			
-			
-			
-			
 
-			PassengerDAO passengerDAO = new PassengerDAO();
-			Passenger passenger = passengerDAO.find(booking.getMainPassengerNO());
-			
-			
-			
-			
-			
-			
+
 			if (booking == null) {
 				out.println("<h1>Booking not found </h1>");
-			} else if (!surname.equals(passenger.getSurname())) {
-				out.println("<h1>Surname doesn't match booking id</h1>");
+
+				out.println("<br><br><br>");
+				
+				
 			} else {
-				out.println("<h1> Your reservation : </h1>");
-				out.println("<h3> client : "+passenger.getFirstName() +" " + passenger.getFirstName() + "</h3>");
-				out.println("<h3> Booking ID : " + booking.getBookingID() + "</h3>");
-				out.println("<h3> flight id : " + booking.getFlightid() + "</h3>");
+
+				PassengerDAO passengerDAO = new PassengerDAO();
+				Passenger passenger = passengerDAO.find(booking.getMainPassengerNO());
+
+				if (!surname.equals(passenger.getSurname())) {
+					out.println("<h1>Surname doesn't match booking id</h1>");
+					
+				}else {
+					SeatsDAO seatsDAO = new SeatsDAO();
+					ArrayList<String> seatsSelected = seatsDAO.findBookedSeatsOnBooking(booking.getBookingID());
+
+					out.println("<h1> Your reservation : </h1>");
+					out.println("<h3> client : "+passenger.getFirstName() +" " + passenger.getFirstName() + "<br>");
+					out.println("Booking ID : " + booking.getBookingID() + "<br>");
+					out.println("flight id : " + booking.getFlightid() + "<br>");
+
+					out.println("Seats selected(blue): <br>");
+					PrintSeats.printSeatsSelected(out, booking.getFlightid(), seatsSelected);
+
+					out.println("</h3>");
+
+
+				}
 			}
 
-		} catch (java.lang.NumberFormatException e1) {
-			out.println("<h1>Invalid parameters </h1>");
-		} catch (Exception e2) {
+			out.println("<br><h3>" + "<a href=\"/booking/searchBooking.jsp\">Back to booking research</a>"
+					+ "<nav id=\"footer\"></nav></body></h3>");
+			out.println("<br><br> ");
+			
+			
+		}catch(java.lang.NumberFormatException e ){
+			e.printStackTrace();
+			res.sendRedirect("/error/parameterError.html");
+		}catch(NullPointerException e ){
+			e.printStackTrace();
+			res.sendRedirect("/error/parameterError.html");
+		}catch(Exception e2 ){
 			e2.printStackTrace();
+			res.sendRedirect("/error/error.html");
 		}
-		out.println("" + "<a href=\"/booking/searchBooking.jsp\">Back to booking search</a>"
-				+ "<nav id=\"footer\"></nav></body>");
+
+
+
 	}
 }

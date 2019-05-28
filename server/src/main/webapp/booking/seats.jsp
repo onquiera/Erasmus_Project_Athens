@@ -105,11 +105,11 @@
 			}else{
 				response.sendRedirect("/error/parameterError.html?error=flightType+incorrect+on+seats_jsp");
 			}
-		
-		
+				
+				
 			SeatsDAO seatsDAO = new SeatsDAO();
 			int flightsNumberOfSeats = seatsDAO.numberOfSeats(flightID);
-			ArrayList<String> alreadyBookedSeats = seatsDAO.findBookedSeats(flightID);
+			ArrayList<String> alreadyBookedSeats = seatsDAO.findBookedSeatsInFlight(flightID);
 			int rowSize = 4;
 			String convert = "ABCDEFGHIJKL";
 			
@@ -131,7 +131,7 @@
 					seatsLeftToChoose--;
 				}
 			}
-	%>
+		%>
 	
 	<div id="priceArea">
 		<h4>Total: <%=price %> €</h4>

@@ -10,15 +10,13 @@ import connexion.DS;
 
 public class BookingDAO {
 
-	//reservationnumber |  flightid  | seatnumber | clientname |         clientemail   
 	public Booking find(int bookingID) {
 		try(Connection con = DS.getConnection()){
 
-			String query = "Select * from bookings where reservationnumber=?";
+			String query = "Select * from bookings where bookingid=?";
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setInt(1, bookingID);
 			ResultSet rs = ps.executeQuery();
-			//System.out.println(ps);
 			
 			//System.out.println("ps: " +ps);
 			
@@ -84,13 +82,13 @@ public class BookingDAO {
 		return null;
 	}
 
-	public Booking delete(int reservationnumber) {
+	public Booking delete(int bookingid) {
 		try(Connection con = DS.getConnection()){
-			Booking tmp = find(reservationnumber);
-			String query = "delete from bookings where reservationnumber = ?";
+			Booking tmp = find(bookingid);
+			String query = "delete from bookings where bookingid = ?";
 
 			PreparedStatement ps = con.prepareStatement( query );
-			ps.setInt(1, reservationnumber);
+			ps.setInt(1, bookingid);
 
 			System.out.println(ps);
 			ps.executeUpdate();
@@ -101,12 +99,11 @@ public class BookingDAO {
 		return null;
 	}
 
-	//reservationnumber |  flightid  | seatnumber | clientname |         clientemail   
 	public boolean update(Booking TODDDOO) {
 		/*
 		try(Connection con = DS.getConnection()){
 			
-			String query = "UPDATE users SET name = ?, surname = ?, genre = ?, password = ?, role = ? WHERE reservationnumber=?;";
+			String query = "UPDATE users SET name = ?, surname = ?, genre = ?, password = ?, role = ? WHERE bookingid=?;";
 			PreparedStatement ps = con.prepareStatement( query );
 
 			ps.setString(1, user.getName());
