@@ -1,5 +1,6 @@
-<%@page import="connexion.UsersDAO"%>
-<%@page import="connexion.Users"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="booking.Booking"%>
+<%@page import="booking.BookingDAO"%>
 <%@page import="java.util.List"%>
 <HTML>
 <HEAD>
@@ -8,16 +9,27 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <BODY>
 	<h1>Admin informations :</h1>
-	<h2>Users signed in to Air Asmus : </h2>
-	<h4>precision on genre : 0 = woman, 1 = man, 2 = other</h4>
-	<%
-	UsersDAO dao = new UsersDAO();
 	
-	List<Users> liste = dao.findAll();
+	<h2>Bookings on Air Asmus:</h2>
+	<%
+	BookingDAO bookingDAO = new BookingDAO();
+	
+	ArrayList<Booking> liste = bookingDAO.findAll();
+	//do it with a table > better
 
-	for (Users users : liste) {
-		out.println("<p>"+users.toString()+"</p>");
+	%>
+	<table>
+	<tr><th>Booking ID</th><th>FlightID</th><th>Category</th><th>Insurance</th>       </tr>
+	<% for (Booking booking : liste) {%>
+		<tr>
+			<td> <%=booking.getBookingID()%></td>
+			<td> <%=booking.getFlightid() %></td>
+			<td> <%=booking.getCategory() %></td>
+			<td> <%=booking.getInsurance() %></td>
+		</tr>
+	<%
 	}
 	%>
+	</table>
 </BODY>
 </HTML>

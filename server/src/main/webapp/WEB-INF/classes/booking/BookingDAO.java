@@ -56,7 +56,7 @@ public class BookingDAO {
 		return false;
 	}
 
-	public List<Booking> findAll() {
+	public ArrayList<Booking> findAll() {
 		try(Connection con = DS.getConnection()){
 			ArrayList<Booking> liste =new ArrayList<>();
 			String query = "select * from bookings";

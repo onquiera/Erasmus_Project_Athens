@@ -214,7 +214,8 @@
 			out.println("<h3>Passenger 1(person who is booking): </h3>");
 		}else{	
 			out.println("<h3>Passenger "+(i+1)+": </h3>");
-		}	%>
+		}	
+		%>
 
 		<h4><span class="glyphicon glyphicon-envelope"></span> Title: <%=title %></h4>
 		<h4><span class="glyphicon glyphicon-user"></span> Firstname: <%=passenger.getFirstName()%></h4>
