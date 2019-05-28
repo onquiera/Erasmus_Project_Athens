@@ -40,7 +40,7 @@ public class PassengerDAO {
 			String query = "Insert into passenger values(?,?,?,?,?,?,?)";
 			PreparedStatement	ps = con.prepareStatement( query );
 			ps.setInt(1, passenger.getPno());
-			ps.setString(2, passenger.getName());
+			ps.setString(2, passenger.getFirstName());
 			ps.setString(3, passenger.getSurname());
 			ps.setInt(4, passenger.getTitle());
 			ps.setDate(5, passenger.getDateOfBirth());

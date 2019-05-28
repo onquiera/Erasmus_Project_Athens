@@ -27,54 +27,54 @@ public class RegisterBooking extends HttpServlet
 		ArrayList<String> returnSeats=null;
 		FlightWithDetails outwardFlight=null;
 		FlightWithDetails returnFlight=null;
-		
+
 		FlightsDAO flightDAO = new FlightsDAO();
-		
+
 		try {
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if (httpSession == null || !req.isRequestedSessionIdValid()) {
-					res.sendRedirect("/error/sessionError.html");
+				res.sendRedirect("/error/sessionError.html");
 			}
 
 			//PARAMETERS management
 			listOfPassengers = (ArrayList<Passenger>) httpSession.getAttribute("listOfPassengers");
 			outwardFlightID=(String) httpSession.getAttribute("outwardFlightID");
 			outwardFlight = flightDAO.findFlight(outwardFlightID);
-			
+
 			returnFlightID=(String) httpSession.getAttribute("returnFlightID");
 			returnFlight = flightDAO.findFlight(returnFlightID);
-			
+
 			outwardSeats = (ArrayList<String>)httpSession.getAttribute("outward-seats");
 			returnSeats = (ArrayList<String>)httpSession.getAttribute("return-seats");
-			
+
 			//registration in tables
-			
+
 			//passenger registration
-			
+
 			PassengerDAO passengerDAO = new PassengerDAO();
-			
+
 			//TODO when user connexion works :
 			//if(connected){   }  (passenger 1 already exists if user is connected) 
 			//else{
 			passengerDAO.create(listOfPassengers.get(0));
-				
+
 			BookingDAO bookingDAO = new BookingDAO();
 			Booking outwardBooking = new Booking(bookingDAO.maxBookingID()+1, outwardFlightID, 0, 0, listOfPassengers.get(0).getPno());
 			bookingDAO.create(outwardBooking);
-			
+
 			Booking returnBooking = new Booking(bookingDAO.maxBookingID()+1, returnFlightID, 0, 0, listOfPassengers.get(0).getPno());
 			bookingDAO.create(returnBooking);
-			
-			
+
+
 			for (int i = 1; i < listOfPassengers.size(); i++) {
 				passengerDAO.create(listOfPassengers.get(i));
 				bookingDAO.associatePassengerToBooking(listOfPassengers.get(i).getPno(), outwardBooking.getBookingID());
 				bookingDAO.associatePassengerToBooking(listOfPassengers.get(i).getPno(), returnBooking.getBookingID());
 			}
-			
+
 			SeatsDAO seatsDAO = new SeatsDAO();
-			
+
 			for (String seat : outwardSeats) {
 				seatsDAO.bookSeat(outwardFlightID, seat, outwardBooking.getBookingID());
 			}
@@ -82,36 +82,81 @@ public class RegisterBooking extends HttpServlet
 				seatsDAO.bookSeat(returnFlightID, seat, returnBooking.getBookingID());
 			}
 			
+
 			String message = 
 					" <h2>Thank you for your purchase on air vacation</h2>"
-					+ ""
-					+ "<h3>Here are your booking details :</h3> "
-					+ "<br>"
-					+ "<div style = \"border-style: solid;\">"
-					+ "<h4>Booking ID : " + outwardBooking.getBookingID() +"<br>"
-					+ "<br>"
-					+ "Outward flight : <br>"
-					+ "Flight from : "+ outwardFlight.getDeparture() + "<br>"
-					+ "to : " + outwardFlight.getArrival() + "<br>"
-					+ "<br>"
-					+ outwardFlight.getDepartureDate()+ " at "+ outwardFlight.getDepartureTime()+"<br>";
+							+ ""
+							+ "<h3>Here are your booking details :</h3> "
+							+ "<br>"
+							+ "<div style = \"border-style: solid;\">"
+							+ "<h4><b>Outward Flight :</b> <br>"
+							+ "Booking ID : " + outwardBooking.getBookingID() +"<br>"
+							+ "flight from : "+ outwardFlight.getDeparture() + "<br>"
+							+ "to : " + outwardFlight.getArrival() + "<br>"
+							+ outwardFlight.getDepartureDate()+ " at "+ outwardFlight.getDepartureTime()+"<br>"
+							+ "<br>"
+							+ "Seats: <br>";
+			int cpt=1;
+			for (String seat : outwardSeats) {
+				message+= "seat "+cpt + ": "+ seat +"<br>";
+				cpt++;
+			}
 			
+
 			if(returnFlight!=null) {
 				message+=
-						  ""
-						  + "Return flight : <br><br>"
-						  + "Flight from : "+ returnFlight.getDeparture() + "<br>"
-						+ "to : " + returnFlight.getArrival() + "<br>"
-						+ "<br>"
-						+ returnFlight.getDepartureDate()+ " at "+ returnFlight.getDepartureTime();
+						"<br><br>"
+						+ "<b>Return Flight : </b><br>"
+						+ "Booking ID : " + returnBooking.getBookingID() +"<br>"
+								+ "flight from : "+ returnFlight.getDeparture() + "<br>"
+								+ "to : " + returnFlight.getArrival() + "<br>"
+								+ returnFlight.getDepartureDate()+ " at "+ returnFlight.getDepartureTime()+"<br>"
+								+ "Seats: <br>";
+
+				cpt=1;
+				for (String seat : returnSeats) {
+					message+= "seat "+cpt + ": "+ seat +"<br>";
+					cpt++;
+				}
 			}
-			message+="</h4></div>";
 			
+			message+="<br>";
+			
+			cpt=1;
+			message += "Passengers :<br>";
+			for (Passenger passenger : listOfPassengers) {
+				if(passenger.getTitle()==0) {
+					message+="Mrs ";
+				}else {
+					message+="Mr ";
+				}
+				message+=passenger.getFirstName()+" "+passenger.getSurname()+""
+						+ "<br>date of birth : " +passenger.getDateOfBirth() +"<br><br>";
+				cpt++;
+			}
+			
+			message+="<br>"
+					+ "<u>Contact informations</u> assiociated to your purchase :<br> "
+					+ "email : " + listOfPassengers.get(0).getEmail()+"<br>"
+					+ "phone number : " + listOfPassengers.get(0).getPhoneNumber()+"<br>";
+
+			message+="<br>"
+					+ "Please take note that the name assiocated to this booking is : " +listOfPassengers.get(0).getSurname()+"<br>"
+					+ "This can be usefull on the <a href=\"http://localhost:8080/booking/searchBooking.jsp>\">My booking</a> page.<br>"
+					+ "<br>"
+					+ "<br>"
+					+ "You will receive an email with the checkin informations a few days before your flight.<br>"
+					+ "<br>"
+					+ "We thank you for using our compagny to fly around the world.<br>"
+					+ "<b>Air Asmus</b>";
+			
+			message+="</h4></div>";
+
 			MailService mailService = new MailService();
 			mailService.sendTo(listOfPassengers.get(0).getEmail(), "Booking done" , message);
-			
+
 			res.sendRedirect("/booking/bookingDone.jsp");
-			
+
 		}catch(java.lang.NumberFormatException e ){
 			e.printStackTrace();
 			res.sendRedirect("/error/parameterError.html");

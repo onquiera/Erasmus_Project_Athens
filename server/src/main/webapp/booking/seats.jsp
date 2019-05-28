@@ -143,7 +143,7 @@
 
 			<div id="seatChoice">
 			
-			<table>
+			<table style = "border-style:solid;">
 				<%
 				//seats :
 				
@@ -155,9 +155,9 @@
 						
 						//middle space
 						if(j==rowSize/2){
-							out.println("<td style = \"padding-left : 40px;\">");
+							out.println("<td style = \"padding : 0px 10px 0 40px ;\">");
 						}else{
-							out.println("<td style = \"padding-left : 10px\">");
+							out.println("<td style = \"padding : 0 10px 0 10px;\">");
 						}
 						
 						

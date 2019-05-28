@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Passenger {
 	private int pno;
-	private String name;
+	private String firstname;
 	private String surname;
 	private int title;
 	private Date dateOfBirth;
@@ -15,7 +15,7 @@ public class Passenger {
 			String email) {
 		super();
 		this.pno = pno;
-		this.name = name;
+		this.firstname = name;
 		this.surname = surname;
 		this.title = title;
 		this.dateOfBirth = dateOfBirth;
@@ -31,12 +31,12 @@ public class Passenger {
 		this.pno = pno;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void getFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getSurname() {

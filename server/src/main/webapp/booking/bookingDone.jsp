@@ -109,7 +109,7 @@
 			<h1>Booking done</h1>
 			<br>
 
-			<h4>Your booking had been succesfully made !
+			<h4>Your booking has been succesfully made !
 				<br><br>
 				<h4>We sent you the booking confirmation and your bill per mail.
 					<br><br>

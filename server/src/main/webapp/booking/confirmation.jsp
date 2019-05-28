@@ -210,7 +210,7 @@
 			out.println("<h3>Passenger "+(i+1)+": </h3>");
 		}	%>
 
-		<h4><span class="glyphicon glyphicon-user"></span> Firstname: <%=passenger.getName() %></h4>
+		<h4><span class="glyphicon glyphicon-user"></span> Firstname: <%=passenger.getFirstName()%></h4>
 		<h4><span class="glyphicon glyphicon-user"></span> Surname: <%=passenger.getSurname() %></h4>
 		<h4><span class="glyphicon glyphicon-envelope"></span> Title: <%=passenger.getTitle() %></h4>
 		<h4><span class="glyphicon glyphicon-calendar"></span> Date of Birth: <%=passenger.getDateOfBirth() %></h4>
@@ -331,7 +331,7 @@
 	         </div>
 		<%}else{ %>
 		
-			<h4>Not taken</h4>
+			<h4 style="margin-left:40px;">Not taken</h4>
 		
 		<%} %>
 		<br>
