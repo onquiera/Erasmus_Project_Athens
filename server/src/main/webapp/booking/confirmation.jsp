@@ -199,6 +199,12 @@
 
 	<% for (int i = 0; i < listOfPassengers.size(); i++) {
 		Passenger passenger = listOfPassengers.get(i);
+		String title="";
+		if(passenger.getTitle()==0){
+			title="Mrs";
+		}else{
+			title="Mr";
+		}
 	%>
 
 	<div class="container" id="pInfoForm">
@@ -210,9 +216,9 @@
 			out.println("<h3>Passenger "+(i+1)+": </h3>");
 		}	%>
 
+		<h4><span class="glyphicon glyphicon-envelope"></span> Title: <%=title %></h4>
 		<h4><span class="glyphicon glyphicon-user"></span> Firstname: <%=passenger.getFirstName()%></h4>
 		<h4><span class="glyphicon glyphicon-user"></span> Surname: <%=passenger.getSurname() %></h4>
-		<h4><span class="glyphicon glyphicon-envelope"></span> Title: <%=passenger.getTitle() %></h4>
 		<h4><span class="glyphicon glyphicon-calendar"></span> Date of Birth: <%=passenger.getDateOfBirth() %></h4>
 
 	</div>
