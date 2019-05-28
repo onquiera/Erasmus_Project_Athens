@@ -69,7 +69,7 @@ public class SignIn extends HttpServlet
 				session.setAttribute("login", email );
 				
 				MailService mailService = new MailService();
-				mailService.sendTo(email, "succesfully registered", "Welcome on air  Asmus !\n\n You have succesfully been registered. ");
+				mailService.sendTo(email, "succesfully registered", "Welcome on air Asmus !\n\n You have succesfully been registered. ");
 
 				res.sendRedirect("/index.jsp");
 				

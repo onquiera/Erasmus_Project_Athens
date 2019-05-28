@@ -25,7 +25,7 @@ public class DS {
 */
 
 //WARNING in the url, the last part speciefies the name of the database
-			String url = "jdbc:postgresql://localhost:5432/er Asmus_project";
+			String url = "jdbc:postgresql://localhost:5432/erasmus_project";
 			String nom = "postgres";
 			String mdp = "aaaa";
 				

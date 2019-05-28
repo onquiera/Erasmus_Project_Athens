@@ -99,7 +99,7 @@ public class RegisterBooking extends HttpServlet
 			
 
 			String message = 
-					" <h2>Thank you for your purchase on air  Asmus</h2>"
+					" <h2>Thank you for your purchase on air Asmus</h2>"
 							+ ""
 							+ "<h3>Here are your booking details :</h3> "
 							+ "<br>"
@@ -173,7 +173,7 @@ public class RegisterBooking extends HttpServlet
 					+ "You will receive an email with the checkin informations a few days before your flight.<br>"
 					+ "<br>"
 					+ "We thank you for using our compagny to fly around the world.<br>"
-					+ "<b>Air  Asmus</b>";
+					+ "<b>Air Asmus</b>";
 			
 			message+="</h4></div>";
 

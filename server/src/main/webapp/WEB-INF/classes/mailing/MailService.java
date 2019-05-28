@@ -16,12 +16,12 @@ public class MailService {
 	final String password;
 	Properties props;
 	
-	public static final String AIR_ AsmusS_EMAIL = "er Asmusprojectathens@gmail.com";
+	public static final String AIR_ASMUS_EMAIL = "erasmusprojectathens@gmail.com";
 	
 	
 	public MailService() {
-		username = "er Asmusathensproject@gmail.com";
-		password = "Er AsmusAthens";
+		username = "erasmusathensproject@gmail.com";
+		password = "ErasmusAthens";
 		props = new Properties();
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.auth", "true");
@@ -39,7 +39,7 @@ public class MailService {
 
 		try {
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(AIR_ AsmusS_EMAIL));
+			message.setFrom(new InternetAddress(AIR_ASMUS_EMAIL));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(email));
 			message.setSubject(subject);
