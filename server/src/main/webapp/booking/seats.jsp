@@ -142,53 +142,71 @@
 		<div class="container" id="pInfoForm">
 
 			<div id="seatChoice">
-			<%
-		//seats :
-		for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {
-			out.println("<br>");
-			for (int j = 0; j < rowSize; j++) {
-				String seat = i + "" + convert.charAt(j);
+			
+			<table>
+				<%
+				//seats :
 				
-				String linkToseatsjsp= "/booking/seats.jsp?seatSelected=" + seat +"&flightType=" + flightType;
-				if (alreadyBookedSeats.contains(seat)) {
-					//seat already booked so blocked
-					out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-danger\" disabled>" + seat
-							+ "</button>");
-					
-				} else if(selectedSeats.contains(seat)){
-					//seat selected by customer
-					out.println(
-							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href = '"
-									+ linkToseatsjsp + "';\"    >" + seat + "</button>");
-				}else {
-					//seat not selected
-					 
-					if(seatsLeftToChoose==0){
-						//if customer has chosen all his seats > he can't add one more
-						out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" disabled>" + seat
-							+ "</button>");
-					}else{
-						out.println(
-							"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" onclick=\"window.location.href = '"
-									+ linkToseatsjsp + "';\"    >" + seat + "</button>");
+				for (int i = 1; i <= flightsNumberOfSeats / rowSize; i++) {
+					out.println("<tr>");
+					for (int j = 0; j < rowSize; j++) {
+						String seat = i + "" + convert.charAt(j);
+						String linkToseatsjsp= "/booking/seats.jsp?seatSelected=" + seat +"&flightType=" + flightType;
+						
+						//middle space
+						if(j==rowSize/2){
+							out.println("<td style = \"padding-left : 40px;\">");
+						}else{
+							out.println("<td style = \"padding-left : 10px\">");
+						}
+						
+						
+						
+						if (alreadyBookedSeats.contains(seat)) {
+							//seat already booked so blocked
+							out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-danger\" disabled>" + seat
+									+ "</button>");
+							
+						} else if(selectedSeats.contains(seat)){
+							//seat selected by customer
+							out.println(
+									"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href = '"
+											+ linkToseatsjsp + "';\"    >" + seat + "</button>");
+						}else {
+							//seat not selected
+							 
+							if(seatsLeftToChoose==0){
+								//if customer has chosen all his seats > he can't add one more
+								out.println("&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" disabled>" + seat
+									+ "</button>");
+							}else{
+								out.println(
+									"&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-success\" onclick=\"window.location.href = '"
+											+ linkToseatsjsp + "';\"    >" + seat + "</button>");
+							}
+						}
+						
+						out.println("</td>");
 					}
+					out.println("</tr>");
 				}
-			}
-		}
-		
-		session.setAttribute("selectedSeats", selectedSeats);
-	
-	%>
+				
+				session.setAttribute("selectedSeats", selectedSeats);
+			
+				%>
+				
+				</table>
+				
 				<!-- validation button : -->
 
 				<% String validateLink = "/servlet-BookSeats?flightType=" + flightType;%>
 				<br>
+				
 				<span style="margin-left : 82px;"> </span> <button type="button" class="btn btn-success"
-					style="margin-top : 2rem;" onclick="window.location.href = '<%=validateLink %>';"
+					style="margin-top : 2rem; margin-left:10%;" onclick="window.location.href = '<%=validateLink %>';"
 					<%if(seatsLeftToChoose>0){out.println("disabled");}%>>
-					validate </button>
+					<h4>validate</h4> </button>
 				<br>
-
 			</div>
 		</div>
 

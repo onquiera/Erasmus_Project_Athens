@@ -40,9 +40,9 @@ input[type=submit]:hover {
 }
 
 #seatChoice {
-    margin-left: auto;
+    margin-left: 30%;
     margin-right: auto;
-    width: 25rem;
+    width:50%;
 }
 
 /*End of the form style*/
