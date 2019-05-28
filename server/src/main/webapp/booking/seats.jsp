@@ -48,29 +48,29 @@
 			<div class="navbar-collapse collapse" id="navbar10">
 				<ul class="navbar-nav nav-fill w-100">
 					<li class="nav-item passive">
-						<label>Search</label>
+						<label>Search <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 					<li class="nav-item passive">
-						<label>Departing Flight</label>
+						<label>Departing Flight <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 					<li class="nav-item passive">
-						<label>Return Flight</label>
+						<label>Return Flight <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
 					<li class="nav-item active">
-						<label>Seats</label>
+						<label>Seats <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Passengers</label>
+						<label>Passengers <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Extra Options</label>
+						<label>Extra Options <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Confirmation</label>
+						<label>Confirmation <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">

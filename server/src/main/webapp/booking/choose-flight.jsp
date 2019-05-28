@@ -56,40 +56,45 @@ String flight = request.getParameter("flight");%>
 			<div class="navbar-collapse collapse" id="navbar10">
 				<ul class="navbar-nav nav-fill w-100">
 					<li class="nav-item passive">
-						<label>Search</label>
+						<label>Search <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
-					<li class="nav-item <%
-
-					if(flight.equals("outward")) {
-						out.println("active");
-					}else{
-						out.println("passive");
-					}%>">
-						<label>Departing Flight</label>
+					<li class="nav-item 
+					<% if(flight.equals("outward")) {%>
+						active
+					<% }else{ %>
+						passive
+					<% } %>">
+						<label>Departing Flight <span class=
+							<% if(flight.equals("outward")) {%>
+								"glyphicon glyphicon-arrow-right"
+							<% }else{ %>
+								"glyphicon glyphicon-ok"
+							<% } %>
+							></span></label>
 					</li>
 					<li class="nav-item <%
 
 					if(!flight.equals("outward")) {
 						out.println("active");
 					}%>">
-						<label>Return Flight</label>
+						<label>Return Flight <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Seats</label>
+						<label>Seats <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Passengers</label>
+						<label>Passengers <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Extra Options</label>
+						<label>Extra Options <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Confirmation</label>
+						<label>Confirmation <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">

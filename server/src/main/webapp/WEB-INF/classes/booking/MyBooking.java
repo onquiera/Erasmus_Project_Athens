@@ -36,7 +36,7 @@ public class MyBooking extends HttpServlet {
 		// Content
 		out.println("</head><body>" + "<div id=\"logo\">"
 				+ "<a href=\"/\"><img src=\"/resources/logo.png\" alt=\"Insert logo here\" id=\"home\"></a>" + "</div>"
-
+		
 				+ "<nav id=\"navBar\"></nav>"
 				+ "<center>");
 
