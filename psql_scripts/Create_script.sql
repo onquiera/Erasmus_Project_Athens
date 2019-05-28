@@ -5,6 +5,7 @@ DROP table if exists users;
 DROP table if exists passenger;
 DROP table if exists flights;
 DROP table if exists planes;
+drop table if exists airports;
 
 --title > 0 woman, 1 man
 CREATE TABLE passenger(
@@ -29,6 +30,13 @@ CREATE TABLE users(
 
 
 
+CREATE TABLE airports (
+    name VARCHAR(56),
+    code VARCHAR(3) primary Key,
+    stateCode VARCHAR(2),
+    countryCode VARCHAR(2),
+    countryName VARCHAR(32)
+);
 
 --Planes table, where a plane is register with all the usefull informations.*
 --nbPlacoEco + nbPlaceBui > = total of available places.
