@@ -22,67 +22,56 @@ public class SignIn extends HttpServlet
 			throws ServletException, IOException
 	{
 		try(Connection con = DS.getConnection()){
-			//reset de l'attribut en session
 			HttpSession session = req.getSession( true );
 			session.setAttribute("login", null );
 
-			int title;
-			String name;
-			String surname;
-			Date dateOfBirth;
-			String email;
-			String password;
-			String phoneNumber;//(optional)
 			int role = 0;
-			
-			//TODO rendre le try mieux avec un boolean
-			
-			try {
-				title = Integer.parseInt(req.getParameter("title"));
-				name = req.getParameter("name");
-				surname = req.getParameter("surname");
-				//birth date from string to sql
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				java.util.Date dateOfBirthUtil = dateFormat.parse(req.getParameter("dateOfBirth"));
-				dateOfBirth = new java.sql.Date(dateOfBirthUtil.getTime()); 
-				email = req.getParameter("email");
-				password = req.getParameter("password");
-				phoneNumber = req.getParameter("phoneNumber");
-				
-				 
-				//TODO tester les differentes valeurs en js
-				
-				//apres requete jee > tester si email exise pas deja ?
+			int title = Integer.parseInt(req.getParameter("title"));
+			String name = req.getParameter("name");
+			String surname = req.getParameter("surname");
+			//birth date from string to sql
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			java.util.Date dateOfBirthUtil = dateFormat.parse(req.getParameter("dateOfBirth"));
+			Date dateOfBirth = new java.sql.Date(dateOfBirthUtil.getTime()); 
+			String email = req.getParameter("email");
+			String password = req.getParameter("password");
+			String phoneNumber = req.getParameter("phoneNumber");
 
-				PassengerDAO passengerDAO = new PassengerDAO();
-				int pno=passengerDAO.maxPNO()+1;
-				Passenger newPassenger= new Passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email);
-				
-				passengerDAO.create(newPassenger);
-				
-				Users newUsers = new Users(-1, pno, password, role);
-				UsersDAO dao = new UsersDAO();
-				dao.create(newUsers);
 
-				//	l'inscription est faite > on range ça en session
+			PassengerDAO passengerDAO = new PassengerDAO();
+			int pno=passengerDAO.maxPNO()+1;
+			Passenger newPassenger= new Passenger(pno, name, surname, title, dateOfBirth, phoneNumber, email);
 
-				session.setAttribute("login", email );
-				
-				MailService mailService = new MailService();
-				mailService.sendTo(email, "succesfully registered", "Welcome on air Asmus !\n\n You have succesfully been registered. ");
+			passengerDAO.create(newPassenger);
 
-				res.sendRedirect("/index.jsp");
-				
-			}catch(java.lang.NumberFormatException e) { //TODO remplacer ça par les exceptions possible(notament invalid format exception)
-				e.printStackTrace();
+			Users newUsers = new Users(-1, pno, password, role);
+			UsersDAO dao = new UsersDAO();
+			dao.create(newUsers);
 
-				//TODO message pour dire que inscription incorrecte
-				//TODO stocker les valeurs pour pas que l'utilisateur ai à tout retaper.
-				res.sendRedirect("/sign-in.html");
-			}
+			//	sign in is done, we save put it in the session
 
-		}catch(Exception e1){
-			System.out.println(e1.getMessage());
+			session.setAttribute("login", email );
+
+			MailService mailService = new MailService();
+			mailService.sendTo(email, "succesfully registered", "Welcome on Air Asmus !\n\n You have succesfully been registered. ");
+
+			res.sendRedirect("/index.jsp");
+
+		}catch(java.lang.NumberFormatException e) {
+			e.printStackTrace();
+
+			// to make it better > add parameter to say what the error is 
+			//and every information he give in that was correct savec as parameter for autocomplete
+			// the user would win a little bit of time
+			res.sendRedirect("/sign-in.html");
+		}
+
+		catch(NullPointerException e ){
+			e.printStackTrace();
+			res.sendRedirect("/error/parameterError.html");
+		}catch(Exception e2 ){
+			e2.printStackTrace();
+			res.sendRedirect("/error/error.html");
 		}
 	}
 }

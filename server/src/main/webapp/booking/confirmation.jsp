@@ -346,7 +346,6 @@
 		<h3>Total: <%=totalPrice %> €</h3>
 		<br>
 		
-		<%//TODO : change to button > là c'est dégeu, c'est un input de formulaire %>
 		<input type="submit" value="Process to paiement" onclick="window.location.href = '/booking/payment.jsp';">
 
 

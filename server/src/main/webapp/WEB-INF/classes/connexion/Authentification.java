@@ -33,7 +33,7 @@ public class Authentification extends HttpServlet
 				session.setAttribute("login", login );
 				session.setMaxInactiveInterval(10);
 			}
-			//TODO diffencier les if et envoyer un parametre à statut > si utilisateur inexistant ou si password incorrect
+			//to make it better > send a parameter to status to say what the error is(username doesn't exit, password doesn't match ..)
 			res.sendRedirect("servlet-status");
 
 		}catch(Exception e1){

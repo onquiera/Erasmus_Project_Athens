@@ -20,8 +20,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-import PopupInterface from '../Popup/PopupInterface.js'; //import UsersDAO from '../../WEB-INF/classes/connexion/UsersDAO.java';
-//import Users from '../../WEB-INF/classes/connexion/Users.java';
+import PopupInterface from '../Popup/PopupInterface.js'; 
 
 var Login =
 /*#__PURE__*/

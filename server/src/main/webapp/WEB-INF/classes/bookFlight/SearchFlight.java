@@ -38,12 +38,8 @@ public class SearchFlight extends HttpServlet {
 					httpSession.invalidate();
 				}
 				httpSession = req.getSession(true);
-				httpSession.setMaxInactiveInterval(20 * 60); // session de 20 minutes d'inactivité
-
-				// out.println("inactive session time : "+
-				// httpSession.getMaxInactiveInterval());
-				// TODO faire compteur et afficher ça à l'utilisateur pour plus tard :) > un
-				// détail
+				//the sessin is 20 minutes long
+				httpSession.setMaxInactiveInterval(20 * 60);
 
 				httpSession.setAttribute("departure", departure);
 				httpSession.setAttribute("destination", destination);

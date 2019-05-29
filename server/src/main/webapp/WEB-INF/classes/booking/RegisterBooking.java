@@ -28,7 +28,7 @@ public class RegisterBooking extends HttpServlet
 		FlightWithDetails outwardFlight=null;
 		FlightWithDetails returnFlight=null;
 		Booking returnBooking=null;
-
+		  
 		FlightsDAO flightDAO = new FlightsDAO();
 
 		try {
@@ -48,17 +48,14 @@ public class RegisterBooking extends HttpServlet
 				returnFlight = flightDAO.findFlight(returnFlightID);
 				returnSeats = (ArrayList<String>)httpSession.getAttribute("return-seats");
 			}
-
 			outwardSeats = (ArrayList<String>)httpSession.getAttribute("outward-seats");
-
-			//registration in tables
 
 			//passenger registration
 
 			PassengerDAO passengerDAO = new PassengerDAO();
 
-			//TODO when user connexion works :
-			//if(connected){   }  (passenger 1 already exists if user is connected) 
+			//when user connexion works :
+			//if(connected){   }  (passenger 1 already exists if user is connected so we don't have to create a new passenger) 
 			//else{
 			passengerDAO.create(listOfPassengers.get(0));
 		
