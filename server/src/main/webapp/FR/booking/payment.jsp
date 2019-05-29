@@ -108,7 +108,7 @@
 	<div id="textArea2">
 		<div class="container" id="pInfoForm">
 			<h2>Price : <%=price %> €</h2><br>
-			<input type="submit" value="Pay" onclick="window.location.href = '/servlet-RegisterBooking';">
+			<input type="submit" value="Pay" onclick="window.location.href = '/servlet-RegisterBooking?lang=fr';">
 
 		</div>
 	</div>
