@@ -80,10 +80,10 @@
 											aria-hidden="true"></i></span>OneWay</a></li>
 						</ul>
 						<div class="tab-content">
-						
-						
-<!-- roundtrip form--------------------------- -->					
-						
+
+
+							<!-- roundtrip form--------------------------- -->
+
 							<div id="1" class="tab1 active">
 								<!--RoundTrip Form-->
 								<form action="/servlet-SearchFlight" method="get">
@@ -96,14 +96,14 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Lille Airport" placeholder="Departing from">
+											value="Athens Eleftherios Venizelos" placeholder="Departing from">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Madrid Barajas" placeholder="Arriving at">
+											value="Barcelona" placeholder="Arriving at">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
@@ -119,7 +119,7 @@
 										-->
 
 										<input required type="date" class="form-control" name="departureDate"
-											value="2019-05-22" min="2019-04-01" max="2025-04-01"
+											value="2019-06-13" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
@@ -136,7 +136,7 @@
 										-->
 
 										<input required type="date" class="form-control" name="returnDate"
-											value="2019-05-24" min="2019-04-01" max="2025-04-01"
+											value="2019-06-20" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 									</div>
 
@@ -160,7 +160,7 @@
 								</form>
 							</div>
 
-<!-- one way form--------------------------- -->			
+							<!-- one way form--------------------------- -->
 							<div id="2" class="tab1">
 								<!--OneWay Form-->
 								<form action="/servlet-SearchFlight" method="get">
@@ -220,7 +220,7 @@
 									</div>
 								</form>
 							</div>
-<!-- end of one way form--------------------------- -->			
+							<!-- end of one way form--------------------------- -->
 						</div>
 					</div>
 				</div>
