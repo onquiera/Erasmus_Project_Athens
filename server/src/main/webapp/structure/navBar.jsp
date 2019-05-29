@@ -16,7 +16,7 @@
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Informations
+                        Information
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/informations/prepareYourTrip.html">Prepare your trip</a>

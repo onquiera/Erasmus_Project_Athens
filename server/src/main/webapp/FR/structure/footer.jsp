@@ -1,9 +1,10 @@
 <!-- Footer -->
+<%@ page contentType="text/html; charset=UTF-8" %>
 <section id="footer">
     <div class="container">
         <div class="row text-center text-xs-center text-sm-left text-md-left">
             <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Quick links</h5>
+                <h5>Liens utiles</h5>
                 <ul class="list-unstyled quick-links">
                     <li><a href="/FR/index.jsp"><i class="fa fa-angle-double-right"></i>Accueil</a></li>
                     <li><a href="/FR/informations/about.html"><i class="fa fa-angle-double-right"></i>A propos</a></li>
@@ -13,7 +14,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Online help and contacts</h5>
+                <h5>Aide en ligne et contact</h5>
                 <ul class="list-unstyled quick-links">
                     <li><a href="/FR/informations/contactUs.html"><i class="fa fa-angle-double-right"></i>Nous contacter</a></li>
                     <li><a href="/FR/informations/refund.html"><i class="fa fa-angle-double-right"></i>Remboursement</a></li>
@@ -23,7 +24,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Legal Rights</h5>
+                <h5>Droits légaux</h5>
                 <ul class="list-unstyled quick-links">
                     <li><a href="/FR/informations/map.html"><i class="fa fa-angle-double-right"></i>Plan du site</a></li>
                     <li><a href="/FR/informations/legalConditions.html"><i class="fa fa-angle-double-right"></i>Informations légales</a></li>

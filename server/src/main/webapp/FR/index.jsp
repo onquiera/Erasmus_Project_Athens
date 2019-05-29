@@ -36,10 +36,10 @@
 
 <body>
 	<!--First Navbar, which contains the logo, language, contact, sign up and login section-->
-	<nav id="homeBar"></nav>
+	<nav id="homeBarFR"></nav>
 
 	<!--Second navbar, which contains the differents parts of the website -->
-	<nav id="navBar"></nav>
+	<nav id="navBarFR"></nav>
 
 
 	<!-- airport list for formular -->
@@ -87,7 +87,7 @@
 							<div id="1" class="tab1 active">
 								<!--RoundTrip Form-->
 								<form action="/servlet-SearchFlight" method="get">
-									<input type="hidden" name="lang" value="fr">"
+									<input type="hidden" name="lang" value="fr">
 									<input type="hidden" name="flightType" value="research">
 
 									<div class="triptype">
@@ -97,14 +97,14 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Lille Airport" placeholder="Departing from">
+											value="Athens Eleftherios Venizelos" placeholder="Departing from">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Madrid Barajas" placeholder="Arriving at">
+											value="Barcelona" placeholder="Arriving at">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
@@ -120,7 +120,7 @@
 										-->
 
 										<input required type="date" class="form-control" name="departureDate"
-											value="2019-05-22" min="2019-04-01" max="2025-04-01"
+											value="2019-06-13" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
@@ -137,7 +137,7 @@
 										-->
 
 										<input required type="date" class="form-control" name="returnDate"
-											value="2019-05-24" min="2019-04-01" max="2025-04-01"
+											value="2019-06-20" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 									</div>
 
@@ -239,7 +239,7 @@
 
 
 	<!--Footer -->
-	<div id="footer"></div>
+	<div id="footerFR"></div>
 
 </body>
 

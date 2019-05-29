@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <nav class="navbar navbar-expand-lg navbar-light justify-content-end">
   <a href="/FR/index.jsp" class="navbar-brand"><img src="/resources/logo.png" alt="Insert logo here" id=logo-img></a>
   <button class="btn ml-auto mr-2"></button>
@@ -10,7 +11,7 @@
         <a class="nav-link" href="/index.jsp">English - EN</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="/FR/informations/contactUs.html">Contact us</a>
+        <a class="nav-link" href="/FR/informations/contactUs.html">Nous contacter</a>
       </li>
       <%
           //gestion login
@@ -19,11 +20,11 @@
           if (login == null) {
             out.println(
             "<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/FR/connexion/sign-in.html\"  color=\"red;\"><span class=\"glyphicon glyphicon-user\"></span>"
-            +"Sign in</a></li>"
+            +"Inscription</a></li>"
             +"<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/FR/connexion/login.html\"><span"
-            +"class=\"glyphicon glyphicon-user\"></span> Login</a></li>");
+            +"class=\"glyphicon glyphicon-user\"></span> Connection</a></li>");
           }else{
-            out.println("<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/servlet-Deconnecte\">Disconnect</a></li>");
+            out.println("<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/servlet-Deconnecte\">Déconnection</a></li>");
           }
         %>
     </ul>

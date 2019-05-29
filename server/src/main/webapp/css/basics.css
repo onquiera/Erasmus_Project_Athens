@@ -35,13 +35,13 @@ html, body {
     color: red;
 }
 
-#homeBar .navbar {
+#homeBar .navbar, #homeBarFR .navbar {
     background-color: white;
     margin-top: -15px;
     padding: .2rem 1rem;
 }
 
-#navBar .navbar {
+#navBar .navbar, #navBarFR .navbar{
     background-color: white;
     border-bottom-color: antiquewhite;
     border-top-color: antiquewhite;
@@ -49,7 +49,7 @@ html, body {
     padding: .2rem 1rem;
 }
 
-#navBar .nav-item {
+#navBar .nav-item, #navBarFR .nav-item {
     border-left: 1px solid antiquewhite;
     border-right: 1px solid antiquewhite;
 }
@@ -72,12 +72,12 @@ section .section-title {
     text-transform: uppercase;
 }
 
-#footer {
+#footer, #footerFR{
     background: #ff6600/*#007b5e --> The green one, keep it if we prefere it*/
     !important;
 }
 
-#footer h5 {
+#footer h5, #footerFR h5 {
     padding-left: 10px;
     border-left: 3px solid #eeeeee;
     padding-bottom: 6px;
@@ -85,34 +85,34 @@ section .section-title {
     color: #ffffff;
 }
 
-#footer a {
+#footer a, #footerFR a {
     color: #ffffff;
     text-decoration: none !important;
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
 }
 
-#footer ul.quick-links li a {
+#footer ul.quick-links li a, #footerFR ul.quick-links li a {
     color: #ffffff;
 }
 
-#footer ul.quick-links li {
+#footer ul.quick-links li, #footerFR ul.quick-links li {
     padding: 3px 0;
     -webkit-transition: .5s all ease;
     -moz-transition: .5s all ease;
     transition: .5s all ease;
 }
 
-#footer ul.quick-links li:hover {
+#footer ul.quick-links li:hover, #footerFR ul.quick-links li:hover  {
     padding: 3px 0;
     margin-left: 5px;
     font-weight: 700;
 }
 
-#footer ul.quick-links li a i {
+#footer ul.quick-links li a i, #footerFR ul.quick-links li a i {
     margin-right: 5px;
 }
 
-#footer ul.quick-links li:hover a i {
+#footer ul.quick-links li:hover a i, #footerFR ul.quick-links li:hover a i  {
     font-weight: 700;
 }

@@ -7,11 +7,11 @@
         <div class="navbar-collapse collapse" id="navbar10">
             <ul class="navbar-nav nav-fill w-100">
                 <li class="nav-item">
-                    <a class="nav-link" href="/FR/index.jsp">Purchase a ticket</a>
+                    <a class="nav-link" href="/FR/index.jsp">Acheter un billet</a>
                 </li>
            
                 <li class="nav-item">
-                    <a class="nav-link" href="/FR/booking/searchBooking.jsp">My booking</a>
+                    <a class="nav-link" href="/FR/booking/searchBooking.jsp">Mes réservations</a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">
@@ -19,9 +19,9 @@
                         Informations
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/FR/informations/prepareYourTrip.html">Prepare your trip</a>
-                        <a class="dropdown-item" href="#">Luggages</a>
-                        <a class="dropdown-item" href="#">Flight Informations</a>
+                        <a class="dropdown-item" href="/FR/informations/prepareYourTrip.html">Préparer son vol</a>
+                        <a class="dropdown-item" href="#">Bagages</a>
+                        <a class="dropdown-item" href="#">Informations de vol</a>
                     </div>
                 </li>
             </ul>

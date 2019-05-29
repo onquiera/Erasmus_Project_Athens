@@ -57,5 +57,54 @@ function displayFooter(html) {
 
 fetch("/structure/footer.jsp").then(function (response) {
   return response.text();
-}).then(displayFooter);
+}).then(displayFooter); //------------- FR LANGUAGE ------------------
+//Display the navbar
+
+function displayNBFR(html) {
+  var nbContainer = document.getElementById('navBarFR');
+
+  if (nbContainer) {
+    nbContainer.innerHTML = html;
+  }
+}
+
+fetch("/FR/structure/navBar.jsp").then(function (response) {
+  return response.text();
+}).then(displayNBFR); //Display the homeBar
+
+function displayHBFR(html) {
+  var hbContainer = document.getElementById('homeBarFR');
+
+  if (hbContainer) {
+    hbContainer.innerHTML = html;
+  }
+}
+
+fetch("/FR/structure/homeBar.jsp").then(function (response) {
+  return response.text();
+}).then(displayHBFR); //Display the progressionBar
+
+function displayPBFR(html) {
+  var pbContainer = document.getElementById('progBarFR');
+
+  if (pbContainer) {
+    pbContainer.innerHTML = html;
+  }
+}
+
+fetch("/FR/structure/progressionBar.jsp").then(function (response) {
+  return response.text();
+}).then(displayPBFR); //Display the footer
+
+function displayFooterFR(html) {
+  var fooContainer = document.getElementById('footerFR');
+
+  if (fooContainer) {
+    fooContainer.innerHTML = html;
+  }
+}
+
+fetch("/FR/structure/footer.jsp").then(function (response) {
+  return response.text();
+}).then(displayFooterFR);
 //# sourceMappingURL=main.js.map

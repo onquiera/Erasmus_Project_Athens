@@ -68,7 +68,7 @@
 
 	<!--The flight-searching form-->
 	<div id="form-container">
-		<img src="./resources/santorin.png">
+		<img src="/resources/santorin.png">
 		<div class="container" id="searchForm">
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
