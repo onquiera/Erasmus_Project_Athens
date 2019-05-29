@@ -240,7 +240,7 @@
 
 		<h3>Flight option:</h3>
 		
-		<%if(flightOption.equals("flightOption")){ %>
+		<%if(flightOption.equals("Eco")){ %>
 			<div class="col-xl-4">
 	              <div class="single-price">
 	                  <div class="price-title">

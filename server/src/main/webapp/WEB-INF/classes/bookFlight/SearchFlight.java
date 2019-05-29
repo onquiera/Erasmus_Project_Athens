@@ -107,9 +107,17 @@ public class SearchFlight extends HttpServlet {
 			
 			String returnDate = (String)httpSession.getAttribute("returnDate");
 			if(returnDate==null) {
-				res.sendRedirect("/booking/seats.jsp?flightType=outward");
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/booking/seats.jsp?flightType=outward");
+				}else {
+					res.sendRedirect("/booking/seats.jsp?flightType=outward");
+				}
 			}else {
-				res.sendRedirect("/booking/choose-flight.jsp?flight=return");
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/booking/choose-flight.jsp?flight=return");
+				}else {
+					res.sendRedirect("/booking/choose-flight.jsp?flight=return");
+				}
 			}
 			
 		}else if(flightType.equals("return")) {
@@ -117,12 +125,20 @@ public class SearchFlight extends HttpServlet {
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if(httpSession==null || !req.isRequestedSessionIdValid() ){
-					res.sendRedirect("/error/sessionError.html");
+					if(lang!=null && lang.equals("fr")) {
+						res.sendRedirect("/FR/error/sessionError.html");
+					}else {
+						res.sendRedirect("/error/sessionError.html");
+					}
 			}
 			
 			String flightID = req.getParameter("flightID");
 			if(flightID==null) {
-				res.sendRedirect("/error/parameterError.html?error=flightID+not+found");
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/error/parameterError.html?error=flightID+not+found");
+				}else {
+					res.sendRedirect("/error/parameterError.html?error=flightID+not+found");
+				}
 			}
 			httpSession.setAttribute("returnFlightID", flightID);
 			
@@ -131,10 +147,17 @@ public class SearchFlight extends HttpServlet {
 			int price = (Integer)httpSession.getAttribute("price");
 			httpSession.setAttribute("price", price + returnFlight.getPrice());
 			
-			res.sendRedirect("/booking/seats.jsp?flightType=outward");
-			
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/booking/seats.jsp?flightType=outward");
+			}else {
+				res.sendRedirect("/booking/seats.jsp?flightType=outward");
+			}
 		}else {
-			res.sendRedirect("/error/parameterError.html?error=parameter+flightType+error");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html?error=parameter+flightType+error");
+			}else {
+				res.sendRedirect("/error/parameterError.html?error=parameter+flightType+error");
+			}
 		}
 	}
 }

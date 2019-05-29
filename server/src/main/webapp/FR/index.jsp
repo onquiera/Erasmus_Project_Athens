@@ -87,7 +87,6 @@
 							<div id="1" class="tab1 active">
 								<!--RoundTrip Form-->
 								<form action="/servlet-SearchFlight" method="get">
-									<input type="hidden" name="lang" value="fr">"
 									<input type="hidden" name="flightType" value="research">
 
 									<div class="triptype">
