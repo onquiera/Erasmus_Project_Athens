@@ -18,7 +18,6 @@ public class MailService {
 	
 	public static final String AIR_ASMUS_EMAIL = "erasmusprojectathens@gmail.com";
 	
-	
 	public MailService() {
 		username = "erasmusathensproject@gmail.com";
 		password = "ErasmusAthens";

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
+	<title>Sign In</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--Bootstrap links and scripts-->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
+		id="bootstrap-css">
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+	<!--Javascript-->
+	<script src="/js/main.js" defer></script>
+
+	<!--CSS Stylesheet-->
+	<link rel="stylesheet" href="/css/basics.css" />
+	<link rel="stylesheet" href="/css/signAndLog/signInStyle.css" />
+
+</head>
+
+<body>
+	<!--First Navbar, which contains the logo, language, contact, sign up and login section-->
+	<nav id="homeBar">
+	</nav>
+
+	<!--Second navbar, which contains the differents parts of the website -->
+	<nav id="navBar">
+	</nav>
+
+	<div class="container login-container">
+		<div class="row">
+			<div class="col-md-6 login-form">
+				<h3>Sign-in</h3>
+				<form action="/connexion/servlet-SignIn" method="post" role="form class=form">
+					<input type="hidden" name="lang" value="fr">
+					<div class="form-group">
+						<label for="usrtitle"><span class="glyphicon glyphicon-envelope"></span> Title</label>
+						<select required name="title">
+							<option selected value="0">Mrs/Miss</option>
+							<option value="1">Mr</option>
+						</select> 
+					</div>
+
+					<div class="form-group">
+						<label for="usrFName"><span class="glyphicon glyphicon-user"></span> First Name</label>
+						<input required type="text" class="form-control" name="name" placeholder="Enter First Name">
+					</div>
+					
+					<div class="form-group">
+						<label for="usrLName"><span class="glyphicon glyphicon-user"></span> Last Name</label>
+						<input required type="text" class="form-control" name="surname" placeholder="Enter Last Name">
+					</div>
+					
+					<div class="form-group">
+						<label for="usrmail"><span class="glyphicon glyphicon-calendar"></span> Date of birth</label>
+					<input required id="arrivalDate" type="date" class="form-control" name="dateOfBirth"
+											value="" max="2010-01-01"
+											placeholder="dd-mm-yyyy">
+					</div>
+					
+					<div class="form-group">
+						<label for="usrmail"><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
+						<input required type="email" class="form-control" name="email" placeholder="Enter email">
+					</div>
+					
+					<div class="form-group">
+						<label for="psw"><span class="glyphicon glyphicon-lock"></span> Password</label>
+						<input required type="password" class="form-control" name="password" placeholder="Enter password">
+					</div>
+					
+					<div class="form-group">
+						<label for="psw"><span class="glyphicon glyphicon-phone"></span> Phone number(optional)</label>
+						<input type="tel" class="form-control" name="phoneNumber" placeholder="Enter phone number">
+					</div>
+					
+					<div class="checkbox">
+						<label><input required type="checkbox" value="">I accept the legal conditions of <a href="/FR/informations/legalConditions.html">Air Asmus</a></label>
+					</div>
+					<button id="sendRequest" type="submit" class="btnSubmit"><span
+							class="glyphicon glyphicon-off"></span> Sign In</button>
+					<div class="form-group">
+						<a href="/FR/connexion/login.html" class="ForgetPwd">Already a member ?</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!--Footer -->
+	<div id="footer">
+	</div>
+
+
+
+</body>
+
+</html>

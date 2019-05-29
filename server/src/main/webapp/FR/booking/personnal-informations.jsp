@@ -38,7 +38,7 @@
 
 <body>
 	<div id="logo">
-		<a href="/"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
+		<a href="/FR/index.jsp"><img src="/resources/logo.png" alt="Insert logo here" id="home"></a>
 	</div>
 
 	<nav id="progressBar" class="navbar navbar-expand-lg navbar-light">
@@ -49,7 +49,7 @@
 			<div class="navbar-collapse collapse" id="navbar10">
 				<ul class="navbar-nav nav-fill w-100">
 					<li class="nav-item passive">
-						<label>Search <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Recherche <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 					<li class="nav-item passive">
 						<label>Departing Flight <span class="glyphicon glyphicon-ok"></span></label>
@@ -111,7 +111,7 @@
 
 	<!-- TODO  Login for autocomplete, and go back to this page with the field written with the login infos-->
 	<div id="textArea2">
-		Want to win some time ? <a href="/connexion/login.html">Login here</a>
+		Want to win some time ? <a href="/FR/connexion/login.html">Login here</a>
 	</div>
 
 
@@ -123,6 +123,7 @@
 
 
 				<form action="/servlet-PersonnalInformations" method="get" role="form class=form">
+					<input type="hidden" name="lang" value="fr">
 
 					<%
 			
@@ -201,7 +202,7 @@
 						<h4>
 							<div class="checkbox">
 								<label><input required type="checkbox" value="">I accept the legal conditions of <a
-										href="/informations/legalConditions.html">Air Asmus</a></label>
+										href="/FR/informations/legalConditions.html">Air Asmus</a></label>
 							</div>
 						</h4>
 

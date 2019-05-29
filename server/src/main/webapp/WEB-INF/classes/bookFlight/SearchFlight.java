@@ -17,6 +17,7 @@ public class SearchFlight extends HttpServlet {
 		res.setContentType("text/html,charset=UTF-8");
 
 		String flightType = req.getParameter("flightType");
+		String lang = req.getParameter("lang");
 
 		//traduction : vol aller = outward flight
 
@@ -49,17 +50,37 @@ public class SearchFlight extends HttpServlet {
 				httpSession.setAttribute("travelClass", travelClass);
 				httpSession.setAttribute("price", 0);
 				
+
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/booking/choose-flight.jsp?flight=outward");
+				}else {
+					res.sendRedirect("/booking/choose-flight.jsp?flight=outward");
+				}
+				
 				res.sendRedirect("/booking/choose-flight.jsp?flight=outward");
 
 			}catch(java.lang.NumberFormatException e ){
 				e.printStackTrace();
-				res.sendRedirect("/error/parameterError.html");
+				
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/error/parameterError.html");
+				}else {
+					res.sendRedirect("/error/parameterError.html");
+				}
 			}catch(NullPointerException e ){
 				e.printStackTrace();
-				res.sendRedirect("/error/parameterError.html");
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/error/parameterError.html");
+				}else {
+					res.sendRedirect("/error/parameterError.html");
+				}
 			}catch(Exception e2 ){
 				e2.printStackTrace();
-				res.sendRedirect("/error/error.html");
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/error/error.html");
+				}else {
+					res.sendRedirect("/error/error.html");
+				}
 			}
 			
 		} else if(flightType.equals("outward")) {

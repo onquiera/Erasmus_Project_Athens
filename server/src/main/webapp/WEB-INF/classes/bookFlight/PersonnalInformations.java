@@ -16,12 +16,17 @@ public class PersonnalInformations extends HttpServlet
 	public void doGet(HttpServletRequest req, HttpServletResponse res )
 			throws ServletException, IOException
 	{
-
+		String lang = null;
 		try{
+			lang = req.getParameter("lang");
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if(httpSession==null || !req.isRequestedSessionIdValid() ){
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/error/sessionError.html");
+				}else {
 					res.sendRedirect("/error/sessionError.html");
+				}
 			}
 
 			//PARAMETERS management
@@ -52,17 +57,36 @@ public class PersonnalInformations extends HttpServlet
 			
 			httpSession.setAttribute("listOfPassengers", listOfPassengers);
 			
-			res.sendRedirect("/booking/extraOptions.jsp");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/booking/extraOptions.jsp");
+			}else {
+				res.sendRedirect("/booking/extraOptions.jsp");
+			}
+			
+			
 			
 		}catch(java.lang.NumberFormatException e ){
 			e.printStackTrace();
-			res.sendRedirect("/error/parameterError.html");
+			
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
 		}catch(NullPointerException e ){
 			e.printStackTrace();
-			res.sendRedirect("/error/parameterError.html");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
 		}catch(Exception e2 ){
 			e2.printStackTrace();
-			res.sendRedirect("/error/error.html");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/error.html");
+			}else {
+				res.sendRedirect("/error/error.html");
+			}
 		}
 	}
 }

@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-import javax.mail.SendFailedException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -21,10 +20,12 @@ public class SignIn extends HttpServlet
 	public void doPost( HttpServletRequest req, HttpServletResponse res )
 			throws ServletException, IOException
 	{
+		String lang = null;
 		try(Connection con = DS.getConnection()){
 			HttpSession session = req.getSession( true );
 			session.setAttribute("login", null );
 
+			lang = req.getParameter("lang");
 			int role = 0;
 			int title = Integer.parseInt(req.getParameter("title"));
 			String name = req.getParameter("name");
@@ -63,15 +64,28 @@ public class SignIn extends HttpServlet
 			// to make it better > add parameter to say what the error is 
 			//and every information he give in that was correct savec as parameter for autocomplete
 			// the user would win a little bit of time
-			res.sendRedirect("/sign-in.html");
-		}
+			
 
-		catch(NullPointerException e ){
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/sign-in.html");
+			}else {
+				res.sendRedirect("/sign-in.html");
+			}
+			
+		}catch(NullPointerException e ){
 			e.printStackTrace();
-			res.sendRedirect("/error/parameterError.html");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
 		}catch(Exception e2 ){
 			e2.printStackTrace();
-			res.sendRedirect("/error/error.html");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/error.html");
+			}else {
+				res.sendRedirect("/error/error.html");
+			}
 		}
 	}
 }

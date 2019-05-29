@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import booking.Booking;
 import connexion.DS;
 
 public class SeatsDAO {

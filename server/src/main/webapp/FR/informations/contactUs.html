@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
+    <title>Contact Us</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Bootstrap links and scripts-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+    <!--Javascript-->
+    <script src="/js/main.js" defer></script>
+
+    <!--CSS Stylesheet-->
+    <link rel="stylesheet" href="/css/basics.css" />
+    <link rel="stylesheet" href="/css/contact/contactStyle.css" />
+
+</head>
+
+<body>
+    <!--First Navbar, which contains the logo, language, contact, sign up and login section-->
+    <nav id="homeBar">
+    </nav>
+
+    <!--Second navbar, which contains the differents parts of the website -->
+    <nav id="navBar">
+    </nav>
+
+
+    <div id="textArea2">
+        <h2>CONTACT US</h2>
+        <br>
+
+        <p>If you have encountered any problem concerning the website, the reservation or any little things,
+            please share us the problem, we will make all our possible to solve it !
+            <br>
+            Enter carefully your email adress, we will answer you on this one.
+        </p>
+        <br>
+    </div>
+
+    <div class="container" id="contactForm">
+        <form action="/servlet-Contact" method="post">
+			<input type="hidden" name="lang" value="fr">
+            <label for="Email">Email </label>
+            <input required type="email" id="email" name="email" placeholder="Enter your email here">
+
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+                <option value="Request an invoice">Request an invoice</option>
+                <option value="Cancellation or refund">Cancellation or refund</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="problem">Please explain the problem here</label>
+            <textarea required id="problem" name="problem" placeholder="Write something..." style="height:200px"></textarea>
+
+            <input type="submit" value="Send">
+
+        </form>
+    </div>
+
+    <!--Footer -->
+    <div id="footer">
+    </div>
+
+</body>
+
+</html>

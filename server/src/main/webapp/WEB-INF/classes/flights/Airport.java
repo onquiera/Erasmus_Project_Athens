@@ -1,12 +1,6 @@
 package flights;
 
 public class Airport {
-	/*
-	name        | character varying(56) |                 |           | 
-	 code        | character varying(3)  |                 |           | 
-	 statecode   | character varying(2)  |                 |           | 
-	 countrycode | character varying(2)  |                 |           | 
-	 countryname | character varying(32) */
 
 	private String name;
 	private String code;

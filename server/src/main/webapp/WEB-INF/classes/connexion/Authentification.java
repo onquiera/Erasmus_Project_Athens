@@ -15,11 +15,12 @@ public class Authentification extends HttpServlet
 	public void doPost( HttpServletRequest req, HttpServletResponse res )
 			throws ServletException, IOException
 	{
+		String lang = null;
 		try(Connection con = DS.getConnection()){
 			//reset de l'attribut en session
 			HttpSession session = req.getSession( true );
 			session.setAttribute("login", null );
-
+			lang = req.getParameter("lang");
 			
 			//puis recupération des paramètres de connexion
 			String login = req.getParameter("login");
@@ -36,8 +37,28 @@ public class Authentification extends HttpServlet
 			//to make it better > send a parameter to status to say what the error is(username doesn't exit, password doesn't match ..)
 			res.sendRedirect("servlet-status");
 
-		}catch(Exception e1){
-			System.out.println(e1.getMessage());
+		}catch(java.lang.NumberFormatException e ){
+			e.printStackTrace();
+			
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
+		}catch(NullPointerException e ){
+			e.printStackTrace();
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
+		}catch(Exception e2 ){
+			e2.printStackTrace();
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/error.html");
+			}else {
+				res.sendRedirect("/error/error.html");
+			}
 		}
 	}
 }

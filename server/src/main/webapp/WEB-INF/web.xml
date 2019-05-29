@@ -35,15 +35,6 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>servlet-Modification</servlet-name>
-		<servlet-class>connexion.Modification</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>servlet-Modification</servlet-name>
-		<url-pattern>/servlet-Modification</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>servlet-status</servlet-name>
 		<servlet-class>connexion.Status</servlet-class>
 	</servlet>

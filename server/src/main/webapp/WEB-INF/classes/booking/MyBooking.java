@@ -17,6 +17,8 @@ public class MyBooking extends HttpServlet {
 		res.setContentType("text/html,charset=\"UTF-8\"");
 		PrintWriter out = res.getWriter();
 
+		String lang = req.getParameter("lang");
+
 		// Header
 		out.println("" + "<link rel=\"shortcut icon\" type=\"image/png\" href=\"/resources/firstlogo.png\" />"
 				+ "<title>Flights</title>" + "<meta charset=\"UTF-8\">"
@@ -115,15 +117,28 @@ public class MyBooking extends HttpServlet {
 					+ "</div></div>");
 			out.println("<nav id=\"footer\"></nav></body>");
 
-		} catch (java.lang.NumberFormatException e) {
+		}catch(java.lang.NumberFormatException e ){
 			e.printStackTrace();
-			res.sendRedirect("/error/parameterError.html");
-		} catch (NullPointerException e) {
+			
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
+		}catch(NullPointerException e ){
 			e.printStackTrace();
-			res.sendRedirect("/error/parameterError.html");
-		} catch (Exception e2) {
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
+		}catch(Exception e2 ){
 			e2.printStackTrace();
-			res.sendRedirect("/error/error.html");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/error.html");
+			}else {
+				res.sendRedirect("/error/error.html");
+			}
 		}
 	}
 }

@@ -20,6 +20,7 @@ public class RegisterBooking extends HttpServlet
 			throws ServletException, IOException
 	{
 
+		String lang = null;
 		ArrayList<Passenger> listOfPassengers = null;
 		String outwardFlightID = null;
 		String returnFlightID = null;
@@ -32,17 +33,23 @@ public class RegisterBooking extends HttpServlet
 		FlightsDAO flightDAO = new FlightsDAO();
 
 		try {
+			lang = req.getParameter("lang");
 			HttpSession httpSession = req.getSession(false);
 			//check if session is valid
 			if (httpSession == null || !req.isRequestedSessionIdValid()) {
-				res.sendRedirect("/error/sessionError.html");
+				if(lang!=null && lang.equals("fr")) {
+					res.sendRedirect("/FR/error/sessionError.html");
+				}else {
+					res.sendRedirect("/error/sessionError.html");
+				}
 			}
-
+		
 			//PARAMETERS management
+			
 			listOfPassengers = (ArrayList<Passenger>) httpSession.getAttribute("listOfPassengers");
 			outwardFlightID=(String) httpSession.getAttribute("outwardFlightID");
 			outwardFlight = flightDAO.findFlight(outwardFlightID);
-
+			
 			returnFlightID=(String) httpSession.getAttribute("returnFlightID");
 			if(returnFlightID!=null) {
 				returnFlight = flightDAO.findFlight(returnFlightID);
@@ -177,17 +184,35 @@ public class RegisterBooking extends HttpServlet
 			MailService mailService = new MailService();
 			mailService.sendTo(listOfPassengers.get(0).getEmail(), "Booking done" , message);
 
-			res.sendRedirect("/booking/bookingDone.jsp");
+
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/booking/bookingDone.jsp");
+			}else {
+				res.sendRedirect("/booking/bookingDone.jsp");
+			}
 
 		}catch(java.lang.NumberFormatException e ){
 			e.printStackTrace();
-			res.sendRedirect("/error/parameterError.html");
+			
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
 		}catch(NullPointerException e ){
 			e.printStackTrace();
-			res.sendRedirect("/error/parameterError.html");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/parameterError.html");
+			}else {
+				res.sendRedirect("/error/parameterError.html");
+			}
 		}catch(Exception e2 ){
 			e2.printStackTrace();
-			res.sendRedirect("/error/error.html");
+			if(lang!=null && lang.equals("fr")) {
+				res.sendRedirect("/FR/error/error.html");
+			}else {
+				res.sendRedirect("/error/error.html");
+			}
 		}
 	}
 }
