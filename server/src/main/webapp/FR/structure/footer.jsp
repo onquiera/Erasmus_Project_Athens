@@ -26,7 +26,6 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Droits légaux</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href="/FR/informations/map.html"><i class="fa fa-angle-double-right"></i>Plan du site</a></li>
                     <li><a href="/FR/informations/legalConditions.html"><i class="fa fa-angle-double-right"></i>Informations légales</a></li>
                     <li><a href="/FR/informations/privacyPolicy.html"><i class="fa fa-angle-double-right"></i>Politique de confidentialité</a></li>
                     <li><a href="/FR/informations/cookiePolicy.html"><i class="fa fa-angle-double-right"></i>Politique des cookies</a></li>
