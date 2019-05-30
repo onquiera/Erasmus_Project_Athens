@@ -8,7 +8,7 @@
                     <li><a href="/"><i class="fa fa-angle-double-right"></i>Home</a></li>
                     <li><a href="/informations/about.html"><i class="fa fa-angle-double-right"></i>About</a></li>
                     <li><a href="/informations/FAQ.html"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                    <li><a href="/informations/getStarted.html"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                    <li><a href="/informations/prepareYourTrip.html"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
                 </ul>
             </div>
 

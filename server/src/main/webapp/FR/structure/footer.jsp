@@ -9,7 +9,7 @@
                     <li><a href="/FR/index.jsp"><i class="fa fa-angle-double-right"></i>Accueil</a></li>
                     <li><a href="/FR/informations/about.html"><i class="fa fa-angle-double-right"></i>A propos</a></li>
                     <li><a href="/FR/informations/FAQ.html"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                    <li><a href="/FR/informations/getStarted.html"><i class="fa fa-angle-double-right"></i>Pour commencer</a></li>
+                    <li><a href="/FR/informations/prepareYourTrip.html"><i class="fa fa-angle-double-right"></i>Pour commencer</a></li>
                 </ul>
             </div>
 
