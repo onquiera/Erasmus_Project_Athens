@@ -47,7 +47,7 @@ public class PassengerDAO {
 			ps.setString(6, passenger.getPhoneNumber());
 			ps.setString(7, passenger.getEmail());
 			ps.executeUpdate();
-			System.out.println("ps: " +ps);
+			//System.out.println("ps: " +ps);
 			return true;
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());

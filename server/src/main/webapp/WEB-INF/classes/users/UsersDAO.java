@@ -17,8 +17,6 @@ public class UsersDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
-			System.out.println(ps);
-			
 			//System.out.println("ps: " +ps);
 			
 			if(rs.next()) {
@@ -42,7 +40,6 @@ public class UsersDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setInt(1, uno);
 			ResultSet rs = ps.executeQuery();
-			System.out.println(ps);
 			
 			//System.out.println("ps: " +ps);
 			
@@ -84,7 +81,7 @@ public class UsersDAO {
 				ps.setInt(4, users.getRole());
 			}
 			ps.executeUpdate();
-			System.out.println(ps);
+			//System.out.println(ps);
 			return true;
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
@@ -99,7 +96,7 @@ public class UsersDAO {
 
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.executeQuery();
-			System.out.println(ps);
+			//System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 
 			//contenu des colonnes
@@ -127,7 +124,7 @@ public class UsersDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setString(1, email);
 
-			System.out.println(ps);
+			//System.out.println(ps);
 			ps.executeUpdate();
 			return tmp;
 		}catch(Exception e1){
@@ -146,20 +143,13 @@ public class UsersDAO {
 			ps.setInt(3, user.getRole());
 			ps.setInt(6, user.getUno());
 			
-			System.out.println(ps);
+			//System.out.println(ps);
 			ps.executeUpdate();
 			
 			return true;
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
 		}
-		return false;
-	}
-	
-	public boolean changePassword(Users user, String newpassword) {
-		
-		//todo like update ...
-		
 		return false;
 	}
 	

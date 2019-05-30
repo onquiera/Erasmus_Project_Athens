@@ -21,8 +21,6 @@ public class FlightsDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, flightID);
 			ResultSet rs = ps.executeQuery();
-			System.out.println(ps);
-
 			//System.out.println("ps: " +ps);
 
 			if(rs.next()) {

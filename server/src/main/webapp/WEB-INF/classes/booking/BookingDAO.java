@@ -48,7 +48,7 @@ public class BookingDAO {
 			ps.setInt(5, booking.getMainPassengerNO());
 
 			ps.executeUpdate();
-			System.out.println(ps);
+			//System.out.println(ps);
 			return true;
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
@@ -63,7 +63,7 @@ public class BookingDAO {
 
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.executeQuery();
-			System.out.println(ps);
+			//System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 
 			//contenu des colonnes
@@ -92,7 +92,7 @@ public class BookingDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setInt(1, bookingid);
 
-			System.out.println(ps);
+			//System.out.println(ps);
 			ps.executeUpdate();
 			return tmp;
 		}catch(Exception e1){
@@ -101,31 +101,6 @@ public class BookingDAO {
 		return null;
 	}
 
-	public boolean update(Booking TODDDOO) {
-		/*
-		try(Connection con = DS.getConnection()){
-			
-			String query = "UPDATE users SET name = ?, surname = ?, genre = ?, password = ?, role = ? WHERE bookingid=?;";
-			PreparedStatement ps = con.prepareStatement( query );
-
-			ps.setString(1, user.getName());
-			ps.setString(2, user.getSurname());
-			ps.setInt(3, user.getGenre());
-			ps.setString(4, user.getPassword());
-			ps.setInt(5, user.getRole());
-			ps.setString(6, user.getReservationnumber());
-			
-			System.out.println(ps);
-			ps.executeUpdate();
-			
-			return true;
-		}catch(Exception e1){
-			System.out.println(e1.getMessage());
-		}
-		*/
-		return false;
-	}
-	
 	public int maxBookingID() {
 		try(Connection con = DS.getConnection()){
 			String query = "Select MAX(bookingID) as maxBookingID from bookings";
@@ -153,7 +128,7 @@ public class BookingDAO {
 				ps.setInt(2, bookingID);
 
 				ps.executeUpdate();
-				System.out.println("\nps passengers-booking:  " +ps+"\n\n");
+				//System.out.println("\nps : " +ps+"\n\n");
 				return true;
 			}catch(Exception e1){
 				System.out.println(e1.getMessage());
@@ -168,7 +143,7 @@ public class BookingDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setInt(1, bookingID);
 			ps.executeQuery();
-			System.out.println("ps : " +ps);
+			//System.out.println("ps : " +ps);
 			ResultSet rs = ps.executeQuery();
 
 			PassengerDAO passengerDAO = new PassengerDAO();

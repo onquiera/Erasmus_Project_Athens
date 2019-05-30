@@ -20,7 +20,7 @@ public class SeatsDAO {
 
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setString(1, flightID);
-			System.out.println(ps);
+			//System.out.println(ps);
 			ps.executeQuery();
 			ResultSet rs = ps.executeQuery();
 
@@ -42,7 +42,7 @@ public class SeatsDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setString(1, flightID);
 			ps.executeQuery();
-			System.out.println(ps);
+			//System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 
 			//contenu des colonnes
@@ -65,7 +65,7 @@ public class SeatsDAO {
 			PreparedStatement ps = con.prepareStatement( query );
 			ps.setInt(1, bookingID);
 			ps.executeQuery();
-			System.out.println(ps);
+			//System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 
 			//contenu des colonnes
@@ -88,7 +88,7 @@ public class SeatsDAO {
 			ps.setString(1, flightID);
 			ps.setString(2, seat);
 			ps.setInt(3, bookingID);
-			System.out.println(ps);
+			//System.out.println(ps);
 			ps.executeUpdate();
 			return true;
 		}catch(Exception e1){

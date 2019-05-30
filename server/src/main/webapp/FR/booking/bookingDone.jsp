@@ -124,7 +124,7 @@
 		</div>
 	</div>
 	<!--Footer -->
-	<div id="footer"></div>
+	<div id="footerFR"></div>
 </body>
 
 </html>

@@ -46,8 +46,6 @@ public class MailService {
 
 			Transport.send(message);
 			
-			System.out.println("mail sent to "+ email );
-
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
