@@ -7,10 +7,12 @@
   <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
     <ul class="navbar-nav text-right">
       <li class="nav-item ">
-        <a class="nav-link" href="/FR/index.jsp">France - FR</a>
+        <a class="nav-link" href="/FR/index.jsp"> <img src="/resources/France.png" alt="French flag" id="flag">France -
+          FR</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="/informations/contactUs.html">Contact us</a>
+        <a class="nav-link" href="/informations/contactUs.html"><span class="glyphicon glyphicon-envelope"></span>
+          Contact us</a>
       </li>
       <%
           //gestion login
@@ -19,9 +21,9 @@
           if (login == null) {
             out.println(
             "<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/connexion/sign-in.html\"  color=\"red;\"><span class=\"glyphicon glyphicon-user\"></span>"
-            +"Sign in</a></li>"
-            +"<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/connexion/login.html\"><span"
-            +"class=\"glyphicon glyphicon-user\"></span> Login</a></li>");
+            +" Sign in</a></li>"
+            +"<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/connexion/login.html\"><span class=\"glyphicon glyphicon-user\"></span>"
+            +" Login</a></li>");
           }else{
             out.println("<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/servlet-Deconnecte\">Disconnect</a></li>");
           }

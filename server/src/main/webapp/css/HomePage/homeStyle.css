@@ -1,8 +1,7 @@
-img {
+#form-container img {
     position: relative;
     width: 128rem;
     height: 47rem;
-
     margin-left: 4rem;
     margin-bottom: 2rem;
 }

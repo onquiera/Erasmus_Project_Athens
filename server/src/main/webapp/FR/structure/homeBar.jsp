@@ -8,25 +8,26 @@
   <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
     <ul class="navbar-nav text-right">
       <li class="nav-item ">
-        <a class="nav-link" href="/index.jsp">English - EN</a>
+        <a class="nav-link" href="/index.jsp"><img src="/resources/UK.png" alt="UK flag" id="flag">English - EN</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="/FR/informations/contactUs.html">Nous contacter</a>
+        <a class="nav-link" href="/FR/informations/contactUs.html"><span class="glyphicon glyphicon-envelope"></span>
+          Nous contacter</a>
       </li>
       <%
-          //gestion login
-          String login = (String)session.getAttribute("login");
-          
-          if (login == null) {
-            out.println(
-            "<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/FR/connexion/sign-in.html\"  color=\"red;\"><span class=\"glyphicon glyphicon-user\"></span>"
-            +"Inscription</a></li>"
-            +"<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/FR/connexion/login.html\"><span"
-            +"class=\"glyphicon glyphicon-user\"></span> Connection</a></li>");
-          }else{
-            out.println("<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/servlet-Deconnecte\">Déconnection</a></li>");
-          }
-        %>
+            //gestion login
+            String login = (String)session.getAttribute("login");
+            
+            if (login == null) {
+              out.println(
+              "<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/FR/connexion/sign-in.html\"  color=\"red;\"><span class=\"glyphicon glyphicon-user\"></span>"
+              +" Inscription</a></li>"
+              +"<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/FR/connexion/login.html\"><span class=\"glyphicon glyphicon-user\"></span>"
+              +" Connection</a></li>");
+            }else{
+              out.println("<li class=\"nav-item active\"><a class=\"nav-link\" href=\"/servlet-Deconnecte\">Déconnection</a></li>");
+            }
+          %>
     </ul>
   </div>
 </nav>

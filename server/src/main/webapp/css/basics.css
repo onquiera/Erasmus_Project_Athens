@@ -41,7 +41,7 @@ html, body {
     padding: .2rem 1rem;
 }
 
-#navBar .navbar, #navBarFR .navbar{
+#navBar .navbar, #navBarFR .navbar {
     background-color: white;
     border-bottom-color: antiquewhite;
     border-top-color: antiquewhite;
@@ -58,6 +58,13 @@ html, body {
     margin-left: 10px;
 }
 
+#flag {
+    width: 30px;
+    height: 30px;
+    margin-top: -6px;
+    margin-right: 5px;
+}
+
 /* Footer */
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -72,7 +79,7 @@ section .section-title {
     text-transform: uppercase;
 }
 
-#footer, #footerFR{
+#footer, #footerFR {
     background: #ff6600/*#007b5e --> The green one, keep it if we prefere it*/
     !important;
 }
@@ -103,7 +110,7 @@ section .section-title {
     transition: .5s all ease;
 }
 
-#footer ul.quick-links li:hover, #footerFR ul.quick-links li:hover  {
+#footer ul.quick-links li:hover, #footerFR ul.quick-links li:hover {
     padding: 3px 0;
     margin-left: 5px;
     font-weight: 700;
@@ -113,6 +120,6 @@ section .section-title {
     margin-right: 5px;
 }
 
-#footer ul.quick-links li:hover a i, #footerFR ul.quick-links li:hover a i  {
+#footer ul.quick-links li:hover a i, #footerFR ul.quick-links li:hover a i {
     font-weight: 700;
 }

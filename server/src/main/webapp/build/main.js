@@ -21,19 +21,7 @@ function displayHB(html) {
 
 fetch("/structure/homeBar.jsp").then(function (response) {
   return response.text();
-}).then(displayHB); //Display the progressionBar
-
-function displayPB(html) {
-  var pbContainer = document.getElementById('progBar');
-
-  if (pbContainer) {
-    pbContainer.innerHTML = html;
-  }
-}
-
-fetch("/structure/progressionBar.jsp").then(function (response) {
-  return response.text();
-}).then(displayPB); //Permit the change of the form
+}).then(displayHB); //Permit the change of the form
 
 $(document).ready(function () {
   $('.tabing a').click(function (e) {
@@ -82,19 +70,7 @@ function displayHBFR(html) {
 
 fetch("/FR/structure/homeBar.jsp").then(function (response) {
   return response.text();
-}).then(displayHBFR); //Display the progressionBar
-
-function displayPBFR(html) {
-  var pbContainer = document.getElementById('progBarFR');
-
-  if (pbContainer) {
-    pbContainer.innerHTML = html;
-  }
-}
-
-fetch("/FR/structure/progressionBar.jsp").then(function (response) {
-  return response.text();
-}).then(displayPBFR); //Display the footer
+}).then(displayHBFR); //Display the footer
 
 function displayFooterFR(html) {
   var fooContainer = document.getElementById('footerFR');
