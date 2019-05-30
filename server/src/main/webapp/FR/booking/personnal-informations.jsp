@@ -164,37 +164,29 @@
 					</div>
 					<% } %>
 
-
 					<br>
 
 					<div class="container" id="pInfoForm">
-
 						<h2>Informations de contact</h2>
-
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
 							<input required type="email" class="form-control" name="email"
 								placeholder="Entrer email">
 						</div>
-
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-phone"></span> Numéro de téléphone(optional)</label>
 							<input type="tel" class="form-control" name="phoneNumber" placeholder="Entrer numéro de téléphone">
 						</div>
-
 						<br>
-
 					</div>
 
 					<div class="container" id="pInfoForm">
-
 						<h4>
 							<div class="checkbox">
 								<label><input required type="checkbox" value="">J'accepte les conditions légales d'<a
 										href="/FR/informations/legalConditions.html">Air Asmus</a></label>
 							</div>
 						</h4>
-
 						<input type="submit" value="Confirmer">
 					</div>
 					<br> <br>

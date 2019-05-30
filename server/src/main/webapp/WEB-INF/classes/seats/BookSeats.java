@@ -15,6 +15,7 @@ import connexion.DS;
 @SuppressWarnings("serial")
 public class BookSeats extends HttpServlet
 {
+	@SuppressWarnings("unchecked")
 	public void doGet( HttpServletRequest req, HttpServletResponse res )
 			throws ServletException, IOException
 	{

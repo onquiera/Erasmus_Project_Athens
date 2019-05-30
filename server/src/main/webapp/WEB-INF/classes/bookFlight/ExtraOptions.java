@@ -33,6 +33,7 @@ public class ExtraOptions extends HttpServlet
 			//PARAMETERS management
 			String flightOption = req.getParameter("flightOption");
 			String insurance = req.getParameter("insurance");
+			@SuppressWarnings("unchecked")
 			ArrayList<Passenger> listOfPassengers = (ArrayList<Passenger>) httpSession.getAttribute("listOfPassengers");
 			
 			int price = (Integer)httpSession.getAttribute("price");

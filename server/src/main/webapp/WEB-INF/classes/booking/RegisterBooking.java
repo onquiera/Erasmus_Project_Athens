@@ -16,6 +16,7 @@ import users.PassengerDAO;
 @SuppressWarnings("serial")
 public class RegisterBooking extends HttpServlet
 {
+	@SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest req, HttpServletResponse res )
 			throws ServletException, IOException
 	{

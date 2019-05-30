@@ -11,7 +11,6 @@ public class SeatsDAO {
 
 	public int numberOfSeats(String flightID) {
 		try(Connection con = DS.getConnection()){
-			ArrayList<String> liste =new ArrayList<>();
 			String query = 
 					"Select nbPlace"
 							+ " FROM flights fl "
