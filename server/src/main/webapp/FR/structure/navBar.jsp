@@ -20,8 +20,8 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/FR/informations/prepareYourTrip.html">Préparer son vol</a>
-                        <a class="dropdown-item" href="#">Bagages</a>
-                        <a class="dropdown-item" href="#">Informations de vol</a>
+                        <a class="dropdown-item" href="/FR/informations/baggage.html">Bagage</a>
+                        <a class="dropdown-item" href="/FR/informations/FAQ.html">FAQ</a>
                     </div>
                 </li>
             </ul>
