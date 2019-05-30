@@ -72,35 +72,35 @@
             </button>
             <div class="navbar-collapse collapse" id="navbar10">
                 <ul class="navbar-nav nav-fill w-100">
-                    <li id="number1" class="nav-item passive">
-                        <label>Recherche <span class="glyphicon glyphicon-ok"></span></label>
-                    </li>
                     <li class="nav-item passive">
-                        <label>Departing Flight <span class="glyphicon glyphicon-ok"></span></label>
-                    </li>
-                    <li class="nav-item passive">
-                        <label>Return Flight <span class="glyphicon glyphicon-ok"></span></label>
-                    </li>
+						<label>Recherche <span class="glyphicon glyphicon-ok"></span></label>
+					</li>
+					<li class="nav-item passive">
+						<label>Vol aller <span class="glyphicon glyphicon-ok"></span></label>
+					</li>
+					<li class="nav-item passive">
+						<label>Vol retour <span class="glyphicon glyphicon-ok"></span></label>
+					</li>
 
-                    <li class="nav-item passive">
-                        <label>Seats <span class="glyphicon glyphicon-ok"></span></label>
-                    </li>
+					<li class="nav-item passive">
+						<label>Sièges <span class="glyphicon glyphicon-ok"></span></label>
+					</li>
 
-                    <li class="nav-item passive">
-                        <label>Passengers <span class="glyphicon glyphicon-ok"></span></label>
-                    </li>
+					<li class="nav-item passive">
+						<label>Passagers <span class="glyphicon glyphicon-ok"></span></label>
+					</li>
 
-                    <li class="nav-item active">
-                        <label>Extra Options <span class="glyphicon glyphicon-arrow-right"></span></label>
-                    </li>
+					<li class="nav-item active">
+						<label>Options supplémentaires <span class="glyphicon glyphicon-arrow-right"></span></label>
+					</li>
 
-                    <li class="nav-item">
-                        <label>Confirmation <span class="glyphicon glyphicon-arrow-right"></span></label>
-                    </li>
+					<li class="nav-item">
+						<label>Confirmation <span class="glyphicon glyphicon-arrow-right"></span></label>
+					</li>
 
-                    <li class="nav-item">
-                        <label>Payment</label>
-                    </li>
+					<li class="nav-item">
+						<label>Paiement</label>
+					</li>
                 </ul>
             </div>
         </div>

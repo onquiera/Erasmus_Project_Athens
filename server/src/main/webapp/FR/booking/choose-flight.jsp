@@ -165,8 +165,12 @@ String flight = request.getParameter("flight");%>
 		
 				//affichage
 				
-				out.println("<h1><u>" + flight + "</u> flights : </h1>");
-				out.println("<h2>On date: " + flightDate + "</h2></div>");
+				if(flight.equals("outward")){
+					out.println("<h1><u>Vols aller : </h1>");
+				}else{
+					out.println("<h1><u>Vols retour : </h1>");
+				}
+				out.println("<h2>A la date: " + flightDate + "</h2></div>");
 		
 				ResultSetMetaData rsmd = rs.getMetaData();
 				if(rs.next()){
@@ -186,8 +190,8 @@ String flight = request.getParameter("flight");%>
 						//----------------------------
 		
 						out.println(dateD+" - " + dateA +"<br>");
-						out.println("From: " + rs.getString("departure")+"<br>");
-						out.println("To: " + rs.getString("arrival")+"<br>");
+						out.println("De: " + rs.getString("departure")+"<br>");
+						out.println("à	: " + rs.getString("arrival")+"<br>");
 						out.println("</div>  ");
 						out.println("</h4>");
 		
@@ -195,7 +199,7 @@ String flight = request.getParameter("flight");%>
 						
 						
 						
-						out.println("Price: "+rs.getInt("price")+ " €");
+						out.println("Prix: "+rs.getInt("price")+ " €");
 					
 						out.println("</h4></div>  ");
 						//bouton de validation
@@ -208,12 +212,12 @@ String flight = request.getParameter("flight");%>
 								+ "<input type=\"hidden\" name=\"lang\" value=\"fr\">"
 								+ "<input type=\"hidden\" name=\"flightType\" value=\"" + flight + "\">"
 								+ "<input type=\"hidden\" name=\"flightID\" value=\"" + rs.getString("flightID") + "\">"
-								+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choose this flight \">"
+								+ "<input id=\"next\" class=\"btn btn-primary\" type=\"submit\" value=\"Choisir ce vol \">"
 								+ "	</form> </div></div> ");
 							
 					}while(rs.next());
 				}else{
-					out.println("<br><h2>No available flights on this date, <a href=\"/FR/index.jsp\">please retry your research</a>. </h2>");
+					out.println("<br><h2>No available flights on this date, <a href=\"/FR/index.jsp\">Recommencez votre recherche </a>. </h2>");
 				}
 				
 			}catch(java.lang.NumberFormatException e ){

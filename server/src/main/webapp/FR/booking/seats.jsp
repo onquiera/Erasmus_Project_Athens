@@ -51,22 +51,22 @@
 						<label>Recherche <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 					<li class="nav-item passive">
-						<label>Departing Flight <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Vol aller <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 					<li class="nav-item passive">
-						<label>Return Flight <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Vol retour <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
 					<li class="nav-item active">
-						<label>Seats <span class="glyphicon glyphicon-arrow-right"></span></label>
+						<label>Sièges <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Passengers <span class="glyphicon glyphicon-arrow-right"></span></label>
+						<label>Passagers <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Extra Options <span class="glyphicon glyphicon-arrow-right"></span></label>
+						<label>Options supplémentaires <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
@@ -74,7 +74,7 @@
 					</li>
 
 					<li class="nav-item">
-						<label>Payment</label>
+						<label>Paiement</label>
 					</li>
 
 
@@ -136,9 +136,17 @@
 	<div id="priceArea">
 		<h4>Total: <%=price %> €</h4>
 	</div>
-		<h2><u><b><%=flightType %></b></u> flight</h2>
-
-		<h3>Number of seats left to choose : <%=seatsLeftToChoose%></h3>
+		<h2>Vol <u><b>
+		
+		<% if(flightType.equals("outward")){%>
+			 	aller
+		<% }else{%>
+				retour
+		<% }%>
+		</b></u></h2>
+		
+		
+		<h3>Nombre de sièges restants à choisir : <%=seatsLeftToChoose%></h3>
 		<div class="container" id="pInfoForm">
 
 			<div id="seatChoice">
@@ -205,7 +213,7 @@
 				<span style="margin-left : 82px;"> </span> <button type="button" class="btn btn-success"
 					style="margin-top : 2rem; margin-left:10%;" onclick="window.location.href = '<%=validateLink %>';"
 					<%if(seatsLeftToChoose>0){out.println("disabled");}%>>
-					<h4>validate</h4> </button>
+					<h4>Valider</h4> </button>
 				<br>
 			</div>
 		</div>
@@ -214,22 +222,19 @@
 			<div class="container" id="pInfoForm">
 				<h4>Legend : </h4>
 
-				&nbsp; <button type="button" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : already
-				booked
+				&nbsp; <button type="button" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : déjà réservé
 
 				&nbsp; <button type="button" class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> :
-				selected(click to unselect)
+				séléctionné(cliquer pour annuler)
 
 				&nbsp; <button type="button" class="btn btn-success"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> :
-				disponible(click to select)
+				disponible(cliquer pour séléctionner)
 			</div>
 		</div>
 	</div>
 
 	<!--Footer -->
 	<div id="footerFR"></div>
-
-
 
 </body>
 

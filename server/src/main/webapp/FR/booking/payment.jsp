@@ -71,26 +71,26 @@
 			</button>
 			<div class="navbar-collapse collapse" id="navbar10">
 				<ul class="navbar-nav nav-fill w-100">
-					<li id="number1" class="nav-item passive">
+					<li class="nav-item passive">
 						<label>Recherche <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 					<li class="nav-item passive">
-						<label>Departing Flight <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Vol aller <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 					<li class="nav-item passive">
-						<label>Return Flight <span class="glyphicon glyphicon-ok"></span></label>
-					</li>
-
-					<li class="nav-item passive">
-						<label>Seats <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Vol retour <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
 					<li class="nav-item passive">
-						<label>Passengers <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Sièges <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
 					<li class="nav-item passive">
-						<label>Extra Options <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Passagers <span class="glyphicon glyphicon-ok"></span></label>
+					</li>
+
+					<li class="nav-item passive">
+						<label>Options supplémentaires <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
 					<li class="nav-item passive">
@@ -98,7 +98,7 @@
 					</li>
 
 					<li class="nav-item active">
-						<label>Payment</label>
+						<label>Paiement</label>
 					</li>
 				</ul>
 			</div>
@@ -107,8 +107,8 @@
 
 	<div id="textArea2">
 		<div class="container" id="pInfoForm">
-			<h2>Price : <%=price %> €</h2><br>
-			<input type="submit" value="Pay" onclick="window.location.href = '/servlet-RegisterBooking?lang=fr';">
+			<h2>Prix : <%=price %> €</h2><br>
+			<input type="submit" value="Payer" onclick="window.location.href = '/servlet-RegisterBooking?lang=fr';">
 
 		</div>
 	</div>

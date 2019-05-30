@@ -52,23 +52,22 @@
 						<label>Recherche <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 					<li class="nav-item passive">
-						<label>Departing Flight <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Vol aller <span class="glyphicon glyphicon-ok"></span></label>
+					</li>
+					<li class="nav-item passive">
+						<label>Vol retour <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
 					<li class="nav-item passive">
-						<label>Return Flight <span class="glyphicon glyphicon-ok"></span></label>
-					</li>
-
-					<li class="nav-item passive">
-						<label>Seats <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Sièges <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
 					<li class="nav-item active">
-						<label>Passengers <span class="glyphicon glyphicon-arrow-right"></span></label>
+						<label>Passagers <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
-						<label>Extra Options <span class="glyphicon glyphicon-arrow-right"></span></label>
+						<label>Options supplémentaires <span class="glyphicon glyphicon-arrow-right"></span></label>
 					</li>
 
 					<li class="nav-item">
@@ -76,7 +75,7 @@
 					</li>
 
 					<li class="nav-item">
-						<label>Payment</label>
+						<label>Paiement</label>
 					</li>
 
 				</ul>

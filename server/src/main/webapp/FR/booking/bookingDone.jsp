@@ -81,7 +81,7 @@
 					</li>
 
 					<li class="nav-item passive">
-						<label>Sieges <span class="glyphicon glyphicon-ok"></span></label>
+						<label>Sièges <span class="glyphicon glyphicon-ok"></span></label>
 					</li>
 
 					<li class="nav-item passive">
@@ -109,18 +109,17 @@
 			<h1>Réservation effectué</h1>
 			<br>
 
-			<h4>Your booking has been succesfully made !
+			<h4>Votre réservation a été faite avec succés !
 				<br><br>
-				<h4>We sent you the booking confirmation and your bill per mail.
+				<h4>Nous vous avons envoyé la confirmation par email.
 					<br><br>
-					Please follow the informations given to get your boarding tickets.
-
+					Suivez les informations données pour récupérer votre/vos carte(s) d'embarquements.
 
 					<br><br><br><br>
-					We thank you to travel the world with our flights and hope you will enjoy your journey !
+					Nous vous remercions de voyager à travers le monde avec notre compagnie !
 				</h4>
 				<br>
-				Want more ? <a href="/FR/index.jsp">Look for another flight.</a>
+				Vous en voulez plus ? <a href="/FR/index.jsp">Chercher un autre vol.</a>
 		</div>
 	</div>
 	<!--Footer -->

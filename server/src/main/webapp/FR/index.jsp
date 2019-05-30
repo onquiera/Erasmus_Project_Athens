@@ -229,14 +229,6 @@
 		</div>
 	</div>
 
-	<!--
-		TODO
-
-		write about deals and trips
-		write about travel guides
-	-->
-
-
 
 	<!--Footer -->
 	<div id="footerFR"></div>
