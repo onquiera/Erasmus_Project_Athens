@@ -139,20 +139,20 @@
 							<label><span class="glyphicon glyphicon-envelope"></span> Titre</label>
 							<select required name="passenger-<%=i%>-title">
 								<option selected value="0">Mme</option>
-								<option value="1">M.</option>
+								<option value="1">M</option>
 							</select>
 						</div>
 
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-user"></span> Prénom</label>
 							<input value="" required type="text" class="form-control" name="passenger-<%=i%>-name"
-								placeholder="Entrer prénom">
+								placeholder="Entrez prénom">
 						</div>
 
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-user"></span> Nom</label>
 							<input value="" required type="text" class="form-control" name="passenger-<%=i%>-surname"
-								placeholder="Entre nom de famille">
+								placeholder="Entrez nom de famille">
 						</div>
 
 						<div class="form-group">
@@ -171,11 +171,11 @@
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
 							<input required type="email" class="form-control" name="email"
-								placeholder="Entrer email">
+								placeholder="Entrez email">
 						</div>
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-phone"></span> Numéro de téléphone(optional)</label>
-							<input type="tel" class="form-control" name="phoneNumber" placeholder="Entrer numéro de téléphone">
+							<input type="tel" class="form-control" name="phoneNumber" placeholder="Entrez numéro de téléphone">
 						</div>
 						<br>
 					</div>

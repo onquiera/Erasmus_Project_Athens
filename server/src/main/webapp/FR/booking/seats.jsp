@@ -225,10 +225,10 @@
 				&nbsp; <button type="button" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> : déjà réservé
 
 				&nbsp; <button type="button" class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> :
-				séléctionné(cliquer pour annuler)
+				sélectionné(cliquez pour annuler)
 
 				&nbsp; <button type="button" class="btn btn-success"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> :
-				disponible(cliquer pour séléctionner)
+				disponible(cliquez pour séléctionner)
 			</div>
 		</div>
 	</div>

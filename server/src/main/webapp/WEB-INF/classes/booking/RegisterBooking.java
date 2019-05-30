@@ -44,6 +44,7 @@ public class RegisterBooking extends HttpServlet
 					res.sendRedirect("/error/sessionError.html");
 				}
 			}
+			MailService mailService = new MailService();
 		
 			//PARAMETERS management
 			
@@ -103,87 +104,179 @@ public class RegisterBooking extends HttpServlet
 			}
 			
 
-			String message = 
-					" <h2>Thank you for your purchase on air Asmus</h2>"
-							+ ""
-							+ "<h3>Here are your booking details :</h3> "
-							+ "<br>"
-							+ "<div style = \"border-style: solid;\">"
-							+ "<h4><b>Outward Flight :</b> <br>"
-							+ "Booking ID : " + outwardBooking.getBookingID() +"<br>"
-							+ "flight from : "+ outwardFlight.getDeparture() + "<br>"
-							+ "to : " + outwardFlight.getArrival() + "<br>"
-							+ outwardFlight.getDepartureDate()+ " at "+ outwardFlight.getDepartureTime()+"<br>"
-							+ "<br>"
-							+ "Seats: <br>";
-			int cpt=1;
-			for (String seat : outwardSeats) {
-				message+= "seat "+cpt + ": "+ seat +"<br>";
-				cpt++;
-			}
+			//-----------------------------------------------------------
+			
 			
 
-			if(returnFlight!=null) {
-				message+=
-						"<br><br>"
-						+ "<b>Return Flight : </b><br>"
-						+ "Booking ID : " + returnBooking.getBookingID() +"<br>"
-								+ "flight from : "+ returnFlight.getDeparture() + "<br>"
-								+ "to : " + returnFlight.getArrival() + "<br>"
-								+ returnFlight.getDepartureDate()+ " at "+ returnFlight.getDepartureTime()+"<br>"
-								+ "Seats: <br>";
-
-				cpt=1;
-				for (String seat : returnSeats) {
-					message+= "seat "+cpt + ": "+ seat +"<br>";
+			if(lang!=null && lang.equals("fr")) {
+				//in french
+				
+				
+				String emailMessage = 
+						" <h2>Merci pour votre achat sur Air Asmus</h2>"
+								+ "<h3>Voici tout les détails de votre réservation :</h3> "
+								+ "<br>"
+								+ "<div style = \"border-style: solid;\">"
+								+ "<h4><b>Vol aller :</b> <br>"
+								+ "ID de la réservation: " + outwardBooking.getBookingID() +"<br>"
+								+ "Vol de : "+ outwardFlight.getDeparture() + "<br>"
+								+ "vers : " + outwardFlight.getArrival() + "<br>"
+								+ outwardFlight.getDepartureDate()+ " à "+ outwardFlight.getDepartureTime()+"<br>"
+								+ "<br>"
+								+ "Sièges: <br>";
+				int cpt=1;
+				for (String seat : outwardSeats) {
+					emailMessage+= "siège "+cpt + ": "+ seat +"<br>";
 					cpt++;
 				}
-			}
-			
-			message+="<br>";
-			
-			message += "Passengers :<br>";
 
-			cpt=1;
-			for (Passenger passenger : listOfPassengers) {
-				message+= "passenger no "+cpt+": <br>";
-				if(passenger.getTitle()==0) {
-					message+="Mrs ";
-				}else {
-					message+="Mr ";
+				if(returnFlight!=null) {
+					emailMessage+=
+							"<br><br>"
+							+ "<b>Vol retour : </b><br>"
+							+ "ID de la réservation : " + returnBooking.getBookingID() +"<br>"
+									+ "Vol de : "+ returnFlight.getDeparture() + "<br>"
+									+ "vers : " + returnFlight.getArrival() + "<br>"
+									+ returnFlight.getDepartureDate()+ " à "+ returnFlight.getDepartureTime()+"<br>"
+									+ "Seats: <br>";
+
+					cpt=1;
+					for (String seat : returnSeats) {
+						emailMessage+= "siège "+cpt + ": "+ seat +"<br>";
+						cpt++;
+					}
 				}
-				message+=passenger.getFirstName()+" "+passenger.getSurname()+""
-						+ "<br>date of birth : " +passenger.getDateOfBirth() +"<br><br>";
-				cpt++;
-			}
-			
-			message+="<br>"
-					+ "<u>Contact informations</u> assiociated to your purchase :<br> "
-					+ "email : " + listOfPassengers.get(0).getEmail()+"<br>";
-			
-			String phoneNumber = listOfPassengers.get(0).getPhoneNumber();
-			if(phoneNumber!=null && phoneNumber.length()>0) {
-				message+= "phone number : " + phoneNumber+"<br>";
-			}
-			
-			String customersSurname = listOfPassengers.get(0).getSurname();
+				emailMessage+="<br>";
+				emailMessage +="Passager :<br>";
 
-			message+="<br>"
-					+ "Please take note that the name assiocated to this booking is : " +listOfPassengers.get(0).getSurname()+"<br>"
-					+ "This can be usefull on the "
-					+ "<a href=\"http://localhost:8080/booking/searchBooking.jsp?surname="+customersSurname+"&bookingID="+outwardBooking.getBookingID()+ "\">My booking</a>"
-					+ " page.<br>"
-					+ "<br>"
-					+ "<br>"
-					+ "You will receive an email with the checkin informations a few days before your flight.<br>"
-					+ "<br>"
-					+ "We thank you for using our compagny to fly around the world.<br>"
-					+ "<b>Air Asmus</b>";
-			
-			message+="</h4></div>";
+				cpt=1;
+				for (Passenger passenger : listOfPassengers) {
+					emailMessage+= "passager no "+cpt+": <br>";
+					if(passenger.getTitle()==0) {
+						emailMessage+="Mme ";
+					}else {
+						emailMessage+="M ";
+					}
+					emailMessage+=passenger.getFirstName()+" "+passenger.getSurname()+""
+							+ "<br>date de naissance : " +passenger.getDateOfBirth() +"<br><br>";
+					cpt++;
+				}
+				
+				emailMessage+="<br>"
+						+ "<u>Informations de contact</u> associées à votre réservations :<br> "
+						+ "email : " + listOfPassengers.get(0).getEmail()+"<br>";
+				
+				String phoneNumber = listOfPassengers.get(0).getPhoneNumber();
+				if(phoneNumber!=null && phoneNumber.length()>0) {
+					emailMessage+= "numéro de téléphone : " + phoneNumber+"<br>";
+				}
+				
+				String customersSurname = listOfPassengers.get(0).getSurname();
 
-			MailService mailService = new MailService();
-			mailService.sendTo(listOfPassengers.get(0).getEmail(), "Booking done" , message);
+				emailMessage+="<br>"
+						+ "Prennez en compte que le nom associé à votre réservation est : " +listOfPassengers.get(0).getSurname()+"<br>"
+						+ "Cela vous sera utile sur la page "
+						+ "<a href=\"http://localhost:8080/booking/searchBooking.jsp?surname="+customersSurname+"&bookingID="+outwardBooking.getBookingID()+ "\">Ma réservation</a>"
+						+ ".<br>"
+						+ "<br>"
+						+ "<br>"
+						+ "Vous recevrez un mail avec les informations sur le checkin quelques jours avant votre vol.<br>"
+						+ "<br>"
+						+ "Nous vous remercions d'utiliser notre compagnie pour voyager autour du monde.<br>"
+						+ "<b>Air Asmus</b>";
+				
+				emailMessage+="</h4></div>";
+				
+				mailService.sendTo(listOfPassengers.get(0).getEmail(), "Réservation de vol effectuée" , emailMessage);
+		
+			
+			
+			}else {
+				//in english
+				
+				String emailMessage = 
+						" <h2>Thank you for your purchase on air Asmus</h2>"
+								+ ""
+								+ "<h3>Here are your booking details :</h3> "
+								+ "<br>"
+								+ "<div style = \"border-style: solid;\">"
+								+ "<h4><b>Outward Flight :</b> <br>"
+								+ "Booking ID : " + outwardBooking.getBookingID() +"<br>"
+								+ "flight from : "+ outwardFlight.getDeparture() + "<br>"
+								+ "to : " + outwardFlight.getArrival() + "<br>"
+								+ outwardFlight.getDepartureDate()+ " at "+ outwardFlight.getDepartureTime()+"<br>"
+								+ "<br>"
+								+ "Seats: <br>";
+				int cpt=1;
+				for (String seat : outwardSeats) {
+					emailMessage+= "seat "+cpt + ": "+ seat +"<br>";
+					cpt++;
+				}
+
+				if(returnFlight!=null) {
+					emailMessage+=
+							"<br><br>"
+							+ "<b>Return Flight : </b><br>"
+							+ "Booking ID : " + returnBooking.getBookingID() +"<br>"
+									+ "flight from : "+ returnFlight.getDeparture() + "<br>"
+									+ "to : " + returnFlight.getArrival() + "<br>"
+									+ returnFlight.getDepartureDate()+ " at "+ returnFlight.getDepartureTime()+"<br>"
+									+ "Seats: <br>";
+
+					cpt=1;
+					for (String seat : returnSeats) {
+						emailMessage+= "seat "+cpt + ": "+ seat +"<br>";
+						cpt++;
+					}
+				}
+				emailMessage+="<br>";
+				emailMessage +="Passengers :<br>";
+
+				cpt=1;
+				for (Passenger passenger : listOfPassengers) {
+					emailMessage+= "passenger no "+cpt+": <br>";
+					if(passenger.getTitle()==0) {
+						emailMessage+="Mrs ";
+					}else {
+						emailMessage+="Mr ";
+					}
+					emailMessage+=passenger.getFirstName()+" "+passenger.getSurname()+""
+							+ "<br>date of birth : " +passenger.getDateOfBirth() +"<br><br>";
+					cpt++;
+				}
+				
+				emailMessage+="<br>"
+						+ "<u>Contact informations</u> assiociated to your purchase :<br> "
+						+ "email : " + listOfPassengers.get(0).getEmail()+"<br>";
+				
+				String phoneNumber = listOfPassengers.get(0).getPhoneNumber();
+				if(phoneNumber!=null && phoneNumber.length()>0) {
+					emailMessage+= "phone number : " + phoneNumber+"<br>";
+				}
+				
+				String customersSurname = listOfPassengers.get(0).getSurname();
+
+				emailMessage+="<br>"
+						+ "Please take note that the name assiocated to this booking is : " +listOfPassengers.get(0).getSurname()+"<br>"
+						+ "This can be usefull on the "
+						+ "<a href=\"http://localhost:8080/booking/searchBooking.jsp?surname="+customersSurname+"&bookingID="+outwardBooking.getBookingID()+ "\">My booking</a>"
+						+ " page.<br>"
+						+ "<br>"
+						+ "<br>"
+						+ "You will receive an email with the checkin informations a few days before your flight.<br>"
+						+ "<br>"
+						+ "We thank you for using our compagny to fly around the world.<br>"
+						+ "<b>Air Asmus</b>";
+				
+				emailMessage+="</h4></div>";
+				
+				
+				
+				
+				
+				
+				mailService.sendTo(listOfPassengers.get(0).getEmail(), "Booking done" , emailMessage);
+			}
 
 
 			if(lang!=null && lang.equals("fr")) {
