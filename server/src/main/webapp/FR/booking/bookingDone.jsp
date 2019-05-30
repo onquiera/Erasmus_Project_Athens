@@ -109,7 +109,7 @@
 			<h1>Réservation effectué</h1>
 			<br>
 
-			<h4>Votre réservation a été faite avec succés !
+			<h4>Votre réservation a été faite avec succès !
 				<br><br>
 				<h4>Nous vous avons envoyé la confirmation par email.
 					<br><br>

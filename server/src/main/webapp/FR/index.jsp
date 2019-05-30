@@ -97,30 +97,21 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Athens Eleftherios Venizelos" placeholder="Partir de">
+											value="" placeholder="Partir de">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Barcelona" placeholder="Arrive à">
+											value="" placeholder="Arrive à">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
-										<!--
-										TODO
-										uncomment when site finished > uses today's date
-										
 										<input required type="date" class="form-control" name="departureDate"
 											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
-											placeholder="jj-mm-aaaa">
-										-->
-
-										<input required type="date" class="form-control" name="departureDate"
-											value="2019-06-13" min="2019-04-01" max="2025-04-01"
 											placeholder="jj-mm-aaaa">
 
 									</div>
@@ -128,17 +119,10 @@
 									<div class="col-sm-6 col-xs-6 ctrl hide_one-trip">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
-										<!--
-										TODO
-										uncomment when site finished > uses today's date
 										<input required type="date" class="form-control" name="returnDate"
 											value="<%=tomorrowDate%>" min="2019-04-01" max="2025-04-01"
 											placeholder="jj-mm-aaaa">
-										-->
 
-										<input required type="date" class="form-control" name="returnDate"
-											value="2019-06-20" min="2019-04-01" max="2025-04-01"
-											placeholder="jj-mm-aaaa">
 									</div>
 
 									<div class="select-wrap">
@@ -156,7 +140,7 @@
 
 									</div>
 									<div class="col-lg-12">
-										<input type="submit" class="srch" value="Rechercher" />
+										<input type="submit" class="srch" value="Rechercher un vol" />
 									</div>
 								</form>
 							</div>
@@ -175,30 +159,21 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Athens Eleftherios Venizelos" placeholder="Partir de">
+											value="" placeholder="Partir de">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Barcelona" placeholder="Arrive à">
+											value="" placeholder="Arrive à">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
-										<!--
-										TODO
-										uncomment when site finished > uses today's date
-										
 										<input required type="date" class="form-control" name="departureDate"
 											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
-											placeholder="jj-mm-aaaa">
-										-->
-
-										<input required type="date" class="form-control" name="departureDate"
-											value="2019-06-13" min="2019-04-01" max="2025-04-01"
 											placeholder="jj-mm-aaaa">
 
 									</div>
@@ -218,7 +193,7 @@
 
 									</div>
 									<div class="col-lg-12">
-										<input type="submit" class="srch" value="Rechercher" />
+										<input type="submit" class="srch" value="Rechercher un vol" />
 									</div>
 								</form>
 							</div>

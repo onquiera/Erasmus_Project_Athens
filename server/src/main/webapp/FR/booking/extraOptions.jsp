@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="price-item">
                                         <ul>
-                                            <li>1 baguage à main (12kg)</li>
+                                            <li>1 baggage à main (12kg)</li>
                                             <li>Choix du siège</li>
                                             <li>Repas</li>
                                             <li>Changement impossible</li>
@@ -162,7 +162,7 @@
                                     </div>
                                     <div class="price-item">
                                         <ul>
-                                            <li>1 baguage à main (12kg)</li>
+                                            <li>1 baggage à main (12kg)</li>
                                             <li>1 bagage en soute (20kg)</li>
                                             <li>Choix du siège</li>
                                             <li>Repas</li>
@@ -183,7 +183,7 @@
 	                                    </div>
 	                                    <div class="price-item">
 	                                        <ul>
-	                                            <li>2 baguage à main (12kg)</li>
+	                                            <li>2 baggages à main (12kg)</li>
 	                                            <li>1 bagage en soute (20kg)</li>
 	                                            <li>Choix du siège</li>
 	                                            <li>Repas</li>
@@ -217,10 +217,10 @@
                             Couvre:
                             <ul>
                                 <li>
-                                    Dépenses médicales and hospitalière jusque 150000€
+                                    Dépenses médicales et hospitalière jusque 150000€
                                 </li>
                                 <li>
-                                    Dommage/pertes de baguage jusque 1000€
+                                    Dommage/pertes de baggage jusque 1000€
                                 </li>
                                 <li>
                                     Annulation du départ pour raison médicale ou accidentelle jusque 500€
