@@ -173,14 +173,14 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Lille Airport" placeholder="Departing from">
+											value="Athens Eleftherios Venizelos" placeholder="Departing from">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Madrid Barajas" placeholder="Arriving at">
+											value="Barcelona" placeholder="Arriving at">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
@@ -196,7 +196,7 @@
 										-->
 
 										<input required type="date" class="form-control" name="departureDate"
-											value="2019-05-22" min="2019-04-01" max="2025-04-01"
+											value="2019-06-13" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
@@ -220,6 +220,7 @@
 									</div>
 								</form>
 							</div>
+
 							<!-- end of one way form--------------------------- -->
 						</div>
 					</div>
@@ -227,15 +228,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!--
-		TODO
-
-		write about deals and trips
-		write about travel guides
-	-->
-
-
 
 	<!--Footer -->
 	<div id="footer"></div>

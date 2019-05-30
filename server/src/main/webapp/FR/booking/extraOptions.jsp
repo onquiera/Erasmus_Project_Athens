@@ -118,15 +118,10 @@
                 <h4>Total: <%=price %> €</h4>
             </div>
             
-            <h2> Flight option</h2>
+            <h2> Options de vol</h2>
             <!--More Luggage side-->
 
             <div class="container" id="pInfoForm">
-
-
-
-                <!------------------------------------------------------------------------------>
-
 
                 <section class="pricing-area" id="pricing">
                     <div class="container">
@@ -141,22 +136,21 @@
                                         <h4>Eco</h4>
                                     </div>
                                     <div class="price-tag">
-                                        <h2>Basic option</h2>
+                                        <h2>Basique</h2>
                                     </div>
                                     <div class="price-item">
                                         <ul>
-                                            <li>1 hand baggage (12kg)</li>
-                                            <li>Seat choice</li>
-                                            <li>Meals</li>
-                                            <li>Rebooking not possible</li>
-                                            <li>No refund if you missed the flight</li>
+                                            <li>1 baguage à main (12kg)</li>
+                                            <li>Choix du siège</li>
+                                            <li>Repas</li>
+                                            <li>Changement impossible</li>
+                                            <li>Pas de remboursement possible</li>
                                         </ul>
                                     </div>
 
                                 </div>
                             </div>
                             <div class="col-xl-4">
-
                                 <div class="single-price">
                                     <input type="radio" class="form-check-input" name="flightOption" value="EcoFlex">
                                     <div class="price-title">
@@ -168,41 +162,40 @@
                                     </div>
                                     <div class="price-item">
                                         <ul>
-                                            <li>1 hand baggage (12kg)</li>
-                                            <li>1 check-in baggage (20kg)</li>
-                                            <li>Seat choice</li>
-                                            <li>Meals</li>
-                                            <li>Change fee</li>
-                                            <li>No refund if you missed the flight</li>
+                                            <li>1 baguage à main (12kg)</li>
+                                            <li>1 bagage en soute (20kg)</li>
+                                            <li>Choix du siège</li>
+                                            <li>Repas</li>
+                                            <li>Frais de changement</li>
+                                            <li>Pas de remboursement possible</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-4">
-
-                                <div class="single-price">
-                                    <input type="radio" class="form-check-input" name="flightOption" value="business">
-                                    <div class="price-title">
-                                        <h4>business</h4>
-                                    </div>
-                                    <div class="price-tag">
-                                        <h2>50€</h2>
-                                    </div>
-                                    <div class="price-item">
-                                        <ul>
-                                            <li>2 hand baggage (12kg)</li>
-                                            <li>1 check-in baggage (20kg)</li>
-                                            <li>Seat choice</li>
-                                            <li>Meals</li>
-                                            <li>Change free</li>
-                                            <li>Refund if you missed the flight</li>
-                                            <li>Priority Check-In</li>
-                                            <li>Priority Security</li>
-                                            <li>Priority Boarding</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+	                            </div>
+	                            <div class="col-xl-4">
+	                                <div class="single-price">
+	                                    <input type="radio" class="form-check-input" name="flightOption" value="business">
+	                                    <div class="price-title">
+	                                        <h4>business</h4>
+	                                    </div>
+	                                    <div class="price-tag">
+	                                        <h2>50€</h2>
+	                                    </div>
+	                                    <div class="price-item">
+	                                        <ul>
+	                                            <li>2 baguage à main (12kg)</li>
+	                                            <li>1 bagage en soute (20kg)</li>
+	                                            <li>Choix du siège</li>
+	                                            <li>Repas</li>
+	                                            <li>Changement de vol gratuit</li>
+	                                            <li>Remboursement possible</li>
+	                                            <li>Priorité au Check-In </li>
+	                                            <li>Priorité passage de la sécurité</li>
+	                                            <li>Priorité à l'embarquement</li>
+	                                        </ul>
+	                                    </div>
+	                                </div>
+	                            </div>
                         </div>
                     </div>
                 </section>
@@ -212,28 +205,28 @@
 
             <!--Insurance side-->
             <div class="container" id="pInfoForm">
-                <h2><span class="glyphicon glyphicon-heart"></span> Insurance(recommanded)</h2>
+                <h2><span class="glyphicon glyphicon-heart"></span> Assurance(recommandée)</h2>
 
                 <div class="form-check">
                     <span class="form-check-label">
                         <input type="radio" class="form-check-input" name="insurance" value="yes"> <span
-                            style="color: #ff6600; font-weight: bold;">Comprehensive travel Insurance</span>
-                        (16€ per person)
+                            style="color: #ff6600; font-weight: bold;">	Assurance de voyage</span>
+                        (16€ par personne)
                         <br>
                         <span>
-                            Covers:
+                            Couvre:
                             <ul>
                                 <li>
-                                    Medical and hospitalization expenses up to 150.000 Euros
+                                    Dépenses médicales and hospitalière jusque 150000€
                                 </li>
                                 <li>
-                                    Damage/loss or theft of luggage up to 1.000 Euros
+                                    Dommage/pertes de baguage jusque 1000€
                                 </li>
                                 <li>
-                                    Departure cancellation due to sickness or accident up to 500 Euros
+                                    Annulation du départ pour raison médicale ou accidentelle jusque 500€
                                 </li>
                                 <li>
-                                    24 hour assistance abroad
+                                    24 heures d'assistances à l'étranger
                                 </li>
                             </ul>
                         </span>
@@ -243,20 +236,18 @@
                 <div class="form-check">
                     <span class="form-check-label">
                         <input type="radio" class="form-check-input" name="insurance" value="no" checked> <span
-                            style="color: #ff6600; font-weight: bold;">I do no wish to be insured</span>
+                            style="color: #ff6600; font-weight: bold;">Je ne veux pas être assuré</span>
                     </span>
                 </div>
             </div>
 
             <div class="container" id="pInfoForm">
                 <div class="col-lg-12">
-                    <input type="submit" class="srch" value="Submit" />
+                    <input type="submit" class="srch" value="Valider" />
                 </div>
             </div>
         </div>
     </form>
-
-
 
     <!--Footer -->
     <div id="footerFR"></div>

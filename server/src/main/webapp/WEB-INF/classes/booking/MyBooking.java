@@ -109,7 +109,6 @@ public class MyBooking extends HttpServlet {
 					}
 
 					out.println("</h3>");
-
 				}
 			}
 

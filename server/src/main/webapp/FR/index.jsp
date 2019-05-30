@@ -8,7 +8,7 @@
 
 <head>
 
-	<link rel="shortcut icon" type="image/png" href="/FR/resources/firstlogo.png" />
+	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
 	<title>Air Asmus</title>
 	<%@ page contentType="text/html; charset=UTF-8" %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,9 +75,9 @@
 					<div class="tabing">
 						<ul>
 							<li><a href="#1" id="rnd" class="active"><span><i class="fa fa-plane"
-											aria-hidden="true"></i></span>Round Trip</a></li>
+											aria-hidden="true"></i></span>Vol aller retour</a></li>
 							<li><a href="#2" id="oneway"><span><i class="fa fa-plane"
-											aria-hidden="true"></i></span>OneWay</a></li>
+											aria-hidden="true"></i></span>Vol simple</a></li>
 						</ul>
 						<div class="tab-content">
 						
@@ -97,14 +97,14 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Athens Eleftherios Venizelos" placeholder="Departing from">
+											value="Athens Eleftherios Venizelos" placeholder="Partir de">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Barcelona" placeholder="Arriving at">
+											value="Barcelona" placeholder="Arrive à">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
@@ -116,12 +116,12 @@
 										
 										<input required type="date" class="form-control" name="departureDate"
 											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
+											placeholder="jj-mm-aaaa">
 										-->
 
 										<input required type="date" class="form-control" name="departureDate"
 											value="2019-06-13" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
+											placeholder="jj-mm-aaaa">
 
 									</div>
 
@@ -133,17 +133,17 @@
 										uncomment when site finished > uses today's date
 										<input required type="date" class="form-control" name="returnDate"
 											value="<%=tomorrowDate%>" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
+											placeholder="jj-mm-aaaa">
 										-->
 
 										<input required type="date" class="form-control" name="returnDate"
 											value="2019-06-20" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
+											placeholder="jj-mm-aaaa">
 									</div>
 
 									<div class="select-wrap">
 										<div class="adult-box">
-											<span>Passengers</span>
+											<span>Passagers</span>
 											<select value="" name="numberOfPassengers">
 												<option>1</option>
 												<option>2</option>
@@ -156,7 +156,7 @@
 
 									</div>
 									<div class="col-lg-12">
-										<input type="submit" class="srch" value="Search Flights" />
+										<input type="submit" class="srch" value="Rechercher" />
 									</div>
 								</form>
 							</div>
@@ -165,6 +165,7 @@
 							<div id="2" class="tab1">
 								<!--OneWay Form-->
 								<form action="/servlet-SearchFlight" method="get">
+									<input type="hidden" name="lang" value="fr">
 									<input type="hidden" name="flightType" value="research">
 
 									<div class="triptype">
@@ -174,14 +175,14 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Lille Airport" placeholder="Departing from">
+											value="Athens Eleftherios Venizelos" placeholder="Partir de">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Madrid Barajas" placeholder="Arriving at">
+											value="Barcelona" placeholder="Arrive à">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
@@ -193,18 +194,18 @@
 										
 										<input required type="date" class="form-control" name="departureDate"
 											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
+											placeholder="jj-mm-aaaa">
 										-->
 
 										<input required type="date" class="form-control" name="departureDate"
-											value="2019-05-22" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
+											value="2019-06-13" min="2019-04-01" max="2025-04-01"
+											placeholder="jj-mm-aaaa">
 
 									</div>
 
 									<div class="select-wrap">
 										<div class="adult-box">
-											<span>Passengers</span>
+											<span>Passagers</span>
 											<select value="" name="numberOfPassengers">
 												<option>1</option>
 												<option>2</option>
@@ -217,7 +218,7 @@
 
 									</div>
 									<div class="col-lg-12">
-										<input type="submit" class="srch" value="Search Flights" />
+										<input type="submit" class="srch" value="Rechercher" />
 									</div>
 								</form>
 							</div>
@@ -228,7 +229,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<!--Footer -->
 	<div id="footerFR"></div>

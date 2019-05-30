@@ -10,7 +10,7 @@
 <head>
 
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
-	<title>Infos</title>
+	<title>Informations personnelles</title>
 	<%@ page contentType="text/html; charset=UTF-8" %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -107,19 +107,9 @@
 	}
 	%>
 
-
-	<!-- TODO  Login for autocomplete, and go back to this page with the field written with the login infos-->
-	<div id="textArea2">
-		Want to win some time ? <a href="/FR/connexion/login.html">Login here</a>
-	</div>
-
-
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 login-form">
-
-
 
 				<form action="/servlet-PersonnalInformations" method="get" role="form class=form">
 					<input type="hidden" name="lang" value="fr">
@@ -131,44 +121,44 @@
 			}
 			%>
 
-					<h1>Personnal Informations</h1>
+					<h1>Informations personnelles</h1>
 
-					<h2>Passengers informations(<%=numberOfPassengers %> passengers) :</h2><br>
+					<h2>Informations des passagers :</h2><br>
 
 					<% for(int i = 1; i < numberOfPassengers+1; i++) { %>
 
 					<%
-				if(i==1){
-					out.println("<h3>Passenger 1(person who is booking) : </h3> ");
-				}else{	
-					out.println("<h3>Passenger "+i+" : </h3>");
-				}	
-			 %>
+						if(i==1){
+							out.println("<h3>Passager 1(en train de commander) : </h3> ");
+						}else{	
+							out.println("<h3>Passager "+i+" : </h3>");
+						}	
+					 %>
 					<div class="container" id="pInfoForm">
 						<div class="form-group">
-							<label><span class="glyphicon glyphicon-envelope"></span> Title</label>
+							<label><span class="glyphicon glyphicon-envelope"></span> Titre</label>
 							<select required name="passenger-<%=i%>-title">
-								<option selected value="0">Mrs/Miss</option>
-								<option value="1">Mr</option>
+								<option selected value="0">Mme</option>
+								<option value="1">M.</option>
 							</select>
 						</div>
 
 						<div class="form-group">
-							<label><span class="glyphicon glyphicon-user"></span> First Name</label>
+							<label><span class="glyphicon glyphicon-user"></span> Prénom</label>
 							<input value="" required type="text" class="form-control" name="passenger-<%=i%>-name"
-								placeholder="Enter First Name">
+								placeholder="Entrer prénom">
 						</div>
 
 						<div class="form-group">
-							<label><span class="glyphicon glyphicon-user"></span> Last Name</label>
+							<label><span class="glyphicon glyphicon-user"></span> Nom</label>
 							<input value="" required type="text" class="form-control" name="passenger-<%=i%>-surname"
-								placeholder="Enter Last Name">
+								placeholder="Entre nom de famille">
 						</div>
 
 						<div class="form-group">
-							<label><span class="glyphicon glyphicon-calendar"></span> Date of birth</label>
+							<label><span class="glyphicon glyphicon-calendar"></span> Date de naissance</label>
 							<input required type="date" class="form-control" name="passenger-<%=i%>-dateOfBirth"
-								 max="2010-01-01" placeholder="dd-mm-yyyy">
+								 max="2010-01-01" placeholder="jj-mm-aaaa">
 						</div>
 
 					</div>
@@ -179,17 +169,17 @@
 
 					<div class="container" id="pInfoForm">
 
-						<h2>Contact informations</h2>
+						<h2>Informations de contact</h2>
 
 						<div class="form-group">
 							<label><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
 							<input required type="email" class="form-control" name="email"
-								placeholder="Enter email">
+								placeholder="Entrer email">
 						</div>
 
 						<div class="form-group">
-							<label><span class="glyphicon glyphicon-phone"></span> Phone number(optional)</label>
-							<input type="tel" class="form-control" name="phoneNumber" placeholder="Enter phone number">
+							<label><span class="glyphicon glyphicon-phone"></span> Numéro de téléphone(optional)</label>
+							<input type="tel" class="form-control" name="phoneNumber" placeholder="Entrer numéro de téléphone">
 						</div>
 
 						<br>
@@ -200,22 +190,18 @@
 
 						<h4>
 							<div class="checkbox">
-								<label><input required type="checkbox" value="">I accept the legal conditions of <a
+								<label><input required type="checkbox" value="">J'accepte les conditions légales d'<a
 										href="/FR/informations/legalConditions.html">Air Asmus</a></label>
 							</div>
 						</h4>
 
-						<input type="submit" value="Confirm">
-
+						<input type="submit" value="Confirmer">
 					</div>
-
 					<br> <br>
 				</form>
-
 			</div>
 		</div>
 	</div>
-
 
 	<!--Footer -->
 	<div id="footerFR"></div>

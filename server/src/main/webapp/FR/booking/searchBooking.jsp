@@ -59,25 +59,25 @@
 					<div class="tabing">
 						<div class="tab-content">
 							<div id="1" class="tab1 active">
-									<h3 id="searching">Search my Reservation</h3>
+									<h3 id="searching">Rechercher ma réservation</h3>
 								<!--RoundTrip Form-->
 								<form action="/MyBooking" method=post role="form class=form">
 									<input type="hidden" name="lang" value="fr">
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										<input required name="surname" class="form-control" value="<%=surname %>" placeholder="Surname">
+										<input required name="surname" class="form-control" value="<%=surname %>" placeholder="Nom">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required class="form-control" name="bookingID" value="<%=bookingID %>"
-											placeholder="Booking ID">
+											placeholder="ID de la réservation">
 									</div>
 
 									<div class="col-lg-12">
 										<input id="sendRequest" type="submit" class="srch"
-											value="Find your reservation" />
+											value="Trouver ma réservation" />
 									</div>
 								</form>
 							</div>

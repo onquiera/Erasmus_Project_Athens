@@ -159,8 +159,8 @@
 
 			<h4>Departure : <%=outwardFlight.getDeparture() %></h4>
 			<h4>Arrival : <%=outwardFlight.getArrival() %></h4>
-			<h4>SepartureDate : <%=outwardFlight.getDepartureDate() %></h4>
-			<h4>SepartureTime : <%=outwardFlight.getDepartureTime() %></h4>
+			<h4>DepartureDate : <%=outwardFlight.getDepartureDate() %></h4>
+			<h4>DepartureTime : <%=outwardFlight.getDepartureTime() %></h4>
 			<h4>ArrivalDate : <%=outwardFlight.getArrivalDate() %></h4>
 			<h4>ArrivalTime : <%=outwardFlight.getArrivalTime() %></h4>
 			<h4>price : <%=outwardFlight.getPrice() %> € per person</h4>
@@ -181,8 +181,8 @@
 
 			<h4>Departure : <%=returnFlight.getDeparture() %></h4>
 			<h4>Arrival : <%=returnFlight.getArrival() %></h4>
-			<h4>SepartureDate : <%=returnFlight.getDepartureDate() %></h4>
-			<h4>SepartureTime : <%=returnFlight.getDepartureTime() %></h4>
+			<h4>DepartureDate : <%=returnFlight.getDepartureDate() %></h4>
+			<h4>DepartureTime : <%=returnFlight.getDepartureTime() %></h4>
 			<h4>ArrivalDate : <%=returnFlight.getArrivalDate() %></h4>
 			<h4>ArrivalTime : <%=returnFlight.getArrivalTime() %></h4>
 			<h4>price : <%=returnFlight.getPrice() %> € per person </h4>

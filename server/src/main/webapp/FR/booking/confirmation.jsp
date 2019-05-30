@@ -86,7 +86,7 @@
 		</div>
 	</nav>
 	<div id="textArea2">
-		<h1>Booking confirmation</h1>
+		<h1>Votre réservation :</h1>
 		<br>
 	</div>
 
@@ -147,27 +147,27 @@
 		}
 	%>
 	<div class="container" id="pInfoForm">
-		<h2>Booking informations:</h2>
+		<h2>Informations sur votre réservation:</h2>
 
-		<b> Before processing to payment, please check that everything is correct, especially your contact informations.
+		<b> Avant de procéder au paiement, vérifiez que toute les informations sont correctes, en particulier les informations de contact.
 		</b>
 		<br><br>
 
 
 		<div style="border-style: solid; padding:20px ;margin-bottom:1px;">
-			<h3>Outward flight:</h3>
+			<h3>Vol aller:</h3>
 
-			<h4>Departure : <%=outwardFlight.getDeparture() %></h4>
-			<h4>Arrival : <%=outwardFlight.getArrival() %></h4>
-			<h4>SepartureDate : <%=outwardFlight.getDepartureDate() %></h4>
-			<h4>SepartureTime : <%=outwardFlight.getDepartureTime() %></h4>
-			<h4>ArrivalDate : <%=outwardFlight.getArrivalDate() %></h4>
-			<h4>ArrivalTime : <%=outwardFlight.getArrivalTime() %></h4>
-			<h4>price : <%=outwardFlight.getPrice() %> € per person</h4>
+			<h4>Départ : <%=outwardFlight.getDeparture() %></h4>
+			<h4>Arrivée : <%=outwardFlight.getArrival() %></h4>
+			<h4>Date départ : <%=outwardFlight.getDepartureDate() %></h4>
+			<h4>Heure de départ :<%=outwardFlight.getDepartureTime() %></h4>
+			<h4>Date d'arrivée : <%=outwardFlight.getArrivalDate() %></h4>
+			<h4>Heure d'arrivée : <%=outwardFlight.getArrivalTime() %></h4>
+			<h4>Prix : <%=outwardFlight.getPrice() %> € par personne</h4>
 
 			<br>
 
-			<h4>outward seats : </h4>
+			<h4>Sièges aller : </h4>
 
 			<%
 				PrintSeats.printSeatsSelected(out, outwardFlightID, outwardSeats);
@@ -177,18 +177,18 @@
 
 		<%if(returnFlight!=null){ %>
 		<div style="border-style: solid; padding:20px;">
-			<h3>Return flight:</h3>
+			<h3>Vol retour:</h3>
 
-			<h4>Departure : <%=returnFlight.getDeparture() %></h4>
-			<h4>Arrival : <%=returnFlight.getArrival() %></h4>
-			<h4>SepartureDate : <%=returnFlight.getDepartureDate() %></h4>
-			<h4>SepartureTime : <%=returnFlight.getDepartureTime() %></h4>
-			<h4>ArrivalDate : <%=returnFlight.getArrivalDate() %></h4>
-			<h4>ArrivalTime : <%=returnFlight.getArrivalTime() %></h4>
-			<h4>price : <%=returnFlight.getPrice() %> € per person </h4>
+			<h4>Départ : <%=returnFlight.getDeparture() %></h4>
+			<h4>Arrivée : <%=returnFlight.getArrival() %></h4>
+			<h4>Date départ : <%=returnFlight.getDepartureDate() %></h4>
+			<h4>Heure de départ : <%=returnFlight.getDepartureTime() %></h4>
+			<h4>Date d'arrivée : <%=returnFlight.getArrivalDate() %></h4>
+			<h4>Heure d'arrivée : <%=returnFlight.getArrivalTime() %></h4>
+			<h4>Prix : <%=returnFlight.getPrice() %> € par personne</h4>
 			<br>
 
-			<h4>return seats :</h4>
+			<h4>Sièges au retour :</h4>
 			<%
 					PrintSeats.printSeatsSelected(out, returnFlightID, outwardSeats);
 				%>
@@ -201,144 +201,143 @@
 		Passenger passenger = listOfPassengers.get(i);
 		String title="";
 		if(passenger.getTitle()==0){
-			title="Mrs";
+			title="Mme";
 		}else{
-			title="Mr";
+			title="M.";
 		}
 	%>
 
 	<div class="container" id="pInfoForm">
-		<h2>Personnal informations:</h2>
+		<h2>Informations personnelles:</h2>
 
 		<% if(i+1==1){
-			out.println("<h3>Passenger 1(person who is booking): </h3>");
+			out.println("<h3>Passager 1(en train de commander) : </h3>");
 		}else{	
-			out.println("<h3>Passenger "+(i+1)+": </h3>");
+			out.println("<h3>Passager "+(i+1)+": </h3>");
 		}	
 		%>
-
-		<h4><span class="glyphicon glyphicon-envelope"></span> Title: <%=title %></h4>
-		<h4><span class="glyphicon glyphicon-user"></span> Firstname: <%=passenger.getFirstName()%></h4>
-		<h4><span class="glyphicon glyphicon-user"></span> Surname: <%=passenger.getSurname() %></h4>
-		<h4><span class="glyphicon glyphicon-calendar"></span> Date of Birth: <%=passenger.getDateOfBirth() %></h4>
-
+		<h4><span class="glyphicon glyphicon-envelope"></span> Titre: <%=title %></h4>
+		<h4><span class="glyphicon glyphicon-user"></span> Prénom: <%=passenger.getFirstName()%></h4>
+		<h4><span class="glyphicon glyphicon-user"></span> Nom: <%=passenger.getSurname() %></h4>
+		<h4><span class="glyphicon glyphicon-calendar"></span> Date de naissance: <%=passenger.getDateOfBirth() %></h4>
 	</div>
 
-	<%	}%>
+	<%}%>
 
 	<div class="container" id="pInfoForm">
-		<h2>Others:</h2>
+		<h2>Autres:</h2>
 
-		<h3>Contact informations:</h3>
+		<h3>Informations de contact</h3>
 		<div style="border:solid ;padding-left: 5px;">
 			<h4><span class="glyphicon glyphicon-envelope"></span> E-mail :
 				<%=listOfPassengers.get(0).getEmail()%> </h4>
-			<h4><span class="glyphicon glyphicon-phone"></span> Phone number:
+			<h4><span class="glyphicon glyphicon-phone"></span> Numéro de téléphone:
 				<%=listOfPassengers.get(0).getPhoneNumber() %> </h4>
 			<br>
 		</div>
 
-		<h3>Flight option:</h3>
+		<h3>Option de vol:</h3>
 		
 		<%if(flightOption.equals("Eco")){ %>
 			<div class="col-xl-4">
-	              <div class="single-price">
-	                  <div class="price-title">
-	                      <h4>Eco</h4>
-	                  </div>
-	                  <div class="price-tag">
-	                      <h2>Basic option</h2>
-	                  </div>
-	                  <div class="price-item">
-	                      <ul>
-	                          <li>1 hand baggage (12kg)</li>
-	                          <li>Seat choice</li>
-	                          <li>Meals</li>
-	                          <li>Rebooking not possible</li>
-	                          <li>No refund if you missed the flight</li>
-	                      </ul>
-	                  </div>
-	              </div>
-	          </div>
+	               <div class="single-price">
+	                   <div class="price-title">
+	                       <h4>Eco</h4>
+	                   </div>
+	                   <div class="price-tag">
+	                       <h2>Basique</h2>
+	                   </div>
+	                   <div class="price-item">
+	                       <ul>
+	                           <li>1 baguage à main (12kg)</li>
+	                           <li>Choix du siège</li>
+	                           <li>Repas</li>
+	                           <li>Changement impossible</li>
+	                           <li>Pas de remboursement possible</li>
+	                       </ul>
+	                   </div>
+	               </div>
+	           </div>
 	       <%}else if(flightOption.equals("EcoFlex")){ %>   
-                            <div class="col-xl-4">
-                                <div class="single-price">
-                                    <div class="price-title">
-                                        <h4>ECO FLEX</h4>
-                                    </div>
-                                    <div class="price-tag">
-                                        <h2>25€</h2>
-                                    </div>
-                                    <div class="price-item">
-                                        <ul>
-                                            <li>1 hand baggage (12kg)</li>
-                                            <li>1 check-in baggage (20kg)</li>
-                                            <li>Seat choice</li>
-                                            <li>Meals</li>
-                                            <li>Change fee</li>
-                                            <li>No refund if you missed the flight</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-    	<%}else{ %>                        
-                <div class="col-xl-4">
-                    <div class="single-price">
-                        <div class="price-title">
-                            <h4>business</h4>
-                        </div>
-                        <div class="price-tag">
-                            <h2>50€</h2>
-                        </div>
-                        <div class="price-item">
-                            <ul>
-                                <li>2 hand baggage (12kg)</li>
-                                <li>1 check-in baggage (20kg)</li>
-                                <li>Seat choice</li>
-                                <li>Meals</li>
-                                <li>Change free</li>
-                                <li>Refund if you missed the flight</li>
-                                <li>Priority Check-In</li>
-                                <li>Priority Security</li>
-                                <li>Priority Boarding</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+				<div class="col-xl-4">
+                      <div class="single-price">
+                          <div class="price-title">
+
+                              <h4>ECO FLEX</h4>
+                          </div>
+                          <div class="price-tag">
+                              <h2>25€</h2>
+                          </div>
+                          <div class="price-item">
+                              <ul>
+                                  <li>1 baguage à main (12kg)</li>
+                                  <li>1 bagage en soute (20kg)</li>
+                                  <li>Choix du siège</li>
+                                  <li>Repas</li>
+                                  <li>Frais de changement</li>
+                                  <li>Pas de remboursement possible</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+    	<%}else{ %>
+                  <div class="col-xl-4">
+                      <div class="single-price">
+                          <div class="price-title">
+                              <h4>business</h4>
+                          </div>
+                          <div class="price-tag">
+                              <h2>50€</h2>
+                          </div>
+                          <div class="price-item">
+                              <ul>
+                                  <li>2 baguage à main (12kg)</li>
+                                  <li>1 bagage en soute (20kg)</li>
+                                  <li>Choix du siège</li>
+                                  <li>Repas</li>
+                                  <li>Changement de vol gratuit</li>
+                                  <li>Remboursement possible</li>
+                                  <li>Priorité au Check-In </li>
+                                  <li>Priorité passage de la sécurité</li>
+                                  <li>Priorité à l'embarquement</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
 		<%} %>
 		
 		
 		<br><br>
-		<h3>Insurance:</h3>
+		<h3>Assurance:</h3>
 		
 		<%if(insurance.equals("yes")){ %>
-			<div class="form-check" style = "border-style:solid; width:50%;">
-	             <span class="form-check-label">
-	                 <span style="color: #ff6600; font-weight: bold;">Comprehensive travel Insurance</span>
-	                 (16€ per person)
-	                 <br>
-	                 <span>
-	                     Covers:
-	                     <ul>
-	                         <li>
-	                             Medical and hospitalization expenses up to 150.000 Euros
-	                         </li>
-	                         <li>
-	                             Damage/loss or theft of luggage up to 1.000 Euros
-	                         </li>
-	                         <li>
-	                             Departure cancellation due to sickness or accident up to 500 Euros
-	                         </li>
-	                         <li>
-	                             24 hour assistance abroad
-	                         </li>
-	                     </ul>
-	                 </span>
-	             </span>
-	         </div>
+			 <div class="form-check">
+                    <span class="form-check-label">
+                       <span style="color: #ff6600; font-weight: bold;">	Assurance de voyage</span>
+                        (16€ par personne)
+                        <br>
+                        <span>
+                            Couvre:
+                            <ul>
+                                <li>
+                                    Dépenses médicales and hospitalière jusque 150000€
+                                </li>
+                                <li>
+                                    Dommage/pertes de baguage jusque 1000€
+                                </li>
+                                <li>
+                                    Annulation du départ pour raison médicale ou accidentelle jusque 500€
+                                </li>
+                                <li>
+                                    24 heures d'assistances à l'étranger
+                                </li>
+                            </ul>
+                        </span>
+                    </span>
+                </div>
 		<%}else{ %>
 		
-			<h4 style="margin-left:40px;">Not taken</h4>
+			<h4 style="margin-left:40px;">Non souscrite</h4>
 		
 		<%} %>
 		<br>
@@ -346,8 +345,7 @@
 		<h3>Total: <%=totalPrice %> €</h3>
 		<br>
 		
-		<input type="submit" value="Process to paiement" onclick="window.location.href = '/FR/booking/payment.jsp';">
-
+		<input type="submit" value="Procéder au paiement" onclick="window.location.href = '/FR/booking/payment.jsp';">
 
 	</div>
 	<!--Footer -->
