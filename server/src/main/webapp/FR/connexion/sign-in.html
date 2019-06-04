@@ -4,7 +4,7 @@
 <head>
 
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
-	<title>Sign In</title>
+	<title>Inscription</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -40,56 +40,56 @@
 	<div class="container login-container">
 		<div class="row">
 			<div class="col-md-6 login-form">
-				<h3>Sign-in</h3>
+				<h3>Inscription</h3>
 				<form action="/connexion/servlet-SignIn" method="post" role="form class=form">
 					<input type="hidden" name="lang" value="fr">
 					<div class="form-group">
-						<label for="usrtitle"><span class="glyphicon glyphicon-envelope"></span> Title</label>
+						<label for="usrtitle"><span class="glyphicon glyphicon-envelope"></span> Titre</label>
 						<select required name="title">
-							<option selected value="0">Mrs/Miss</option>
-							<option value="1">Mr</option>
+							<option selected value="0">Mme</option>
+							<option value="1">M</option>
 						</select> 
 					</div>
 
 					<div class="form-group">
-						<label for="usrFName"><span class="glyphicon glyphicon-user"></span> First Name</label>
-						<input required type="text" class="form-control" name="name" placeholder="Enter First Name">
+						<label for="usrFName"><span class="glyphicon glyphicon-user"></span> Prénom</label>
+						<input required type="text" class="form-control" name="name" placeholder="Entrez votre prénom">
 					</div>
 					
 					<div class="form-group">
-						<label for="usrLName"><span class="glyphicon glyphicon-user"></span> Last Name</label>
-						<input required type="text" class="form-control" name="surname" placeholder="Enter Last Name">
+						<label for="usrLName"><span class="glyphicon glyphicon-user"></span> Nom</label>
+						<input required type="text" class="form-control" name="surname" placeholder="Entrez votre nom de famille">
 					</div>
 					
 					<div class="form-group">
-						<label for="usrmail"><span class="glyphicon glyphicon-calendar"></span> Date of birth</label>
+						<label for="usrmail"><span class="glyphicon glyphicon-calendar"></span> Date de naissance</label>
 					<input required id="arrivalDate" type="date" class="form-control" name="dateOfBirth"
 											value="" max="2010-01-01"
 											placeholder="dd-mm-yyyy">
 					</div>
 					
 					<div class="form-group">
-						<label for="usrmail"><span class="glyphicon glyphicon-envelope"></span> E-mail</label>
-						<input required type="email" class="form-control" name="email" placeholder="Enter email">
+						<label for="usrmail"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+						<input required type="email" class="form-control" name="email" placeholder="Entrez votre email">
 					</div>
 					
 					<div class="form-group">
 						<label for="psw"><span class="glyphicon glyphicon-lock"></span> Password</label>
-						<input required type="password" class="form-control" name="password" placeholder="Enter password">
+						<input required type="password" class="form-control" name="password" placeholder="Entrez votre mot de passe">
 					</div>
 					
 					<div class="form-group">
-						<label for="psw"><span class="glyphicon glyphicon-phone"></span> Phone number(optional)</label>
-						<input type="tel" class="form-control" name="phoneNumber" placeholder="Enter phone number">
+						<label for="psw"><span class="glyphicon glyphicon-phone"></span> Numéro de téléphone(optionnel)</label>
+						<input type="tel" class="form-control" name="phoneNumber" placeholder="Entrez votre numéro de téléphone">
 					</div>
 					
 					<div class="checkbox">
-						<label><input required type="checkbox" value="">I accept the legal conditions of <a href="/FR/informations/legalConditions.html">Air Asmus</a></label>
+						<label><input required type="checkbox" value="">J'accepte les conditions légales d'utilisation d'<a href="/FR/informations/legalConditions.html">Air Asmus</a></label>
 					</div>
 					<button id="sendRequest" type="submit" class="btnSubmit"><span
-							class="glyphicon glyphicon-off"></span> Sign In</button>
+							class="glyphicon glyphicon-off"></span> Inscription</button>
 					<div class="form-group">
-						<a href="/FR/connexion/login.html" class="ForgetPwd">Already a member ?</a>
+						<a href="/FR/connexion/login.html" class="ForgetPwd">Déjà membre ?</a>
 					</div>
 				</form>
 			</div>
