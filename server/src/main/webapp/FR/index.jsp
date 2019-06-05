@@ -44,27 +44,23 @@
 
 	<!-- airport list for formular -->
 	<datalist id="airports">
-		<%
-			AirportsDAO dao = new AirportsDAO();
-			List<Airport> listeAirports = dao.findAll();
-
-			for(Airport airport : listeAirports) {
-				out.println("<option value=\""+ airport.getName()+"\">");
-			}	
-			
-			 %>
+	<%
+		AirportsDAO dao = new AirportsDAO();
+		List<Airport> listeAirports = dao.findAll();
+	
+		for(Airport airport : listeAirports) {
+			out.println("<option value=\""+ airport.getName()+"\">");
+		}	
+	%>
 	</datalist>
 
-
 	<% 
-									DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-									LocalDate localDate = LocalDate.now();
-									String actualDate = dtf.format(localDate); 		
-									localDate = localDate.plusDays(1);
-									String tomorrowDate = dtf.format(localDate); 													
-									%>
-
-
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate localDate = LocalDate.now();
+		String actualDate = dtf.format(localDate); 		
+		localDate = localDate.plusDays(5);
+		String inFiveDaysDate = dtf.format(localDate); 													
+	%>
 
 	<!--The flight-searching form-->
 	<div id="form-container">
@@ -120,7 +116,7 @@
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
 										<input required type="date" class="form-control" name="returnDate"
-											value="<%=tomorrowDate%>" min="2019-04-01" max="2025-04-01"
+											value="<%=inFiveDaysDate%>" min="2019-04-01" max="2025-04-01"
 											placeholder="jj-mm-aaaa">
 
 									</div>

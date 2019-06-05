@@ -7,7 +7,6 @@
 <html lang="en">
 
 <head>
-
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
 	<title>Air Asmus</title>
 	<%@ page contentType="text/html; charset=UTF-8" %>
@@ -41,30 +40,25 @@
 	<!--Second navbar, which contains the differents parts of the website -->
 	<nav id="navBar"></nav>
 
-
 	<!-- airport list for formular -->
 	<datalist id="airports">
-		<%
-			AirportsDAO dao = new AirportsDAO();
-			List<Airport> listeAirports = dao.findAll();
-
-			for(Airport airport : listeAirports) {
-				out.println("<option value=\""+ airport.getName()+"\">");
-			}	
-			
-			 %>
+	<%
+		AirportsDAO dao = new AirportsDAO();
+		List<Airport> listeAirports = dao.findAll();
+	
+		for(Airport airport : listeAirports) {
+			out.println("<option value=\""+ airport.getName()+"\">");
+		}	
+	%>
 	</datalist>
 
-
 	<% 
-									DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-									LocalDate localDate = LocalDate.now();
-									String actualDate = dtf.format(localDate); 		
-									localDate = localDate.plusDays(1);
-									String tomorrowDate = dtf.format(localDate); 													
-									%>
-
-
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate localDate = LocalDate.now();
+		String actualDate = dtf.format(localDate); 		
+		localDate = localDate.plusDays(5);
+		String inFiveDaysDate = dtf.format(localDate); 													
+	%>
 
 	<!--The flight-searching form-->
 	<div id="form-container">
@@ -81,7 +75,6 @@
 						</ul>
 						<div class="tab-content">
 
-
 							<!-- roundtrip form--------------------------- -->
 
 							<div id="1" class="tab1 active">
@@ -96,30 +89,21 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Athens Eleftherios Venizelos" placeholder="Departing from">
+											value="" placeholder="Departing from">
 									</div>
-
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Barcelona" placeholder="Arriving at">
+											value="" placeholder="Arriving at">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
-										<!--
-										TODO
-										uncomment when site finished > uses today's date
 										
 										<input required type="date" class="form-control" name="departureDate"
 											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
-										-->
-
-										<input required type="date" class="form-control" name="departureDate"
-											value="2019-06-13" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
@@ -127,16 +111,8 @@
 									<div class="col-sm-6 col-xs-6 ctrl hide_one-trip">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
-										<!--
-										TODO
-										uncomment when site finished > uses today's date
 										<input required type="date" class="form-control" name="returnDate"
-											value="<%=tomorrowDate%>" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
-										-->
-
-										<input required type="date" class="form-control" name="returnDate"
-											value="2019-06-20" min="2019-04-01" max="2025-04-01"
+											value="<%=inFiveDaysDate%>" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 									</div>
 
@@ -152,7 +128,6 @@
 												<option>6</option>
 											</select>
 										</div>
-
 									</div>
 									<div class="col-lg-12">
 										<input type="submit" class="srch" value="Search Flights" />
@@ -173,30 +148,22 @@
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="departure"
-											value="Athens Eleftherios Venizelos" placeholder="Departing from">
+											value="" placeholder="Departing from">
 									</div>
 
 
 									<div class="col-sm-12 col-xs-12 ctrl">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<input required list="airports" class="form-control" name="destination"
-											value="Barcelona" placeholder="Arriving at">
+											value="" placeholder="Arriving at">
 									</div>
 
 									<div class="col-sm-6 col-xs-6 ctrl">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
 
-										<!--
-										TODO
-										uncomment when site finished > uses today's date
 										
 										<input required type="date" class="form-control" name="departureDate"
 											value="<%=actualDate %>" min="2019-04-01" max="2025-04-01"
-											placeholder="dd-mm-yyyy">
-										-->
-
-										<input required type="date" class="form-control" name="departureDate"
-											value="2019-06-13" min="2019-04-01" max="2025-04-01"
 											placeholder="dd-mm-yyyy">
 
 									</div>
@@ -220,7 +187,6 @@
 									</div>
 								</form>
 							</div>
-
 							<!-- end of one way form--------------------------- -->
 						</div>
 					</div>
