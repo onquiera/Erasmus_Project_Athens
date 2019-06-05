@@ -4,7 +4,7 @@
 <head>
 
     <link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
-    <title>Contact Us</title>
+    <title>Nous contacter</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,13 +39,13 @@
 
 
     <div id="textArea2">
-        <h2 style="color:#ff6600">CONTACT US</h2>
+        <h2 style="color:#ff6600">Nous contacter</h2>
         <br>
 
-        <p>If you have encountered any problem concerning the website, the reservation or any little things,
-            please share us the problem, we will make all our possible to solve it !
-            <br>
-            Enter carefully your email adress, we will answer you on this one.
+        <p>Si vous avez rencontré un quelconque problème concernant l'utilisation du site ou d'une réservation de vol,
+        partagez nous ce problème, nous ferons tout notre possible pour vous aider à le corriger.  
+        <br>
+            Entrez minitieusement votre adresse email, c'est sur celle-ci que nous vous répondrons.
         </p>
         <br>
     </div>
@@ -54,19 +54,19 @@
         <form action="/servlet-Contact" method="post">
 			<input type="hidden" name="lang" value="fr">
             <label for="Email">Email </label>
-            <input required type="email" id="email" name="email" placeholder="Enter your email here">
+            <input required type="email" id="email" name="email" placeholder="Entrez votre email ici">
 
-            <label for="subject">Subject</label>
+            <label for="subject">Sujet</label>
             <select id="subject" name="subject">
-                <option value="Request an invoice">Request an invoice</option>
-                <option value="Cancellation or refund">Cancellation or refund</option>
-                <option value="Other">Other</option>
+                <option value="Request an invoice">Demander une facture</option>
+                <option value="Cancellation or refund">Annulation ou remboursement</option>
+                <option value="Other">Autre</option>
             </select>
 
-            <label for="problem">Please explain the problem here</label>
-            <textarea required id="problem" name="problem" placeholder="Write something..." style="height:200px"></textarea>
+            <label for="problem">Expliquez nous le problème ici</label>
+            <textarea required id="problem" name="problem" placeholder="Ecrivez quelques chose..." style="height:200px"></textarea>
 
-            <input type="submit" value="Send">
+            <input type="submit" value="Envoyer">
 
         </form>
     </div>
