@@ -38,8 +38,8 @@ public class MyBooking extends HttpServlet {
 
 		// Content
 		out.println("</head><body>" + "<div id=\"logo\">"
-				+ "<a href=\"/\"><img src=\"/resources/logo.png\" alt=\"Insert logo here\" id=\"home\"></a>" + "</div>"
-
+				+ "<a href=\"/index.jsp\"><img src=\"/resources/logo.png\" alt=\"Insert logo here\" id=\"home\"></a>"
+				+ "</div>"
 				+ "<nav id=\"navBar\"></nav>" + "<div id=\"textArea2\">"
 				+ " <div class=\"container\" id=\"pInfoForm\">");
 
@@ -83,7 +83,6 @@ public class MyBooking extends HttpServlet {
 					out.println("Selected seats (in blue): <br>");
 					PrintSeats.printSeatsSelected(out, booking.getFlightid(), seatsSelected);
 
-					
 					ArrayList<Passenger> listOfPassengers = bookingDAO.findAllPassengersOnBooking(bookingID);
 					int cpt = 1;
 
@@ -95,8 +94,8 @@ public class MyBooking extends HttpServlet {
 						} else {
 							out.println("Mr ");
 						}
-						out.println(passenger.getFirstName() + " " + passenger.getSurname() + ""
-								+ "<br>Date of birth: " + passenger.getDateOfBirth() + "<br><br>");
+						out.println(passenger.getFirstName() + " " + passenger.getSurname() + "" + "<br>Date of birth: "
+								+ passenger.getDateOfBirth() + "<br><br>");
 						cpt++;
 					}
 
@@ -114,28 +113,28 @@ public class MyBooking extends HttpServlet {
 
 			out.println("<br><h3>" + "<a href=\"/booking/searchBooking.jsp\">Back to booking research</a></h3>"
 					+ "</div></div>");
-			out.println("<nav id=\"footer\"></nav></body>");
+			out.println("<br><br><nav id=\"footer\"></nav></body>");
 
-		}catch(java.lang.NumberFormatException e ){
+		} catch (java.lang.NumberFormatException e) {
 			e.printStackTrace();
-			
-			if(lang!=null && lang.equals("fr")) {
+
+			if (lang != null && lang.equals("fr")) {
 				res.sendRedirect("/FR/error/parameterError.html");
-			}else {
+			} else {
 				res.sendRedirect("/error/parameterError.html");
 			}
-		}catch(NullPointerException e ){
+		} catch (NullPointerException e) {
 			e.printStackTrace();
-			if(lang!=null && lang.equals("fr")) {
+			if (lang != null && lang.equals("fr")) {
 				res.sendRedirect("/FR/error/parameterError.html");
-			}else {
+			} else {
 				res.sendRedirect("/error/parameterError.html");
 			}
-		}catch(Exception e2 ){
+		} catch (Exception e2) {
 			e2.printStackTrace();
-			if(lang!=null && lang.equals("fr")) {
+			if (lang != null && lang.equals("fr")) {
 				res.sendRedirect("/FR/error/error.html");
-			}else {
+			} else {
 				res.sendRedirect("/error/error.html");
 			}
 		}
