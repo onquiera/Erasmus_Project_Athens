@@ -23,7 +23,6 @@
 		</repository>
 	</repositories>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -39,37 +38,29 @@
 		</dependency>
 
 		<dependency>
-		        <groupId>com.sun.mail</groupId>
-		        <artifactId>javax.mail</artifactId>
-                	<version>1.6.2</version>
-                </dependency>
-
-		<dependency>
-		    <groupId>javax.servlet.jsp</groupId>
-		    <artifactId>jsp-api</artifactId>
-		    <version>2.2</version>
-		    <scope>provided</scope>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
 		</dependency>
 
-		<!--    <dependency>
-		      <groupId>junit</groupId>
-		      <artifactId>junit</artifactId>
-		      <version>3.8.1</version>
-		      <scope>test</scope>
-	    </dependency> -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<build>
 
-		
-	<sourceDirectory>src/main/webapp/WEB-INF/classes</sourceDirectory>
-	<resources>
-		<resource>
-			<directory>src/main/webapp/WEB-INF/classes</directory>
-			<excludes>
-				<exclude>**/*.java</exclude>
-			</excludes>
-		</resource>
-	</resources> 
+		<sourceDirectory>src/main/webapp/WEB-INF/classes</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/webapp/WEB-INF/classes</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 
 		<plugins>
 			<plugin>
@@ -96,18 +87,10 @@
 				<version>9.4.0.M0</version>
 				<configuration>
 					<reload>manual</reload>
-				<!-- ligne avec scanInterval pour reload auto mais j'ai pas réussi à le configurer
-+ si on l'utilise, il faut passer le reload à "automatic" et pas manual--> 
-				<!--	<scanIntervalSeconds>3</scanIntervalSeconds>-->
 					<webApp>
 						<descriptor>/WEB-INF/lib/web.xml</descriptor>
 						<contextPath>/</contextPath>
 					</webApp>
-<!--
-					<scanTargets>
-					    <scanTarget>/WEB-INF/classes</scanTarget>
-					</scanTargets>
--->
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>8080</port>
