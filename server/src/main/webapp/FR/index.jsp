@@ -7,7 +7,6 @@
 <html lang="en">
 
 <head>
-
 	<link rel="shortcut icon" type="image/png" href="/resources/firstlogo.png" />
 	<title>Air Asmus</title>
 	<%@ page contentType="text/html; charset=UTF-8" %>

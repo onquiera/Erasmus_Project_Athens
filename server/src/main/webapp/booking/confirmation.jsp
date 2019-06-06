@@ -190,7 +190,7 @@
 
 			<h4>return seats :</h4>
 			<%
-					PrintSeats.printSeatsSelected(out, returnFlightID, outwardSeats);
+					PrintSeats.printSeatsSelected(out, returnFlightID, returnSeats);
 				%>
 		</div>
 		<%} %>
