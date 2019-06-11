@@ -25,6 +25,7 @@ public class SearchFlight extends HttpServlet {
 			try (Connection con = DS.getConnection()) {
 
 				// PARAMETERS management
+
 				String departure = req.getParameter("departure");
 				String destination = req.getParameter("destination");
 				String departureDate = req.getParameter("departureDate");
@@ -34,12 +35,12 @@ public class SearchFlight extends HttpServlet {
 
 				HttpSession httpSession = req.getSession(false);
 
-				// session reset if user starts or restarts a research
+				//Session reset if user starts or restarts a research
 				if (httpSession != null) {
 					httpSession.invalidate();
 				}
 				httpSession = req.getSession(true);
-				//the sessin is 20 minutes long
+				//The session is 20 minutes long
 				httpSession.setMaxInactiveInterval(20 * 60);
 
 				httpSession.setAttribute("departure", departure);

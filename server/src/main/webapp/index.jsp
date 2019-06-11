@@ -40,7 +40,7 @@
 	<!--Second navbar, which contains the differents parts of the website -->
 	<nav id="navBar"></nav>
 
-	<!-- airport list for formular -->
+	<!-- airport list used in the form -->
 	<datalist id="airports">
 	<%
 		AirportsDAO dao = new AirportsDAO();

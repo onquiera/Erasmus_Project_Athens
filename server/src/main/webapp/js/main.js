@@ -12,7 +12,6 @@ fetch("/structure/navBar.jsp")
 
 
 //Display the homeBar
-
 function displayHB(html) {
   const hbContainer = document.getElementById('homeBar');
   if (hbContainer) {
