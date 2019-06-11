@@ -29,7 +29,7 @@ CREATE TABLE users(
 );
 
 
-
+--Airports table
 CREATE TABLE airports (
     name VARCHAR(56),
     code VARCHAR(3) primary Key,
@@ -38,8 +38,7 @@ CREATE TABLE airports (
     countryName VARCHAR(32)
 );
 
---Planes table, where a plane is register with all the usefull informations.*
---nbPlacoEco + nbPlaceBui > = total of available places.
+--Planes table, where a plane is register.
 CREATE TABLE planes(
 	planeID integer PRIMARY KEY,
 	--Id of the plane, 8 number.
@@ -51,7 +50,7 @@ CREATE TABLE planes(
 
 --Flights table, where the information like datetime of departure and arrival are.
 CREATE TABLE flights(
-		flightID text PRIMARY KEY,
+	flightID text PRIMARY KEY,
 	--Id of the flight, 2 letter for the country and 8 number for the id
 	--Example --> FR00764400 (Unique to determine if the is a delay or something)
 	planeID integer,

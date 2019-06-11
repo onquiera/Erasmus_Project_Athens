@@ -19,8 +19,6 @@ public class BookingDAO {
 			ps.setInt(1, bookingID);
 			ResultSet rs = ps.executeQuery();
 			
-			//System.out.println("ps: " +ps);
-			
 			if(rs.next()) {
 				String flightid = rs.getString("flightid");
 				int category = rs.getInt("category");
@@ -47,7 +45,6 @@ public class BookingDAO {
 			ps.setInt(5, booking.getMainPassengerNO());
 
 			ps.executeUpdate();
-			//System.out.println(ps);
 			return true;
 		}catch(Exception e1){
 			System.out.println(e1.getMessage());
